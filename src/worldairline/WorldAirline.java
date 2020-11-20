@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package worldairline;
+import java.sql.*;
 
 /**
  *
@@ -16,6 +17,24 @@ public class WorldAirline {
      */
     public static void main(String[] args) {
         System.out.println("worldAirline");  
+        
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/worldairline?useSSL=false", "root", "root");  // /?user=root  //jdbc:mysql://127.0.0.1:3306/?useSSL=false
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM worldairline.passenger WHERE idPassenger=1;");
+            rs.next();
+            System.out.println(rs.getString("email"));
+            
+            
+            con.close();
+            
+        }catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        System.out.println("worldAirline");  
+        
+        
     }
     
 }
