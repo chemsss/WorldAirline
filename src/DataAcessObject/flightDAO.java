@@ -3,9 +3,4 @@ import model.*;
 
 public class FlightDAO {
     
-    
-    
-    
-    
-    //tyiuhuoh
 }
