@@ -88,9 +88,5 @@ public class Flight {
 
     public void setSeat(ArrayList<FlightSeat> seat) {
         this.seats = seat;
-    }
-
-    
-    
-    
+}
 }
