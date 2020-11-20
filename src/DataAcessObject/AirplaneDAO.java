@@ -13,6 +13,7 @@ import model.Airplane;
  */
 public class AirplaneDAO {
     
+    private int abbasLoser;
     
     /*public Airplane getAirplane(int id) {
         
