@@ -1,5 +1,4 @@
 package DataAcessObject;
-
 import java.sql.*;
 import java.util.Properties;
 import java.io.FileInputStream;
@@ -15,11 +14,10 @@ public class DatabaseConnection {
 
     private static Connection con = null;
 
-    public Connection getInstance() {
+    public static  Connection getInstance() {
 
         if (con == null) {
             try {
-
                 // 1. Load the properties file
                 Properties props = new Properties();
                 props.load(new FileInputStream("demo.properties"));

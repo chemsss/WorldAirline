@@ -4,35 +4,51 @@
  * and open the template in the editor.
  */
 package DataAcessObject;
+
 import java.sql.*;
 import model.Airplane;
+import model.Flight;
 
 /**
  *
  * @author Chems
  */
-public class AirplaneDAO {
-    
-    private int abbasLoser;
-    
-    /*public Airplane getAirplane(int id) {
-        
+public class AirplaneDAO extends DAO<Airplane> {
+
+    @Override
+    public Airplane find(int id) {
+       
+        Airplane airplane=null; // in case of airplane doesn't exist
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/worldairline?useSSL=false", "root", "root");  // /?user=root  //jdbc:mysql://127.0.0.1:3306/?useSSL=false
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM worldairline.passenger WHERE idAirplane= " +id + ";");
-            rs.next();
-            System.out.println(rs.getString("email"));
-            
-            
-            con.close();
-            
-        }catch(SQLException ex) {
-            System.out.println(ex.getMessage());
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from airplane where idAirplane=" + id + ";");
+
+            if (myRs.first()) {
+                int idAirplane = myRs.getInt("idAirplane");
+                String model = myRs.getString("model");
+                int seatCapacity = myRs.getInt("seatCapacity");
+
+                airplane= new Airplane(idAirplane, model, seatCapacity);
+
+            }
+        } catch (SQLException e) {
+
         }
-        
-        System.out.println("worldAirline");
-        
-        
-    }*/
+       return airplane;
+    }
+
+    @Override
+    public Airplane create(Airplane obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Airplane update(Airplane obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(Airplane obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
