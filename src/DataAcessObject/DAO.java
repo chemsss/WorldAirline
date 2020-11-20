@@ -7,8 +7,18 @@ package DataAcessObject;
 
 /**
  *
- * @author Unknow
+ * @author Chems
  */
-public class FlightDAO {
+public abstract class DAO<T> {
+    
+    
+    private String url;
+    private String user;
+    private String password;
+    
+    public DAO() {
+        
+        
+    }
     
 }

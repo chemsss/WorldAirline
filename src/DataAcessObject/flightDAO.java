@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package DataAcessObject;
+import model.*;
 
 /**
  *
  * @author Unknow
  */
 public class FlightDAO {
+    
+    
     
 }
