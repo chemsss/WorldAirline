@@ -3,7 +3,6 @@ import java.sql.Connection;
 
 public abstract class DAO<T> {
 
-    //public Connection connect = ConnectionPostgreSQL.getInstance();
     
     /**
      * Permet de récupérer un objet via son ID
