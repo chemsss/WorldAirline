@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package model;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class Flight {
     
