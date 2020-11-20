@@ -12,6 +12,13 @@ public class Airplane {
         this.seatCapacity = seatCapacity;
     }
 
+    public Airplane() {
+        this.idAirplane = 0;
+        this.model = " ";
+        this.seatCapacity = 0;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdAirplane() {
         return idAirplane;
     }

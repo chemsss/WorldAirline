@@ -10,10 +10,8 @@ import model.Flight;
  *
  * @author Chems
  */
-public class FlightDAO {
+public class FlightDAO{
     
-    private int abbas123;
-    private int test;
     
     
 }

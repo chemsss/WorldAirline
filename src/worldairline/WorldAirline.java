@@ -5,12 +5,15 @@
  */
 package worldairline;
 import java.sql.*;
+import DataAcessObject.AirplaneDAO;
+import model.Airplane;
 
 /**
  *
  * @author Unknow
  */
 public class WorldAirline {
+
 
     /**
      * @param args the command line arguments
@@ -31,6 +34,10 @@ public class WorldAirline {
         }catch(SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        /*
+        AirplaneDAO test = new AirplaneDAO();
+        test.find(2);*/
         
         System.out.println("worldAirline");  
         
