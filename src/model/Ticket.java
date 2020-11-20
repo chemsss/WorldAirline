@@ -6,14 +6,14 @@ public class Ticket {
     private int ticketNo; // numero of ticket
     private Passenger passengerInfos; //passenger
     private FlightSeat seat;// seat
-    //private Flight flight;//flight
+    private Flight flight;//flight
     
 
-    public Ticket(int ticketNo, Passenger passengerInfos, FlightSeat seat/*, Flight flight*/) {
+    public Ticket(int ticketNo, Passenger passengerInfos, FlightSeat seat, Flight flight) {
         this.ticketNo = ticketNo;
         this.passengerInfos = passengerInfos;
         this.seat = seat;
-        //this.flight = flight;
+        this.flight = flight;
     }
 
     public int getTicketNo() {
@@ -40,11 +40,11 @@ public class Ticket {
         this.seat = seat;
     }
 
-    /*public Flight getFlight() {
+    public Flight getFlight() {
         return flight;
     }
 
     public void setFlight(Flight flight) {
         this.flight = flight;
-    }*/
+    }
 }
