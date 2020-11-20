@@ -13,6 +13,7 @@ import model.Flight;
 public class FlightDAO {
     
     private int abbas123;
+    private int test;
     
     
 }
