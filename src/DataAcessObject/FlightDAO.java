@@ -13,5 +13,4 @@ import model.Flight;
 public class FlightDAO{
     
     
-    
 }

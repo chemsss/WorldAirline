@@ -13,6 +13,7 @@ import model.Airplane;
  *
  * @author Chems
  */
+
 public class AirplaneDAO extends DAO<Airplane> {
     
     private int abbasLoser;
@@ -24,23 +25,43 @@ public class AirplaneDAO extends DAO<Airplane> {
     @Override
     public void find(int id) {
         
-        /*try {
+        
+        try {
             Connection con = DriverManager.getConnection( getUrl(), getUser(), getPassword());  // /?user=root  //jdbc:mysql://127.0.0.1:3306/?useSSL=false
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM worldairline.passenger WHERE registrationNumber=" +id +";");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM airplane WHERE idAirplane=" + id + ";");
             
-            for(int i=1 ; rs.next() ; ++i) {
-                rs.next();
-                System.out.println(rs.getString(i));
+            Airplane airplane=null; // in case of airplane doesn't exist
+            if(rs.first()) {
+                int idAirplane = rs.getInt("idAirplane");
+                String model = rs.getString("model");
+                int seatCapacity = rs.getInt("seatCapacity");
+
+                airplane= new Airplane(idAirplane, model, seatCapacity);
             }
-            
-            
             
             con.close();
             
         }catch(SQLException ex) {
             System.out.println(ex.getMessage());
-        }*/
+        }
+       /*Airplane airplane=null; // in case of airplane doesn't exist
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from airplane where idAirplane=" + id + ";");
+
+            if (myRs.first()) {
+                int idAirplane = myRs.getInt("idAirplane");
+                String model = myRs.getString("model");
+                int seatCapacity = myRs.getInt("seatCapacity");
+
+                airplane= new Airplane(idAirplane, model, seatCapacity);
+
+            }
+        } catch (SQLException e) {
+
+        }
+       return airplane;*/
         
         
         

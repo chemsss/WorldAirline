@@ -6,6 +6,7 @@
 package worldairline;
 import java.sql.*;
 import DataAcessObject.AirplaneDAO;
+import java.util.ArrayList;
 import model.Airplane;
 
 /**
@@ -19,7 +20,7 @@ public class WorldAirline {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("worldAirline");  
+        /*System.out.println("worldAirline");  
         
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/worldairline?useSSL=false", "root", "root");  // /?user=root  //jdbc:mysql://127.0.0.1:3306/?useSSL=false
@@ -38,6 +39,11 @@ public class WorldAirline {
         /*
         AirplaneDAO test = new AirplaneDAO();
         test.find(2);*/
+        
+        ArrayList<Integer> arrayListTest = null;
+        arrayListTest.add(9);
+        
+        System.out.println(arrayListTest.get(0));
         
         System.out.println("worldAirline");  
         
