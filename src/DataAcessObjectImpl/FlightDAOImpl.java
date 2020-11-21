@@ -1,6 +1,5 @@
 package DataAcessObjectImpl;
 
-import DataAcessObject.DatabaseConnection;
 import DataAcessObject.FlightDAO;
 import java.sql.*;
 import model.Flight;
@@ -10,6 +9,8 @@ import model.Flight;
  * @author Chems
  */
 public class FlightDAOImpl implements FlightDAO {
+    
+  
 
     @Override
     public Flight find(int id) {
@@ -27,8 +28,8 @@ public class FlightDAOImpl implements FlightDAO {
                 AirplaneDAOImpl airplaneDAO = new AirplaneDAOImpl();
                 String airlineName = myRs.getString("airlineName");
 
-                String departureAirport_idAiport = myRs.getString("departureAirport_idAiport");
-                String arrivalAirport_idAiport = myRs.getString("arrivalAirport_idAiport");
+                String departureAirport_idAiport = myRs.getString("departureAirport_idAirport");
+                String arrivalAirport_idAiport = myRs.getString("arrivalAirport_idAirport");
 
                 AirportDAOImpl departureAirportDAO = new AirportDAOImpl();
                 AirportDAOImpl arrivalAirportDAO = new AirportDAOImpl();

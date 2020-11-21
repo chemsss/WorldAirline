@@ -1,6 +1,5 @@
 package DataAcessObjectImpl;
 
-import DataAcessObject.DatabaseConnection;
 import DataAcessObject.FlightSeatDAO;
 import model.FlightSeat;
 import java.sql.*;

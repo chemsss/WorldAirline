@@ -6,7 +6,6 @@
 package DataAcessObjectImpl;
 
 import DataAcessObject.AirportDAO;
-import DataAcessObject.DatabaseConnection;
 import java.sql.*;
 import model.Airport;
 
@@ -22,7 +21,7 @@ public class AirportDAOImpl implements AirportDAO {
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from airport where idAirport=" + idAirport + ";");
+            ResultSet myRs = myStmt.executeQuery("select * from airport where idAirport='" + idAirport + "';");
 
             if (myRs.first()) {
                 airport = new Airport(idAirport, myRs.getString("name"), myRs.getString("city"), myRs.getString("country"));

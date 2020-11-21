@@ -46,4 +46,8 @@ public class Airport {
         this.country = country;
     }
 
+    @Override
+    public String toString() {
+        return "Airport{" + "idAirport=" + idAirport + ", nameAirport=" + nameAirport + ", city=" + city + ", country=" + country + '}';
+    }
 }

@@ -7,7 +7,6 @@ public class Ticket {
     private FlightSeat seat;// seat
     private Flight flight;//flight
     
-
     public Ticket(int ticketNo, FlightSeat seat, Flight flight) {
         this.ticketNo = ticketNo;
         //this.passengerInfos = passengerInfos;

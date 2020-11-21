@@ -1,4 +1,4 @@
-package DataAcessObject;
+package DataAcessObjectImpl;
 import java.sql.*;
 import java.util.Properties;
 import java.io.FileInputStream;

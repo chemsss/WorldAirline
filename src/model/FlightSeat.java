@@ -20,8 +20,6 @@ public class FlightSeat {
     {
         
     }
-
-    
     public int getSeatNo() {
         return seatNo;
     }
@@ -54,5 +52,8 @@ public class FlightSeat {
         this.isAvailable = isAvailable;
     }
     
-    
+     @Override
+    public String toString() {
+        return "FlightSeat{" + "seatNo=" + seatNo + ", className=" + className + ", seatPrice=" + seatPrice + ", isAvailable=" + isAvailable + '}';
+    }   
 }
