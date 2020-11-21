@@ -40,11 +40,6 @@ public class WorldAirline {
         AirplaneDAO test = new AirplaneDAO();
         test.find(2);*/
         
-        ArrayList<Integer> arrayListTest = null;
-        arrayListTest.add(9);
-        
-        System.out.println(arrayListTest.get(0));
-        
         System.out.println("worldAirline");  
         
         
