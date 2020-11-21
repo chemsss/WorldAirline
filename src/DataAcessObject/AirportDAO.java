@@ -10,11 +10,8 @@ import model.Flight;
  *
  * @author Chems
  */
-<<<<<<< HEAD:src/DataAcessObject/FlightDAO.java
-public class FlightDAO{
-    
-=======
+
 public interface AirportDAO {
->>>>>>> develop-d:src/DataAcessObject/AirportDAO.java
+    
     
 }
