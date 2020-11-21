@@ -1,19 +1,26 @@
 package model;
+import java.math.BigDecimal;
 
 
 public class FlightSeat {
     
     private int seatNo; // seat number
     private String className;//name class
-    private float seatPrice;// seat price
+    private BigDecimal seatPrice;// seat price
     private boolean isAvailable; // availability of the seat
 
-    public FlightSeat(int seatNo, String className, float seatPrice) {
+    public FlightSeat(int seatNo, String className, BigDecimal seatPrice,boolean isAvailable) {
         this.seatNo = seatNo;
         this.className = className;
         this.seatPrice = seatPrice;
-        this.isAvailable = true;
+        this.isAvailable=isAvailable;
+        
     }
+    public FlightSeat()
+    {
+        
+    }
+
     
     public int getSeatNo() {
         return seatNo;
@@ -31,11 +38,11 @@ public class FlightSeat {
         this.className = className;
     }
 
-    public float getSeatPrice() {
+    public BigDecimal getSeatPrice() {
         return seatPrice;
     }
 
-    public void setSeatPrice(float seatPrice) {
+    public void setSeatPrice(BigDecimal seatPrice) {
         this.seatPrice = seatPrice;
     }
 

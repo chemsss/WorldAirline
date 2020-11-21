@@ -2,23 +2,23 @@ package model;
 
 public class Airport {
 
-    private char[] idAirport; //id airport 
+    private String idAirport; //id airport 
     private String nameAirport;//airport name
     private String city; //city airport
     private String country; //country
 
-    public Airport(char[] idAirport, String nameAirport, String city, String country) {
+    public Airport(String idAirport, String nameAirport, String city, String country) {
         this.idAirport = idAirport;
         this.nameAirport = nameAirport;
         this.city = city;
         this.country = country;
     }
 
-    public char[] getIdAirport() {
+    public String getIdAirport() {
         return idAirport;
     }
 
-    public void setIdAirport(char[] idAirport) {
+    public void setIdAirport(String idAirport) {
         this.idAirport = idAirport;
     }
 
