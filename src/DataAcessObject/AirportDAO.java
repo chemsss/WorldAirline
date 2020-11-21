@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package DataAcessObject;
-
-import model.Airplane;
+import model.Flight;
 
 /**
  *
- * @author Unknow
+ * @author Chems
  */
-public interface AirplaneDAO {
+<<<<<<< HEAD:src/DataAcessObject/FlightDAO.java
+public class FlightDAO{
     
-    public Airplane find(int idAirplane);
+=======
+public interface AirportDAO {
+>>>>>>> develop-d:src/DataAcessObject/AirportDAO.java
+    
 }

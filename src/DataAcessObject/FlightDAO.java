@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataAcessObject;
+
 import model.Flight;
 
 /**
  *
- * @author Chems
+ * @author Unknow
  */
-public class FlightDAO{
-    
-    
+public interface FlightDAO {
+
+    public Flight find(int flight_idFlight);
 }

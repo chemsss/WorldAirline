@@ -1,17 +1,15 @@
 package model;
 
-
 public class Ticket {
     
     private int ticketNo; // numero of ticket
-    private Passenger passengerInfos; //passenger
+    //private Passenger passengerInfos; //passenger
     private FlightSeat seat;// seat
     private Flight flight;//flight
     
-
-    public Ticket(int ticketNo, Passenger passengerInfos, FlightSeat seat, Flight flight) {
+    public Ticket(int ticketNo, FlightSeat seat, Flight flight) {
         this.ticketNo = ticketNo;
-        this.passengerInfos = passengerInfos;
+        //this.passengerInfos = passengerInfos;
         this.seat = seat;
         this.flight = flight;
     }
@@ -24,6 +22,8 @@ public class Ticket {
         this.ticketNo = ticketNo;
     }
 
+  
+    /*
     public Passenger getPassengerInfos() {
         return passengerInfos;
     }
@@ -31,7 +31,7 @@ public class Ticket {
     public void setPassengerInfos(Passenger passengerInfos) {
         this.passengerInfos = passengerInfos;
     }
-
+*/
     public FlightSeat getSeat() {
         return seat;
     }

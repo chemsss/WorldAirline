@@ -5,13 +5,13 @@
  */
 package DataAcessObject;
 
-import model.Airplane;
+import model.*;
 
 /**
  *
  * @author Unknow
  */
-public interface AirplaneDAO {
+public interface BookingDAO {
     
-    public Airplane find(int idAirplane);
+      public Booking find(int bookingNo);
 }
