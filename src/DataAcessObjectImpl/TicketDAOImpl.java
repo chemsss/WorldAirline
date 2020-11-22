@@ -5,11 +5,10 @@
  */
 package DataAcessObjectImpl;
 
-import DataAcessObject.*;
-import model.*;
+import DataAcessObject.TicketDAO;
+import model.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
-import DataAcessObjectImpl.*;
 
 /**
  *
@@ -33,14 +32,13 @@ public class TicketDAOImpl implements TicketDAO {
                     tickets = new ArrayList<>();
                     ticketInit = true;
                 }
-
-                FlightDAOImpl flightDAOImpl = new FlightDAOImpl();
+                /*FlightDAOImpl flightDAOImpl = new FlightDAOImpl();
                 Flight flight = flightDAOImpl.find(myRs.getInt("flight_idFlight"));
 
                 FlightSeatDAO flightSeatDAOImpl = new FlightSeatDAOImpl();
-                ArrayList<FlightSeat> seats = flightSeatDAOImpl.findByIdFlight(myRs.getInt("flight_idFlight"));
+                ArrayList<FlightSeat> seats = flightSeatDAOImpl.findByIdFlight(myRs.getInt("flight_idFlight"));*/
 
-                tickets.add(new Ticket(myRs.getInt("TicketNo"), seats.get(myRs.getInt("flightSeat_seatNo") - 1), flight));
+                tickets.add(new Ticket(myRs.getInt("TicketNo"), new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("flight_idFlight")).get(myRs.getInt("flightSeat_seatNo") - 1), new FlightDAOImpl().find(myRs.getInt("flight_idFlight"))));
 
             }
         } catch (SQLException e) {

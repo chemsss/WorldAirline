@@ -1,6 +1,6 @@
 package DataAcessObjectImpl;
-import DataAcessObject.*;
-import model.*;
+import DataAcessObject.BookingDAO;
+import model.Booking;
 import java.sql.*;
 import java.util.ArrayList;
 

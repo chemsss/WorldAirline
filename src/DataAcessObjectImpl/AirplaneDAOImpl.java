@@ -20,10 +20,8 @@ public class AirplaneDAOImpl implements AirplaneDAO {
             ResultSet myRs = myStmt.executeQuery("select * from airplane where idAirplane=" + idAirplane + ";");
 
             if (myRs.first()) {
-                String model = myRs.getString("model");
-                int seatCapacity = myRs.getInt("seatCapacity");
 
-                airplane = new Airplane(idAirplane, model, seatCapacity);
+                airplane = new Airplane(idAirplane, myRs.getString("model"), myRs.getInt("seatCapacity"));
 
             }
         } catch (SQLException e) {

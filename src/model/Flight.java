@@ -6,11 +6,7 @@ import java.util.ArrayList;
 public class Flight {
     
     private int idFlight; //flight id
-
-    @Override
-    public String toString() {
-        return "Flight{" + "idFlight=" + idFlight + ", airlineName=" + airlineName + ", departureDate=" + departureDate + ", arrivalDate=" + arrivalDate + ", airplane=" + airplane + ", departureAirport=" + departureAirport + ", arrivalAirport=" + arrivalAirport + ", seats=" + seats + '}';
-    }
+    
     private String airlineName; // airline name
     private Timestamp departureDate; //flight date/H departure
     private Timestamp arrivalDate; //flight date/H arrival
@@ -30,6 +26,11 @@ public class Flight {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.seats = (ArrayList) seats.clone();
+    }
+    
+    @Override
+    public String toString() {
+        return "Flight{" + "idFlight=" + idFlight + ", airlineName=" + airlineName + ", departureDate=" + departureDate + ", arrivalDate=" + arrivalDate + ", airplane=" + airplane + ", departureAirport=" + departureAirport + ", arrivalAirport=" + arrivalAirport + ", seats=" + seats + '}';
     }
 
     public Flight() {

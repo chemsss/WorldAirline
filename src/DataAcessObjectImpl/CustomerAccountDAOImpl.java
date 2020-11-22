@@ -5,16 +5,16 @@
  */
 package DataAcessObjectImpl;
 import DataAcessObject.CustomerAccountDAO;
-import java.sql.*;
-import model.Booking;
 import model.CustomerAccount;
+import java.sql.*;
 
 /**
  *
  * @author Chems
  */
-public class CustomerAccountDAOImpl {
+public class CustomerAccountDAOImpl implements CustomerAccountDAO {
     
+    @Override
     public CustomerAccount find(int idCustomerAccount) {
         
         try {

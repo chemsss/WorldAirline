@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package DataAcessObjectImpl;
+
 import DataAcessObject.EmployeeAccountDAO;
-import java.sql.*;
 import model.EmployeeAccount;
+import java.sql.*;
 
 /**
  *
@@ -14,6 +15,7 @@ import model.EmployeeAccount;
  */
 public class EmployeeAccountDAOImpl implements EmployeeAccountDAO {
     
+    @Override
     public EmployeeAccount find(int idEmployeeAccount) {
         
         try {

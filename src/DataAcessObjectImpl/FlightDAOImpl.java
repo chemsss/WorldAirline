@@ -1,8 +1,9 @@
 package DataAcessObjectImpl;
 
 import DataAcessObject.FlightDAO;
-import java.sql.*;
 import model.Flight;
+import java.sql.*;
+
 
 /**
  *
@@ -22,23 +23,27 @@ public class FlightDAOImpl implements FlightDAO {
             ResultSet myRs = myStmt.executeQuery("select * from flight where idFlight=" + id + ";");
 
             if (myRs.first()) {
+                //int airplane_idAirplane = myRs.getInt("airplane_idAirplane");
+                //AirplaneDAOImpl airplaneDAO = new AirplaneDAOImpl();
+                //String airlineName = myRs.getString("airlineName");
 
-                
-                int airplane_idAirplane = myRs.getInt("airplane_idAirplane");
-                AirplaneDAOImpl airplaneDAO = new AirplaneDAOImpl();
-                String airlineName = myRs.getString("airlineName");
+                //String departureAirport_idAiport = myRs.getString("departureAirport_idAirport");
+                //String arrivalAirport_idAiport = myRs.getString("arrivalAirport_idAirport");
 
-                String departureAirport_idAiport = myRs.getString("departureAirport_idAirport");
-                String arrivalAirport_idAiport = myRs.getString("arrivalAirport_idAirport");
-
-                AirportDAOImpl departureAirportDAO = new AirportDAOImpl();
-                AirportDAOImpl arrivalAirportDAO = new AirportDAOImpl();
+                //AirportDAOImpl departureAirportDAO = new AirportDAOImpl();
+                //AirportDAOImpl arrivalAirportDAO = new AirportDAOImpl();
 
                 // Timestamp departureDate = myRs.getTimestamp("departureDate");
                 //Timestamp arrivalDate = myRs.getTimestamp("arrivalDate");
-                FlightSeatDAOImpl flightSeatDAO = new FlightSeatDAOImpl();
+                //FlightSeatDAOImpl flightSeatDAO = new FlightSeatDAOImpl();
 
-                flight = new Flight(id, airlineName, myRs.getTimestamp("departureDate"), myRs.getTimestamp("arrivalDate"), airplaneDAO.find(airplane_idAirplane), departureAirportDAO.find(departureAirport_idAiport), arrivalAirportDAO.find(arrivalAirport_idAiport), flightSeatDAO.findByIdFlight(id));
+                flight = new Flight(id, myRs.getString("airlineName"), 
+                        myRs.getTimestamp("departureDate"), 
+                        myRs.getTimestamp("arrivalDate"), 
+                        new AirplaneDAOImpl().find(myRs.getInt("airplane_idAirplane")), 
+                        new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")), 
+                        new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")), 
+                        new FlightSeatDAOImpl().findByIdFlight(id));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
