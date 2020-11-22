@@ -40,7 +40,7 @@ public class TicketDAOImpl implements TicketDAO {
                 FlightSeatDAO flightSeatDAOImpl = new FlightSeatDAOImpl();
                 ArrayList<FlightSeat> seats = flightSeatDAOImpl.findByIdFlight(myRs.getInt("flight_idFlight"));
 
-                tickets.add(new Ticket(myRs.getInt("TicketNo"), seats.get(myRs.getInt("flightSeat_seatNo") + 1), flight));
+                tickets.add(new Ticket(myRs.getInt("TicketNo"), seats.get(myRs.getInt("flightSeat_seatNo") - 1), flight));
 
             }
         } catch (SQLException e) {

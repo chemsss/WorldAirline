@@ -1,11 +1,15 @@
 package model;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
 public class Airport {
 
     private String idAirport; //id airport 
     private String nameAirport;//airport name
     private String city; //city airport
     private String country; //country
+    
 
     public Airport(String idAirport, String nameAirport, String city, String country) {
         this.idAirport = idAirport;

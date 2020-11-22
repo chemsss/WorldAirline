@@ -14,6 +14,11 @@ public class Ticket {
         this.flight = flight;
     }
 
+    @Override
+    public String toString() {
+        return "Ticket{" + "ticketNo=" + ticketNo + ", seat=" + seat + ", flight=" + flight + '}';
+    }
+
     public int getTicketNo() {
         return ticketNo;
     }

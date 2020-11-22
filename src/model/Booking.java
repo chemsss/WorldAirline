@@ -14,6 +14,11 @@ public class Booking {
         this.tickets = tickets;
     }
 
+    @Override
+    public String toString() {
+        return "Booking{" + "bookingNo=" + bookingNo + ", bookingDate=" + bookingDate + ", tickets=" + tickets + '}';
+    }
+
     public int getBookingNo() {
         return bookingNo;
     }

@@ -21,19 +21,34 @@ public class BookingDAOImpl implements BookingDAO {
             ResultSet myRs = myStmt.executeQuery("select * from booking where bookingNo=" + bookingNo + ";");
 
             if (myRs.first()) {
-
-          ArrayList<Ticket> tickets;
-          
-          
-                
-      //booking = new Booking(bookingNo,myRs.getDate("bookingDate"), ArrayList<Ticket> tickets, CustomerAccount customerAccount) {
-
+                booking = new Booking(bookingNo, myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(bookingNo));
             }
+          
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
+        
         return booking;
+    }
+    
+    
+    public ArrayList<Booking> findByIdCustomerAccount(int idCustomerAccount) {
+        
+        ArrayList<Booking> bookings = new ArrayList<>();
+        
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from booking where customerAccount_idaccount=" + idCustomerAccount + ";");
+            
+            while(myRs.next()) {
+                bookings.add(new Booking(myRs.getInt("bookingNo"), myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(myRs.getInt("bookingNo"))));
+            }
+            
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return bookings;
     }
 
 }
