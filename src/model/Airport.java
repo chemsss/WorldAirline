@@ -9,7 +9,7 @@ public class Airport {
     private String nameAirport;//airport name
     private String city; //city airport
     private String country; //country
-    
+
 
     public Airport(String idAirport, String nameAirport, String city, String country) {
         this.idAirport = idAirport;

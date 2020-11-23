@@ -13,5 +13,6 @@ import model.CustomerAccount;
 public interface CustomerAccountDAO {
     
     CustomerAccount find(int idCustomerAccount);
+    boolean create(CustomerAccount account);
     
 }

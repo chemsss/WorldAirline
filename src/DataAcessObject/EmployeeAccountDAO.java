@@ -13,5 +13,5 @@ import model.EmployeeAccount;
 public interface EmployeeAccountDAO {
     
     EmployeeAccount find(int idEmployeeAccount);
-    
+    boolean create(EmployeeAccount account);
 }

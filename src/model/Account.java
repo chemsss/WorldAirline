@@ -69,6 +69,14 @@ public abstract class Account {
         this.lastName = lastName;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Date getBirthDate() {
         return birthDate;
     }

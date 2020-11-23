@@ -13,5 +13,7 @@ import model.Airplane;
  */
 public interface AirplaneDAO {
     
-    public Airplane find(int idAirplane);
+    Airplane find(int idAirplane);
+    
+    boolean create(Airplane airplane);
 }

@@ -35,4 +35,27 @@ public class CustomerAccountDAOImpl implements CustomerAccountDAO {
         return null;
     }
     
+    public boolean create(CustomerAccount account) {
+        
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO customeraccount (`email`, `password`, `ageCategory`, `firstName`, `lastName`, `address`, `birthDate`, `telephoneNumber`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+            myStmt.setString(1, account.getEmail());
+            myStmt.setString(2, account.getPassword());
+            myStmt.setString(3, account.getAgeCategory());
+            myStmt.setString(4, account.getFirstName());
+            myStmt.setString(5, account.getLastName());
+            myStmt.setString(6, account.getAddress());
+            myStmt.setDate(7, account.getBirthDate());
+            myStmt.setString(8, account.getTelephoneNumber());
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
 }

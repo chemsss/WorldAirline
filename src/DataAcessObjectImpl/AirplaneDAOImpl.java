@@ -25,9 +25,30 @@ public class AirplaneDAOImpl implements AirplaneDAO {
 
             }
         } catch (SQLException e) {
-
+            System.out.println("e.getMessage()");
         }
         return airplane;
     }
+    
+    
+    @Override
+    public boolean create(Airplane airplane) {
+        
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO airplane (`model`, `seatCapacity`) VALUES (?, ?);");
+            myStmt.setString(1, airplane.getModel());
+            myStmt.setInt(2, airplane.getSeatCapacity());
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+    
+    
+    
 
 }

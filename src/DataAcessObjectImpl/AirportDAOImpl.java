@@ -33,5 +33,24 @@ public class AirportDAOImpl implements AirportDAO {
         }
         return airport;
     }
-
+    
+    @Override
+    public boolean create(Airport airport) {
+        
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO airport (`idAirport`, `name`, `city`, `country`) VALUES (?, ?, ?, ?);");
+            myStmt.setString(1, airport.getIdAirport());
+            myStmt.setString(2, airport.getNameAirport());
+            myStmt.setString(3, airport.getCity());
+            myStmt.setString(4, airport.getCountry());
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+    
 }

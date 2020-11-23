@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package DataAcessObject;
-import model.Flight;
+import model.Airport;
 
 /**
  *
@@ -13,5 +13,7 @@ import model.Flight;
 
 public interface AirportDAO {
     
+    Airport find(String idAirport);
     
+    boolean create(Airport airport);
 }
