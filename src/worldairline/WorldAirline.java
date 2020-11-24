@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.*;
 import java.security.MessageDigest;
-
+import view.*;
 
 public class WorldAirline {
 
@@ -13,6 +13,12 @@ public class WorldAirline {
     public static void main(String[] args) {
         
          
+        MainMenu menu = new MainMenu();
+      //CustomerLogin cl =new CustomerLogin();
+       // MainMenuTest menu = new MainMenuTest();
+           //menu.setLocationRelativeTo(null);
+
+        
         /*FlightDAOImpl  flightDaoImpl = new FlightDAOImpl();
         Flight flight =flightDaoImpl.find(3);
         System.out.println(new FlightDAOImpl().find(3).toString());
