@@ -13,6 +13,11 @@ public class CustomerAccount extends Account {
         this.ageCategory = ageCategory;
         this.bookings = (ArrayList)bookings.clone();
     }
+    public CustomerAccount(String ageCategory, ArrayList<Booking> booking, String email, String password, String firstName, String lastName, String address, Date birthDate, String telephoneNumber) {
+        super(email, password, firstName, lastName, address, birthDate, telephoneNumber);
+        this.ageCategory = ageCategory;
+        this.bookings = (ArrayList)bookings.clone();
+    }
 
     @Override
     public String toString() {

@@ -16,7 +16,10 @@ public class Airplane {
         this.model = model;
         this.seatCapacity = seatCapacity;
     }
-
+    public Airplane(String model, int seatCapacity) {
+        this.model = model;
+        this.seatCapacity = seatCapacity;
+    }
     public Airplane() {
     }
 

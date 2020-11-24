@@ -29,7 +29,17 @@ public class Passenger {
         this.passportNo = passportNo;
         this.tickets=(ArrayList)tickets.clone();
     }
-
+    public Passenger(String email, String firstName, String lastName, String address, Date dateOfBirth, String telephoneNumber, String nationality, String passportNo, ArrayList<Ticket> tickets) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.birthDate = dateOfBirth;
+        this.telephoneNumber = telephoneNumber;
+        this.nationality = nationality;
+        this.passportNo = passportNo;
+        this.tickets=(ArrayList)tickets.clone();
+    }
     public int getIdPassenger() {
         return idPassenger;
     }

@@ -8,6 +8,11 @@ public class Booking {
     private Date bookingDate;// booking date
     private ArrayList<Ticket> tickets; //tickets
 
+    public Booking(Date bookingDate, ArrayList<Ticket> tickets) {
+        this.bookingNo = bookingNo;
+        this.bookingDate = bookingDate;
+        this.tickets = tickets;
+    }
     public Booking(int bookingNo, Date bookingDate, ArrayList<Ticket> tickets) {
         this.bookingNo = bookingNo;
         this.bookingDate = bookingDate;
