@@ -6,10 +6,21 @@ public class Airplane {
     private String model; // airplane model
     private int seatCapacity;//airplane seat
 
+    @Override
+    public String toString() {
+        return "Airplane{" + "idAirplane=" + idAirplane + ", model=" + model + ", seatCapacity=" + seatCapacity + '}';
+    }
+
     public Airplane(int idAirplane, String model, int seatCapacity) {
         this.idAirplane = idAirplane;
         this.model = model;
         this.seatCapacity = seatCapacity;
+    }
+    public Airplane(String model, int seatCapacity) {
+        this.model = model;
+        this.seatCapacity = seatCapacity;
+    }
+    public Airplane() {
     }
 
     public int getIdAirplane() {

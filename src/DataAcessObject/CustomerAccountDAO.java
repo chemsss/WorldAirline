@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 package DataAcessObject;
-
-import model.Airplane;
+import model.CustomerAccount;
 
 /**
  *
- * @author Unknow
+ * @author Chems
  */
-public interface AirplaneDAO {
+public interface CustomerAccountDAO {
     
-    Airplane find(int idAirplane);
+    CustomerAccount find(int idCustomerAccount);
+    boolean create(CustomerAccount account);
     
-    boolean create(Airplane airplane);
 }

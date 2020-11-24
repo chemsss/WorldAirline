@@ -9,17 +9,34 @@ public abstract class Account {
     private String password;//password
     private String firstName; //first name
     private String lastName; //last name
+    private String address; //address
     private Date birthDate;//dateOfBirth
     private String telephoneNumber;//tel no
 
-    public Account(int idAccount, String email, String password, String firstName, String lastName, Date birthDate, String telephoneNumber) {
+    public Account(int idAccount, String email, String password, String firstName, String lastName, String address, Date birthDate, String telephoneNumber) {
         this.idAccount = idAccount;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
         this.birthDate = birthDate;
         this.telephoneNumber = telephoneNumber;
+    }
+
+        public Account(String email, String password, String firstName, String lastName, String address, Date birthDate, String telephoneNumber) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.birthDate = birthDate;
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" + "idAccount=" + idAccount + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", birthDate=" + birthDate + ", telephoneNumber=" + telephoneNumber + '}';
     }
 
     public int getIdAccount() {
@@ -60,6 +77,14 @@ public abstract class Account {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Date getBirthDate() {

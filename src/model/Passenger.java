@@ -1,5 +1,6 @@
 package model;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class Passenger {
@@ -13,8 +14,10 @@ public class Passenger {
     private String telephoneNumber;// tel no
     private String nationality;//nationality
     private String passportNo; // passport no
+    
+    ArrayList<Ticket> tickets;
 
-    public Passenger(int idPassenger, String email, String firstName, String lastName, String address, Date dateOfBirth, String telephoneNumber, String nationality, String passportNo) {
+    public Passenger(int idPassenger, String email, String firstName, String lastName, String address, Date dateOfBirth, String telephoneNumber, String nationality, String passportNo, ArrayList<Ticket> tickets) {
         this.idPassenger = idPassenger;
         this.email = email;
         this.firstName = firstName;
@@ -24,8 +27,19 @@ public class Passenger {
         this.telephoneNumber = telephoneNumber;
         this.nationality = nationality;
         this.passportNo = passportNo;
+        this.tickets=(ArrayList)tickets.clone();
     }
-
+    public Passenger(String email, String firstName, String lastName, String address, Date dateOfBirth, String telephoneNumber, String nationality, String passportNo, ArrayList<Ticket> tickets) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.birthDate = dateOfBirth;
+        this.telephoneNumber = telephoneNumber;
+        this.nationality = nationality;
+        this.passportNo = passportNo;
+        this.tickets=(ArrayList)tickets.clone();
+    }
     public int getIdPassenger() {
         return idPassenger;
     }

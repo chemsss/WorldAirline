@@ -2,9 +2,11 @@ package model;
 import java.sql.*;
 import java.util.ArrayList;
 
+
 public class Flight {
     
     private int idFlight; //flight id
+    
     private String airlineName; // airline name
     private Timestamp departureDate; //flight date/H departure
     private Timestamp arrivalDate; //flight date/H arrival
@@ -14,7 +16,7 @@ public class Flight {
     private Airport arrivalAirport; // arrival airport
     private ArrayList<FlightSeat> seats;  //array of flight seat
     
-    public Flight(int idFlight, String airlineName, Timestamp departureDate, Timestamp arrivalDate, Airplane airplane, Airport departureAirport, Airport arrivalAirport, int numberOfFlightSeats) {
+    public Flight(int idFlight, String airlineName, Timestamp departureDate, Timestamp arrivalDate, Airplane airplane, Airport departureAirport, Airport arrivalAirport, ArrayList<FlightSeat> seats) {
         
         this.idFlight = idFlight;
         this.airlineName = airlineName;
@@ -23,7 +25,16 @@ public class Flight {
         this.airplane = airplane;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
-        this.seats = new ArrayList<FlightSeat>(numberOfFlightSeats);
+        this.seats = (ArrayList) seats.clone();
+    }
+    
+    @Override
+    public String toString() {
+        return "Flight{" + "idFlight=" + idFlight + ", airlineName=" + airlineName + ", departureDate=" + departureDate + ", arrivalDate=" + arrivalDate + ", airplane=" + airplane + ", departureAirport=" + departureAirport + ", arrivalAirport=" + arrivalAirport + ", seats=" + seats + '}';
+    }
+
+    public Flight() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getIdFlight() {
@@ -89,8 +100,10 @@ public class Flight {
     public void setSeat(ArrayList<FlightSeat> seat) {
         this.seats = seat;
     }
-
     
-    
+    public void addFlight(Flight flight)
+    {
+        
+    }
     
 }
