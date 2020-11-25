@@ -30,7 +30,7 @@ public class CustomerLogin extends JFrame {
         
         password = new JPasswordField("Password");
 
-        controller = new CustomerAccountController(this); // création du controller
+        controller = new CustomerLoginChoice(this); // création du controller
         initCustomerLogin();
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -78,22 +78,6 @@ public class CustomerLogin extends JFrame {
             }
         });
 
-        /*
-        jTextField1.setFont(new Font("Segoe UI Light", 0, 20)); // NOI18N
-        jTextField1.setForeground(new Color(51, 51, 51));
-        jTextField1.setText("Enter Password");
-
-        jTextField1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(0, 0, 0)));
-        jTextField1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                jTextField1.setText("");
-            }
-        });
-        
-        
-        jPanel2.add(jTextField1);
-         */
         password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         password.addMouseListener(new MouseAdapter() {
             @Override
@@ -103,8 +87,6 @@ public class CustomerLogin extends JFrame {
         });
         jPanel2.add(password);
         password.setBounds(70, 220, 270, 60);
-
-     //   jTextField1.setBounds(70, 200, 270, 50);
 
         jTextField2.setFont(new Font("Segoe UI Light", 0, 20)); // NOI18N
         jTextField2.setForeground(new Color(51, 51, 51));
@@ -126,6 +108,7 @@ public class CustomerLogin extends JFrame {
         jButton1.setBorderPainted(false);
         jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 //jButton1ActionPerformed(evt);
             }
@@ -138,9 +121,11 @@ public class CustomerLogin extends JFrame {
         jButton2.setText("Login");
         jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
         jButton2.setBorderPainted(false);
+        
         jButton2.addActionListener(controller);
         jButton2.setActionCommand("Login");
-         jButton2.setFocusPainted(false);
+        
+        jButton2.setFocusPainted(false);
 
 
         jPanel2.add(jButton2);
@@ -164,11 +149,10 @@ public class CustomerLogin extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public String[] getSaisi() {
+    public String[] getEntry() {
         String[] list = new String[2];
         list[0] = jTextField2.getText();
-      //  list[1] = jTextField1.getText();
-
+        list[1] = String.valueOf(password); //char[] to String
         return list;
     }
 }

@@ -1,6 +1,5 @@
 package view;
 
-import controller.MainMenuController;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -11,9 +10,7 @@ public class MainMenu extends JFrame {
     JButton jButton1, jButton2, jButton3, jButton4;
     JTextField jTextField1;
     
-    
     private ActionListener controller;
-
 
     public MainMenu() {
         super("worldAirline");
@@ -28,7 +25,7 @@ public class MainMenu extends JFrame {
         jLabel2 = new JLabel();
         jLabel1 = new JLabel();
 
-     controller = new MainMenuController(this); // création du controller
+     controller = new MainMenuChoice(this); // création du controller
 
         initMainMenu();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

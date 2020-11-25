@@ -1,17 +1,17 @@
-package controller;
+package view;
 
+import controller.CustomerLoginController;
 import java.awt.event.*;
 import java.math.BigInteger;
-import javax.swing.JTextField;
-import view.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import javax.swing.JOptionPane;
 
-public class CustomerAccountController implements ActionListener {
+public class CustomerLoginChoice implements ActionListener {
 
     private CustomerLogin frame;
 
-    public CustomerAccountController(CustomerLogin f) {
+    public CustomerLoginChoice(CustomerLogin f) {
         frame = f;
     }
 
@@ -19,23 +19,27 @@ public class CustomerAccountController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
 
-            case "login": {
-                String[] saisi = frame.getSaisi();
-                
-            //   if(saisi[0] )
+            case "Login": {
+                String[] entry = frame.getEntry(); 
+                System.out.println("test");
+                if(new CustomerLoginController().CustomerLoginConnection(entry[0],getMD5Hash(entry[1]))==true)
+                    System.out.println("oui");
+                else{
+                  JOptionPane.showMessageDialog(null, "wrong email/password", "", JOptionPane.ERROR_MESSAGE);
+
+                        }
 
             }
             break;
 
             case "sign up":
-                // new CustomerLogin();
+                // new signUp();
                 frame.dispose(); // on ferme la fenetre actuelle
                 break;
 
         }
 
     }
-
     public static String getMD5Hash(String s) {
 
         String result = s;
