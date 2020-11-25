@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package view;
 
-/**
- *
- * @author Unknow
- */
 public class CustomerLoginTest extends javax.swing.JFrame {
 
     /** Creates new form CustomerLoginTest */
@@ -44,9 +34,9 @@ public class CustomerLoginTest extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 181, 204));
         jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\output-onlinepngtools (3).png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\output-onlinepngtools (5).png")); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(40, 120, 270, 190);
+        jLabel1.setBounds(50, 100, 280, 260);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
@@ -104,7 +94,7 @@ public class CustomerLoginTest extends javax.swing.JFrame {
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         jButton2.setBorderPainted(false);
         jPanel2.add(jButton2);
-        jButton2.setBounds(80, 410, 130, 40);
+        jButton2.setBounds(150, 410, 130, 40);
 
         jButton3.setBackground(new java.awt.Color(0, 181, 204));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,7 +102,7 @@ public class CustomerLoginTest extends javax.swing.JFrame {
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         jButton3.setBorderPainted(false);
         jPanel2.add(jButton3);
-        jButton3.setBounds(230, 410, 130, 40);
+        jButton3.setBounds(160, 210, 130, 40);
 
         jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {

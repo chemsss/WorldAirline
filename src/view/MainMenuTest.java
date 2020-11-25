@@ -115,11 +115,9 @@ public class MainMenuTest extends javax.swing.JFrame {
         jLabel2.setBounds(60, 20, 920, 70);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\airplane-flying-above-clouds_shutterstock_553131187-1068x601.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setOpaque(true);
-        jLabel1.setPreferredSize(null);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1068, 601);
 

@@ -2,16 +2,15 @@ package controller;
 
 import java.awt.event.*;
 import java.math.BigInteger;
-import javax.swing.JTextField;
 import view.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class CustomerAccountController implements ActionListener {
+public class EmployeeLoginController implements ActionListener {
 
-    private CustomerLogin frame;
+    private EmployeeLogin frame;
 
-    public CustomerAccountController(CustomerLogin f) {
+    public EmployeeLoginController(EmployeeLogin f) {
         frame = f;
     }
 

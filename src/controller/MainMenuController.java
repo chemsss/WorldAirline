@@ -27,12 +27,13 @@ public class MainMenuController implements ActionListener {
                 break;
 
             case "Book a Flight !":
+                
                 new CustomerLogin();
-                frame.dispose(); // on ferme la fenetre actuelle
+                //frame.dispose(); // on ferme la fenetre actuelle
                 break;
             case "Admin":
-                //  new GestionAnneeGUI();
-                frame.dispose(); // on ferme la fenetre actuelle
+                 new EmployeeLogin();
+                //frame.dispose(); // on ferme la fenetre actuelle
                 break;
         }
 

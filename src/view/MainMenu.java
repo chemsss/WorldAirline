@@ -86,7 +86,6 @@ public class MainMenu extends JFrame {
  
         jButton3.setBackground(new Color(51, 153, 255));
         jButton3.setForeground(new Color(255,255, 255));
-        jButton3.setFocusPainted(false);
         jButton3.setText("Book a Flight !");
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(controller);
@@ -111,7 +110,7 @@ public class MainMenu extends JFrame {
         jLabel2.setBounds(60, 20, 920, 70);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new ImageIcon("D:\\GITHUB\\worldAirline\\img\\airplane.jpg")); // NOI18N
+        jLabel1.setIcon(new ImageIcon("img\\airplane.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setOpaque(true);
