@@ -68,7 +68,7 @@ public class WorldAirline {
         }*/
         
         if(new CustomerAccountDAOImpl().find("ChungLeGioi@armyspy.com", "c4b8532c3d6f52dd47cd1e0075c0454f") != null) {
-            System.out.println(new CustomerAccountDAOImpl().find("AbbasJiar@gmail.com", "cc03e747a6afbbcbf8be7668acfebee5").toString());
+            System.out.println(new CustomerAccountDAOImpl().find("ChungLeGioi@armyspy.com", "c4b8532c3d6f52dd47cd1e0075c0454f").toString());
         }
         else{
             System.out.println("No customer account with this email and password");
