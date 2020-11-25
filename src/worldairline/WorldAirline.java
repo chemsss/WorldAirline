@@ -67,12 +67,12 @@ public class WorldAirline {
             System.out.println("employee account not added");
         }*/
         
-        if(new CustomerAccountDAOImpl().find("ChungLeGioi@armyspy.com", "c4b8532c3d6f52dd47cd1e0075c0454f") != null) {
-            System.out.println(new CustomerAccountDAOImpl().find("ChungLeGioi@armyspy.com", "c4b8532c3d6f52dd47cd1e0075c0454f").toString());
+        /*if(new EmployeeAccountDAOImpl().find("yarrenWadan@hotmail.fr", "3beec582b8176ec8719a9640e61ff1cf") != null) {
+            System.out.println(new EmployeeAccountDAOImpl().find("yarrenWadan@hotmail.fr", "3beec582b8176ec8719a9640e61ff1cf").toString());
         }
         else{
-            System.out.println("No customer account with this email and password");
-        }
+            System.out.println("No employee account with this email and password");
+        }*/
         
     }
     
