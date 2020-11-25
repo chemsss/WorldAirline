@@ -28,7 +28,7 @@ public class EmployeeLogin extends JFrame {
         jButton2 = new JButton();
         jButton3 = new JButton();
         jLabel2 = new JLabel();
-        password = new JPasswordField("Password");
+        password = new JPasswordField("Enter Password");
 
         controller = new EmployeeLoginController(this); // création du controller
         initEmployeeLogin();
@@ -78,6 +78,7 @@ public class EmployeeLogin extends JFrame {
             }
         });
 
+        
         password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         password.addMouseListener(new MouseAdapter() {
             @Override

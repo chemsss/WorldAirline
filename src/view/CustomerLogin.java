@@ -28,8 +28,7 @@ public class CustomerLogin extends JFrame {
         jButton3 = new JButton();
         jLabel2 = new JLabel();
         
-        password = new JPasswordField("Password");
-
+        password = new JPasswordField("Enter Password");
         controller = new CustomerAccountController(this); // création du controller
         initCustomerLogin();
 
@@ -94,12 +93,25 @@ public class CustomerLogin extends JFrame {
         
         jPanel2.add(jTextField1);
          */
+        password.setFont(new Font("Segoe UI Light", 0, 20)); // NOI18N
+        password.setForeground(new Color(51, 51, 51));
+       // password.setEchoChar((char)0);
         password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         password.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 password.setText("");
             }
+        });
+        password.addFocusListener(new FocusAdapter(){
+            
+            
+            public void focusGaines(FocusEvent e) {
+                password.setEchoChar('•');
+                password.setText("");
+
+            }
+            
         });
         jPanel2.add(password);
         password.setBounds(70, 220, 270, 60);
@@ -167,8 +179,7 @@ public class CustomerLogin extends JFrame {
     public String[] getSaisi() {
         String[] list = new String[2];
         list[0] = jTextField2.getText();
-      //  list[1] = jTextField1.getText();
-
+        list[1] = String.valueOf(password.getPassword());  //char to string
         return list;
     }
 }
