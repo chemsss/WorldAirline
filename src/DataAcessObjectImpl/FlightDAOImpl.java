@@ -3,6 +3,7 @@ package DataAcessObjectImpl;
 import DataAcessObject.FlightDAO;
 import model.Flight;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 /**
@@ -54,4 +55,14 @@ public class FlightDAOImpl implements FlightDAO {
     
     
     //Coder une méthode find qui renvoie une arrayList de vols selon la date saisie
+
+    @Override
+    public Flight findAllFlights() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Flight> searchFlights(String DepartureAirportId, String arrivalAirportId, java.util.Date departureDate, java.util.Date arrivalDate, int nbOfSeats) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
