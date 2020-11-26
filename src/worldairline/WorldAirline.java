@@ -13,9 +13,9 @@ public class WorldAirline {
     public static void main(String[] args) {
         
          
-        MainMenu menu = new MainMenu();
+        //MainMenu menu = new MainMenu();
        // WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
-        
+        WorldAirlineCustomerProgram prgm = new WorldAirlineCustomerProgram();
         
     }
     

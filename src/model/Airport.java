@@ -52,6 +52,6 @@ public class Airport {
 
     @Override
     public String toString() {
-        return "Airport{" + "idAirport=" + idAirport + ", nameAirport=" + nameAirport + ", city=" + city + ", country=" + country + '}';
+        return nameAirport;
     }
 }

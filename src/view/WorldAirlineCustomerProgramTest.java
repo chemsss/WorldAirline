@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package view;
+import DataAcessObjectImpl.FlightDAOImpl;
 import java.util.ArrayList;
 import model.*;
+import controller.*;
+import javax.swing.table.TableModel;
 /**
  *
  * @author Unknow
@@ -219,7 +222,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         worldWride.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 110)); // NOI18N
         worldWride.setText("WorldAirline");
         getContentPane().add(worldWride);
-        worldWride.setBounds(430, 0, 580, 110);
+        worldWride.setBounds(530, 10, 580, 110);
 
         DeparturePanel.setOpaque(false);
         DeparturePanel.setLayout(null);
@@ -234,52 +237,12 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         DeparturePanel.add(Next);
         Next.setBounds(710, 560, 110, 30);
 
-        searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        searchDeapartureFlights.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"WordlAirline", "1", "PARIS", "10/05/2021 at 8:30 AM", "MIAMI", "11/05/2021 at 04:56 PM"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Airline", "Flight Number", "From", "Departure", "To", "Arrival"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ArrayList<Flight> flights =  new ArrayList<Flight>();
+        flights.add(new FlightDAOImpl().find(5));
+        System.out.println(flights.get(0).getIdFlight());
+        SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
+        searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
+        searchDeapartureFlights.setModel(model);
         searchDeapartureFlights.setFocusable(false);
         searchDeapartureFlights.setGridColor(new java.awt.Color(0, 0, 0));
         searchDeapartureFlights.setOpaque(false);
