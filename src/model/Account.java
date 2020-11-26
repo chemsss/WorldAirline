@@ -23,6 +23,17 @@ public abstract class Account {
         this.birthDate = birthDate;
         this.telephoneNumber = telephoneNumber;
     }
+
+        public Account(String email, String password, String firstName, String lastName, String address, Date birthDate, String telephoneNumber) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.birthDate = birthDate;
+        this.telephoneNumber = telephoneNumber;
+    }
+
     
     @Override
     public String toString() {

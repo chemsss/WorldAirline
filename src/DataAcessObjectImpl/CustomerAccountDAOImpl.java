@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataAcessObjectImpl;
 import DataAcessObject.CustomerAccountDAO;
 import model.CustomerAccount;
@@ -56,11 +51,11 @@ public class CustomerAccountDAOImpl implements CustomerAccountDAO {
         return null;
     }
     
-    
     @Override
     public boolean create(CustomerAccount account) {
         
         try {
+            
             PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO customeraccount (`email`, `password`, `ageCategory`, `firstName`, `lastName`, `address`, `birthDate`, `telephoneNumber`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
             myStmt.setString(1, account.getEmail());
             myStmt.setString(2, account.getPassword());
