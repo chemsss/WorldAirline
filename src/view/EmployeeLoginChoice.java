@@ -1,17 +1,17 @@
 package view;
 
-import controller.CustomerLoginController;
+import controller.EmployeeLoginController;
 import java.awt.event.*;
 import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import javax.swing.JOptionPane;
+import java.security.*;
+import javax.swing.*;
+import static view.CustomerLoginChoice.getMD5Hash;
 
-public class CustomerLoginChoice implements ActionListener {
+public class EmployeeLoginChoice implements ActionListener {
 
-    private CustomerLogin frame;
+    private EmployeeLogin frame;
 
-    public CustomerLoginChoice(CustomerLogin f) {
+    public EmployeeLoginChoice(EmployeeLogin f) {
         frame = f;
     }
 
@@ -19,27 +19,20 @@ public class CustomerLoginChoice implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
 
-            case "Login": {
+           case "Login": {
                 String[] entry = frame.getEntry();
-                System.out.println("mail :" + entry[0]);
-                System.out.println("pssd :" + entry[1]);
-
-                if (new CustomerLoginController().CustomerLoginConnection(entry[0], getMD5Hash(entry[1])) == true)
-                {
+                
+                if (new EmployeeLoginController().EmployeeLoginConnection(entry[0], getMD5Hash(entry[1])) == true) {
+                   
                     System.out.println("oui");
                     frame.dispose();
+                    
                 }
                 else{
                   JOptionPane.showMessageDialog(null, "Wrong email/password, please retry ", "", JOptionPane.ERROR_MESSAGE);
                         }
             }
             break;
-
-            case "sign up":
-                // new signUp();
-                frame.dispose(); // on ferme la fenetre actuelle
-                break;
-
         }
 
     }

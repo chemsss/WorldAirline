@@ -152,7 +152,7 @@ public class CustomerLogin extends JFrame {
     public String[] getEntry() {
         String[] list = new String[2];
         list[0] = jTextField2.getText();
-        list[1] = String.valueOf(password); //char[] to String
+        list[1] = String.valueOf(password.getPassword()); //char[] to String
         return list;
     }
 }

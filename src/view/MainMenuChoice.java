@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.*;
 
 public class MainMenuChoice implements ActionListener {
 
@@ -18,7 +17,7 @@ public class MainMenuChoice implements ActionListener {
 
             case "Contacts":
                 new CustomerLogin();
-                frame.dispose(); // on femre la fenetre actuelle
+                //frame.dispose(); // on femre la fenetre actuelle
                 break;
 
             case "Subscribe":
@@ -28,11 +27,11 @@ public class MainMenuChoice implements ActionListener {
 
             case "Book a Flight !":
                 new CustomerLogin();
-                frame.dispose(); // on ferme la fenetre actuelle
+                //frame.dispose(); // on ferme la fenetre actuelle
                 break;
             case "Admin":
                  new EmployeeLogin();
-                 frame.dispose(); // on ferme la fenetre actuelle
+               //  frame.dispose(); // on ferme la fenetre actuelle
                 break;
         }
 

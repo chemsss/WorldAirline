@@ -14,4 +14,8 @@ public class CustomerLoginController {
 
         }
     }
+
+    public CustomerAccount getCustomerAccount(String mail, String password) {
+        return new CustomerAccountDAOImpl().find(mail, password);
+    }
 }

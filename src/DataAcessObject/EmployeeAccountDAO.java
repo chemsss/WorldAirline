@@ -14,4 +14,6 @@ public interface EmployeeAccountDAO {
     
     EmployeeAccount find(int idEmployeeAccount);
     boolean create(EmployeeAccount account);
+    public EmployeeAccount find(String email, String password);
+
 }

@@ -55,6 +55,7 @@ public class CustomerAccountDAOImpl implements CustomerAccountDAO {
     public boolean create(CustomerAccount account) {
         
         try {
+            
             PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO customeraccount (`email`, `password`, `ageCategory`, `firstName`, `lastName`, `address`, `birthDate`, `telephoneNumber`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
             myStmt.setString(1, account.getEmail());
             myStmt.setString(2, account.getPassword());

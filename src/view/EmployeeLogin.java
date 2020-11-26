@@ -30,7 +30,7 @@ public class EmployeeLogin extends JFrame {
         jLabel2 = new JLabel();
         password = new JPasswordField("Password");
 
-        controller = new EmployeeLoginController(this); // création du controller
+        controller = new EmployeeLoginChoice(this); // création du controller
         initEmployeeLogin();
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -109,6 +109,9 @@ public class EmployeeLogin extends JFrame {
         jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(controller);
+        
+        
+        
         jButton2.setActionCommand("Login");
         jButton2.setFocusPainted(false);
 
@@ -122,10 +125,10 @@ public class EmployeeLogin extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    public String[] getSaisi() {
+    public String[] getEntry() {
         String[] list = new String[2];
         list[0] = jTextField2.getText();
-       // list[1] = jTextField1.getText();
+        list[1] = String.valueOf(password.getPassword()); //char[] to String
 
         return list;
     }
