@@ -1,6 +1,5 @@
 package view;
 
-import controller.MainMenuController;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -11,9 +10,7 @@ public class MainMenu extends JFrame {
     JButton jButton1, jButton2, jButton3, jButton4;
     JTextField jTextField1;
     
-    
     private ActionListener controller;
-
 
     public MainMenu() {
         super("worldAirline");
@@ -28,7 +25,7 @@ public class MainMenu extends JFrame {
         jLabel2 = new JLabel();
         jLabel1 = new JLabel();
 
-     controller = new MainMenuController(this); // création du controller
+     controller = new MainMenuChoice(this); // création du controller
 
         initMainMenu();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -86,7 +83,6 @@ public class MainMenu extends JFrame {
  
         jButton3.setBackground(new Color(51, 153, 255));
         jButton3.setForeground(new Color(255,255, 255));
-        jButton3.setFocusPainted(false);
         jButton3.setText("Book a Flight !");
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(controller);
@@ -111,7 +107,7 @@ public class MainMenu extends JFrame {
         jLabel2.setBounds(60, 20, 920, 70);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new ImageIcon("D:\\GITHUB\\worldAirline\\img\\airplane.jpg")); // NOI18N
+        jLabel1.setIcon(new ImageIcon("img\\airplane.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setOpaque(true);

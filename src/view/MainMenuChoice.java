@@ -1,14 +1,13 @@
-package controller;
+package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.*;
 
-public class MainMenuController implements ActionListener {
+public class MainMenuChoice implements ActionListener {
 
     private MainMenu frame;
 
-    public MainMenuController(MainMenu f) {
+    public MainMenuChoice(MainMenu f) {
         frame = f;
     }
 
@@ -18,21 +17,21 @@ public class MainMenuController implements ActionListener {
 
             case "Contacts":
                 new CustomerLogin();
-                frame.dispose(); // on femre la fenetre actuelle
+                //frame.dispose(); // on femre la fenetre actuelle
                 break;
 
             case "Subscribe":
-                new CustomerLogin();
-                frame.dispose(); // on ferme la fenetre actuelle
+             //   new CustomerLogin();
+                //  frame.dispose(); // on ferme la fenetre actuelle
                 break;
 
             case "Book a Flight !":
                 new CustomerLogin();
-                frame.dispose(); // on ferme la fenetre actuelle
+                //frame.dispose(); // on ferme la fenetre actuelle
                 break;
             case "Admin":
-                //  new GestionAnneeGUI();
-                frame.dispose(); // on ferme la fenetre actuelle
+                 new EmployeeLogin();
+               //  frame.dispose(); // on ferme la fenetre actuelle
                 break;
         }
 

@@ -34,6 +34,7 @@ public abstract class Account {
         this.telephoneNumber = telephoneNumber;
     }
 
+    
     @Override
     public String toString() {
         return "Account{" + "idAccount=" + idAccount + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", birthDate=" + birthDate + ", telephoneNumber=" + telephoneNumber + '}';
