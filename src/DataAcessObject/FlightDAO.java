@@ -1,5 +1,7 @@
 package DataAcessObject;
 
+import java.util.ArrayList;
+import java.util.Date;
 import model.Flight;
 
 /**
@@ -8,5 +10,7 @@ import model.Flight;
  */
 public interface FlightDAO {
 
-    public Flight find(int flight_idFlight);
+    Flight find(int flight_idFlight);
+    Flight findAllFlights();
+    ArrayList<Flight> searchFlights(String DepartureAirportId, String arrivalAirportId, Date departureDate, Date arrivalDate, int nbOfSeats);
 }
