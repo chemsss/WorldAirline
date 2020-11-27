@@ -8,6 +8,8 @@ import com.toedter.calendar.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import controller.AirportController;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
@@ -19,7 +21,9 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     private JRadioButton businessClass,economyClass,firstClass,roundTrip,oneWay;
     private ButtonGroup buttonGroup1;
     private ButtonGroup buttonGroup2;
-    private JComboBox<String> fromDeparture,toArrival,selectPassenger;
+    private JComboBox<Airport> fromDeparture,toArrival;
+    private JComboBox<String> selectPassenger;
+
     private JTable searchDeapartureFlights,searchDepartureFlightsAR,searchArrivalFlightsAR;
     private ActionListener controller;
     
@@ -127,10 +131,11 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         from.setBounds(30, 70, 70, 40);
 
         
-        fromDeparture.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        fromDeparture.setModel(new DefaultComboBoxModel(AirportController.getAllAirports()));
         fromDeparture.setOpaque(false);
         jPanel1.add(fromDeparture);
-        fromDeparture.setBounds(130, 80, 110, 20);
+        fromDeparture.setBounds(130, 80, 155, 20);
+        AutoCompleteDecorator.decorate(fromDeparture);
 
 
         to.setFont(new Font("Yu Gothic UI", 0, 12)); // NOI18N
@@ -139,7 +144,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         jPanel1.add(to);
         to.setBounds(30, 120, 70, 40);
         
-        toArrival.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        toArrival.setModel(new DefaultComboBoxModel(AirportController.getAllAirports()));
         toArrival.setOpaque(false);
    /*     toArrival.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +152,9 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
             }
         });*/
         jPanel1.add(toArrival);
-        toArrival.setBounds(130, 130, 110, 20);
+        toArrival.setBounds(130, 130, 155, 20);
+        AutoCompleteDecorator.decorate(toArrival);
+
 
         departure.setFont(new Font("Yu Gothic UI", 0, 12)); // NOI18N
         departure.setIcon(new ImageIcon("img\\calendar.png")); // NOI18N
