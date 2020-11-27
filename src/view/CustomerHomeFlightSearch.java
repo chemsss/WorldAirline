@@ -4,37 +4,25 @@ import java.util.ArrayList;
 import model.*;
 import controller.*;
 import javax.swing.table.TableModel;
+import javax.swing.*;
+import com.toedter.calendar.*;
 
-
+/**
+ *
+ * @author Unknow
+ */
 public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
-    private javax.swing.JPanel DeparturePanel;
-    private javax.swing.JScrollPane DepartureScrollPane;
-    private javax.swing.JButton Next;
-    private javax.swing.JLabel arrival;
-    private com.toedter.calendar.JDateChooser arrivalDate;
-    private javax.swing.JLabel backGround;
-    private javax.swing.JRadioButton businessClass;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JLabel departure;
-    private javax.swing.JLabel departureAR;
-    private com.toedter.calendar.JDateChooser departureCalendar;
-    private javax.swing.JRadioButton economyClass;
-    private javax.swing.JRadioButton firstClass;
-    private javax.swing.JLabel from;
-    private javax.swing.JComboBox<Airport> fromDeparture;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton oneWay;
-    private javax.swing.JLabel passengers;
-    private javax.swing.JRadioButton roundTrip;
-    private javax.swing.JButton search;
-    private javax.swing.JTable searchDeapartureFlights;
-    private javax.swing.JLabel seat;
-    private javax.swing.JComboBox<String> selectPassenger;
-    private javax.swing.JLabel to;
-    private javax.swing.JComboBox<Airport> toArrival;
-    private javax.swing.JLabel worldWride;
+    private JPanel DeparturePanel,jPanel1;
+    private JScrollPane DepartureScrollPane;
+    private JButton Next,search;
+    private JLabel arrival,backGround,departureAR,departure,from,passengers,seat,to,worldWride;
+    private JDateChooser arrivalDate,departureCalendar;
+    private JRadioButton businessClass,economyClass,firstClass,roundTrip,oneWay;
+    private ButtonGroup buttonGroup1;
+    private ButtonGroup buttonGroup2;
+    private JComboBox<String> fromDeparture,toArrival,selectPassenger;
+    private JTable searchDeapartureFlights;
     
     public CustomerHomeFlightSearch() {
         initComponents();
@@ -44,33 +32,33 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     }
                         
     private void initComponents() {
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        oneWay = new javax.swing.JRadioButton();
-        economyClass = new javax.swing.JRadioButton();
+        buttonGroup1 = new ButtonGroup();
+        buttonGroup2 = new ButtonGroup();
+        jPanel1 = new JPanel();
+        oneWay = new JRadioButton();
+        economyClass = new JRadioButton();
         selectPassenger = new javax.swing.JComboBox<>();
-        to = new javax.swing.JLabel();
-        seat = new javax.swing.JLabel();
+        to = new JLabel();
+        seat = new JLabel();
         fromDeparture = new javax.swing.JComboBox<>();
-        from = new javax.swing.JLabel();
-        arrivalDate = new com.toedter.calendar.JDateChooser();
-        departure = new javax.swing.JLabel();
-        departureCalendar = new com.toedter.calendar.JDateChooser();
-        roundTrip = new javax.swing.JRadioButton();
-        businessClass = new javax.swing.JRadioButton();
-        firstClass = new javax.swing.JRadioButton();
-        passengers = new javax.swing.JLabel();
-        arrival = new javax.swing.JLabel();
+        from = new JLabel();
+        arrivalDate = new JDateChooser();
+        departure = new JLabel();
+        departureCalendar = new JDateChooser();
+        roundTrip = new JRadioButton();
+        businessClass = new JRadioButton();
+        firstClass = new JRadioButton();
+        passengers = new JLabel();
+        arrival = new JLabel();
         toArrival = new javax.swing.JComboBox<>();
-        search = new javax.swing.JButton();
-        worldWride = new javax.swing.JLabel();
-        DeparturePanel = new javax.swing.JPanel();
-        Next = new javax.swing.JButton();
-        DepartureScrollPane = new javax.swing.JScrollPane();
+        search = new JButton();
+        worldWride = new JLabel();
+        DeparturePanel = new JPanel();
+        Next = new JButton();
+        DepartureScrollPane = new JScrollPane();
         searchDeapartureFlights = new javax.swing.JTable();
-        departureAR = new javax.swing.JLabel();
-        backGround = new javax.swing.JLabel();
+        departureAR = new JLabel();
+        backGround = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -165,7 +153,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
             }
         });*/
         jPanel1.add(roundTrip);
-        roundTrip.setBounds(30, 20, 110, 30);
+        roundTrip.setBounds(30, 20, 120, 30);
 
         buttonGroup2.add(businessClass);
         businessClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
