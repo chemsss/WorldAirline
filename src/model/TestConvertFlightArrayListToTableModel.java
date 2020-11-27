@@ -15,11 +15,12 @@ import javax.swing.table.TableModel;
 public class TestConvertFlightArrayListToTableModel {
     
     public TableModel FlightsToTableModel(ArrayList<Flight> flights) {
+        return null;
         
         
         
         
-        return new tableModel();
+        //return new tableModel();
     }
     
 }

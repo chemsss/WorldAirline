@@ -15,8 +15,17 @@ public class WorldAirline {
          
         //MainMenu menu = new MainMenu();
        // WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
-        WorldAirlineCustomerProgram prgm = new WorldAirlineCustomerProgram();
+        //WorldAirlineCustomerProgram prgm = new WorldAirlineCustomerProgram();
         
+        Date date = new Date(121, 03, 02);
+        System.out.println(new FlightDAOImpl().searchFlights( "CDG", "MIA", date, 20, "First Class").size());
+        
+        for(int i=0; i < new FlightDAOImpl().searchFlights( "CDG" , "MIA", date, 20, "First Class").size() ;++i) {
+            System.out.println(new FlightDAOImpl().searchFlights( "CDG" , "MIA", date, 20, "First Class").get(i).toString());
+        }
+        
+        System.out.println(date.toString());
+                
     }
     
 }

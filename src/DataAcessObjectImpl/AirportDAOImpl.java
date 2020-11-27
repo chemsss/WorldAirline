@@ -7,6 +7,7 @@ package DataAcessObjectImpl;
 
 import DataAcessObject.AirportDAO;
 import java.sql.*;
+import java.util.ArrayList;
 import model.Airport;
 
 /**
@@ -15,6 +16,12 @@ import model.Airport;
  */
 public class AirportDAOImpl implements AirportDAO {
 
+    /**
+     *
+     * @param idAirport
+     * @return
+     */
+    @Override
     public Airport find(String idAirport) {
 
         Airport airport = null; // in case of airport doesn't exist
@@ -32,6 +39,34 @@ public class AirportDAOImpl implements AirportDAO {
 
         }
         return airport;
+    }
+    
+    /**
+     *
+     * @return
+     */
+    @Override
+    public Airport[] findAllAirports() {
+        
+        ArrayList<Airport> airports = new ArrayList<>();
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM airport;");
+            
+            while(myRs.next()) {
+                airports.add(new Airport(myRs.getString("idAirport"), myRs.getString("name"), myRs.getString("city"), myRs.getString("country")));
+            }
+            
+            Airport[] airportsFound = new Airport[airports.size()];
+            for(int i = 0 ; i < airports.size() ; ++i) {
+                airportsFound[i] = airports.get(i);
+            }            
+            return airportsFound;
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
     
     @Override

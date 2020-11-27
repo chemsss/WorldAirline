@@ -30,7 +30,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
     private javax.swing.JRadioButton economyClass;
     private javax.swing.JRadioButton firstClass;
     private javax.swing.JLabel from;
-    private javax.swing.JComboBox<String> fromDeparture;
+    private javax.swing.JComboBox<Airport> fromDeparture;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton oneWay;
     private javax.swing.JLabel passengers;
@@ -40,7 +40,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
     private javax.swing.JLabel seat;
     private javax.swing.JComboBox<String> selectPassenger;
     private javax.swing.JLabel to;
-    private javax.swing.JComboBox<String> toArrival;
+    private javax.swing.JComboBox<Airport> toArrival;
     private javax.swing.JLabel worldWride;
     
     public WorldAirlineCustomerProgram() {
@@ -145,7 +145,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
 
-        fromDeparture.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        fromDeparture.setModel(new javax.swing.DefaultComboBoxModel<>());
         fromDeparture.setOpaque(false);
         jPanel1.add(fromDeparture);
         fromDeparture.setBounds(130, 80, 110, 20);
@@ -220,7 +220,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
 
-        toArrival.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        toArrival.setModel(new javax.swing.DefaultComboBoxModel<>());
         toArrival.setOpaque(false);
    /*     toArrival.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

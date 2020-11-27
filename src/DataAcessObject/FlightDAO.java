@@ -12,5 +12,5 @@ public interface FlightDAO {
 
     Flight find(int flight_idFlight);
     Flight findAllFlights();
-    ArrayList<Flight> searchFlights(String DepartureAirportId, String arrivalAirportId, Date departureDate, Date arrivalDate, int nbOfSeats);
+    ArrayList<Flight> searchFlights(String DepartureAirportId, String arrivalAirportId, Date departureDate, int nbOfSeats, String className);
 }
