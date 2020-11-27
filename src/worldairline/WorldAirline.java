@@ -15,7 +15,7 @@ public class WorldAirline {
          
         //MainMenu menu = new MainMenu();
        // WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
-        CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch();
+        //WorldAirlineCustomerProgram prgm = new WorldAirlineCustomerProgram();
         
         Date date = new Date(121, 03, 02);
         System.out.println(new FlightDAOImpl().searchFlights( "CDG", "MIA", date, 20, "First Class").size());

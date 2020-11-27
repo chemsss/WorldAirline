@@ -11,7 +11,7 @@ import com.toedter.calendar.*;
  *
  * @author Unknow
  */
-public class CustomerHomeFlightSearch extends javax.swing.JFrame {
+public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
 
     private JPanel DeparturePanel,jPanel1;
     private JScrollPane DepartureScrollPane;
@@ -24,7 +24,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     private JComboBox<String> fromDeparture,toArrival,selectPassenger;
     private JTable searchDeapartureFlights;
     
-    public CustomerHomeFlightSearch() {
+    public WorldAirlineCustomerProgram() {
         initComponents();
         this.setSize(1920,1080);
         this.setVisible(true);
@@ -109,13 +109,13 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         selectPassenger.setBounds(130, 270, 110, 20);
 
         to.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        to.setIcon(new javax.swing.ImageIcon("img\\location.png")); // NOI18N
+        to.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
         to.setText("To");
         jPanel1.add(to);
         to.setBounds(30, 120, 70, 40);
 
         seat.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        seat.setIcon(new javax.swing.ImageIcon("img\\seat.png")); // NOI18N
+        seat.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\seat.png")); // NOI18N
         seat.setText("Seat");
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
@@ -126,7 +126,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         fromDeparture.setBounds(130, 80, 110, 20);
 
         from.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        from.setIcon(new javax.swing.ImageIcon("img\\location.png")); // NOI18N
+        from.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
         from.setText("From");
         jPanel1.add(from);
         from.setBounds(30, 70, 70, 40);
@@ -134,7 +134,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         arrivalDate.setBounds(130, 220, 110, 20);
 
         departure.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        departure.setIcon(new javax.swing.ImageIcon("img\\calendar.png")); // NOI18N
+        departure.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
         departure.setText("Departure");
         jPanel1.add(departure);
         departure.setBounds(30, 170, 80, 40);
@@ -184,13 +184,13 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         firstClass.setBounds(130, 320, 110, 30);
 
         passengers.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        passengers.setIcon(new javax.swing.ImageIcon("img\\users.png")); // NOI18N
+        passengers.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\users.png")); // NOI18N
         passengers.setText("Passenger(s)");
         jPanel1.add(passengers);
         passengers.setBounds(30, 260, 90, 40);
 
         arrival.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        arrival.setIcon(new javax.swing.ImageIcon("img\\calendar.png")); // NOI18N
+        arrival.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
         arrival.setText("Arrival");
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
@@ -265,7 +265,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         getContentPane().add(DeparturePanel);
         DeparturePanel.setBounds(510, 190, 820, 590);
 
-        backGround.setIcon(new javax.swing.ImageIcon("img\\planeProgram.jpg")); // NOI18N
+        backGround.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\planeProgram.jpg")); // NOI18N
         getContentPane().add(backGround);
         backGround.setBounds(0, -50, 1920, 1380);
 
