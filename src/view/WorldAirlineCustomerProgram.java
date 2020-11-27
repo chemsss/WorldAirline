@@ -9,39 +9,25 @@ import java.util.ArrayList;
 import model.*;
 import controller.*;
 import javax.swing.table.TableModel;
+import javax.swing.*;
+import com.toedter.calendar.*;
+
 /**
  *
  * @author Unknow
  */
 public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
 
-      private javax.swing.JPanel DeparturePanel;
-    private javax.swing.JScrollPane DepartureScrollPane;
-    private javax.swing.JButton Next;
-    private javax.swing.JLabel arrival;
-    private com.toedter.calendar.JDateChooser arrivalDate;
-    private javax.swing.JLabel backGround;
-    private javax.swing.JRadioButton businessClass;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JLabel departure;
-    private javax.swing.JLabel departureAR;
-    private com.toedter.calendar.JDateChooser departureCalendar;
-    private javax.swing.JRadioButton economyClass;
-    private javax.swing.JRadioButton firstClass;
-    private javax.swing.JLabel from;
-    private javax.swing.JComboBox<String> fromDeparture;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton oneWay;
-    private javax.swing.JLabel passengers;
-    private javax.swing.JRadioButton roundTrip;
-    private javax.swing.JButton search;
-    private javax.swing.JTable searchDeapartureFlights;
-    private javax.swing.JLabel seat;
-    private javax.swing.JComboBox<String> selectPassenger;
-    private javax.swing.JLabel to;
-    private javax.swing.JComboBox<String> toArrival;
-    private javax.swing.JLabel worldWride;
+    private JPanel DeparturePanel,jPanel1;
+    private JScrollPane DepartureScrollPane;
+    private JButton Next,search;
+    private JLabel arrival,backGround,departureAR,departure,from,passengers,seat,to,worldWride;
+    private JDateChooser arrivalDate,departureCalendar;
+    private JRadioButton businessClass,economyClass,firstClass,roundTrip,oneWay;
+    private ButtonGroup buttonGroup1;
+    private ButtonGroup buttonGroup2;
+    private JComboBox<String> fromDeparture,toArrival,selectPassenger;
+    private JTable searchDeapartureFlights;
     
     public WorldAirlineCustomerProgram() {
         initComponents();
@@ -57,33 +43,33 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        oneWay = new javax.swing.JRadioButton();
-        economyClass = new javax.swing.JRadioButton();
+        buttonGroup1 = new ButtonGroup();
+        buttonGroup2 = new ButtonGroup();
+        jPanel1 = new JPanel();
+        oneWay = new JRadioButton();
+        economyClass = new JRadioButton();
         selectPassenger = new javax.swing.JComboBox<>();
-        to = new javax.swing.JLabel();
-        seat = new javax.swing.JLabel();
+        to = new JLabel();
+        seat = new JLabel();
         fromDeparture = new javax.swing.JComboBox<>();
-        from = new javax.swing.JLabel();
-        arrivalDate = new com.toedter.calendar.JDateChooser();
-        departure = new javax.swing.JLabel();
-        departureCalendar = new com.toedter.calendar.JDateChooser();
-        roundTrip = new javax.swing.JRadioButton();
-        businessClass = new javax.swing.JRadioButton();
-        firstClass = new javax.swing.JRadioButton();
-        passengers = new javax.swing.JLabel();
-        arrival = new javax.swing.JLabel();
+        from = new JLabel();
+        arrivalDate = new JDateChooser();
+        departure = new JLabel();
+        departureCalendar = new JDateChooser();
+        roundTrip = new JRadioButton();
+        businessClass = new JRadioButton();
+        firstClass = new JRadioButton();
+        passengers = new JLabel();
+        arrival = new JLabel();
         toArrival = new javax.swing.JComboBox<>();
-        search = new javax.swing.JButton();
-        worldWride = new javax.swing.JLabel();
-        DeparturePanel = new javax.swing.JPanel();
-        Next = new javax.swing.JButton();
-        DepartureScrollPane = new javax.swing.JScrollPane();
+        search = new JButton();
+        worldWride = new JLabel();
+        DeparturePanel = new JPanel();
+        Next = new JButton();
+        DepartureScrollPane = new JScrollPane();
         searchDeapartureFlights = new javax.swing.JTable();
-        departureAR = new javax.swing.JLabel();
-        backGround = new javax.swing.JLabel();
+        departureAR = new JLabel();
+        backGround = new JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -134,13 +120,13 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
         selectPassenger.setBounds(130, 270, 110, 20);
 
         to.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        to.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
+        to.setIcon(new javax.swing.ImageIcon("img\\location.png")); // NOI18N
         to.setText("To");
         jPanel1.add(to);
         to.setBounds(30, 120, 70, 40);
 
         seat.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        seat.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\seat.png")); // NOI18N
+        seat.setIcon(new javax.swing.ImageIcon("img\\seat.png")); // NOI18N
         seat.setText("Seat");
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
@@ -151,7 +137,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
         fromDeparture.setBounds(130, 80, 110, 20);
 
         from.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        from.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
+        from.setIcon(new javax.swing.ImageIcon("img\\location.png")); // NOI18N
         from.setText("From");
         jPanel1.add(from);
         from.setBounds(30, 70, 70, 40);
@@ -159,7 +145,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
         arrivalDate.setBounds(130, 220, 110, 20);
 
         departure.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        departure.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
+        departure.setIcon(new javax.swing.ImageIcon("img\\calendar.png")); // NOI18N
         departure.setText("Departure");
         jPanel1.add(departure);
         departure.setBounds(30, 170, 80, 40);
@@ -178,7 +164,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
             }
         });*/
         jPanel1.add(roundTrip);
-        roundTrip.setBounds(30, 20, 110, 30);
+        roundTrip.setBounds(30, 20, 120, 30);
 
         buttonGroup2.add(businessClass);
         businessClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
@@ -209,13 +195,13 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
         firstClass.setBounds(130, 320, 110, 30);
 
         passengers.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        passengers.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\users.png")); // NOI18N
+        passengers.setIcon(new javax.swing.ImageIcon("img\\users.png")); // NOI18N
         passengers.setText("Passenger(s)");
         jPanel1.add(passengers);
         passengers.setBounds(30, 260, 90, 40);
 
         arrival.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        arrival.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
+        arrival.setIcon(new javax.swing.ImageIcon("img\\calendar.png")); // NOI18N
         arrival.setText("Arrival");
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
@@ -290,7 +276,7 @@ public class WorldAirlineCustomerProgram extends javax.swing.JFrame {
         getContentPane().add(DeparturePanel);
         DeparturePanel.setBounds(510, 190, 820, 590);
 
-        backGround.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\planeProgram.jpg")); // NOI18N
+        backGround.setIcon(new javax.swing.ImageIcon("img\\planeProgram.jpg")); // NOI18N
         getContentPane().add(backGround);
         backGround.setBounds(0, -50, 1920, 1380);
 
