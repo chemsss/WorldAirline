@@ -3,6 +3,7 @@ package controller;
 import model.Flight;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+import DataAcessObjectImpl.FlightDAOImpl;
 
 public class SearchFlightsTableModel extends AbstractTableModel {
 
@@ -13,6 +14,14 @@ public class SearchFlightsTableModel extends AbstractTableModel {
     public SearchFlightsTableModel(ArrayList<Flight> flights) {
         this.flights = flights;
     }
+    
+    public SearchFlightsTableModel(String DepartureAirportId, String arrivalAirportId, java.util.Date departureDate, int nbOfSeats, String className) {
+        flights = new FlightDAOImpl().searchFlights(DepartureAirportId, arrivalAirportId, departureDate, nbOfSeats, className);
+    }
+    
+    public SearchFlightsTableModel() {
+        flights = new ArrayList<>();
+    } 
 
     @Override
     public int getColumnCount() {

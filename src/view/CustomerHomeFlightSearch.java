@@ -5,17 +5,21 @@
  */
 package view;
 import DataAcessObjectImpl.FlightDAOImpl;
+import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import model.*;
 import controller.*;
-import javax.swing.table.TableModel;
+import java.awt.event.*;
+import javax.swing.JComboBox;
+import javax.swing.JRadioButton;
+
 /**
  *
  * @author Unknow
  */
 public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
-      private javax.swing.JPanel DeparturePanel;
+    private javax.swing.JPanel DeparturePanel;
     private javax.swing.JScrollPane DepartureScrollPane;
     private javax.swing.JButton Next;
     private javax.swing.JLabel arrival;
@@ -26,7 +30,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel departure;
     private javax.swing.JLabel departureAR;
-    private com.toedter.calendar.JDateChooser departureCalendar;
+    private com.toedter.calendar.JDateChooser departureDate;
     private javax.swing.JRadioButton economyClass;
     private javax.swing.JRadioButton firstClass;
     private javax.swing.JLabel from;
@@ -69,7 +73,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         from = new javax.swing.JLabel();
         arrivalDate = new com.toedter.calendar.JDateChooser();
         departure = new javax.swing.JLabel();
-        departureCalendar = new com.toedter.calendar.JDateChooser();
+        departureDate = new com.toedter.calendar.JDateChooser();
         roundTrip = new javax.swing.JRadioButton();
         businessClass = new javax.swing.JRadioButton();
         firstClass = new javax.swing.JRadioButton();
@@ -145,7 +149,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
 
-        fromDeparture.setModel(new javax.swing.DefaultComboBoxModel<>());
+        fromDeparture.setModel(new javax.swing.DefaultComboBoxModel<>(AirportController.getAllAirports()));
         fromDeparture.setOpaque(false);
         jPanel1.add(fromDeparture);
         fromDeparture.setBounds(130, 80, 110, 20);
@@ -157,14 +161,26 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         from.setBounds(30, 70, 70, 40);
         jPanel1.add(arrivalDate);
         arrivalDate.setBounds(130, 220, 110, 20);
+        /*arrivalDate.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void actionPerformed(ActionEvent e ) {
+                if(oneWay.isSelected()) {
+                    searchDeapartureFlights.setModel(
+                            new SearchFlightsTableModel(
+                                    , 
+                                    String arrivalAirportId, java.util.Date departureDate, int nbOfSeats, String className));
+                }
+                
+            }
+        });*/
 
         departure.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         departure.setIcon(new javax.swing.ImageIcon("img\\calendar.png")); // NOI18N
         departure.setText("Departure");
         jPanel1.add(departure);
         departure.setBounds(30, 170, 80, 40);
-        jPanel1.add(departureCalendar);
-        departureCalendar.setBounds(130, 180, 110, 20);
+        jPanel1.add(departureDate);
+        departureDate.setBounds(130, 180, 110, 20);
 
         buttonGroup1.add(roundTrip);
         roundTrip.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
@@ -220,7 +236,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
 
-        toArrival.setModel(new javax.swing.DefaultComboBoxModel<>());
+        toArrival.setModel(new javax.swing.DefaultComboBoxModel<>(AirportController.getAllAirports()));
         toArrival.setOpaque(false);
    /*     toArrival.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,6 +255,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         search.setFocusable(false);
         jPanel1.add(search);
         search.setBounds(130, 440, 110, 30);
+        search.setActionCommand("Search");
+        search.addActionListener(new CustomerFlightSearchChoice(this));
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(60, 230, 360, 500);
@@ -260,9 +278,11 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         Next.setFocusable(false);
         DeparturePanel.add(Next);
         Next.setBounds(710, 560, 110, 30);
+        Next.setActionCommand("Next");
 
         ArrayList<Flight> flights =  new ArrayList<Flight>();
         flights.add(new FlightDAOImpl().find(5));
+        flights.add(new FlightDAOImpl().find(6));
         System.out.println(flights.get(0).getIdFlight());
         SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
         searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
@@ -279,7 +299,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         DepartureScrollPane.setViewportView(searchDeapartureFlights);
 
         DeparturePanel.add(DepartureScrollPane);
-        DepartureScrollPane.setBounds(0, 40, 860, 500);
+        DepartureScrollPane.setBounds(0, 40, 1100, 500);
 
         departureAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureAR.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,5 +315,48 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         backGround.setBounds(0, -50, 1920, 1380);
 
         pack();
-    }                
+    }
+
+    //getters for the Search button action listener
+    public JDateChooser getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public JRadioButton getBusinessClass() {
+        return businessClass;
+    }
+
+    public JDateChooser getDepartureDate() {
+        return departureDate;
+    }
+
+    public JRadioButton getEconomyClass() {
+        return economyClass;
+    }
+
+    public JRadioButton getFirstClass() {
+        return firstClass;
+    }
+
+    public JComboBox<Airport> getFromDeparture() {
+        return fromDeparture;
+    }
+
+    public JRadioButton getOneWay() {
+        return oneWay;
+    }
+
+    public JRadioButton getRoundTrip() {
+        return roundTrip;
+    }
+
+    public JComboBox<String> getSelectPassenger() {
+        return selectPassenger;
+    }
+
+    public JComboBox<Airport> getToArrival() {
+        return toArrival;
+    }
+    
+    
 }
