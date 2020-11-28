@@ -34,39 +34,25 @@ public class EmployeeHome extends javax.swing.JFrame {
         addFlight = new javax.swing.JCheckBoxMenuItem();
         updateFlight = new javax.swing.JCheckBoxMenuItem();
         deleteFlight = new javax.swing.JCheckBoxMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        manageBookings = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(200, 191, 191));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
+            .addGap(0, 862, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 496, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 860, 500);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         manageFlight.setText("Manage flights");
 
@@ -91,58 +77,12 @@ public class EmployeeHome extends javax.swing.JFrame {
         deleteFlight.setText("Delete flight");
         manageFlight.add(deleteFlight);
 
-        jMenuItem2.setText("jMenuItem2");
-        manageFlight.add(jMenuItem2);
-
-        jMenuItem3.setText("jMenuItem2");
-        manageFlight.add(jMenuItem3);
-
-        jMenuItem4.setText("jMenuItem2");
-        manageFlight.add(jMenuItem4);
-
-        jMenuItem5.setText("jMenuItem2");
-        manageFlight.add(jMenuItem5);
-
         menuBar.add(manageFlight);
 
-        manageBookings.setText("Manage bookings");
+        jMenu2.setText("Manage bookings");
+        menuBar.add(jMenu2);
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
-            }
-        });
-        manageBookings.add(jCheckBoxMenuItem1);
-
-        jCheckBoxMenuItem2.setSelected(true);
-        jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
-        manageBookings.add(jCheckBoxMenuItem2);
-
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("jCheckBoxMenuItem3");
-        manageBookings.add(jCheckBoxMenuItem3);
-
-        jMenuItem6.setText("jMenuItem2");
-        manageBookings.add(jMenuItem6);
-
-        jMenuItem7.setText("jMenuItem2");
-        manageBookings.add(jMenuItem7);
-
-        jMenuItem8.setText("jMenuItem2");
-        manageBookings.add(jMenuItem8);
-
-        menuBar.add(manageBookings);
-
-        jMenu3.setText("Manage coupons");
-
-        jMenuItem1.setText("jMenuItem1");
-        jMenu3.add(jMenuItem1);
-
-        jMenuItem9.setText("jMenuItem2");
-        jMenu3.add(jMenuItem9);
-
+        jMenu3.setText("Add coupons");
         menuBar.add(jMenu3);
 
         setJMenuBar(menuBar);
@@ -153,10 +93,6 @@ public class EmployeeHome extends javax.swing.JFrame {
     private void addFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFlightActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addFlightActionPerformed
-
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,21 +132,9 @@ public class EmployeeHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBoxMenuItem addFlight;
     private javax.swing.JCheckBoxMenuItem deleteFlight;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenu manageBookings;
     private javax.swing.JMenu manageFlight;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JCheckBoxMenuItem searchFlight;
