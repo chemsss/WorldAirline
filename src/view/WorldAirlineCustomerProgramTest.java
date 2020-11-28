@@ -54,14 +54,23 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         toArrival = new javax.swing.JComboBox<>();
         search = new javax.swing.JButton();
         worldWride = new javax.swing.JLabel();
-        DeparturePanel = new javax.swing.JPanel();
+        roundTripPanel = new javax.swing.JPanel();
+        NextAR = new javax.swing.JButton();
+        DepartureScrollPaneAR = new javax.swing.JScrollPane();
+        searchDeapartureFlightsAR = new javax.swing.JTable();
+        ArrivalScrollPaneAR = new javax.swing.JScrollPane();
+        searchArrivalFlightsAR = new javax.swing.JTable();
+        departureAR1 = new javax.swing.JLabel();
+        ArrivalAR = new javax.swing.JLabel();
+        backGround = new javax.swing.JLabel();
+        oneWayPanel = new javax.swing.JPanel();
         Next = new javax.swing.JButton();
         DepartureScrollPane = new javax.swing.JScrollPane();
         searchDeapartureFlights = new javax.swing.JTable();
-        departureAR = new javax.swing.JLabel();
-        backGround = new javax.swing.JLabel();
+        departurep = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
 
@@ -109,11 +118,13 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         selectPassenger.setBounds(130, 270, 110, 20);
 
         to.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        to.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
         to.setText("To");
         jPanel1.add(to);
         to.setBounds(30, 120, 70, 40);
 
         seat.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        seat.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\seat.png")); // NOI18N
         seat.setText("Seat");
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
@@ -124,6 +135,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         fromDeparture.setBounds(130, 80, 110, 20);
 
         from.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        from.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
         from.setText("From");
         jPanel1.add(from);
         from.setBounds(30, 70, 70, 40);
@@ -131,6 +143,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         arrivalDate.setBounds(130, 220, 110, 20);
 
         departure.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        departure.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
         departure.setText("Departure");
         jPanel1.add(departure);
         departure.setBounds(30, 170, 80, 40);
@@ -180,11 +193,13 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         firstClass.setBounds(130, 320, 110, 30);
 
         passengers.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        passengers.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\users.png")); // NOI18N
         passengers.setText("Passenger(s)");
         jPanel1.add(passengers);
         passengers.setBounds(30, 260, 90, 40);
 
         arrival.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        arrival.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
         arrival.setText("Arrival");
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
@@ -217,8 +232,91 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         getContentPane().add(worldWride);
         worldWride.setBounds(530, 10, 580, 110);
 
-        DeparturePanel.setOpaque(false);
-        DeparturePanel.setLayout(null);
+        roundTripPanel.setOpaque(false);
+        roundTripPanel.setLayout(null);
+
+        NextAR.setBackground(new java.awt.Color(102, 102, 102));
+        NextAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        NextAR.setForeground(new java.awt.Color(255, 255, 255));
+        NextAR.setText("Next");
+        NextAR.setBorderPainted(false);
+        NextAR.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        NextAR.setFocusable(false);
+        NextAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextARActionPerformed(evt);
+            }
+        });
+        roundTripPanel.add(NextAR);
+        NextAR.setBounds(710, 560, 110, 30);
+
+        searchDeapartureFlightsAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
+        searchDeapartureFlightsAR.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        searchDeapartureFlightsAR.setFocusable(false);
+        searchDeapartureFlightsAR.setGridColor(new java.awt.Color(0, 0, 0));
+        searchDeapartureFlightsAR.setOpaque(false);
+        searchDeapartureFlightsAR.setRowHeight(20);
+        searchDeapartureFlightsAR.setSelectionBackground(new java.awt.Color(200, 191, 191));
+        searchDeapartureFlightsAR.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        searchDeapartureFlightsAR.setShowHorizontalLines(false);
+        searchDeapartureFlightsAR.setShowVerticalLines(false);
+        searchDeapartureFlightsAR.getTableHeader().setReorderingAllowed(false);
+        DepartureScrollPaneAR.setViewportView(searchDeapartureFlightsAR);
+
+        roundTripPanel.add(DepartureScrollPaneAR);
+        DepartureScrollPaneAR.setBounds(0, 310, 860, 230);
+
+        searchArrivalFlightsAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
+        searchArrivalFlightsAR.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        searchArrivalFlightsAR.setFocusable(false);
+        searchArrivalFlightsAR.setGridColor(new java.awt.Color(0, 0, 0));
+        searchArrivalFlightsAR.setOpaque(false);
+        searchArrivalFlightsAR.setRowHeight(20);
+        searchArrivalFlightsAR.setSelectionBackground(new java.awt.Color(200, 191, 191));
+        searchArrivalFlightsAR.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        searchArrivalFlightsAR.setShowHorizontalLines(false);
+        searchArrivalFlightsAR.setShowVerticalLines(false);
+        searchArrivalFlightsAR.getTableHeader().setReorderingAllowed(false);
+        ArrivalScrollPaneAR.setViewportView(searchArrivalFlightsAR);
+
+        roundTripPanel.add(ArrivalScrollPaneAR);
+        ArrivalScrollPaneAR.setBounds(0, 40, 860, 230);
+
+        departureAR1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        departureAR1.setForeground(new java.awt.Color(255, 255, 255));
+        departureAR1.setText("Arrival<<");
+        roundTripPanel.add(departureAR1);
+        departureAR1.setBounds(0, 270, 150, 40);
+
+        ArrivalAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        ArrivalAR.setForeground(new java.awt.Color(255, 255, 255));
+        ArrivalAR.setText("Departure>>");
+        roundTripPanel.add(ArrivalAR);
+        ArrivalAR.setBounds(0, 0, 150, 30);
+
+        getContentPane().add(roundTripPanel);
+        roundTripPanel.setBounds(510, 190, 820, 590);
+
+        backGround.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\planeProgram.jpg")); // NOI18N
+        getContentPane().add(backGround);
+        backGround.setBounds(0, -50, 1920, 1380);
+
+        oneWayPanel.setOpaque(false);
+        oneWayPanel.setLayout(null);
 
         Next.setBackground(new java.awt.Color(102, 102, 102));
         Next.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
@@ -227,13 +325,13 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         Next.setBorderPainted(false);
         Next.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Next.setFocusable(false);
-        DeparturePanel.add(Next);
+        oneWayPanel.add(Next);
         Next.setBounds(710, 560, 110, 30);
 
         ArrayList<Flight> flights =  new ArrayList<Flight>();
         flights.add(new FlightDAOImpl().find(5));
         System.out.println(flights.get(0).getIdFlight());
-        SearchFlightsTableModel  model = new SearchFlightsTableModel();
+        SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
         searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchDeapartureFlights.setModel(model);
         searchDeapartureFlights.setFocusable(false);
@@ -247,19 +345,17 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         searchDeapartureFlights.getTableHeader().setReorderingAllowed(false);
         DepartureScrollPane.setViewportView(searchDeapartureFlights);
 
-        DeparturePanel.add(DepartureScrollPane);
+        oneWayPanel.add(DepartureScrollPane);
         DepartureScrollPane.setBounds(0, 40, 860, 500);
 
-        departureAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
-        departureAR.setForeground(new java.awt.Color(255, 255, 255));
-        departureAR.setText("Departure>>");
-        DeparturePanel.add(departureAR);
-        departureAR.setBounds(0, 0, 150, 30);
+        departurep.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
+        departurep.setForeground(new java.awt.Color(255, 255, 255));
+        departurep.setText("Departure>>");
+        oneWayPanel.add(departurep);
+        departurep.setBounds(0, 0, 150, 30);
 
-        getContentPane().add(DeparturePanel);
-        DeparturePanel.setBounds(510, 190, 820, 590);
-        getContentPane().add(backGround);
-        backGround.setBounds(0, -50, 1920, 1380);
+        getContentPane().add(oneWayPanel);
+        oneWayPanel.setBounds(510, 190, 820, 590);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -291,6 +387,10 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
     private void toArrivalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toArrivalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_toArrivalActionPerformed
+
+    private void NextARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NextARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,9 +428,12 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel DeparturePanel;
+    private javax.swing.JLabel ArrivalAR;
+    private javax.swing.JScrollPane ArrivalScrollPaneAR;
     private javax.swing.JScrollPane DepartureScrollPane;
+    private javax.swing.JScrollPane DepartureScrollPaneAR;
     private javax.swing.JButton Next;
+    private javax.swing.JButton NextAR;
     private javax.swing.JLabel arrival;
     private com.toedter.calendar.JDateChooser arrivalDate;
     private javax.swing.JLabel backGround;
@@ -338,18 +441,23 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel departure;
-    private javax.swing.JLabel departureAR;
+    private javax.swing.JLabel departureAR1;
     private com.toedter.calendar.JDateChooser departureCalendar;
+    private javax.swing.JLabel departurep;
     private javax.swing.JRadioButton economyClass;
     private javax.swing.JRadioButton firstClass;
     private javax.swing.JLabel from;
     private javax.swing.JComboBox<String> fromDeparture;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton oneWay;
+    private javax.swing.JPanel oneWayPanel;
     private javax.swing.JLabel passengers;
     private javax.swing.JRadioButton roundTrip;
+    private javax.swing.JPanel roundTripPanel;
     private javax.swing.JButton search;
+    private javax.swing.JTable searchArrivalFlightsAR;
     private javax.swing.JTable searchDeapartureFlights;
+    private javax.swing.JTable searchDeapartureFlightsAR;
     private javax.swing.JLabel seat;
     private javax.swing.JComboBox<String> selectPassenger;
     private javax.swing.JLabel to;
