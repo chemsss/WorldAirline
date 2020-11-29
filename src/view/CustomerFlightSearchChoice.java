@@ -28,15 +28,15 @@ public class CustomerFlightSearchChoice implements ActionListener {
 
             case "Search": {
                 
-                try {
+                //try {
                     if(frame.getOneWay().isSelected()) {
                         if(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport().equals(((Airport)frame.getToArrival().getSelectedItem()).getIdAirport())) {
                             JOptionPane.showMessageDialog(null , "Please choose an arrival airport different from the departure airport", "Departure and arrival airports are the same", 0);
                             //String DepartureAirportId, String arrivalAirportId, java.util.Date departureDate, int nbOfSeats, String className
                         }
-                        if((frame.getArrivalDate()).compareTo(frame.getDepartureDate()) < 0) {
+                        /*if((frame.getArrivalDate()).compareTo(frame.getDepartureDate()) < 0) {
                             throw new DateException("Departure date is after arrival date.");
-                        }
+                        }*/
                         else {
                             frame.setSearchDeapartureFlightsModel( new SearchFlightsTableModel(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport(),
                                 ((Airport)frame.getToArrival().getSelectedItem()).getIdAirport(),
@@ -58,9 +58,9 @@ public class CustomerFlightSearchChoice implements ActionListener {
 
                     }
 
-                }catch(DateException exception) {
-                    System.out.println(exception.getMessage());
-                }
+                //}catch(DateException exception) {
+                  //  System.out.println(exception.getMessage());
+                //}
                 
                 
                 
