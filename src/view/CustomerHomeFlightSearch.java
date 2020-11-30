@@ -284,7 +284,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         flights.add(new FlightDAOImpl().find(5));
         flights.add(new FlightDAOImpl().find(6));
         System.out.println(flights.get(0).getIdFlight());
-        SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
+        SearchFlightsTableModel  model = new SearchFlightsTableModel();
         searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchDeapartureFlights.setModel(model);
         searchDeapartureFlights.setFocusable(false);
@@ -441,5 +441,11 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         this.searchDeapartureFlights.setModel(searchDeapartureFlights);
     }
     
+    public void setSearchDepartureFlightsARModel(SearchFlightsTableModel searchDeapartureFlights) {
+        this.searchDepartureFlightsAR.setModel(searchDeapartureFlights);
+    }
     
+    public void setSearchArrivalFlightsARModel(SearchFlightsTableModel searchDeapartureFlights) {
+        this.searchArrivalFlightsAR.setModel(searchDeapartureFlights);
+    }
 }

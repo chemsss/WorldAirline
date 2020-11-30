@@ -57,6 +57,29 @@ public class CustomerFlightSearchChoice implements ActionListener {
 
 
                     }
+                    else if(frame.getRoundTrip().isSelected()) {
+                        if(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport().equals(((Airport)frame.getToArrival().getSelectedItem()).getIdAirport())) {
+                            JOptionPane.showMessageDialog(null , "Please choose an arrival airport different from the departure airport", "Departure and arrival airports are the same", 0);
+                            //String DepartureAirportId, String arrivalAirportId, java.util.Date departureDate, int nbOfSeats, String className
+                        }
+                        else{
+                            frame.setSearchArrivalFlightsARModel( new SearchFlightsTableModel(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport(),
+                                ((Airport)frame.getToArrival().getSelectedItem()).getIdAirport(),
+                                frame.getDepartureDate(),
+                                frame.getSelectPassenger(),
+                                frame.getFirstClass() ));
+                            
+                            frame.setSearchDepartureFlightsARModel( new SearchFlightsTableModel(((Airport)frame.getToArrival().getSelectedItem()).getIdAirport(),
+                                ((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport(),
+                                frame.getDepartureDate(),
+                                frame.getSelectPassenger(),
+                                frame.getFirstClass() ));
+                            
+                        }
+                        
+                        
+                        
+                    }
 
                 //}catch(DateException exception) {
                   //  System.out.println(exception.getMessage());
