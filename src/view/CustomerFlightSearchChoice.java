@@ -28,7 +28,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
 
             case "Search": {
                 
-                //try {
+                try {
                     if(frame.getOneWay().isSelected()) {
                         if(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport().equals(((Airport)frame.getToArrival().getSelectedItem()).getIdAirport())) {
                             JOptionPane.showMessageDialog(null , "Please choose an arrival airport different from the departure airport", "Departure and arrival airports are the same", 0);
@@ -81,9 +81,9 @@ public class CustomerFlightSearchChoice implements ActionListener {
                         
                     }
 
-                //}catch(DateException exception) {
-                  //  System.out.println(exception.getMessage());
-                //}
+                }catch(Exception exception) {
+                    System.out.println(exception.getMessage());
+                }
                 
                 
                 
