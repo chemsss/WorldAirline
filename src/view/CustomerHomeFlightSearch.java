@@ -279,6 +279,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         oneWayPanel.add(Next);
         Next.setBounds(710, 560, 110, 30);
         Next.setActionCommand("Next");
+        Next.addActionListener(new CustomerFlightSearchChoice(this));
 
         ArrayList<Flight> flights =  new ArrayList<Flight>();
         flights.add(new FlightDAOImpl().find(5));
@@ -448,4 +449,6 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     public void setSearchArrivalFlightsARModel(SearchFlightsTableModel searchDeapartureFlights) {
         this.searchArrivalFlightsAR.setModel(searchDeapartureFlights);
     }
+    
+    
 }
