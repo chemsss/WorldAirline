@@ -10,6 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
 import controller.AirportController;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Toolkit;
 import java.util.Date;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
@@ -33,8 +36,12 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     
     public CustomerHomeFlightSearch(CustomerAccount customer) {
         loggedInCustomer = customer;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         initComponents();
-        this.setSize(1920,1080);
+        System.out.println((int) screenSize.getWidth());
+        System.out.println((int) screenSize.getHeight());
+        this.setSize((int) screenSize.getWidth() ,(int) screenSize.getHeight());
+        setExtendedState(Frame.MAXIMIZED_BOTH);
         this.setVisible(true);
         
     }            
