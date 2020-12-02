@@ -1,6 +1,9 @@
 package view;
 
-public class SignUp extends javax.swing.JFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SignUp extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify                     
     private javax.swing.JLabel adress;
@@ -96,6 +99,8 @@ public class SignUp extends javax.swing.JFrame {
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         jButton3.setBorderPainted(false);
         jPanel2.add(jButton3);
+        jButton3.addActionListener(this);
+        
         jButton3.setBounds(160, 450, 130, 40);
 
         email1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
@@ -208,6 +213,15 @@ public class SignUp extends javax.swing.JFrame {
 
         setSize(new java.awt.Dimension(822, 526));
         setLocationRelativeTo(null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        
+
+
+
     }
 
 }
