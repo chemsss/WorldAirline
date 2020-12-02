@@ -1,6 +1,9 @@
 package view;
 
-public class SignUp extends javax.swing.JFrame {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SignUp extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify                     
     private javax.swing.JLabel adress;
@@ -208,6 +211,11 @@ public class SignUp extends javax.swing.JFrame {
 
         setSize(new java.awt.Dimension(822, 526));
         setLocationRelativeTo(null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

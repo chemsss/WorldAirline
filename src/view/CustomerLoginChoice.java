@@ -27,10 +27,11 @@ public class CustomerLoginChoice implements ActionListener {
                 if (new CustomerLoginController().CustomerLoginConnection(entry[0], getMD5Hash(entry[1])) == true)
                 {
                     frame.dispose();
+                    new CustomerHomeFlightSearch(new CustomerLoginController().getCustomerAccount(entry[0], getMD5Hash(entry[1])));
                 }
                 else{
                   JOptionPane.showMessageDialog(null, "Wrong email/password, please retry ", "", JOptionPane.ERROR_MESSAGE);
-                        }
+                    }
             }
             break;
 
