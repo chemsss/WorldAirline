@@ -2,6 +2,8 @@ package view;
 
 import Exceptions.DateException;
 import com.toedter.calendar.JDateChooser;
+import controller.CustomerFlightSearchController;
+import controller.FlightController;
 import java.awt.event.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -13,6 +15,7 @@ import controller.SearchFlightsTableModel;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 
 public class CustomerFlightSearchChoice implements ActionListener {
 
@@ -27,41 +30,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
         switch (e.getActionCommand()) {
 
             case "Search": {
-                
-                //try {
-                    if(frame.getOneWay().isSelected()) {
-                       
-                        if(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport().equals(((Airport)frame.getToArrival().getSelectedItem()).getIdAirport())) {
-                            JOptionPane.showMessageDialog(null , "Please choose an arrival airport different from the departure airport", "Departure and arrival airports are the same", 0);
-                        }
-                      
-                        else {
-                                frame.setSearchDeapartureFlightsModel( new SearchFlightsTableModel(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport(),
-                                ((Airport)frame.getToArrival().getSelectedItem()).getIdAirport(),
-                                frame.getDepartureDate(),
-                                frame.getSelectPassenger(),
-                                frame.getFirstClass() ));
-                                
-                            
-                           /*
-
-                            System.out.println(((Airport)frame.getFromDeparture().getSelectedItem()).getIdAirport());
-                            System.out.println(((Airport)frame.getToArrival().getSelectedItem()).getIdAirport());
-                            System.out.println(frame.getDepartureDate().toString());
-                            System.out.println(frame.getSelectPassenger());
-                            //System.out.println(((JRadioButton) frame.getFirstClass()).getText());
-*/
-                        } 
-
-
-                    }
-
-                //}catch(DateException exception) {
-                  //  System.out.println(exception.getMessage());
-                //}
-                
-                
-                
+                new CustomerFlightSearchController(frame);
             }
             break;
                 
@@ -70,7 +39,16 @@ public class CustomerFlightSearchChoice implements ActionListener {
             
             case "Next":
                 // new signUp();
-                frame.dispose(); // on ferme la fenetre actuelle
+                if(frame.getOneWay().isSelected()) {
+                    String stringIdFlight = frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1).toString();
+                    int idFlight = Integer.parseInt(stringIdFlight);
+                    System.out.println("FLIGHT ID : "+stringIdFlight);
+                    //Flight selectedFlight = FlightController.getFlight(frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1))
+                    Flight selectedFlight = FlightController.getFlight(idFlight);
+                    new PassengerView(selectedFlight, frame.getSelectPassenger());
+                }
+                
+                
                 break;
 
         }

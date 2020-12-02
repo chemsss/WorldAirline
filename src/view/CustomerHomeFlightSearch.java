@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.*;
 import controller.*;
 import javax.swing.*;
+import com.toedter.calendar.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
@@ -278,12 +279,13 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         oneWayPanel.add(Next);
         Next.setBounds(710, 560, 110, 30);
         Next.setActionCommand("Next");
+        Next.addActionListener(new CustomerFlightSearchChoice(this));
 
         ArrayList<Flight> flights =  new ArrayList<Flight>();
         flights.add(new FlightDAOImpl().find(5));
         flights.add(new FlightDAOImpl().find(6));
         System.out.println(flights.get(0).getIdFlight());
-        SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
+        SearchFlightsTableModel  model = new SearchFlightsTableModel();
         searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchDeapartureFlights.setModel(model);
         searchDeapartureFlights.setFocusable(false);
@@ -309,7 +311,9 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         getContentPane().add(oneWayPanel);
         oneWayPanel.setBounds(510, 190, 820, 590);
         
-        roundTripPanel.setOpaque(false);
+        
+        
+         roundTripPanel.setOpaque(false);
         roundTripPanel.setLayout(null);
 
         NextAR.setBackground(new java.awt.Color(102, 102, 102));
@@ -436,6 +440,14 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
     public void setSearchDeapartureFlightsModel(SearchFlightsTableModel searchDeapartureFlights) {
         this.searchDeapartureFlights.setModel(searchDeapartureFlights);
+    }
+    
+    public void setSearchDepartureFlightsARModel(SearchFlightsTableModel searchDeapartureFlights) {
+        this.searchDepartureFlightsAR.setModel(searchDeapartureFlights);
+    }
+    
+    public void setSearchArrivalFlightsARModel(SearchFlightsTableModel searchDeapartureFlights) {
+        this.searchArrivalFlightsAR.setModel(searchDeapartureFlights);
     }
     
     

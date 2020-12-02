@@ -6,13 +6,36 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import model.Flight;
 
 public class PassengerView extends javax.swing.JFrame {
 
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel label;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
+
+   
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private int numberOfPassengers;
+    // End of variables declaration                
+    
     /**
      * Creates new form PassengerTest
      */
-    public PassengerView() {
+    
+    public PassengerView(Flight selectedFlight, int numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
         initComponents();
         this.setVisible(true);
         this.setSize(643,815);
@@ -43,25 +66,24 @@ public class PassengerView extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(55,112,155));
+        jPanel2.setBackground(new java.awt.Color(200, 191, 191));
         jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         jLabel1.setText("Flight Infos");
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(jLabel1);
         jLabel1.setBounds(260, 0, 160, 40);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(0, 0, 630, 290);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(200, 191, 191));
+        jPanel3.setForeground(new java.awt.Color(200, 191, 191));
         jPanel3.setLayout(null);
-        jPanel3.setPreferredSize(new Dimension(100, 5000));
+        jPanel3.setPreferredSize(new Dimension(100, 435*numberOfPassengers));
 
         ArrayList<JLabel[]> labels = new ArrayList();
         ArrayList<JTextField[]> textFields = new ArrayList();
@@ -70,7 +92,7 @@ public class PassengerView extends javax.swing.JFrame {
         int y = 10;
         int y2 = 80;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < numberOfPassengers; i++) {
 
             JLabel[] label = new JLabel[9];
             JTextField[] text = new JTextField[7];
@@ -84,7 +106,7 @@ public class PassengerView extends javax.swing.JFrame {
 
             label[0].setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
             label[0].setText("Passenger " + (i + 1));
-            label[0].setBounds(270, y, 100, 30);
+            label[0].setBounds(270, y, 120, 30);
 
             y += 70;
             label[1].setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -158,13 +180,12 @@ public class PassengerView extends javax.swing.JFrame {
 
             y2 += 40;
             textFields.add(text);
-            y2 += 110;
-
-      
             
-           
 
-            if (i == 3) {
+            System.out.println("Y+Y2 " +(y+y2));
+            System.out.println("y2 " +y2);
+           
+            if (i == numberOfPassengers-1) {
 
                 JButton jButton1 = new JButton();
 
@@ -175,9 +196,12 @@ public class PassengerView extends javax.swing.JFrame {
                 jButton1.setBorderPainted(false);
                 jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                 jButton1.setFocusable(false);
-                jButton1.setBounds(470, y, 110, 30);
+                jButton1.setBounds(470, y2, 110, 30);
 
                 jPanel3.add(jButton1);
+            }
+            else {
+                y2 += 110;
             }
         }
 
@@ -206,21 +230,5 @@ public class PassengerView extends javax.swing.JFrame {
         pack();
 
     }
-
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel label;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    // End of variables declaration                   
+   
 }
