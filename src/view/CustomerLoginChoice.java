@@ -26,7 +26,6 @@ public class CustomerLoginChoice implements ActionListener {
 
                 if (new CustomerLoginController().CustomerLoginConnection(entry[0], getMD5Hash(entry[1])) == true)
                 {
-                    System.out.println("oui");
                     frame.dispose();
                 }
                 else{

@@ -34,10 +34,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
                 new CustomerFlightSearchController(frame);
             }
             break;
-                
-                
-                
-            
+
             case "Next":
                 // new signUp();
                 if(frame.getOneWay().isSelected()) {
