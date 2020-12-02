@@ -9,7 +9,6 @@ public class SignUp extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel adress;
     private javax.swing.JTextField adressField;
     private javax.swing.JLabel birthDate;
-    private javax.swing.JTextField birthDateField;
     private javax.swing.JLabel close;
     private javax.swing.JLabel email1;
     private javax.swing.JTextField emailField;
@@ -22,10 +21,12 @@ public class SignUp extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lastName;
     private javax.swing.JTextField lastNameField;
-    private javax.swing.JLabel password1;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JLabel password;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField telephoneNulberField;
     private javax.swing.JLabel telephoneNumber;
+    private com.toedter.calendar.JDateChooser birthDateDate;
+
 
     public SignUp() {
         initComponents();
@@ -41,19 +42,20 @@ public class SignUp extends javax.swing.JFrame implements ActionListener {
         close = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         email1 = new javax.swing.JLabel();
-        password1 = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
         firstName = new javax.swing.JLabel();
         lastName = new javax.swing.JLabel();
         adress = new javax.swing.JLabel();
         birthDate = new javax.swing.JLabel();
         telephoneNumber = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
         firstNameField = new javax.swing.JTextField();
         lastNameField = new javax.swing.JTextField();
         adressField = new javax.swing.JTextField();
-        birthDateField = new javax.swing.JTextField();
         telephoneNulberField = new javax.swing.JTextField();
+        
+        birthDateDate = new com.toedter.calendar.JDateChooser();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -99,6 +101,8 @@ public class SignUp extends javax.swing.JFrame implements ActionListener {
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         jButton3.setBorderPainted(false);
         jPanel2.add(jButton3);
+        jButton3.addActionListener(this);
+        
         jButton3.setBounds(160, 450, 130, 40);
 
         email1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
@@ -106,10 +110,10 @@ public class SignUp extends javax.swing.JFrame implements ActionListener {
         jPanel2.add(email1);
         email1.setBounds(40, 50, 70, 30);
 
-        password1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        password1.setText("Password :");
-        jPanel2.add(password1);
-        password1.setBounds(40, 100, 100, 30);
+        password.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        password.setText("Password :");
+        jPanel2.add(password);
+        password.setBounds(40, 100, 100, 30);
 
         firstName.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         firstName.setText("First Name :");
@@ -139,70 +143,45 @@ public class SignUp extends javax.swing.JFrame implements ActionListener {
         emailField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         emailField.setForeground(new java.awt.Color(51, 51, 51));
         emailField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        emailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
+
         jPanel2.add(emailField);
         emailField.setBounds(230, 50, 160, 30);
 
-        passwordField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        passwordField.setForeground(new java.awt.Color(51, 51, 51));
+
+        passwordField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
         passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
+        passwordField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jPanel2.add(passwordField);
         passwordField.setBounds(230, 100, 160, 30);
 
         firstNameField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         firstNameField.setForeground(new java.awt.Color(51, 51, 51));
         firstNameField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        firstNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
+
         jPanel2.add(firstNameField);
         firstNameField.setBounds(230, 150, 160, 30);
 
         lastNameField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         lastNameField.setForeground(new java.awt.Color(51, 51, 51));
         lastNameField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        lastNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
+
         jPanel2.add(lastNameField);
         lastNameField.setBounds(230, 200, 160, 30);
 
         adressField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         adressField.setForeground(new java.awt.Color(51, 51, 51));
         adressField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        adressField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
+
         jPanel2.add(adressField);
         adressField.setBounds(230, 250, 160, 30);
 
-        birthDateField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        birthDateField.setForeground(new java.awt.Color(51, 51, 51));
-        birthDateField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        birthDateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
-        jPanel2.add(birthDateField);
-        birthDateField.setBounds(230, 300, 160, 30);
+       jPanel2.add(birthDateDate);
+        birthDateDate.setBounds(230, 300, 160, 30);
 
         telephoneNulberField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         telephoneNulberField.setForeground(new java.awt.Color(51, 51, 51));
         telephoneNulberField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        telephoneNulberField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
+
         jPanel2.add(telephoneNulberField);
         telephoneNulberField.setBounds(230, 350, 160, 30);
 
@@ -215,7 +194,11 @@ public class SignUp extends javax.swing.JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        
+
+
+
     }
 
 }

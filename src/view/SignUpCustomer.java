@@ -30,12 +30,12 @@ public class SignUpCustomer extends javax.swing.JFrame {
         birthDate = new javax.swing.JLabel();
         telephoneNumber = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
         firstNameField = new javax.swing.JTextField();
         lastNameField = new javax.swing.JTextField();
         adressField = new javax.swing.JTextField();
-        birthDateField = new javax.swing.JTextField();
         telephoneNulberField = new javax.swing.JTextField();
+        birthDateDate = new com.toedter.calendar.JDateChooser();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -127,17 +127,6 @@ public class SignUpCustomer extends javax.swing.JFrame {
         jPanel2.add(emailField);
         emailField.setBounds(230, 50, 160, 30);
 
-        passwordField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        passwordField.setForeground(new java.awt.Color(51, 51, 51));
-        passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
-            }
-        });
-        jPanel2.add(passwordField);
-        passwordField.setBounds(230, 100, 160, 30);
-
         firstNameField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         firstNameField.setForeground(new java.awt.Color(51, 51, 51));
         firstNameField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -171,17 +160,6 @@ public class SignUpCustomer extends javax.swing.JFrame {
         jPanel2.add(adressField);
         adressField.setBounds(230, 250, 160, 30);
 
-        birthDateField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        birthDateField.setForeground(new java.awt.Color(51, 51, 51));
-        birthDateField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        birthDateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                birthDateFieldActionPerformed(evt);
-            }
-        });
-        jPanel2.add(birthDateField);
-        birthDateField.setBounds(230, 300, 160, 30);
-
         telephoneNulberField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         telephoneNulberField.setForeground(new java.awt.Color(51, 51, 51));
         telephoneNulberField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -192,6 +170,14 @@ public class SignUpCustomer extends javax.swing.JFrame {
         });
         jPanel2.add(telephoneNulberField);
         telephoneNulberField.setBounds(230, 350, 160, 30);
+        jPanel2.add(birthDateDate);
+        birthDateDate.setBounds(230, 300, 160, 30);
+
+        passwordField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        passwordField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jPanel2.add(passwordField);
+        passwordField.setBounds(230, 100, 160, 30);
 
         getContentPane().add(jPanel2);
         jPanel2.setBounds(380, 0, 440, 530);
@@ -212,10 +198,6 @@ System.exit(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_emailFieldActionPerformed
 
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
-
     private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstNameFieldActionPerformed
@@ -227,10 +209,6 @@ System.exit(0);
     private void adressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adressFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adressFieldActionPerformed
-
-    private void birthDateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_birthDateFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_birthDateFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,7 +250,7 @@ System.exit(0);
     private javax.swing.JLabel adress;
     private javax.swing.JTextField adressField;
     private javax.swing.JLabel birthDate;
-    private javax.swing.JTextField birthDateField;
+    private com.toedter.calendar.JDateChooser birthDateDate;
     private javax.swing.JLabel close;
     private javax.swing.JLabel email1;
     private javax.swing.JTextField emailField;
@@ -286,7 +264,7 @@ System.exit(0);
     private javax.swing.JLabel lastName;
     private javax.swing.JTextField lastNameField;
     private javax.swing.JLabel password1;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField telephoneNulberField;
     private javax.swing.JLabel telephoneNumber;
     // End of variables declaration//GEN-END:variables
