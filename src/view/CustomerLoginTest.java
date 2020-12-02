@@ -94,7 +94,7 @@ public class CustomerLoginTest extends javax.swing.JFrame {
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         jButton2.setBorderPainted(false);
         jPanel2.add(jButton2);
-        jButton2.setBounds(150, 410, 130, 40);
+        jButton2.setBounds(80, 420, 130, 40);
 
         jButton3.setBackground(new java.awt.Color(0, 181, 204));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +102,7 @@ public class CustomerLoginTest extends javax.swing.JFrame {
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         jButton3.setBorderPainted(false);
         jPanel2.add(jButton3);
-        jButton3.setBounds(160, 210, 130, 40);
+        jButton3.setBounds(260, 420, 130, 40);
 
         jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {

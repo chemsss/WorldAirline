@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import model.*;
 import controller.*;
 import javax.swing.*;
-import com.toedter.calendar.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
@@ -310,9 +309,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         getContentPane().add(oneWayPanel);
         oneWayPanel.setBounds(510, 190, 820, 590);
         
-        
-        
-         roundTripPanel.setOpaque(false);
+        roundTripPanel.setOpaque(false);
         roundTripPanel.setLayout(null);
 
         NextAR.setBackground(new java.awt.Color(102, 102, 102));

@@ -7,10 +7,7 @@ package controller;
 import javax.swing.JPanel;
 import view.CustomerHomeFlightSearch;
 
-/**
- *
- * @author Chems
- */
+
 public class CustomerFlightSearchController {
     
     JPanel searchResultPanel;
@@ -20,12 +17,10 @@ public class CustomerFlightSearchController {
         this.searchResultPanel = searchResultPanel;
     }
     
-    public void flightSearchResult() {
-        
-        
+    public void flightSearchResult() { 
         
     }
     
-    
+   // public boolean 
     
 }
