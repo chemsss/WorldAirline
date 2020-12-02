@@ -323,11 +323,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         NextAR.setBorderPainted(false);
         NextAR.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         NextAR.setFocusable(false);
-        NextAR.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
+        NextAR.setActionCommand("Next");
+        NextAR.addActionListener(new CustomerFlightSearchChoice(this));
         roundTripPanel.add(NextAR);
         NextAR.setBounds(710, 560, 110, 30);
 
@@ -438,6 +435,14 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         return searchDeapartureFlights;
     }
 
+    public JTable getSearchDepartureFlightsAR() {
+        return searchDepartureFlightsAR;
+    }
+
+    public JTable getSearchArrivalFlightsAR() {
+        return searchArrivalFlightsAR;
+    }
+    
     public void setSearchDeapartureFlightsModel(SearchFlightsTableModel searchDeapartureFlights) {
         this.searchDeapartureFlights.setModel(searchDeapartureFlights);
     }

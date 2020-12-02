@@ -31,7 +31,7 @@ public class PassengerView extends javax.swing.JFrame {
     /**
      * Creates new form PassengerTest
      */
-    public PassengerView(Flight selectedFlight, int numberOfPassengers) {
+    public PassengerView(ArrayList<Flight> flights, int numberOfPassengers) {
         this.numberOfPassengers = numberOfPassengers;
         initComponents();
         this.setVisible(true);
