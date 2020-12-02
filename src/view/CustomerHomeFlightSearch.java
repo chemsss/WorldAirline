@@ -29,7 +29,10 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     private JTable searchDeapartureFlights,searchDepartureFlightsAR,searchArrivalFlightsAR;
     private ActionListener controller;
     
-    public CustomerHomeFlightSearch() {
+    private CustomerAccount loggedInCustomer;
+    
+    public CustomerHomeFlightSearch(CustomerAccount customer) {
+        loggedInCustomer = customer;
         initComponents();
         this.setSize(1920,1080);
         this.setVisible(true);
