@@ -1,7 +1,7 @@
 package view;
 
 public class SignUp extends javax.swing.JFrame {
-   
+
     // Variables declaration - do not modify                     
     private javax.swing.JLabel adress;
     private javax.swing.JTextField adressField;
@@ -29,7 +29,6 @@ public class SignUp extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -60,7 +59,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 181, 204));
         jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("img\\output-onlinepngtools (5).png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("img\\plane_white.png"));
         jPanel1.add(jLabel1);
         jLabel1.setBounds(50, 100, 280, 260);
 
@@ -83,6 +82,9 @@ public class SignUp extends javax.swing.JFrame {
         close.setText("X");
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
+
+                dispose();
+
             }
         });
         jPanel2.add(close);
@@ -207,6 +209,5 @@ public class SignUp extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(822, 526));
         setLocationRelativeTo(null);
     }
-      
 
 }
