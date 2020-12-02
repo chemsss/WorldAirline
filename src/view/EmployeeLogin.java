@@ -47,7 +47,7 @@ public class EmployeeLogin extends JFrame {
         jPanel1.setBackground(new Color(255, 0, 0));
         jPanel1.setLayout(null);
 
-       jLabel1.setIcon(new javax.swing.ImageIcon("img\\output-onlinepngtools (5).png")); // NOI18N
+       jLabel1.setIcon(new javax.swing.ImageIcon("img\\employee.png")); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(50, 100, 280, 260);
 
