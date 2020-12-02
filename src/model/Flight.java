@@ -1,5 +1,6 @@
 package model;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -105,4 +106,17 @@ public class Flight {
         
     }
     
+    public String getDepartureDateTimeToString()
+    {
+        String timeStamp = new SimpleDateFormat("dd-MMM-yy hh:mm a").format(departureDate);
+        
+        return timeStamp;
+    }
+    
+     public String getArrivalDateTimeToString()
+    {
+        String timeStamp = new SimpleDateFormat("dd-MMM-yy hh:mm a").format(arrivalDate);
+        
+        return timeStamp;
+    }
 }

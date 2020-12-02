@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import view.CustomerHomeFlightSearch;
 import model.*;
 import controller.SearchFlightsTableModel;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
@@ -44,7 +45,10 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     int idFlight = Integer.parseInt(stringIdFlight);
                     System.out.println("FLIGHT ID : "+stringIdFlight);
                     //Flight selectedFlight = FlightController.getFlight(frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1))
-                    Flight selectedFlight = FlightController.getFlight(idFlight);
+                    ArrayList<Flight> selectedFlight = new ArrayList();
+                    selectedFlight.add(FlightController.getFlight(idFlight));
+                    selectedFlight.add(FlightController.getFlight(idFlight));
+                   
                     new PassengerView(selectedFlight, frame.getSelectPassenger());
                 }
                 
