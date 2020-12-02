@@ -34,7 +34,7 @@ public class CustomerLoginChoice implements ActionListener {
             }
             break;
 
-            case "sign up":
+            case "Sign up":
                 // new signUp();
                 frame.dispose(); // on ferme la fenetre actuelle
                 break;

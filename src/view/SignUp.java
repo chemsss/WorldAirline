@@ -26,6 +26,7 @@ public class SignUp extends javax.swing.JFrame {
 
     public SignUp() {
         initComponents();
+        this.setVisible(true);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -59,7 +60,7 @@ public class SignUp extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 181, 204));
         jPanel1.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\output-onlinepngtools (5).png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("img\\output-onlinepngtools (5).png")); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(50, 100, 280, 260);
 
