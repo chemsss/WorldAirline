@@ -159,7 +159,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
         departure.setFont(new Font("Yu Gothic UI", 0, 12)); // NOI18N
         departure.setIcon(new ImageIcon("img\\calendar.png")); // NOI18N
-        departure.setText("Departure");
+        departure.setText("Depart");
         jPanel1.add(departure);
         departure.setBounds(30, 170, 80, 40);
        
@@ -168,7 +168,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         
         arrival.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         arrival.setIcon(new javax.swing.ImageIcon("img\\calendar.png")); // NOI18N
-        arrival.setText("Arrival");
+        arrival.setText("Return");
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
 
@@ -304,7 +304,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
         departureAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureAR.setForeground(new java.awt.Color(255, 255, 255));
-        departureAR.setText("Departure>>");
+        departureAR.setText("Depart>>");
         oneWayPanel.add(departureAR);
         departureAR.setBounds(0, 0, 150, 30);
 
@@ -368,13 +368,13 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
         departureAR1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureAR1.setForeground(new java.awt.Color(255, 255, 255));
-        departureAR1.setText("Departure>>");
+        departureAR1.setText("Depart>>");
         roundTripPanel.add(departureAR1);
         departureAR1.setBounds(0, 0, 150, 30);
 
         arrivalAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         arrivalAR.setForeground(new java.awt.Color(255, 255, 255));
-        arrivalAR.setText("Arrival<<");
+        arrivalAR.setText("Return<<");
         roundTripPanel.add(arrivalAR);
         arrivalAR.setBounds(0, 270, 150, 40);
 
