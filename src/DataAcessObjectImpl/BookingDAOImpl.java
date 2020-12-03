@@ -4,7 +4,6 @@ import model.Booking;
 import java.sql.*;
 import java.util.ArrayList;
 
-
 /**
  *
  * @author Unknow
@@ -55,6 +54,24 @@ public class BookingDAOImpl implements BookingDAO {
         }
         
         return bookings;
+    }
+
+    public boolean add(Date bookingDate, int idAccount) {
+                
+        try {
+            PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `booking` (`bookingDate`, `customerAccount_idaccount`) VALUES (?, ?);");
+            myPrepStmt.setDate(1, bookingDate);
+            myPrepStmt.setInt(2, idAccount);
+            
+            myPrepStmt.executeUpdate();
+            
+            return true;
+                
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
     }
 
 }

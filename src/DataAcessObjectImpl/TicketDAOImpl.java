@@ -48,5 +48,32 @@ public class TicketDAOImpl implements TicketDAO {
         return tickets;
 
     }
+    
+    
+    public boolean add(int bookingNo, int idPassenger, int flightSeatNo, int idFlight) {
+                
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" +flightSeatNo + ";");
+            if(myRs.first()) {
+                System.out.println("Ticket for the seat n°" +flightSeatNo +" in the flight n°" +idFlight +" already exists.");
+                return false;
+            }
+            PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `ticket` (`booking_bookingNo`, `passenger_idPassenger`, `flightSeat_seatNo`, `flight_idFlight`) VALUES (?, ?, ?, ?);");
+            myPrepStmt.setInt(1, bookingNo);
+            myPrepStmt.setInt(2, idPassenger);
+            myPrepStmt.setInt(3, flightSeatNo);
+            myPrepStmt.setInt(4, idFlight);
+
+            myPrepStmt.executeUpdate();
+            
+            return true;
+                
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+    }
 
 }
