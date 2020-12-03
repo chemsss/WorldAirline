@@ -60,6 +60,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     System.out.println("FLIGHT ID : "+idDepartureFlight + " ARRIVAL FLIGHT ID : " +idArrivalFlight);
                     Flight selectedDepFlight = FlightController.getFlight(idDepartureFlight);
                     Flight selectedArrFlight = FlightController.getFlight(idArrivalFlight);
+                   
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedDepFlight);
                     flights.add(selectedArrFlight);

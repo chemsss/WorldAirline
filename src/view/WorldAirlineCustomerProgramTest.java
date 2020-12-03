@@ -21,7 +21,9 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
     
     public WorldAirlineCustomerProgramTest() {
         initComponents();
-        this.setSize(1920,1080);
+
+
+
         
     }
 
@@ -35,6 +37,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        myAccount = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         oneWay = new javax.swing.JRadioButton();
         economyClass = new javax.swing.JRadioButton();
@@ -73,6 +76,20 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
+
+        myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        myAccount.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\Icon-Small-50.png")); // NOI18N
+        myAccount.setText(" My account");
+        myAccount.setActionCommand(" My account");
+        myAccount.setBorder(null);
+        myAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        myAccount.setFocusable(false);
+        myAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        myAccount.setOpaque(false);
+        myAccount.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        myAccount.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(myAccount);
+        myAccount.setBounds(1260, 60, 140, 80);
 
         jPanel1.setBackground(new java.awt.Color(200, 191, 191));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -129,6 +146,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
 
+        fromDeparture.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         fromDeparture.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         fromDeparture.setOpaque(false);
         jPanel1.add(fromDeparture);
@@ -227,10 +245,13 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(60, 230, 360, 500);
 
+        worldWride.setBackground(new java.awt.Color(255, 255, 255));
         worldWride.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 110)); // NOI18N
+        worldWride.setForeground(new java.awt.Color(255, 255, 255));
+        worldWride.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         worldWride.setText("WorldAirline");
         getContentPane().add(worldWride);
-        worldWride.setBounds(530, 10, 580, 110);
+        worldWride.setBounds(230, 40, 730, 110);
 
         roundTripPanel.setOpaque(false);
         roundTripPanel.setLayout(null);
@@ -311,6 +332,8 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         getContentPane().add(roundTripPanel);
         roundTripPanel.setBounds(510, 190, 820, 590);
 
+        backGround.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        backGround.setForeground(new java.awt.Color(51, 102, 255));
         backGround.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\planeProgram.jpg")); // NOI18N
         getContentPane().add(backGround);
         backGround.setBounds(0, -50, 1920, 1380);
@@ -449,6 +472,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
     private javax.swing.JLabel from;
     private javax.swing.JComboBox<String> fromDeparture;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton myAccount;
     private javax.swing.JRadioButton oneWay;
     private javax.swing.JPanel oneWayPanel;
     private javax.swing.JLabel passengers;
