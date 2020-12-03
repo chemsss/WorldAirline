@@ -26,6 +26,8 @@ public class CustomerAccount extends Account {
         this.ageCategory = ageCategory;
     }
 
+    
+
     @Override
     public String toString() {
         return "CustomerAccount{" +super.toString() +"ageCategory=" + ageCategory + ", bookings=" + bookings + '}';

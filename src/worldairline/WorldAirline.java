@@ -13,16 +13,20 @@ public class WorldAirline {
     public static void main(String[] args) {
         
          
-        //MainMenu menu = new MainMenu();
-       //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
-        //CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch();
-        if(new TicketDAOImpl().add(3, 4, 4, 3)==false) {
-            System.out.println("non.");
-        }
-        if(new BookingDAOImpl().add(new Date(120, 11, 15), 5)==false) {
-            System.out.println("nooon.");
-        } 
+       // MainMenu menu = new MainMenu();
         
+       //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
+       
+      
+      CustomerAccount customer = new CustomerAccount("Child","capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
+               new Date(109,03,04),"+33 6 89024763");
+
+      
+       CustomerAccount cm=null;
+        CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
+        
+        //Flight flight;
+        // System.out.println(flight);
                 
     }
     

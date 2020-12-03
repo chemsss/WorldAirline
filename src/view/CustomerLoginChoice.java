@@ -38,6 +38,11 @@ public class CustomerLoginChoice implements ActionListener {
             case "Sign up":
                 new SignUp();
                 break;
+                
+            case "My Account":
+                //new SignUp();
+                break;
+                   
 
         }
 
