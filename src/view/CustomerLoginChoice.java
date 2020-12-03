@@ -1,6 +1,6 @@
 package view;
 
-import controller.CustomerLoginController;
+import controller.CustomerController;
 import java.awt.event.*;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -24,10 +24,10 @@ public class CustomerLoginChoice implements ActionListener {
                 System.out.println("mail :" + entry[0]);
                 System.out.println("pssd :" + entry[1]);
 
-                if (new CustomerLoginController().CustomerLoginConnection(entry[0], getMD5Hash(entry[1])) == true)
+                if (new CustomerController().CustomerLoginConnection(entry[0], getMD5Hash(entry[1])) == true)
                 {
                     frame.dispose();
-                    new CustomerHomeFlightSearch(new CustomerLoginController().getCustomerAccount(entry[0], getMD5Hash(entry[1])));
+                    new CustomerHomeFlightSearch(new CustomerController().getCustomerAccount(entry[0], getMD5Hash(entry[1])));
                 }
                 else{
                   JOptionPane.showMessageDialog(null, "Wrong email/password, please retry ", "", JOptionPane.ERROR_MESSAGE);

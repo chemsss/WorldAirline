@@ -144,16 +144,10 @@ private String getMonitorSizes() {
         roundTrip.setBounds(30, 20, 120, 30);
 
         myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        myAccount.setIcon(new javax.swing.ImageIcon("img\\Icon-Small-50.png")); // NOI18N
-        myAccount.setText(" My account");
-        myAccount.setActionCommand("Logged");
-        myAccount.addActionListener(new CustomerFlightSearchChoice(this));
-        
-        
-        /*
+        myAccount.setIcon(new javax.swing.ImageIcon("img\\male_user_70px.png")); // NOI18N
+        myAccount.addActionListener((new CustomerFlightSearchChoice(this)));
         if(loggedInCustomer!=null)
         {
-            System.out.println("chems");
             myAccount.setText(" My account");
             myAccount.setActionCommand("Logged");
         }
@@ -165,7 +159,7 @@ private String getMonitorSizes() {
               myAccount.setActionCommand("Unlogged");
 
         }
-        */  
+        
         
         myAccount.setBorder(null);
         myAccount.setFocusable(false);
@@ -176,7 +170,7 @@ private String getMonitorSizes() {
         getContentPane().add(myAccount);
         myAccount.setContentAreaFilled(false);
         myAccount.setBorderPainted(false);
-        myAccount.setBounds(screenWidth-150, 50, 140, 80);
+        myAccount.setBounds(screenWidth-180, 50, 200, 200);
         myAccount.setCursor(new Cursor(Cursor.HAND_CURSOR));
        
         roundTrip.setSelected(true);
@@ -236,8 +230,8 @@ private String getMonitorSizes() {
         departure.setBounds(30, 170, 80, 40);
 
         jPanel1.add(departureDate);
-        departureDate.setBounds(130, 180, 110, 20);
-
+        departureDate.setBounds(130, 175, 155, 23);
+        departureDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         arrival.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         arrival.setIcon(new javax.swing.ImageIcon("img\\calendar.png")); // NOI18N
         arrival.setText("Return");
@@ -245,7 +239,9 @@ private String getMonitorSizes() {
         arrival.setBounds(30, 210, 80, 40);
 
         jPanel1.add(arrivalDate);
-        arrivalDate.setBounds(130, 220, 110, 20);
+        arrivalDate.setBounds(130, 215,155, 23);
+        arrivalDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+
 
         passengers.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         passengers.setIcon(new javax.swing.ImageIcon("img\\users.png")); // NOI18N
@@ -351,7 +347,9 @@ private String getMonitorSizes() {
         flights.add(new FlightDAOImpl().find(5));
         flights.add(new FlightDAOImpl().find(6));
         System.out.println(flights.get(0).getIdFlight());
+       
         SearchFlightsTableModel model = new SearchFlightsTableModel();
+        
         searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchDeapartureFlights.setModel(model);
         searchDeapartureFlights.setFocusable(false);
@@ -409,7 +407,7 @@ private String getMonitorSizes() {
         DepartureScrollPaneAR.setViewportView(searchDepartureFlightsAR);
 
         roundTripPanel.add(DepartureScrollPaneAR);
-        DepartureScrollPaneAR.setBounds(0, 310, 860, 230);
+        DepartureScrollPaneAR.setBounds(0, 310, 820, 230);
 
         //   ArrayList<Flight> flights =  new ArrayList<Flight>();
         //flights.add(new FlightDAOImpl().find(5));
@@ -428,7 +426,7 @@ private String getMonitorSizes() {
         ArrivalScrollPaneAR.setViewportView(searchArrivalFlightsAR);
 
         roundTripPanel.add(ArrivalScrollPaneAR);
-        ArrivalScrollPaneAR.setBounds(0, 40, 860, 230);
+        ArrivalScrollPaneAR.setBounds(0, 40, 820, 230);
 
         departureAR1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureAR1.setForeground(new java.awt.Color(255, 255, 255));

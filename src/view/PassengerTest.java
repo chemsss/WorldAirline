@@ -56,6 +56,30 @@ public class PassengerTest extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        panelMyaccount = new javax.swing.JPanel();
+        myAccount = new javax.swing.JLabel();
+        personalInfo = new javax.swing.JButton();
+        personalInfo1 = new javax.swing.JButton();
+        myPersonalInfos = new javax.swing.JPanel();
+        email = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
+        firstName = new javax.swing.JLabel();
+        lastName = new javax.swing.JLabel();
+        adress = new javax.swing.JLabel();
+        birthDate = new javax.swing.JLabel();
+        ageCategory = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
+        firstNameField = new javax.swing.JTextField();
+        lastNameField = new javax.swing.JTextField();
+        adressField = new javax.swing.JTextField();
+        telephoneNulberField = new javax.swing.JTextField();
+        birthDateDate = new com.toedter.calendar.JDateChooser();
+        passwordField = new javax.swing.JPasswordField();
+        myPersonalInfo = new javax.swing.JLabel();
+        previous = new javax.swing.JButton();
+        telephoneNumber = new javax.swing.JLabel();
+        ageCategory1 = new javax.swing.JLabel();
+        save1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -235,6 +259,207 @@ public class PassengerTest extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 300, 630, 480);
 
+        panelMyaccount.setBackground(new java.awt.Color(55, 112, 155));
+        panelMyaccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelMyaccount.setLayout(null);
+
+        myAccount.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myAccount.setForeground(new java.awt.Color(255, 255, 255));
+        myAccount.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\user_white.png")); // NOI18N
+        myAccount.setText("My Account");
+        myAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        myAccount.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        panelMyaccount.add(myAccount);
+        myAccount.setBounds(190, 20, 160, 150);
+
+        personalInfo.setBackground(new java.awt.Color(255, 255, 255));
+        personalInfo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        personalInfo.setText("My Bookings");
+        personalInfo.setBorder(null);
+        personalInfo.setBorderPainted(false);
+        personalInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelMyaccount.add(personalInfo);
+        personalInfo.setBounds(140, 300, 230, 40);
+
+        personalInfo1.setBackground(new java.awt.Color(255, 255, 255));
+        personalInfo1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        personalInfo1.setText("My Personal Information");
+        personalInfo1.setBorder(null);
+        personalInfo1.setBorderPainted(false);
+        personalInfo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelMyaccount.add(personalInfo1);
+        personalInfo1.setBounds(140, 230, 230, 40);
+
+        getContentPane().add(panelMyaccount);
+        panelMyaccount.setBounds(0, 0, 530, 460);
+
+        myPersonalInfos.setBackground(new java.awt.Color(55, 112, 155));
+        myPersonalInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        myPersonalInfos.setLayout(null);
+
+        email.setBackground(new java.awt.Color(255, 255, 255));
+        email.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        email.setForeground(new java.awt.Color(255, 255, 255));
+        email.setText("Email :");
+        myPersonalInfos.add(email);
+        email.setBounds(80, 110, 70, 30);
+
+        password.setBackground(new java.awt.Color(255, 255, 255));
+        password.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setText("Password :");
+        myPersonalInfos.add(password);
+        password.setBounds(80, 160, 100, 30);
+
+        firstName.setBackground(new java.awt.Color(255, 255, 255));
+        firstName.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        firstName.setForeground(new java.awt.Color(255, 255, 255));
+        firstName.setText("First Name :");
+        myPersonalInfos.add(firstName);
+        firstName.setBounds(80, 210, 100, 30);
+
+        lastName.setBackground(new java.awt.Color(255, 255, 255));
+        lastName.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        lastName.setForeground(new java.awt.Color(255, 255, 255));
+        lastName.setText("Last Name :");
+        myPersonalInfos.add(lastName);
+        lastName.setBounds(80, 260, 100, 30);
+
+        adress.setBackground(new java.awt.Color(255, 255, 255));
+        adress.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        adress.setForeground(new java.awt.Color(255, 255, 255));
+        adress.setText("Adress :");
+        myPersonalInfos.add(adress);
+        adress.setBounds(80, 310, 100, 30);
+
+        birthDate.setBackground(new java.awt.Color(255, 255, 255));
+        birthDate.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        birthDate.setForeground(new java.awt.Color(255, 255, 255));
+        birthDate.setText("Birth date :");
+        myPersonalInfos.add(birthDate);
+        birthDate.setBounds(80, 360, 100, 30);
+
+        ageCategory.setBackground(new java.awt.Color(255, 255, 255));
+        ageCategory.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        ageCategory.setForeground(new java.awt.Color(255, 255, 255));
+        ageCategory.setText("Age category");
+        myPersonalInfos.add(ageCategory);
+        ageCategory.setBounds(270, 460, 110, 30);
+
+        emailField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        emailField.setForeground(new java.awt.Color(51, 51, 51));
+        emailField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        emailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailFieldActionPerformed(evt);
+            }
+        });
+        myPersonalInfos.add(emailField);
+        emailField.setBounds(270, 110, 160, 30);
+
+        firstNameField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        firstNameField.setForeground(new java.awt.Color(51, 51, 51));
+        firstNameField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        firstNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameFieldActionPerformed(evt);
+            }
+        });
+        myPersonalInfos.add(firstNameField);
+        firstNameField.setBounds(270, 210, 160, 30);
+
+        lastNameField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        lastNameField.setForeground(new java.awt.Color(51, 51, 51));
+        lastNameField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        lastNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastNameFieldActionPerformed(evt);
+            }
+        });
+        myPersonalInfos.add(lastNameField);
+        lastNameField.setBounds(270, 260, 160, 30);
+
+        adressField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        adressField.setForeground(new java.awt.Color(51, 51, 51));
+        adressField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        adressField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adressFieldActionPerformed(evt);
+            }
+        });
+        myPersonalInfos.add(adressField);
+        adressField.setBounds(270, 310, 160, 30);
+
+        telephoneNulberField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        telephoneNulberField.setForeground(new java.awt.Color(51, 51, 51));
+        telephoneNulberField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        telephoneNulberField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telephoneNulberFieldActionPerformed(evt);
+            }
+        });
+        myPersonalInfos.add(telephoneNulberField);
+        telephoneNulberField.setBounds(270, 410, 160, 30);
+        myPersonalInfos.add(birthDateDate);
+        birthDateDate.setBounds(270, 360, 160, 30);
+
+        passwordField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        passwordField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        myPersonalInfos.add(passwordField);
+        passwordField.setBounds(270, 160, 160, 30);
+
+        myPersonalInfo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myPersonalInfo.setForeground(new java.awt.Color(255, 255, 255));
+        myPersonalInfo.setText("My Personal Information");
+        myPersonalInfos.add(myPersonalInfo);
+        myPersonalInfo.setBounds(130, 20, 260, 30);
+
+        previous.setBackground(new java.awt.Color(255, 255, 255));
+        previous.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous.setText("Previous");
+        previous.setBorder(null);
+        previous.setBorderPainted(false);
+        previous.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousActionPerformed(evt);
+            }
+        });
+        myPersonalInfos.add(previous);
+        previous.setBounds(3, 555, 40, 20);
+
+        telephoneNumber.setBackground(new java.awt.Color(255, 255, 255));
+        telephoneNumber.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        telephoneNumber.setForeground(new java.awt.Color(255, 255, 255));
+        telephoneNumber.setText("Telephone number :");
+        myPersonalInfos.add(telephoneNumber);
+        telephoneNumber.setBounds(80, 410, 170, 30);
+
+        ageCategory1.setBackground(new java.awt.Color(255, 255, 255));
+        ageCategory1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        ageCategory1.setForeground(new java.awt.Color(255, 255, 255));
+        ageCategory1.setText("Age category :");
+        myPersonalInfos.add(ageCategory1);
+        ageCategory1.setBounds(80, 460, 170, 30);
+
+        save1.setBackground(new java.awt.Color(255, 255, 255));
+        save1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        save1.setText("Save");
+        save1.setBorder(null);
+        save1.setBorderPainted(false);
+        save1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        save1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save1ActionPerformed(evt);
+            }
+        });
+        myPersonalInfos.add(save1);
+        save1.setBounds(220, 520, 90, 30);
+
+        getContentPane().add(myPersonalInfos);
+        myPersonalInfos.setBounds(0, 0, 530, 580);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,6 +474,34 @@ public class PassengerTest extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailFieldActionPerformed
+
+    private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstNameFieldActionPerformed
+
+    private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastNameFieldActionPerformed
+
+    private void adressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adressFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adressFieldActionPerformed
+
+    private void telephoneNulberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telephoneNulberFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telephoneNulberFieldActionPerformed
+
+    private void previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_previousActionPerformed
+
+    private void save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_save1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,18 +539,28 @@ public class PassengerTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adress;
+    private javax.swing.JTextField adressField;
+    private javax.swing.JLabel ageCategory;
+    private javax.swing.JLabel ageCategory1;
     private javax.swing.JLabel arrival;
     private javax.swing.JLabel arrival1;
     private javax.swing.JLabel arrivalAirport1;
     private javax.swing.JLabel arrivalAirport2;
     private javax.swing.JLabel arrivalDateTime;
     private javax.swing.JLabel arrivalDateTime1;
+    private javax.swing.JLabel birthDate;
+    private com.toedter.calendar.JDateChooser birthDateDate;
     private javax.swing.JLabel departurAirport1;
     private javax.swing.JLabel departurAirport2;
     private javax.swing.JLabel departure;
     private javax.swing.JLabel departure1;
     private javax.swing.JLabel departureDateTime;
     private javax.swing.JLabel departureDateTime1;
+    private javax.swing.JLabel email;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel firstName;
+    private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel from;
     private javax.swing.JLabel from1;
     private javax.swing.JLabel jLabel1;
@@ -311,6 +574,20 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel lastName;
+    private javax.swing.JTextField lastNameField;
+    private javax.swing.JLabel myAccount;
+    private javax.swing.JLabel myPersonalInfo;
+    private javax.swing.JPanel myPersonalInfos;
+    private javax.swing.JPanel panelMyaccount;
+    private javax.swing.JLabel password;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JButton personalInfo;
+    private javax.swing.JButton personalInfo1;
+    private javax.swing.JButton previous;
+    private javax.swing.JButton save1;
+    private javax.swing.JTextField telephoneNulberField;
+    private javax.swing.JLabel telephoneNumber;
     private javax.swing.JLabel to;
     private javax.swing.JLabel to1;
     // End of variables declaration//GEN-END:variables

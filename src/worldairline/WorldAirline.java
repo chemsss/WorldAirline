@@ -5,28 +5,39 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.*;
 import java.security.MessageDigest;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import view.*;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel; 
+
 
 public class WorldAirline {
 
 
     public static void main(String[] args) {
         
-         
-       // MainMenu menu = new MainMenu();
-        
-       //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
-       
-      
-      CustomerAccount customer = new CustomerAccount("Child","capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
-               new Date(109,03,04),"+33 6 89024763");
-
-      
-       CustomerAccount cm=null;
-        CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
-        
-        //Flight flight;
-        // System.out.println(flight);
+        try {
+            UIManager.setLookAndFeel(new NimbusLookAndFeel());
+            
+            MainMenu menu = new MainMenu();
+            
+            //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
+            
+            
+            CustomerAccount customer = new CustomerAccount(7,"Child","capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
+                    new Date(109,03,04),"+33 6 89024763");
+            
+            
+            CustomerAccount cm=null;
+            CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
+            
+            //Flight flight;
+            // System.out.println(flight);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(WorldAirline.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 
     }
     

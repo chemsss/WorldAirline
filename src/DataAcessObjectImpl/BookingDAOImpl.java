@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class BookingDAOImpl implements BookingDAO {
 
     @Override
-    public Booking find(int bookingNo) { //A FINIR
+    public Booking find(int bookingNo) {
 
         Booking booking = null;
 
@@ -34,6 +34,7 @@ public class BookingDAOImpl implements BookingDAO {
     
     public ArrayList<Booking> findByIdCustomerAccount(int idCustomerAccount) {
         
+                         System.out.println("test dao booking");
         ArrayList<Booking> bookings = null;
         
         try {
@@ -49,11 +50,10 @@ public class BookingDAOImpl implements BookingDAO {
                 }
                 bookings.add(new Booking(myRs.getInt("bookingNo"), myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(myRs.getInt("bookingNo"))));
             }
-            
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         }
-        
+       
         return bookings;
     }
 

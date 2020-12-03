@@ -74,6 +74,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
             break;
 
             case "Unlogged": {
+                System.out.println("fghjkl");
                 new CustomerLogin();
             }
 

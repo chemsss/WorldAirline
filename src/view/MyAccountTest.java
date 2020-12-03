@@ -27,69 +27,98 @@ public class MyAccountTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        myAccount = new javax.swing.JLabel();
-        personalInfo = new javax.swing.JButton();
-        personalInfo1 = new javax.swing.JButton();
+        myBookingsPanel = new javax.swing.JPanel();
+        myBookings = new javax.swing.JLabel();
+        previous2 = new javax.swing.JButton();
+        bookingScrollPane = new javax.swing.JScrollPane();
+        myBookingsTable = new javax.swing.JTable();
+        getBooking = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(55, 112, 155));
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(55, 112, 155));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.setLayout(null);
+        myBookingsPanel.setBackground(new java.awt.Color(55, 112, 155));
+        myBookingsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        myBookingsPanel.setLayout(null);
 
-        myAccount.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myAccount.setForeground(new java.awt.Color(255, 255, 255));
-        myAccount.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\input-onlinepngtools.png")); // NOI18N
-        myAccount.setText("My Account");
-        myAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        myAccount.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(myAccount);
-        myAccount.setBounds(190, 20, 160, 150);
+        myBookings.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myBookings.setForeground(new java.awt.Color(255, 255, 255));
+        myBookings.setText("My Bookings");
+        myBookingsPanel.add(myBookings);
+        myBookings.setBounds(200, 10, 140, 40);
 
-        personalInfo.setBackground(new java.awt.Color(255, 255, 255));
-        personalInfo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        personalInfo.setText("My Bookings");
-        personalInfo.setBorder(null);
-        personalInfo.setBorderPainted(false);
-        personalInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        personalInfo.addActionListener(new java.awt.event.ActionListener() {
+        previous2.setBackground(new java.awt.Color(255, 255, 255));
+        previous2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous2.setText("Previous");
+        previous2.setBorder(null);
+        previous2.setBorderPainted(false);
+        previous2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                personalInfoActionPerformed(evt);
+                previous2ActionPerformed(evt);
             }
         });
-        jPanel1.add(personalInfo);
-        personalInfo.setBounds(140, 300, 230, 40);
+        myBookingsPanel.add(previous2);
+        previous2.setBounds(3, 555, 40, 20);
 
-        personalInfo1.setBackground(new java.awt.Color(255, 255, 255));
-        personalInfo1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        personalInfo1.setText("My Personal Information");
-        personalInfo1.setBorder(null);
-        personalInfo1.setBorderPainted(false);
-        personalInfo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        personalInfo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                personalInfo1ActionPerformed(evt);
+        myBookingsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        myBookingsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jPanel1.add(personalInfo1);
-        personalInfo1.setBounds(140, 230, 230, 40);
+        myBookingsTable.setToolTipText("");
+        myBookingsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
+        myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        myBookingsTable.setShowGrid(true);
+        bookingScrollPane.setViewportView(myBookingsTable);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 530, 510);
+        myBookingsPanel.add(bookingScrollPane);
+        bookingScrollPane.setBounds(25, 90, 480, 390);
+
+        getBooking.setBackground(new java.awt.Color(255, 255, 255));
+        getBooking.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        getBooking.setText("Get Booking tickets");
+        getBooking.setBorder(null);
+        getBooking.setBorderPainted(false);
+        getBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getBookingActionPerformed(evt);
+            }
+        });
+        myBookingsPanel.add(getBooking);
+        getBooking.setBounds(170, 520, 190, 30);
+
+        getContentPane().add(myBookingsPanel);
+        myBookingsPanel.setBounds(0, 0, 530, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void personalInfo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalInfo1ActionPerformed
+    private void previous2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_personalInfo1ActionPerformed
+    }//GEN-LAST:event_previous2ActionPerformed
 
-    private void personalInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalInfoActionPerformed
+    private void getBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBookingActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_personalInfoActionPerformed
+    }//GEN-LAST:event_getBookingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,9 +157,11 @@ public class MyAccountTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel myAccount;
-    private javax.swing.JButton personalInfo;
-    private javax.swing.JButton personalInfo1;
+    private javax.swing.JScrollPane bookingScrollPane;
+    private javax.swing.JButton getBooking;
+    private javax.swing.JLabel myBookings;
+    private javax.swing.JPanel myBookingsPanel;
+    private javax.swing.JTable myBookingsTable;
+    private javax.swing.JButton previous2;
     // End of variables declaration//GEN-END:variables
 }

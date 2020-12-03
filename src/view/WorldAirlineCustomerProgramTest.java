@@ -291,7 +291,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         DepartureScrollPaneAR.setViewportView(searchDeapartureFlightsAR);
 
         roundTripPanel.add(DepartureScrollPaneAR);
-        DepartureScrollPaneAR.setBounds(0, 310, 860, 230);
+        DepartureScrollPaneAR.setBounds(0, 310, 820, 230);
 
         searchArrivalFlightsAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchArrivalFlightsAR.setModel(new javax.swing.table.DefaultTableModel(
@@ -314,7 +314,7 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         ArrivalScrollPaneAR.setViewportView(searchArrivalFlightsAR);
 
         roundTripPanel.add(ArrivalScrollPaneAR);
-        ArrivalScrollPaneAR.setBounds(0, 40, 860, 230);
+        ArrivalScrollPaneAR.setBounds(0, 40, 820, 230);
 
         departureAR1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureAR1.setForeground(new java.awt.Color(255, 255, 255));

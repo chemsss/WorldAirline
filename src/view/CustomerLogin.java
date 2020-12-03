@@ -44,7 +44,7 @@ public class CustomerLogin extends JFrame {
         setUndecorated(true);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new Color(0, 181, 204));
+        jPanel1.setBackground(new Color(55,112,155));
         jPanel1.setLayout(null);
 
         jLabel1.setIcon(new ImageIcon("img\\plane_white.png")); // NOI18N
@@ -66,7 +66,7 @@ public class CustomerLogin extends JFrame {
 
         jLabel2.setBackground(new Color(255, 255, 255));
         jLabel2.setFont(new Font("Tahoma", 1, 25)); // NOI18N
-        jLabel2.setForeground(new Color(0, 181, 204));
+        jLabel2.setForeground(new Color(55,112,155));
         jLabel2.setText("X");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(410, 0, 30, 40);
@@ -116,7 +116,7 @@ public class CustomerLogin extends JFrame {
         jPanel2.add(jButton1);
         jButton1.setBounds(280, 490, 150, 30);
 
-        jButton2.setBackground(new Color(0, 181, 204));
+        jButton2.setBackground(new Color(55,112,155));
         jButton2.setForeground(new Color(255, 255, 255));
         jButton2.setText("Login");
         jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
@@ -131,7 +131,7 @@ public class CustomerLogin extends JFrame {
         jPanel2.add(jButton2);
         jButton2.setBounds(80, 410, 130, 40);
 
-        jButton3.setBackground(new Color(0, 181, 204));
+        jButton3.setBackground(new Color(55,112,155));
         jButton3.setForeground(new Color(255, 255, 255));
         jButton3.setText("Sign up");
         jButton3.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));

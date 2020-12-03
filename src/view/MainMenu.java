@@ -45,7 +45,7 @@ public class MainMenu extends JFrame {
         contentPane.add(jLabel4);
         jLabel4.setBounds(310, 100, 410, 50);
 
-        jButton4.setBackground(new Color(51, 153, 255));
+        jButton4.setBackground(new Color(55,112,155));
         jButton4.setForeground(new Color(255, 255, 255));
         jButton4.setText("Contacts");
         jButton4.setFocusPainted(false);
@@ -62,7 +62,7 @@ public class MainMenu extends JFrame {
         jButton2.setFocusPainted(false);
         jButton2.addActionListener(controller);
         jButton2.setActionCommand("Subscribe");
-        jButton2.setBackground(new Color(51, 153, 255));
+        jButton2.setBackground(new Color(55,112,155));
         jButton2.setForeground(new Color(255, 255, 255));
        
         contentPane.add(jButton2);
@@ -81,7 +81,7 @@ public class MainMenu extends JFrame {
         contentPane.add(jTextField1);
         jTextField1.setBounds(10, 530, 130, 20);
  
-        jButton3.setBackground(new Color(51, 153, 255));
+        jButton3.setBackground(new Color(55,112,155));
         jButton3.setForeground(new Color(255,255, 255));
         jButton3.setText("Book a Flight !");
         jButton3.setFocusPainted(false);
