@@ -48,6 +48,10 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
     private CustomerAccount loggedInCustomer;
 
+    public CustomerAccount getLoggedInCustomer() {
+        return loggedInCustomer;
+    }
+
     public CustomerHomeFlightSearch(CustomerAccount customer) {
         loggedInCustomer = customer;
         initComponents();
@@ -141,12 +145,28 @@ private String getMonitorSizes() {
 
         myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         myAccount.setIcon(new javax.swing.ImageIcon("img\\Icon-Small-50.png")); // NOI18N
-        if(loggedInCustomer!=null)
-            myAccount.setText(" My account");
-        else
-            myAccount.setText(" Log in");
+        myAccount.setText(" My account");
+        myAccount.setActionCommand("Logged");
+        myAccount.addActionListener(new CustomerFlightSearchChoice(this));
         
-        myAccount.setActionCommand("My account");
+        
+        /*
+        if(loggedInCustomer!=null)
+        {
+            System.out.println("chems");
+            myAccount.setText(" My account");
+            myAccount.setActionCommand("Logged");
+        }
+            
+        
+        else
+        {
+              myAccount.setText(" Log in");
+              myAccount.setActionCommand("Unlogged");
+
+        }
+        */  
+        
         myAccount.setBorder(null);
         myAccount.setFocusable(false);
         myAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

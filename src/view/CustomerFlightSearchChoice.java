@@ -34,45 +34,53 @@ public class CustomerFlightSearchChoice implements ActionListener {
                 new CustomerFlightSearchController(frame);
             }
             break;
-                
-                
-                
-            
-            case "Next":
+
+            case "Next": {
                 // new signUp();
-                System.out.println("ZAFAZFJIAJIFEZOJIFJEZFJZEFEJG");
-                if(frame.getOneWay().isSelected()) {
+                if (frame.getOneWay().isSelected()) {
                     String stringIdFlight = frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1).toString();
                     int idFlight = Integer.parseInt(stringIdFlight);
-                    System.out.println("FLIGHT ID : "+stringIdFlight);
+                    System.out.println("FLIGHT ID : " + stringIdFlight);
                     //Flight selectedFlight = FlightController.getFlight(frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1))
                     Flight selectedFlight = FlightController.getFlight(idFlight);
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedFlight);
                     new PassengerView(flights, frame.getSelectPassenger());
                 }
-                if(frame.getRoundTrip().isSelected()) {
-                    System.out.println("AAAAAAAAAAAAAAAAAAAAA");
+                if (frame.getRoundTrip().isSelected()) {
                     String stringIdFlight = frame.getSearchDepartureFlightsAR().getValueAt(frame.getSearchDepartureFlightsAR().getSelectedRow(), 1).toString();
                     int idDepartureFlight = Integer.parseInt(stringIdFlight);
                     stringIdFlight = frame.getSearchArrivalFlightsAR().getValueAt(frame.getSearchArrivalFlightsAR().getSelectedRow(), 1).toString();
                     int idArrivalFlight = Integer.parseInt(stringIdFlight);
-                    System.out.println("FLIGHT ID : "+idDepartureFlight + " ARRIVAL FLIGHT ID : " +idArrivalFlight);
+                    System.out.println("FLIGHT ID : " + idDepartureFlight + " ARRIVAL FLIGHT ID : " + idArrivalFlight);
                     Flight selectedDepFlight = FlightController.getFlight(idDepartureFlight);
                     Flight selectedArrFlight = FlightController.getFlight(idArrivalFlight);
-                   
+
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedDepFlight);
                     flights.add(selectedArrFlight);
                     new PassengerView(flights, frame.getSelectPassenger());
                 }
-                
-                
-                break;
+
+            }
+
+            break;
+
+            case "Logged": {
+                System.out.println("grgzrzgr");
+                new MyAccount(frame.getLoggedInCustomer());
+            }
+
+            break;
+
+            case "Unlogged": {
+                new CustomerLogin();
+            }
+
+            break;
 
         }
 
     }
-    
-}
 
+}

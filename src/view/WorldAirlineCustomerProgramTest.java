@@ -80,7 +80,6 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         myAccount.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\Icon-Small-50.png")); // NOI18N
         myAccount.setText(" My account");
-        myAccount.setActionCommand(" My account");
         myAccount.setBorder(null);
         myAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         myAccount.setFocusable(false);
@@ -246,12 +245,12 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         jPanel1.setBounds(60, 230, 360, 500);
 
         worldWride.setBackground(new java.awt.Color(255, 255, 255));
-        worldWride.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 110)); // NOI18N
+        worldWride.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 50)); // NOI18N
         worldWride.setForeground(new java.awt.Color(255, 255, 255));
         worldWride.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         worldWride.setText("WorldAirline");
         getContentPane().add(worldWride);
-        worldWride.setBounds(230, 40, 730, 110);
+        worldWride.setBounds(460, 70, 340, 110);
 
         roundTripPanel.setOpaque(false);
         roundTripPanel.setLayout(null);
