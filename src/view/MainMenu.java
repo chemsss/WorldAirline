@@ -31,7 +31,7 @@ public final class MainMenu extends JFrame {
         initMainMenu();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setVisible(true);
-        this.setSize(1068, 601);
+        this.setSize(1080, 601);
         this.setLocationRelativeTo(null);
     }
 
@@ -56,7 +56,7 @@ public final class MainMenu extends JFrame {
         
         
         contentPane.add(jButton4);
-        jButton4.setBounds(850, 530, 100, 23);
+        jButton4.setBounds(843, 530, 100, 23);
 
         
         jButton2.setText("Subscribe");
@@ -107,7 +107,7 @@ public final class MainMenu extends JFrame {
         jButton1.addActionListener(controller);
         jButton1.setActionCommand("Admin");
         getContentPane().add(jButton1);
-        jButton1.setBounds(970, 530, 73, 23);
+        jButton1.setBounds(960, 530, 100, 23);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 48)); // NOI18N
         jLabel2.setForeground(new Color(255, 255, 255));
@@ -118,7 +118,6 @@ public final class MainMenu extends JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new ImageIcon("img\\airplane.jpg")); // NOI18N
-        jLabel1.setText("jLabel1");
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(null);
