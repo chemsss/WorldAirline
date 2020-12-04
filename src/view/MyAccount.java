@@ -3,13 +3,16 @@ package view;
 import DataAcessObjectImpl.BookingDAOImpl;
 import controller.BookingController;
 import controller.CustomerController;
+import controller.PassengerController;
 import controller.SearchBookingsTableModel;
 import controller.SearchTicketsTableModel;
+import controller.TicketController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import model.Booking;
 import model.CustomerAccount;
+import model.Ticket;
 
 public class MyAccount extends javax.swing.JFrame {
 
@@ -47,8 +50,34 @@ public class MyAccount extends javax.swing.JFrame {
     private javax.swing.JPanel myBookingsPanel;
     private javax.swing.JTable myBookingsTable;
     private javax.swing.JButton previous2;
-    
+
+    // My Ticket                 
+    private javax.swing.JLabel myTickets;
+    private javax.swing.JPanel myTicketsPanel;
+    private javax.swing.JScrollPane myTicketsScrollPane;
+    private javax.swing.JTable myTicketsTable;
+    private javax.swing.JButton previous3;
+    private javax.swing.JButton viewTicket;
+    private Booking selectedBooking;
+
+    //My Ticket Details
+    private javax.swing.JLabel arrivalDateTime2;
+    private javax.swing.JLabel arrivalTimeDate;
+    private javax.swing.JLabel departureTimeDate;
+    private javax.swing.JLabel departureTimeDate2;
+    private javax.swing.JLabel flight;
+    private javax.swing.JLabel flight2;
+    private javax.swing.JLabel from;
+    private javax.swing.JLabel from2;
+    private javax.swing.JLabel myTicketDetails;
+    private javax.swing.JPanel myTicketDetailsPanel;
+    private javax.swing.JLabel nameOfPasenger2;
+    private javax.swing.JLabel nameOfPassenger;
+    private javax.swing.JButton previous4;
+    private javax.swing.JLabel to;
+    private javax.swing.JLabel to2;
     private CustomerAccount loggedInCustomer;
+    private Ticket selectedTicket;
 
     public MyAccount(CustomerAccount loggedInCustomer) {
         this.loggedInCustomer = loggedInCustomer;
@@ -71,7 +100,6 @@ public class MyAccount extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(55, 112, 155));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setLayout(null);
 
         myAccount.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
@@ -94,6 +122,8 @@ public class MyAccount extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 jPanel1.setVisible(false);
                 myBookingsPanel.setVisible(true);
+                setLocationRelativeTo(null);
+
             }
 
         });
@@ -319,7 +349,6 @@ public class MyAccount extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         myBookingsPanel.setBackground(new java.awt.Color(55, 112, 155));
-        myBookingsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         myBookingsPanel.setLayout(null);
 
         myBookings.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
@@ -345,13 +374,16 @@ public class MyAccount extends javax.swing.JFrame {
         myBookingsPanel.add(previous2);
         previous2.setBounds(3, 555, 40, 20);
 
+        System.out.println("AAAAA");
         ArrayList<Booking> bookings = BookingController.getBookings(loggedInCustomer.getIdAccount());
-       SearchBookingsTableModel model = new SearchBookingsTableModel(bookings);
+        System.out.println((loggedInCustomer.getIdAccount()));
+  
+        System.out.println(bookings.size() +"ertyuj");
+        SearchBookingsTableModel model = new SearchBookingsTableModel(bookings);
 
-       // SearchTicketsTableModel model = new SearchTicketsTableModel(7);
         myBookingsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         myBookingsTable.setModel(model);
-
+        myBookingsTable.setRowHeight(20);
         myBookingsTable.setToolTipText("");
         myBookingsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
         myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -368,14 +400,21 @@ public class MyAccount extends javax.swing.JFrame {
         getBooking.setBorder(null);
         getBooking.setBorderPainted(false);
         getBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+       
         getBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //If a booking is selected
+               
+                if (!myBookingsTable.getSelectionModel().isSelectionEmpty()) {
+                    String stringBookingNo = myBookingsTable.getValueAt(myBookingsTable.getSelectedRow(), 0).toString();
+                    int bookingNo = Integer.parseInt(stringBookingNo);
 
-                String stringBookingNo = myBookingsTable.getValueAt(myBookingsTable.getSelectedRow(), 0).toString();
-                int BookingNo = Integer.parseInt(stringBookingNo);
-                Booking selectedBooking = BookingController.getBooking(BookingNo);
+                    selectedBooking = BookingController.getBooking(bookingNo);
+                    initMyTickets();
+                    myTicketsPanel.setVisible(true);
+                    myBookingsPanel.setVisible(false);
 
-                
+                }
 
             }
         });
@@ -386,8 +425,243 @@ public class MyAccount extends javax.swing.JFrame {
         myBookingsPanel.setBounds(0, 0, 530, 580);
         myBookingsPanel.setVisible(false);
 
-        
-        pack();
+      
+        myTicketDetailsPanel = new javax.swing.JPanel();
+        myTicketDetails = new javax.swing.JLabel();
+        previous4 = new javax.swing.JButton();
+        to = new javax.swing.JLabel();
+        arrivalTimeDate = new javax.swing.JLabel();
+        flight = new javax.swing.JLabel();
+        to2 = new javax.swing.JLabel();
+        arrivalDateTime2 = new javax.swing.JLabel();
+        flight2 = new javax.swing.JLabel();
+        nameOfPassenger = new javax.swing.JLabel();
+        nameOfPasenger2 = new javax.swing.JLabel();
+        from = new javax.swing.JLabel();
+        from2 = new javax.swing.JLabel();
+        departureTimeDate = new javax.swing.JLabel();
+        departureTimeDate2 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(55, 112, 155));
+        getContentPane().setLayout(null);
+
+        myTicketDetailsPanel.setBackground(new java.awt.Color(55, 112, 155));
+        myTicketDetailsPanel.setLayout(null);
+
+        myTicketDetails.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myTicketDetails.setForeground(new java.awt.Color(255, 255, 255));
+        myTicketDetails.setText("My Ticket Details");
+        myTicketDetailsPanel.add(myTicketDetails);
+        myTicketDetails.setBounds(170, 10, 200, 40);
+
+        previous4.setBackground(new java.awt.Color(255, 255, 255));
+        previous4.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous4.setText("Previous");
+        previous4.setBorder(null);
+        previous4.setBorderPainted(false);
+        previous4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myTicketsPanel.setVisible(true);
+                myTicketDetailsPanel.setVisible(false);
+            }
+        });
+
     }
 
+    public void initMyTicketDetails() {
+        //My Ticket Details
+
+        departureTimeDate2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        departureTimeDate2.setForeground(new java.awt.Color(255, 255, 255));
+        departureTimeDate2.setText("jLabel1");
+        myTicketDetailsPanel.add(departureTimeDate2);
+        departureTimeDate2.setBounds(310, 200, 70, 20);
+
+        to2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        to2.setForeground(new java.awt.Color(255, 255, 255));
+        to2.setText("jLabel1");
+        myTicketDetailsPanel.add(to2);
+        to2.setBounds(60, 260, 70, 20);
+
+        arrivalDateTime2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        arrivalDateTime2.setForeground(new java.awt.Color(255, 255, 255));
+        arrivalDateTime2.setText("jLabel1");
+        myTicketDetailsPanel.add(arrivalDateTime2);
+        arrivalDateTime2.setBounds(310, 260, 70, 20);
+
+        flight2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        flight2.setForeground(new java.awt.Color(255, 255, 255));
+        flight2.setText("jLabel1");
+        myTicketDetailsPanel.add(flight2);
+        flight2.setBounds(310, 130, 70, 20);
+
+        myTicketDetailsPanel.add(previous4);
+        previous4.setBounds(3, 555, 60, 20);
+
+        to.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        to.setForeground(new java.awt.Color(255, 255, 255));
+        to.setText("To");
+        myTicketDetailsPanel.add(to);
+        to.setBounds(60, 240, 160, 30);
+
+        arrivalTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        arrivalTimeDate.setForeground(new java.awt.Color(255, 255, 255));
+        arrivalTimeDate.setText("Arrival Date Time");
+        myTicketDetailsPanel.add(arrivalTimeDate);
+        arrivalTimeDate.setBounds(310, 240, 170, 30);
+
+        flight.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        flight.setForeground(new java.awt.Color(255, 255, 255));
+        flight.setText("Flight");
+        myTicketDetailsPanel.add(flight);
+        flight.setBounds(310, 110, 90, 30);
+
+        nameOfPassenger.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        nameOfPassenger.setForeground(new java.awt.Color(255, 255, 255));
+        nameOfPassenger.setText("Name Of Passenger");
+        myTicketDetailsPanel.add(nameOfPassenger);
+        nameOfPassenger.setBounds(60, 110, 180, 30);
+
+        from.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        from.setForeground(new java.awt.Color(255, 255, 255));
+        from.setText("From");
+        myTicketDetailsPanel.add(from);
+        from.setBounds(60, 180, 160, 30);
+
+        departureTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        departureTimeDate.setForeground(new java.awt.Color(255, 255, 255));
+        departureTimeDate.setText("Departure Date Time");
+        myTicketDetailsPanel.add(departureTimeDate);
+        departureTimeDate.setBounds(310, 180, 180, 30);
+
+        from.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        from.setForeground(new java.awt.Color(255, 255, 255));
+        from.setText("From");
+        myTicketDetailsPanel.add(from);
+        from.setBounds(60, 180, 160, 30);
+
+        nameOfPasenger2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        nameOfPasenger2.setForeground(new java.awt.Color(255, 255, 255));
+
+        System.out.println(selectedTicket);
+
+        if (selectedTicket != null) {
+            System.out.println("gegrg");
+            nameOfPasenger2.setText(PassengerController.getLastNamePassengerByTicketNo(selectedTicket.getTicketNo()) + " " + PassengerController.getFirstNamePassengerByTicketNo(selectedTicket.getTicketNo()));
+
+        }
+
+        myTicketDetailsPanel.add(nameOfPasenger2);
+        nameOfPasenger2.setBounds(60, 130, 70, 20);
+
+        from2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        from2.setForeground(new java.awt.Color(255, 255, 255));
+
+        if (selectedTicket != null) {
+            from2.setText(TicketController.getDepartureAirport(selectedTicket.getTicketNo()).toString());
+        }
+
+        myTicketDetailsPanel.add(from2);
+        from2.setBounds(60, 200, 70, 20);
+
+        getContentPane().add(myTicketDetailsPanel);
+        myTicketDetailsPanel.setBounds(0, 0, 570, 580);
+        myTicketDetailsPanel.setVisible(false);
+
+    }
+    
+    public void initMyTickets()
+    {
+          //My Ticket
+        myTicketsPanel = new javax.swing.JPanel();
+        myTickets = new javax.swing.JLabel();
+        previous3 = new javax.swing.JButton();
+        myTicketsScrollPane = new javax.swing.JScrollPane();
+        myTicketsTable = new javax.swing.JTable();
+        viewTicket = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(55, 112, 155));
+        getContentPane().setLayout(null);
+
+        myTicketsPanel.setBackground(new java.awt.Color(55, 112, 155));
+        myTicketsPanel.setLayout(null);
+
+        myTickets.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myTickets.setForeground(new java.awt.Color(255, 255, 255));
+        myTickets.setText("My Tickets");
+        myTicketsPanel.add(myTickets);
+        myTickets.setBounds(200, 10, 140, 40);
+
+        previous3.setBackground(new java.awt.Color(255, 255, 255));
+        previous3.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous3.setText("Previous");
+        previous3.setBorder(null);
+        previous3.setBorderPainted(false);
+        previous3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+                myBookingsPanel.setVisible(true);
+                myTicketsPanel.setVisible(false);
+
+            }
+        });
+        myTicketsPanel.add(previous3);
+        previous3.setBounds(3, 555, 60, 20);
+
+        myTicketsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+
+        SearchTicketsTableModel model2= new SearchTicketsTableModel(selectedBooking.getBookingNo());
+        
+        myTicketsTable.setModel(model2);
+        myTicketsTable.setRowHeight(20);
+
+        myTicketsTable.setToolTipText("");
+        myTicketsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
+        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        myTicketsTable.setShowGrid(true);
+        myTicketsScrollPane.setViewportView(myTicketsTable);
+
+        myTicketsPanel.add(myTicketsScrollPane);
+        myTicketsScrollPane.setBounds(20, 90, 480, 390);
+
+        viewTicket.setBackground(new java.awt.Color(255, 255, 255));
+        viewTicket.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        viewTicket.setText("Ticket Details");
+        viewTicket.setBorder(null);
+        viewTicket.setBorderPainted(false);
+        viewTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+                //If a Ticket is selected
+                if (!myTicketsTable.getSelectionModel().isSelectionEmpty()) {
+                    String stringTicketNo = myTicketsTable.getValueAt(myTicketsTable.getSelectedRow(), 0).toString();
+
+                    int TicketNo = Integer.parseInt(stringTicketNo);
+
+                    selectedTicket = TicketController.getTicket(TicketNo);
+                    System.out.println(selectedTicket);
+
+                    myTicketsPanel.setVisible(false);
+
+                    initMyTicketDetails();
+                    myTicketDetailsPanel.setVisible(true);
+
+                }
+
+            }
+        });
+
+        myTicketsPanel.add(viewTicket);
+        viewTicket.setBounds(170, 520, 190, 30);
+
+        getContentPane().add(myTicketsPanel);
+        myTicketsPanel.setBounds(0, 0, 530, 580);
+        myTicketsPanel.setVisible(false);
+    }
 }

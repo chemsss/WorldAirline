@@ -8,7 +8,7 @@ import model.Ticket;
 
 public class SearchTicketsTableModel extends AbstractTableModel {
 
-    private final String[] Titles = {"Ticket Number", "Flight Number", "Seat Number", "Last Name", "First Name"};
+    private final String[] Titles = {"Ticket Number", "Flight Number", "Last Name", "First Name"};
 
     private ArrayList<Ticket> tickets;
  
@@ -43,10 +43,8 @@ public class SearchTicketsTableModel extends AbstractTableModel {
             case 1:
                 return tickets.get(row).getFlight().getIdFlight();
             case 2:
-                return tickets.get(row).getSeat().getSeatNo();
-            case 3:
                 return new PassengerDAOImpl().findByTicketNo(tickets.get(row).getTicketNo()).getLastName();
-            case 4:
+            case 3:
                 return new PassengerDAOImpl().findByTicketNo(tickets.get(row).getTicketNo()).getFirstName();
             default:
                 return "";

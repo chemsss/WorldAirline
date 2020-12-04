@@ -29,98 +29,131 @@ public class MyAccountTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        myTicketsPanel = new javax.swing.JPanel();
-        myTickets = new javax.swing.JLabel();
-        previous3 = new javax.swing.JButton();
-        myTicketsScrollPane = new javax.swing.JScrollPane();
-        myTicketsTable = new javax.swing.JTable();
-        viewTicket = new javax.swing.JButton();
+        myTicketDetailsPanel = new javax.swing.JPanel();
+        myTicketDetails = new javax.swing.JLabel();
+        previous4 = new javax.swing.JButton();
+        to = new javax.swing.JLabel();
+        arrivalTimeDate = new javax.swing.JLabel();
+        flight = new javax.swing.JLabel();
+        to2 = new javax.swing.JLabel();
+        arrivalDateTime2 = new javax.swing.JLabel();
+        flight2 = new javax.swing.JLabel();
+        nameOfPassenger = new javax.swing.JLabel();
+        nameOfPasenger2 = new javax.swing.JLabel();
+        from = new javax.swing.JLabel();
+        from2 = new javax.swing.JLabel();
+        departureTimeDate = new javax.swing.JLabel();
+        departureTimeDate2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(55, 112, 155));
         getContentPane().setLayout(null);
 
-        myTicketsPanel.setBackground(new java.awt.Color(55, 112, 155));
-        myTicketsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        myTicketsPanel.setLayout(null);
+        myTicketDetailsPanel.setBackground(new java.awt.Color(55, 112, 155));
+        myTicketDetailsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        myTicketDetailsPanel.setLayout(null);
 
-        myTickets.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myTickets.setForeground(new java.awt.Color(255, 255, 255));
-        myTickets.setText("My Tickets");
-        myTicketsPanel.add(myTickets);
-        myTickets.setBounds(200, 10, 140, 40);
+        myTicketDetails.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myTicketDetails.setForeground(new java.awt.Color(255, 255, 255));
+        myTicketDetails.setText("My Ticket Details");
+        myTicketDetailsPanel.add(myTicketDetails);
+        myTicketDetails.setBounds(170, 10, 200, 40);
 
-        previous3.setBackground(new java.awt.Color(255, 255, 255));
-        previous3.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
-        previous3.setText("Previous");
-        previous3.setBorder(null);
-        previous3.setBorderPainted(false);
-        previous3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        previous3.addActionListener(new java.awt.event.ActionListener() {
+        previous4.setBackground(new java.awt.Color(255, 255, 255));
+        previous4.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous4.setText("Previous");
+        previous4.setBorder(null);
+        previous4.setBorderPainted(false);
+        previous4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previous3ActionPerformed(evt);
+                previous4ActionPerformed(evt);
             }
         });
-        myTicketsPanel.add(previous3);
-        previous3.setBounds(3, 555, 60, 20);
+        myTicketDetailsPanel.add(previous4);
+        previous4.setBounds(3, 555, 60, 20);
 
-        myTicketsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        myTicketsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        to.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        to.setForeground(new java.awt.Color(255, 255, 255));
+        to.setText("To");
+        myTicketDetailsPanel.add(to);
+        to.setBounds(60, 240, 160, 30);
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        myTicketsTable.setToolTipText("");
-        myTicketsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
-        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        myTicketsTable.setShowGrid(true);
-        myTicketsScrollPane.setViewportView(myTicketsTable);
+        arrivalTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        arrivalTimeDate.setForeground(new java.awt.Color(255, 255, 255));
+        arrivalTimeDate.setText("Arrival Date Time");
+        myTicketDetailsPanel.add(arrivalTimeDate);
+        arrivalTimeDate.setBounds(310, 240, 170, 30);
 
-        myTicketsPanel.add(myTicketsScrollPane);
-        myTicketsScrollPane.setBounds(25, 90, 480, 390);
+        flight.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        flight.setForeground(new java.awt.Color(255, 255, 255));
+        flight.setText("Flight");
+        myTicketDetailsPanel.add(flight);
+        flight.setBounds(310, 110, 90, 30);
 
-        viewTicket.setBackground(new java.awt.Color(255, 255, 255));
-        viewTicket.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        viewTicket.setText("View Ticket");
-        viewTicket.setBorder(null);
-        viewTicket.setBorderPainted(false);
-        viewTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        viewTicket.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewTicketActionPerformed(evt);
-            }
-        });
-        myTicketsPanel.add(viewTicket);
-        viewTicket.setBounds(170, 520, 190, 30);
+        to2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        to2.setForeground(new java.awt.Color(255, 255, 255));
+        to2.setText("jLabel1");
+        myTicketDetailsPanel.add(to2);
+        to2.setBounds(60, 260, 70, 20);
 
-        getContentPane().add(myTicketsPanel);
-        myTicketsPanel.setBounds(0, 0, 530, 580);
+        arrivalDateTime2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        arrivalDateTime2.setForeground(new java.awt.Color(255, 255, 255));
+        arrivalDateTime2.setText("jLabel1");
+        myTicketDetailsPanel.add(arrivalDateTime2);
+        arrivalDateTime2.setBounds(310, 260, 70, 20);
+
+        flight2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        flight2.setForeground(new java.awt.Color(255, 255, 255));
+        flight2.setText("jLabel1");
+        myTicketDetailsPanel.add(flight2);
+        flight2.setBounds(310, 130, 70, 20);
+
+        nameOfPassenger.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        nameOfPassenger.setForeground(new java.awt.Color(255, 255, 255));
+        nameOfPassenger.setText("Name Of Passenger");
+        myTicketDetailsPanel.add(nameOfPassenger);
+        nameOfPassenger.setBounds(60, 110, 180, 30);
+
+        nameOfPasenger2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        nameOfPasenger2.setForeground(new java.awt.Color(255, 255, 255));
+        nameOfPasenger2.setText("jLabel1");
+        myTicketDetailsPanel.add(nameOfPasenger2);
+        nameOfPasenger2.setBounds(60, 130, 70, 20);
+
+        from.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        from.setForeground(new java.awt.Color(255, 255, 255));
+        from.setText("From");
+        myTicketDetailsPanel.add(from);
+        from.setBounds(60, 180, 160, 30);
+
+        from2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        from2.setForeground(new java.awt.Color(255, 255, 255));
+        from2.setText("jLabel1");
+        myTicketDetailsPanel.add(from2);
+        from2.setBounds(60, 200, 70, 20);
+
+        departureTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        departureTimeDate.setForeground(new java.awt.Color(255, 255, 255));
+        departureTimeDate.setText("Departure Date Time");
+        myTicketDetailsPanel.add(departureTimeDate);
+        departureTimeDate.setBounds(310, 180, 170, 30);
+
+        departureTimeDate2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        departureTimeDate2.setForeground(new java.awt.Color(255, 255, 255));
+        departureTimeDate2.setText("jLabel1");
+        myTicketDetailsPanel.add(departureTimeDate2);
+        departureTimeDate2.setBounds(310, 200, 70, 20);
+
+        getContentPane().add(myTicketDetailsPanel);
+        myTicketDetailsPanel.setBounds(0, 0, 510, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void previous3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous3ActionPerformed
+    private void previous4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_previous3ActionPerformed
-
-    private void viewTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewTicketActionPerformed
+    }//GEN-LAST:event_previous4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,11 +184,20 @@ catch (ClassNotFoundException ex) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel myTickets;
-    private javax.swing.JPanel myTicketsPanel;
-    private javax.swing.JScrollPane myTicketsScrollPane;
-    private javax.swing.JTable myTicketsTable;
-    private javax.swing.JButton previous3;
-    private javax.swing.JButton viewTicket;
+    private javax.swing.JLabel arrivalDateTime2;
+    private javax.swing.JLabel arrivalTimeDate;
+    private javax.swing.JLabel departureTimeDate;
+    private javax.swing.JLabel departureTimeDate2;
+    private javax.swing.JLabel flight;
+    private javax.swing.JLabel flight2;
+    private javax.swing.JLabel from;
+    private javax.swing.JLabel from2;
+    private javax.swing.JLabel myTicketDetails;
+    private javax.swing.JPanel myTicketDetailsPanel;
+    private javax.swing.JLabel nameOfPasenger2;
+    private javax.swing.JLabel nameOfPassenger;
+    private javax.swing.JButton previous4;
+    private javax.swing.JLabel to;
+    private javax.swing.JLabel to2;
     // End of variables declaration//GEN-END:variables
 }

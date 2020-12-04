@@ -86,6 +86,12 @@ public class PassengerTest extends javax.swing.JFrame {
         bookingScrollPane = new javax.swing.JScrollPane();
         myBookingsTable = new javax.swing.JTable();
         getBooking = new javax.swing.JButton();
+        myTicketsPanel = new javax.swing.JPanel();
+        myTickets = new javax.swing.JLabel();
+        previous3 = new javax.swing.JButton();
+        myTicketsScrollPane = new javax.swing.JScrollPane();
+        myTicketsTable = new javax.swing.JTable();
+        viewTicket = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -513,7 +519,6 @@ public class PassengerTest extends javax.swing.JFrame {
         myBookingsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
         myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         /*
-        myBookingsTable.setSelectionMode();
         */
         myBookingsTable.setShowGrid(true);
         bookingScrollPane.setViewportView(myBookingsTable);
@@ -537,6 +542,79 @@ public class PassengerTest extends javax.swing.JFrame {
 
         getContentPane().add(myBookingsPanel);
         myBookingsPanel.setBounds(0, 0, 530, 580);
+
+        myTicketsPanel.setBackground(new java.awt.Color(55, 112, 155));
+        myTicketsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        myTicketsPanel.setLayout(null);
+
+        myTickets.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myTickets.setForeground(new java.awt.Color(255, 255, 255));
+        myTickets.setText("My Tickets");
+        myTicketsPanel.add(myTickets);
+        myTickets.setBounds(200, 10, 140, 40);
+
+        previous3.setBackground(new java.awt.Color(255, 255, 255));
+        previous3.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous3.setText("Previous");
+        previous3.setBorder(null);
+        previous3.setBorderPainted(false);
+        previous3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previous3ActionPerformed(evt);
+            }
+        });
+        myTicketsPanel.add(previous3);
+        previous3.setBounds(3, 555, 60, 20);
+
+        myTicketsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        myTicketsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        myTicketsTable.setToolTipText("");
+        myTicketsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
+        /*
+        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        myTicketsTable.setSelectionMode();
+        myTicketsTable.setShowGrid(true);
+        */
+        myTicketsScrollPane.setViewportView(myTicketsTable);
+
+        myTicketsPanel.add(myTicketsScrollPane);
+        myTicketsScrollPane.setBounds(25, 90, 480, 390);
+
+        viewTicket.setBackground(new java.awt.Color(255, 255, 255));
+        viewTicket.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        viewTicket.setText("View Ticket");
+        viewTicket.setBorder(null);
+        viewTicket.setBorderPainted(false);
+        viewTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewTicketActionPerformed(evt);
+            }
+        });
+        myTicketsPanel.add(viewTicket);
+        viewTicket.setBounds(170, 520, 190, 30);
+
+        getContentPane().add(myTicketsPanel);
+        myTicketsPanel.setBounds(0, 0, 530, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -588,6 +666,14 @@ public class PassengerTest extends javax.swing.JFrame {
     private void getBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBookingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_getBookingActionPerformed
+
+    private void previous3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_previous3ActionPerformed
+
+    private void viewTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewTicketActionPerformed
 
     /**
      * @param args the command line arguments
@@ -670,6 +756,10 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JTable myBookingsTable;
     private javax.swing.JLabel myPersonalInfo;
     private javax.swing.JPanel myPersonalInfos;
+    private javax.swing.JLabel myTickets;
+    private javax.swing.JPanel myTicketsPanel;
+    private javax.swing.JScrollPane myTicketsScrollPane;
+    private javax.swing.JTable myTicketsTable;
     private javax.swing.JPanel panelMyaccount;
     private javax.swing.JLabel password;
     private javax.swing.JPasswordField passwordField;
@@ -677,10 +767,12 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JButton personalInfo1;
     private javax.swing.JButton previous;
     private javax.swing.JButton previous1;
+    private javax.swing.JButton previous3;
     private javax.swing.JButton save1;
     private javax.swing.JTextField telephoneNulberField;
     private javax.swing.JLabel telephoneNumber;
     private javax.swing.JLabel to;
     private javax.swing.JLabel to1;
+    private javax.swing.JButton viewTicket;
     // End of variables declaration//GEN-END:variables
 }

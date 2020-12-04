@@ -103,14 +103,14 @@ public class Flight {
     
     public String getDepartureDateTimeToString()
     {
-        String timeStamp = new SimpleDateFormat("dd/mm/yy hh:mm").format(departureDate);
+        String timeStamp = new SimpleDateFormat("dd/mm/yy hh:mm a").format(departureDate);
         
         return timeStamp;
     }
     
      public String getArrivalDateTimeToString()
     {
-        String timeStamp = new SimpleDateFormat("dd/mm/yy hh:mm").format(arrivalDate);
+        String timeStamp = new SimpleDateFormat("dd/mm/yy hh:mm a").format(arrivalDate);
         
         return timeStamp;
     }
