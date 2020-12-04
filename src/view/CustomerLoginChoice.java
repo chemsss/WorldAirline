@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 public class CustomerLoginChoice implements ActionListener {
 
     private CustomerLogin frame;
+    private MainMenu frame2;
 
     public CustomerLoginChoice(CustomerLogin f) {
         frame = f;

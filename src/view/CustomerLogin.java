@@ -4,6 +4,7 @@ import controller.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import model.CustomerAccount;
 
 public class CustomerLogin extends JFrame {
 
@@ -13,11 +14,14 @@ public class CustomerLogin extends JFrame {
     private JTextField jTextField2;
     private JPasswordField password;
 
+    private MainMenu frame;
+
     private ActionListener controller;
 
-    public CustomerLogin() {
+    public CustomerLogin(MainMenu frame) {
         super("Customer login");
 
+        this.frame = frame;
         jPanel1 = new JPanel();
         jLabel1 = new JLabel();
         jLabel3 = new JLabel();
@@ -27,7 +31,31 @@ public class CustomerLogin extends JFrame {
         jButton2 = new JButton();
         jButton3 = new JButton();
         jLabel2 = new JLabel();
-        
+
+        password = new JPasswordField("Password");
+
+        controller = new CustomerLoginChoice(this); // création du controller
+        initCustomerLogin();
+
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setVisible(true);
+
+    }
+
+    public CustomerLogin() {
+        super("Customer login");
+
+        this.frame = frame;
+        jPanel1 = new JPanel();
+        jLabel1 = new JLabel();
+        jLabel3 = new JLabel();
+        jPanel2 = new JPanel();
+        jTextField2 = new JTextField();
+        jButton1 = new JButton();
+        jButton2 = new JButton();
+        jButton3 = new JButton();
+        jLabel2 = new JLabel();
+
         password = new JPasswordField("Password");
 
         controller = new CustomerLoginChoice(this); // création du controller
@@ -44,7 +72,7 @@ public class CustomerLogin extends JFrame {
         setUndecorated(true);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new Color(55,112,155));
+        jPanel1.setBackground(new Color(55, 112, 155));
         jPanel1.setLayout(null);
 
         jLabel1.setIcon(new ImageIcon("img\\plane_white.png")); // NOI18N
@@ -66,7 +94,7 @@ public class CustomerLogin extends JFrame {
 
         jLabel2.setBackground(new Color(255, 255, 255));
         jLabel2.setFont(new Font("Tahoma", 1, 25)); // NOI18N
-        jLabel2.setForeground(new Color(55,112,155));
+        jLabel2.setForeground(new Color(55, 112, 155));
         jLabel2.setText("X");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(410, 0, 30, 40);
@@ -101,6 +129,9 @@ public class CustomerLogin extends JFrame {
         jPanel2.add(jTextField2);
         jTextField2.setBounds(70, 100, 270, 50);
 
+        if (frame == null) {
+            jButton1.setVisible(false);
+        }
         jButton1.setBackground(new Color(255, 255, 255));
         jButton1.setFont(new Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Or Continue as guest");
@@ -110,28 +141,32 @@ public class CustomerLogin extends JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //jButton1ActionPerformed(evt);
+
+                dispose();
+
+                frame.dispose();
+                new CustomerHomeFlightSearch(null);
+
             }
         });
         jPanel2.add(jButton1);
         jButton1.setBounds(280, 490, 150, 30);
 
-        jButton2.setBackground(new Color(55,112,155));
+        jButton2.setBackground(new Color(55, 112, 155));
         jButton2.setForeground(new Color(255, 255, 255));
         jButton2.setText("Login");
         jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
         jButton2.setBorderPainted(false);
-        
+
         jButton2.addActionListener(controller);
         jButton2.setActionCommand("Login");
-        
-        jButton2.setFocusPainted(false);
 
+        jButton2.setFocusPainted(false);
 
         jPanel2.add(jButton2);
         jButton2.setBounds(80, 410, 130, 40);
 
-        jButton3.setBackground(new Color(55,112,155));
+        jButton3.setBackground(new Color(55, 112, 155));
         jButton3.setForeground(new Color(255, 255, 255));
         jButton3.setText("Sign up");
         jButton3.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));

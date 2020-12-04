@@ -12,19 +12,13 @@ public class SearchBookingsTableModel extends AbstractTableModel {
     private final String[] Titles = {"Booking No", "Booking Date", "Tickets Numbers"};
 
     private ArrayList<Booking> bookings;
-    
-    /*
-    private int bookingNo;//booking no
-    private Date bookingDate;// booking date
-    private ArrayList<Ticket> tickets; //tickets
-    */
+
     
     public SearchBookingsTableModel(ArrayList<Booking> bookings) {
         this.bookings = bookings;
     }
     
     public SearchBookingsTableModel(int bookingNo, Date bookingDate, ArrayList<Ticket> tickets) {
-        //bookings = new FlightDAOImpl().searchFlights(DepartureAirportId, arrivalAirportId, departureDate, nbOfSeats, className);
     }
     
     public SearchBookingsTableModel() {

@@ -1,8 +1,10 @@
 package view;
 
+import DataAcessObjectImpl.BookingDAOImpl;
 import controller.BookingController;
 import controller.CustomerController;
 import controller.SearchBookingsTableModel;
+import controller.SearchTicketsTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -38,7 +40,6 @@ public class MyAccount extends javax.swing.JFrame {
     private javax.swing.JLabel telephoneNumber;
     private javax.swing.JButton previous;
 
-
     //My bookings
     private javax.swing.JScrollPane bookingScrollPane;
     private javax.swing.JButton getBooking;
@@ -46,7 +47,6 @@ public class MyAccount extends javax.swing.JFrame {
     private javax.swing.JPanel myBookingsPanel;
     private javax.swing.JTable myBookingsTable;
     private javax.swing.JButton previous2;
-   
     
     private CustomerAccount loggedInCustomer;
 
@@ -89,15 +89,13 @@ public class MyAccount extends javax.swing.JFrame {
         booking.setBorder(null);
         booking.setBorderPainted(false);
         booking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        booking.addActionListener(new ActionListener()
-        {
+        booking.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jPanel1.setVisible(false);
                 myBookingsPanel.setVisible(true);
             }
-            
-            
+
         });
 
         jPanel1.add(booking);
@@ -109,15 +107,14 @@ public class MyAccount extends javax.swing.JFrame {
         personalInfo.setBorder(null);
         personalInfo.setBorderPainted(false);
         personalInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        personalInfo.addActionListener(new ActionListener()
-        {
+        personalInfo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jPanel1.setVisible(false);
                 jPanel3.setVisible(true);
-              
+
             }
-            
+
         });
 
         jPanel1.add(personalInfo);
@@ -125,7 +122,7 @@ public class MyAccount extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 530, 580);
-        
+
         //For My  personnal Info Panel
         jPanel3 = new javax.swing.JPanel();
         email = new javax.swing.JLabel();
@@ -200,7 +197,7 @@ public class MyAccount extends javax.swing.JFrame {
         ageCategory.setBackground(new java.awt.Color(255, 255, 255));
         ageCategory.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         ageCategory.setForeground(new java.awt.Color(255, 255, 255));
-        ageCategory.setText("Age category");
+        ageCategory.setText(loggedInCustomer.getAgeCategory());
         jPanel3.add(ageCategory);
         ageCategory.setBounds(270, 460, 110, 30);
 
@@ -238,11 +235,11 @@ public class MyAccount extends javax.swing.JFrame {
         telephoneNumberField.setText(loggedInCustomer.getTelephoneNumber());
         jPanel3.add(telephoneNumberField);
         telephoneNumberField.setBounds(270, 411, 160, 35);
-        
-        birthDateDate.setDate(loggedInCustomer.getBirthDate()); 
+
+        birthDateDate.setDate(loggedInCustomer.getBirthDate());
         birthDateDate.setFont(new java.awt.Font("Segoe UI Plain", 0, 12)); // NOI18N
         jPanel3.add(birthDateDate);
-        
+
         birthDateDate.setBounds(272, 362, 160, 33);
 
         passwordField.setFont(new java.awt.Font("Segoe UI Plain", 0, 12)); // NOI18N
@@ -254,7 +251,7 @@ public class MyAccount extends javax.swing.JFrame {
         myPersonalInfo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         myPersonalInfo.setForeground(new java.awt.Color(255, 255, 255));
         myPersonalInfo.setText("My Personal Information");
-                       
+
         jPanel3.add(myPersonalInfo);
         myPersonalInfo.setBounds(130, 20, 260, 30);
 
@@ -267,10 +264,10 @@ public class MyAccount extends javax.swing.JFrame {
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 //if PAS DE PB =>save
-                
+
                 /*
                 
-                */
+                 */
                 //else mssg erreur
             }
         });
@@ -290,7 +287,7 @@ public class MyAccount extends javax.swing.JFrame {
         ageCategory1.setText("Age category :");
         jPanel3.add(ageCategory1);
         ageCategory1.setBounds(80, 460, 170, 30);
-        
+
         previous.setBackground(new java.awt.Color(255, 255, 255));
         previous.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
         previous.setText("Previous");
@@ -299,18 +296,17 @@ public class MyAccount extends javax.swing.JFrame {
         previous.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         previous.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                 jPanel1.setVisible(true);
-                 jPanel3.setVisible(false);
+                jPanel1.setVisible(true);
+                jPanel3.setVisible(false);
             }
         });
         jPanel3.add(previous);
-        previous.setBounds(3, 555, 40, 20);       
+        previous.setBounds(3, 555, 40, 20);
 
         getContentPane().add(jPanel3);
         jPanel3.setVisible(false);
         jPanel3.setBounds(0, 0, 530, 580);
-        
-        
+
         myBookingsPanel = new javax.swing.JPanel();
         myBookings = new javax.swing.JLabel();
         previous2 = new javax.swing.JButton();
@@ -330,9 +326,6 @@ public class MyAccount extends javax.swing.JFrame {
         myBookings.setForeground(new java.awt.Color(255, 255, 255));
         myBookings.setText("My Bookings");
 
-        
-        
-        
         myBookingsPanel.add(myBookings);
         myBookings.setBounds(200, 10, 140, 40);
 
@@ -344,24 +337,21 @@ public class MyAccount extends javax.swing.JFrame {
         previous2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         previous2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
-                  jPanel1.setVisible(true);
-                 myBookingsPanel.setVisible(false);   
+
+                jPanel1.setVisible(true);
+                myBookingsPanel.setVisible(false);
             }
         });
         myBookingsPanel.add(previous2);
         previous2.setBounds(3, 555, 40, 20);
 
-    /*    ArrayList<Flight> flights = new ArrayList<Flight>();
-        flights.add(new FlightDAOImpl().find(5));
-        flights.add(new FlightDAOImpl().find(6));
-        System.out.println(flights.get(0).getIdFlight());*/
-        
-         ArrayList<Booking> bookings = BookingController.getBookings(loggedInCustomer.getIdAccount());
-        SearchBookingsTableModel model = new SearchBookingsTableModel(bookings);
+        ArrayList<Booking> bookings = BookingController.getBookings(loggedInCustomer.getIdAccount());
+       SearchBookingsTableModel model = new SearchBookingsTableModel(bookings);
+
+       // SearchTicketsTableModel model = new SearchTicketsTableModel(7);
         myBookingsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         myBookingsTable.setModel(model);
-        
+
         myBookingsTable.setToolTipText("");
         myBookingsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
         myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -380,15 +370,22 @@ public class MyAccount extends javax.swing.JFrame {
         getBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+                String stringBookingNo = myBookingsTable.getValueAt(myBookingsTable.getSelectedRow(), 0).toString();
+                int BookingNo = Integer.parseInt(stringBookingNo);
+                Booking selectedBooking = BookingController.getBooking(BookingNo);
+
+                
+
             }
         });
         myBookingsPanel.add(getBooking);
         getBooking.setBounds(170, 520, 190, 30);
 
-        
         getContentPane().add(myBookingsPanel);
         myBookingsPanel.setBounds(0, 0, 530, 580);
         myBookingsPanel.setVisible(false);
+
         
         pack();
     }

@@ -44,8 +44,6 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
 
     private JTable searchDeapartureFlights, searchDepartureFlightsAR, searchArrivalFlightsAR;
-    private ActionListener controller;
-
     private CustomerAccount loggedInCustomer;
 
     public CustomerAccount getLoggedInCustomer() {

@@ -80,6 +80,12 @@ public class PassengerTest extends javax.swing.JFrame {
         telephoneNumber = new javax.swing.JLabel();
         ageCategory1 = new javax.swing.JLabel();
         save1 = new javax.swing.JButton();
+        myBookingsPanel = new javax.swing.JPanel();
+        myBookings = new javax.swing.JLabel();
+        previous1 = new javax.swing.JButton();
+        bookingScrollPane = new javax.swing.JScrollPane();
+        myBookingsTable = new javax.swing.JTable();
+        getBooking = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -265,7 +271,6 @@ public class PassengerTest extends javax.swing.JFrame {
 
         myAccount.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         myAccount.setForeground(new java.awt.Color(255, 255, 255));
-        myAccount.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\user_white.png")); // NOI18N
         myAccount.setText("My Account");
         myAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         myAccount.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -460,6 +465,79 @@ public class PassengerTest extends javax.swing.JFrame {
         getContentPane().add(myPersonalInfos);
         myPersonalInfos.setBounds(0, 0, 530, 580);
 
+        myBookingsPanel.setBackground(new java.awt.Color(55, 112, 155));
+        myBookingsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        myBookingsPanel.setLayout(null);
+
+        myBookings.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myBookings.setForeground(new java.awt.Color(255, 255, 255));
+        myBookings.setText("My Bookings");
+        myBookingsPanel.add(myBookings);
+        myBookings.setBounds(200, 10, 140, 40);
+
+        previous1.setBackground(new java.awt.Color(255, 255, 255));
+        previous1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous1.setText("Previous");
+        previous1.setBorder(null);
+        previous1.setBorderPainted(false);
+        previous1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previous1ActionPerformed(evt);
+            }
+        });
+        myBookingsPanel.add(previous1);
+        previous1.setBounds(3, 555, 40, 20);
+
+        myBookingsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        myBookingsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        myBookingsTable.setToolTipText("");
+        myBookingsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
+        myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        /*
+        myBookingsTable.setSelectionMode();
+        */
+        myBookingsTable.setShowGrid(true);
+        bookingScrollPane.setViewportView(myBookingsTable);
+
+        myBookingsPanel.add(bookingScrollPane);
+        bookingScrollPane.setBounds(25, 90, 480, 390);
+
+        getBooking.setBackground(new java.awt.Color(255, 255, 255));
+        getBooking.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        getBooking.setText("Get Booking tickets");
+        getBooking.setBorder(null);
+        getBooking.setBorderPainted(false);
+        getBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getBooking.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getBookingActionPerformed(evt);
+            }
+        });
+        myBookingsPanel.add(getBooking);
+        getBooking.setBounds(170, 520, 190, 30);
+
+        getContentPane().add(myBookingsPanel);
+        myBookingsPanel.setBounds(0, 0, 530, 580);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -502,6 +580,14 @@ public class PassengerTest extends javax.swing.JFrame {
     private void save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_save1ActionPerformed
+
+    private void previous1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_previous1ActionPerformed
+
+    private void getBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBookingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_getBookingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -551,6 +637,7 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JLabel arrivalDateTime1;
     private javax.swing.JLabel birthDate;
     private com.toedter.calendar.JDateChooser birthDateDate;
+    private javax.swing.JScrollPane bookingScrollPane;
     private javax.swing.JLabel departurAirport1;
     private javax.swing.JLabel departurAirport2;
     private javax.swing.JLabel departure;
@@ -563,6 +650,7 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel from;
     private javax.swing.JLabel from1;
+    private javax.swing.JButton getBooking;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -577,6 +665,9 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JLabel lastName;
     private javax.swing.JTextField lastNameField;
     private javax.swing.JLabel myAccount;
+    private javax.swing.JLabel myBookings;
+    private javax.swing.JPanel myBookingsPanel;
+    private javax.swing.JTable myBookingsTable;
     private javax.swing.JLabel myPersonalInfo;
     private javax.swing.JPanel myPersonalInfos;
     private javax.swing.JPanel panelMyaccount;
@@ -585,6 +676,7 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JButton personalInfo;
     private javax.swing.JButton personalInfo1;
     private javax.swing.JButton previous;
+    private javax.swing.JButton previous1;
     private javax.swing.JButton save1;
     private javax.swing.JTextField telephoneNulberField;
     private javax.swing.JLabel telephoneNumber;

@@ -16,8 +16,7 @@ public class MainMenuChoice implements ActionListener {
         switch (e.getActionCommand()) {
 
             case "Contacts":
-                new CustomerLogin();
-                //frame.dispose(); // on femre la fenetre actuelle
+                new Contact();  
                 break;
 
             case "Subscribe":
@@ -26,7 +25,7 @@ public class MainMenuChoice implements ActionListener {
                 break;
 
             case "Book a Flight !":
-                new CustomerLogin();
+                new CustomerLogin(frame);
                 //frame.dispose(); // on ferme la fenetre actuelle
                 break;
             case "Admin":

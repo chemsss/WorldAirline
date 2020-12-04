@@ -20,4 +20,10 @@ public class BookingController {
         return new BookingDAOImpl().findByIdCustomerAccount(idCustomerAccount);
         
     }
+    
+        public static Booking getBooking(int bookingNo)
+    { 
+        return new BookingDAOImpl().find(bookingNo);
+        
+    }
 }

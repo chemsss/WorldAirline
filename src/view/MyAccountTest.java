@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author Unknow
@@ -27,43 +29,43 @@ public class MyAccountTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        myBookingsPanel = new javax.swing.JPanel();
-        myBookings = new javax.swing.JLabel();
-        previous2 = new javax.swing.JButton();
-        bookingScrollPane = new javax.swing.JScrollPane();
-        myBookingsTable = new javax.swing.JTable();
-        getBooking = new javax.swing.JButton();
+        myTicketsPanel = new javax.swing.JPanel();
+        myTickets = new javax.swing.JLabel();
+        previous3 = new javax.swing.JButton();
+        myTicketsScrollPane = new javax.swing.JScrollPane();
+        myTicketsTable = new javax.swing.JTable();
+        viewTicket = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(55, 112, 155));
         getContentPane().setLayout(null);
 
-        myBookingsPanel.setBackground(new java.awt.Color(55, 112, 155));
-        myBookingsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        myBookingsPanel.setLayout(null);
+        myTicketsPanel.setBackground(new java.awt.Color(55, 112, 155));
+        myTicketsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        myTicketsPanel.setLayout(null);
 
-        myBookings.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myBookings.setForeground(new java.awt.Color(255, 255, 255));
-        myBookings.setText("My Bookings");
-        myBookingsPanel.add(myBookings);
-        myBookings.setBounds(200, 10, 140, 40);
+        myTickets.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        myTickets.setForeground(new java.awt.Color(255, 255, 255));
+        myTickets.setText("My Tickets");
+        myTicketsPanel.add(myTickets);
+        myTickets.setBounds(200, 10, 140, 40);
 
-        previous2.setBackground(new java.awt.Color(255, 255, 255));
-        previous2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
-        previous2.setText("Previous");
-        previous2.setBorder(null);
-        previous2.setBorderPainted(false);
-        previous2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        previous2.addActionListener(new java.awt.event.ActionListener() {
+        previous3.setBackground(new java.awt.Color(255, 255, 255));
+        previous3.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+        previous3.setText("Previous");
+        previous3.setBorder(null);
+        previous3.setBorderPainted(false);
+        previous3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        previous3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previous2ActionPerformed(evt);
+                previous3ActionPerformed(evt);
             }
         });
-        myBookingsPanel.add(previous2);
-        previous2.setBounds(3, 555, 40, 20);
+        myTicketsPanel.add(previous3);
+        previous3.setBounds(3, 555, 60, 20);
 
-        myBookingsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        myBookingsTable.setModel(new javax.swing.table.DefaultTableModel(
+        myTicketsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        myTicketsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -82,69 +84,61 @@ public class MyAccountTest extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        myBookingsTable.setToolTipText("");
-        myBookingsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
-        myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        myBookingsTable.setShowGrid(true);
-        bookingScrollPane.setViewportView(myBookingsTable);
+        myTicketsTable.setToolTipText("");
+        myTicketsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
+        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        myTicketsTable.setShowGrid(true);
+        myTicketsScrollPane.setViewportView(myTicketsTable);
 
-        myBookingsPanel.add(bookingScrollPane);
-        bookingScrollPane.setBounds(25, 90, 480, 390);
+        myTicketsPanel.add(myTicketsScrollPane);
+        myTicketsScrollPane.setBounds(25, 90, 480, 390);
 
-        getBooking.setBackground(new java.awt.Color(255, 255, 255));
-        getBooking.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        getBooking.setText("Get Booking tickets");
-        getBooking.setBorder(null);
-        getBooking.setBorderPainted(false);
-        getBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getBooking.addActionListener(new java.awt.event.ActionListener() {
+        viewTicket.setBackground(new java.awt.Color(255, 255, 255));
+        viewTicket.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        viewTicket.setText("View Ticket");
+        viewTicket.setBorder(null);
+        viewTicket.setBorderPainted(false);
+        viewTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getBookingActionPerformed(evt);
+                viewTicketActionPerformed(evt);
             }
         });
-        myBookingsPanel.add(getBooking);
-        getBooking.setBounds(170, 520, 190, 30);
+        myTicketsPanel.add(viewTicket);
+        viewTicket.setBounds(170, 520, 190, 30);
 
-        getContentPane().add(myBookingsPanel);
-        myBookingsPanel.setBounds(0, 0, 530, 580);
+        getContentPane().add(myTicketsPanel);
+        myTicketsPanel.setBounds(0, 0, 530, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void previous2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous2ActionPerformed
+    private void previous3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_previous2ActionPerformed
+    }//GEN-LAST:event_previous3ActionPerformed
 
-    private void getBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBookingActionPerformed
+    private void viewTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_getBookingActionPerformed
+    }//GEN-LAST:event_viewTicketActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MyAccountTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MyAccountTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MyAccountTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MyAccountTest.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+      	
+
+
+try {
+
+UIManager.setLookAndFeel( "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+}
+catch (ClassNotFoundException ex) {
+}catch (InstantiationException ex) {
+
+} catch (IllegalAccessException ex) {
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+}
         //</editor-fold>
         //</editor-fold>
 
@@ -157,11 +151,11 @@ public class MyAccountTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane bookingScrollPane;
-    private javax.swing.JButton getBooking;
-    private javax.swing.JLabel myBookings;
-    private javax.swing.JPanel myBookingsPanel;
-    private javax.swing.JTable myBookingsTable;
-    private javax.swing.JButton previous2;
+    private javax.swing.JLabel myTickets;
+    private javax.swing.JPanel myTicketsPanel;
+    private javax.swing.JScrollPane myTicketsScrollPane;
+    private javax.swing.JTable myTicketsTable;
+    private javax.swing.JButton previous3;
+    private javax.swing.JButton viewTicket;
     // End of variables declaration//GEN-END:variables
 }
