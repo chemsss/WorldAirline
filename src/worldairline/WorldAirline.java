@@ -15,7 +15,7 @@ public class WorldAirline {
          
         //MainMenu menu = new MainMenu();
        // WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
-        CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch();
+      /* CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch();
         
         Date date = new Date(121, 03, 02);
         System.out.println(new FlightDAOImpl().searchFlights( "CDG", "MIA", date, 20, "First Class").size());
@@ -24,7 +24,11 @@ public class WorldAirline {
             System.out.println(new FlightDAOImpl().searchFlights( "CDG" , "MIA", date, 20, "First Class").get(i).toString());
         }
         
-        System.out.println(date.toString());
+        System.out.println(date.toString());*/
+        
+       
+        EmployeeHome fza=new  EmployeeHome();
+  
                 
     }
     
