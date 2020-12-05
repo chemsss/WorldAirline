@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.*;
 
 /**
@@ -23,8 +25,10 @@ public class EmployeeBookingSearch extends JPanel {
     // End of variables declaration     
     
     public EmployeeBookingSearch() {
-        setSize(1920,1080);
+        super();
         initComponents();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setPreferredSize(new Dimension((int)screenSize.getWidth(),(int)screenSize.getHeight()));
         setBounds(0, 0, 1100, 570);
     }
     

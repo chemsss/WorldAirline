@@ -7,6 +7,8 @@ package view;
 
 import DataAcessObjectImpl.FlightDAOImpl;
 import controller.SearchFlightsTableModel;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.*;
 import model.Flight;
@@ -39,10 +41,9 @@ public class EmployeeSearchFlight extends JPanel {
     public EmployeeSearchFlight() {
         super();
         initComponents();
-        setSize(1000,1000);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setPreferredSize(new Dimension((int)screenSize.getWidth(),(int)screenSize.getHeight()));
         setBounds(0, 0, 1100, 570);
-        //setSize(parentFrame.getSize().width, parentFrame.getSize().height);
-        //System.out.println(parentFrame.getSize().width +"  " + parentFrame.getSize().height);
         
     }
 

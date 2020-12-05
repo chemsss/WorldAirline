@@ -154,7 +154,7 @@ public class EmployeeHomeTest extends javax.swing.JFrame {
 
     private void SearchFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFlightActionPerformed
         // TODO add your handling code here:
-        EmployeeSearchFlightTest SearchForAFlight=new EmployeeSearchFlightTest();
+   
     }//GEN-LAST:event_SearchFlightActionPerformed
 
     /**

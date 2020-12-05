@@ -9,12 +9,12 @@ package view;
  *
  * @author bibes
  */
-public class UpdateDeleteBooking extends javax.swing.JFrame {
+public class EmployeeUpdateDeleteBookingTest extends javax.swing.JPanel {
 
     /**
-     * Creates new form UpdateDeleteBooking
+     * Creates new form EmployeeUpdateDeleteBookingTest
      */
-    public UpdateDeleteBooking() {
+    public EmployeeUpdateDeleteBookingTest() {
         initComponents();
     }
 
@@ -27,9 +27,10 @@ public class UpdateDeleteBooking extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel5 = new javax.swing.JPanel();
-        textidflight1 = new javax.swing.JTextField();
+        title1 = new javax.swing.JLabel();
         search1 = new javax.swing.JButton();
+        textidflight1 = new javax.swing.JTextField();
+        idflight1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         nameflight1 = new javax.swing.JLabel();
         deparrturedate2 = new javax.swing.JLabel();
@@ -46,22 +47,13 @@ public class UpdateDeleteBooking extends javax.swing.JFrame {
         priceofaseat2 = new javax.swing.JTextField();
         priceofaseat3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        title1 = new javax.swing.JLabel();
-        idflight1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+        setLayout(null);
 
-        jPanel5.setLayout(null);
-
-        textidflight1.setText("jTextField1");
-        textidflight1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textidflight1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(textidflight1);
-        textidflight1.setBounds(230, 63, 150, 20);
+        title1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        title1.setText("Search booking:");
+        add(title1);
+        title1.setBounds(370, 10, 150, 30);
 
         search1.setText("research");
         search1.addActionListener(new java.awt.event.ActionListener() {
@@ -69,8 +61,22 @@ public class UpdateDeleteBooking extends javax.swing.JFrame {
                 search1ActionPerformed(evt);
             }
         });
-        jPanel5.add(search1);
+        add(search1);
         search1.setBounds(400, 60, 90, 23);
+
+        textidflight1.setText("jTextField1");
+        textidflight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textidflight1ActionPerformed(evt);
+            }
+        });
+        add(textidflight1);
+        textidflight1.setBounds(230, 63, 150, 20);
+
+        idflight1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        idflight1.setText("Enter the id of the booking: ");
+        add(idflight1);
+        idflight1.setBounds(30, 60, 200, 22);
 
         jPanel6.setBackground(new java.awt.Color(240, 240, 0));
         jPanel6.setLayout(null);
@@ -159,71 +165,22 @@ public class UpdateDeleteBooking extends javax.swing.JFrame {
         jPanel6.add(jComboBox1);
         jComboBox1.setBounds(190, 150, 120, 20);
 
-        jPanel5.add(jPanel6);
+        add(jPanel6);
         jPanel6.setBounds(30, 110, 920, 280);
-
-        title1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        title1.setText("Search booking:");
-        jPanel5.add(title1);
-        title1.setBounds(370, 10, 150, 30);
-
-        idflight1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        idflight1.setText("Enter the id of the booking: ");
-        jPanel5.add(idflight1);
-        idflight1.setBounds(30, 60, 200, 22);
-
-        getContentPane().add(jPanel5);
-        jPanel5.setBounds(0, 0, 920, 370);
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void textidflight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textidflight1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textidflight1ActionPerformed
 
     private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_search1ActionPerformed
 
+    private void textidflight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textidflight1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textidflight1ActionPerformed
+
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateDeleteBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateDeleteBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateDeleteBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateDeleteBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateDeleteBooking().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel airplane2;
@@ -236,7 +193,6 @@ public class UpdateDeleteBooking extends javax.swing.JFrame {
     private javax.swing.JLabel deparrturedate2;
     private javax.swing.JLabel idflight1;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nameflight1;

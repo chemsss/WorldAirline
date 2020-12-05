@@ -36,6 +36,9 @@ public class EmployeeHome extends javax.swing.JFrame {
     private javax.swing.JMenu manageFlight;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JTable searchDeapartureFlights;
+    
+    private final int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    private final int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     // End of variables declaration     
     
     /**
@@ -43,12 +46,12 @@ public class EmployeeHome extends javax.swing.JFrame {
      */
     public EmployeeHome() {
         jPanel2 = new JPanel();
+
         initComponents();
         this.setVisible(true);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        System.out.println((int) screenSize.getWidth());
-        System.out.println((int) screenSize.getHeight());
-        this.setSize((int) screenSize.getWidth() ,(int) screenSize.getHeight());
+        System.out.println(screenWidth);
+        System.out.println(screenHeight);
+        this.setSize(screenWidth ,screenHeight);
     }
 
     /**
@@ -94,20 +97,37 @@ public class EmployeeHome extends javax.swing.JFrame {
                 getContentPane().removeAll();
                 jPanel2 = new EmployeeSearchFlight();
                 initComponents();
+                setSize(screenWidth ,screenHeight);
             }
         });
         manageFlight.add(SearchFlight);
 
         AddFlight.setText("Add Flight");
+        AddFlight.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getContentPane().removeAll();
+                jPanel2= new EmployeeAddFlight();
+                initComponents();
+                setSize(screenWidth ,screenHeight);
+            }
+        });
         manageFlight.add(AddFlight);
+        
+        
 
         Update_DeleteFlight.setText("Update/Delete Flight");
         Update_DeleteFlight.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                getContentPane().removeAll();
+                jPanel2= new EmployeeUpdateDeleteFlight();
+                initComponents();
+                setSize(screenWidth ,screenHeight);
             }
         });
+        
+        
         manageFlight.add(Update_DeleteFlight);
 
         menuBar.add(manageFlight);
@@ -122,24 +142,50 @@ public class EmployeeHome extends javax.swing.JFrame {
                 getContentPane().removeAll();
                 jPanel2 = new EmployeeBookingSearch();
                 initComponents();
+                setSize(screenWidth ,screenHeight);
             }
         });
 
         DeleteBooking.setText("Update/Delete Booking");
         manageBookings.add(DeleteBooking);
+        DeleteBooking.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getContentPane().removeAll();
+                jPanel2 = new EmployeeUpdateDeleteBooking();
+                initComponents();
+                setSize(screenWidth ,screenHeight);
+            }
+        });
 
         menuBar.add(manageBookings);
+        
+        
+        
 
         ManageCoupons.setText("Manage coupons");
 
         AddCoupon.setText("Add Coupon");
+        AddCoupon.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getContentPane().removeAll();
+                jPanel2 = new EmployeeAddCoupon();
+                initComponents();
+                setSize(screenWidth ,screenHeight);
+            }
+        });
+        
         ManageCoupons.add(AddCoupon);
 
         SearchCoupon.setText("Search/Delete Coupon");
         SearchCoupon.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
+                getContentPane().removeAll();
+                jPanel2 = new EmployeeSearchDeleteCoupon();
+                initComponents();
+                setSize(screenWidth ,screenHeight);
             }
         });
         ManageCoupons.add(SearchCoupon);
