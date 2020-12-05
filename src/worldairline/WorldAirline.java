@@ -29,14 +29,14 @@ public class WorldAirline {
             CustomerAccount customer = new CustomerAccount(7,"Child","capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
                     new Date(109,03,04),"+33 6 89024763");
             
-            
+pa            
             CustomerAccount cm=null;
             CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
              */
          //   CustomerAccount customer = new CustomerAccount(7, "Child", "capron2009@hotmail.fr", "motdepassetitouan", "Titouan", "Capron", "32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
          //           new Date(109, 03, 04), "+33 6 89024763");
 
-        CustomerAccount customer = new CustomerAccountDAOImpl().find(7);
+      /*  CustomerAccount customer = new CustomerAccountDAOImpl().find(7);
             CustomerAccount cm = null;
             CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
             //Flight flight;
@@ -50,12 +50,12 @@ public class WorldAirline {
             
         //(int ticketNo, FlightSeat seat, Flight flight)*/
        
-     /*  ArrayList<Flight> flights = new ArrayList<Flight>();
+      ArrayList<Flight> flights = new ArrayList<Flight>();
        flights.add(new FlightDAOImpl().find(5));
               flights.add(new FlightDAOImpl().find(5));
 
-     /*  PassengerView pv = new PassengerView(flights,  5);
-*/
+      PassengerView pv = new PassengerView(flights,  5);
+
      
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(WorldAirline.class.getName()).log(Level.SEVERE, null, ex);
