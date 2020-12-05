@@ -56,42 +56,6 @@ public class PassengerTest extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
-        panelMyaccount = new javax.swing.JPanel();
-        myAccount = new javax.swing.JLabel();
-        personalInfo = new javax.swing.JButton();
-        personalInfo1 = new javax.swing.JButton();
-        myPersonalInfos = new javax.swing.JPanel();
-        email = new javax.swing.JLabel();
-        password = new javax.swing.JLabel();
-        firstName = new javax.swing.JLabel();
-        lastName = new javax.swing.JLabel();
-        adress = new javax.swing.JLabel();
-        birthDate = new javax.swing.JLabel();
-        ageCategory = new javax.swing.JLabel();
-        emailField = new javax.swing.JTextField();
-        firstNameField = new javax.swing.JTextField();
-        lastNameField = new javax.swing.JTextField();
-        adressField = new javax.swing.JTextField();
-        telephoneNulberField = new javax.swing.JTextField();
-        birthDateDate = new com.toedter.calendar.JDateChooser();
-        passwordField = new javax.swing.JPasswordField();
-        myPersonalInfo = new javax.swing.JLabel();
-        previous = new javax.swing.JButton();
-        telephoneNumber = new javax.swing.JLabel();
-        ageCategory1 = new javax.swing.JLabel();
-        save1 = new javax.swing.JButton();
-        myBookingsPanel = new javax.swing.JPanel();
-        myBookings = new javax.swing.JLabel();
-        previous1 = new javax.swing.JButton();
-        bookingScrollPane = new javax.swing.JScrollPane();
-        myBookingsTable = new javax.swing.JTable();
-        getBooking = new javax.swing.JButton();
-        myTicketsPanel = new javax.swing.JPanel();
-        myTickets = new javax.swing.JLabel();
-        previous3 = new javax.swing.JButton();
-        myTicketsScrollPane = new javax.swing.JScrollPane();
-        myTicketsTable = new javax.swing.JTable();
-        viewTicket = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -151,7 +115,17 @@ public class PassengerTest extends javax.swing.JFrame {
 
         departure1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         departure1.setForeground(new java.awt.Color(255, 255, 255));
-        departure1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\output-onlinepngtools (7).png")); // NOI18N
+        departure1.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/GITHUB/worldAirline/img/airplane_take_off_40px.png")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
         departure1.setText("Departure");
         jPanel1.add(departure1);
         departure1.setBounds(50, 70, 160, 30);
@@ -271,351 +245,6 @@ public class PassengerTest extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 300, 630, 480);
 
-        panelMyaccount.setBackground(new java.awt.Color(55, 112, 155));
-        panelMyaccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelMyaccount.setLayout(null);
-
-        myAccount.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myAccount.setForeground(new java.awt.Color(255, 255, 255));
-        myAccount.setText("My Account");
-        myAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        myAccount.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        panelMyaccount.add(myAccount);
-        myAccount.setBounds(190, 20, 160, 150);
-
-        personalInfo.setBackground(new java.awt.Color(255, 255, 255));
-        personalInfo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        personalInfo.setText("My Bookings");
-        personalInfo.setBorder(null);
-        personalInfo.setBorderPainted(false);
-        personalInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelMyaccount.add(personalInfo);
-        personalInfo.setBounds(140, 300, 230, 40);
-
-        personalInfo1.setBackground(new java.awt.Color(255, 255, 255));
-        personalInfo1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        personalInfo1.setText("My Personal Information");
-        personalInfo1.setBorder(null);
-        personalInfo1.setBorderPainted(false);
-        personalInfo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelMyaccount.add(personalInfo1);
-        personalInfo1.setBounds(140, 230, 230, 40);
-
-        getContentPane().add(panelMyaccount);
-        panelMyaccount.setBounds(0, 0, 530, 460);
-
-        myPersonalInfos.setBackground(new java.awt.Color(55, 112, 155));
-        myPersonalInfos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        myPersonalInfos.setLayout(null);
-
-        email.setBackground(new java.awt.Color(255, 255, 255));
-        email.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        email.setForeground(new java.awt.Color(255, 255, 255));
-        email.setText("Email :");
-        myPersonalInfos.add(email);
-        email.setBounds(80, 110, 70, 30);
-
-        password.setBackground(new java.awt.Color(255, 255, 255));
-        password.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        password.setForeground(new java.awt.Color(255, 255, 255));
-        password.setText("Password :");
-        myPersonalInfos.add(password);
-        password.setBounds(80, 160, 100, 30);
-
-        firstName.setBackground(new java.awt.Color(255, 255, 255));
-        firstName.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        firstName.setForeground(new java.awt.Color(255, 255, 255));
-        firstName.setText("First Name :");
-        myPersonalInfos.add(firstName);
-        firstName.setBounds(80, 210, 100, 30);
-
-        lastName.setBackground(new java.awt.Color(255, 255, 255));
-        lastName.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        lastName.setForeground(new java.awt.Color(255, 255, 255));
-        lastName.setText("Last Name :");
-        myPersonalInfos.add(lastName);
-        lastName.setBounds(80, 260, 100, 30);
-
-        adress.setBackground(new java.awt.Color(255, 255, 255));
-        adress.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        adress.setForeground(new java.awt.Color(255, 255, 255));
-        adress.setText("Adress :");
-        myPersonalInfos.add(adress);
-        adress.setBounds(80, 310, 100, 30);
-
-        birthDate.setBackground(new java.awt.Color(255, 255, 255));
-        birthDate.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        birthDate.setForeground(new java.awt.Color(255, 255, 255));
-        birthDate.setText("Birth date :");
-        myPersonalInfos.add(birthDate);
-        birthDate.setBounds(80, 360, 100, 30);
-
-        ageCategory.setBackground(new java.awt.Color(255, 255, 255));
-        ageCategory.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        ageCategory.setForeground(new java.awt.Color(255, 255, 255));
-        ageCategory.setText("Age category");
-        myPersonalInfos.add(ageCategory);
-        ageCategory.setBounds(270, 460, 110, 30);
-
-        emailField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        emailField.setForeground(new java.awt.Color(51, 51, 51));
-        emailField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        emailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailFieldActionPerformed(evt);
-            }
-        });
-        myPersonalInfos.add(emailField);
-        emailField.setBounds(270, 110, 160, 30);
-
-        firstNameField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        firstNameField.setForeground(new java.awt.Color(51, 51, 51));
-        firstNameField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        firstNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameFieldActionPerformed(evt);
-            }
-        });
-        myPersonalInfos.add(firstNameField);
-        firstNameField.setBounds(270, 210, 160, 30);
-
-        lastNameField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        lastNameField.setForeground(new java.awt.Color(51, 51, 51));
-        lastNameField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        lastNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lastNameFieldActionPerformed(evt);
-            }
-        });
-        myPersonalInfos.add(lastNameField);
-        lastNameField.setBounds(270, 260, 160, 30);
-
-        adressField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        adressField.setForeground(new java.awt.Color(51, 51, 51));
-        adressField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        adressField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adressFieldActionPerformed(evt);
-            }
-        });
-        myPersonalInfos.add(adressField);
-        adressField.setBounds(270, 310, 160, 30);
-
-        telephoneNulberField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        telephoneNulberField.setForeground(new java.awt.Color(51, 51, 51));
-        telephoneNulberField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        telephoneNulberField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telephoneNulberFieldActionPerformed(evt);
-            }
-        });
-        myPersonalInfos.add(telephoneNulberField);
-        telephoneNulberField.setBounds(270, 410, 160, 30);
-        myPersonalInfos.add(birthDateDate);
-        birthDateDate.setBounds(270, 360, 160, 30);
-
-        passwordField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
-        passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        passwordField.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        myPersonalInfos.add(passwordField);
-        passwordField.setBounds(270, 160, 160, 30);
-
-        myPersonalInfo.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myPersonalInfo.setForeground(new java.awt.Color(255, 255, 255));
-        myPersonalInfo.setText("My Personal Information");
-        myPersonalInfos.add(myPersonalInfo);
-        myPersonalInfo.setBounds(130, 20, 260, 30);
-
-        previous.setBackground(new java.awt.Color(255, 255, 255));
-        previous.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
-        previous.setText("Previous");
-        previous.setBorder(null);
-        previous.setBorderPainted(false);
-        previous.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        previous.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previousActionPerformed(evt);
-            }
-        });
-        myPersonalInfos.add(previous);
-        previous.setBounds(3, 555, 40, 20);
-
-        telephoneNumber.setBackground(new java.awt.Color(255, 255, 255));
-        telephoneNumber.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        telephoneNumber.setForeground(new java.awt.Color(255, 255, 255));
-        telephoneNumber.setText("Telephone number :");
-        myPersonalInfos.add(telephoneNumber);
-        telephoneNumber.setBounds(80, 410, 170, 30);
-
-        ageCategory1.setBackground(new java.awt.Color(255, 255, 255));
-        ageCategory1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        ageCategory1.setForeground(new java.awt.Color(255, 255, 255));
-        ageCategory1.setText("Age category :");
-        myPersonalInfos.add(ageCategory1);
-        ageCategory1.setBounds(80, 460, 170, 30);
-
-        save1.setBackground(new java.awt.Color(255, 255, 255));
-        save1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        save1.setText("Save");
-        save1.setBorder(null);
-        save1.setBorderPainted(false);
-        save1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        save1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save1ActionPerformed(evt);
-            }
-        });
-        myPersonalInfos.add(save1);
-        save1.setBounds(220, 520, 90, 30);
-
-        getContentPane().add(myPersonalInfos);
-        myPersonalInfos.setBounds(0, 0, 530, 580);
-
-        myBookingsPanel.setBackground(new java.awt.Color(55, 112, 155));
-        myBookingsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        myBookingsPanel.setLayout(null);
-
-        myBookings.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myBookings.setForeground(new java.awt.Color(255, 255, 255));
-        myBookings.setText("My Bookings");
-        myBookingsPanel.add(myBookings);
-        myBookings.setBounds(200, 10, 140, 40);
-
-        previous1.setBackground(new java.awt.Color(255, 255, 255));
-        previous1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
-        previous1.setText("Previous");
-        previous1.setBorder(null);
-        previous1.setBorderPainted(false);
-        previous1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        previous1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previous1ActionPerformed(evt);
-            }
-        });
-        myBookingsPanel.add(previous1);
-        previous1.setBounds(3, 555, 40, 20);
-
-        myBookingsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        myBookingsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        myBookingsTable.setToolTipText("");
-        myBookingsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
-        myBookingsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        /*
-        */
-        myBookingsTable.setShowGrid(true);
-        bookingScrollPane.setViewportView(myBookingsTable);
-
-        myBookingsPanel.add(bookingScrollPane);
-        bookingScrollPane.setBounds(25, 90, 480, 390);
-
-        getBooking.setBackground(new java.awt.Color(255, 255, 255));
-        getBooking.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        getBooking.setText("Get Booking tickets");
-        getBooking.setBorder(null);
-        getBooking.setBorderPainted(false);
-        getBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getBooking.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                getBookingActionPerformed(evt);
-            }
-        });
-        myBookingsPanel.add(getBooking);
-        getBooking.setBounds(170, 520, 190, 30);
-
-        getContentPane().add(myBookingsPanel);
-        myBookingsPanel.setBounds(0, 0, 530, 580);
-
-        myTicketsPanel.setBackground(new java.awt.Color(55, 112, 155));
-        myTicketsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        myTicketsPanel.setLayout(null);
-
-        myTickets.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myTickets.setForeground(new java.awt.Color(255, 255, 255));
-        myTickets.setText("My Tickets");
-        myTicketsPanel.add(myTickets);
-        myTickets.setBounds(200, 10, 140, 40);
-
-        previous3.setBackground(new java.awt.Color(255, 255, 255));
-        previous3.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
-        previous3.setText("Previous");
-        previous3.setBorder(null);
-        previous3.setBorderPainted(false);
-        previous3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        previous3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previous3ActionPerformed(evt);
-            }
-        });
-        myTicketsPanel.add(previous3);
-        previous3.setBounds(3, 555, 60, 20);
-
-        myTicketsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        myTicketsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        myTicketsTable.setToolTipText("");
-        myTicketsTable.setSelectionBackground(new java.awt.Color(0, 204, 0));
-        /*
-        myTicketsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        myTicketsTable.setSelectionMode();
-        myTicketsTable.setShowGrid(true);
-        */
-        myTicketsScrollPane.setViewportView(myTicketsTable);
-
-        myTicketsPanel.add(myTicketsScrollPane);
-        myTicketsScrollPane.setBounds(25, 90, 480, 390);
-
-        viewTicket.setBackground(new java.awt.Color(255, 255, 255));
-        viewTicket.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        viewTicket.setText("View Ticket");
-        viewTicket.setBorder(null);
-        viewTicket.setBorderPainted(false);
-        viewTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        viewTicket.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewTicketActionPerformed(evt);
-            }
-        });
-        myTicketsPanel.add(viewTicket);
-        viewTicket.setBounds(170, 520, 190, 30);
-
-        getContentPane().add(myTicketsPanel);
-        myTicketsPanel.setBounds(0, 0, 530, 580);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -630,50 +259,6 @@ public class PassengerTest extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailFieldActionPerformed
-
-    private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstNameFieldActionPerformed
-
-    private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lastNameFieldActionPerformed
-
-    private void adressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adressFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adressFieldActionPerformed
-
-    private void telephoneNulberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telephoneNulberFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telephoneNulberFieldActionPerformed
-
-    private void previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_previousActionPerformed
-
-    private void save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_save1ActionPerformed
-
-    private void previous1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_previous1ActionPerformed
-
-    private void getBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getBookingActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_getBookingActionPerformed
-
-    private void previous3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previous3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_previous3ActionPerformed
-
-    private void viewTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewTicketActionPerformed
 
     /**
      * @param args the command line arguments
@@ -711,32 +296,20 @@ public class PassengerTest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel adress;
-    private javax.swing.JTextField adressField;
-    private javax.swing.JLabel ageCategory;
-    private javax.swing.JLabel ageCategory1;
     private javax.swing.JLabel arrival;
     private javax.swing.JLabel arrival1;
     private javax.swing.JLabel arrivalAirport1;
     private javax.swing.JLabel arrivalAirport2;
     private javax.swing.JLabel arrivalDateTime;
     private javax.swing.JLabel arrivalDateTime1;
-    private javax.swing.JLabel birthDate;
-    private com.toedter.calendar.JDateChooser birthDateDate;
-    private javax.swing.JScrollPane bookingScrollPane;
     private javax.swing.JLabel departurAirport1;
     private javax.swing.JLabel departurAirport2;
     private javax.swing.JLabel departure;
     private javax.swing.JLabel departure1;
     private javax.swing.JLabel departureDateTime;
     private javax.swing.JLabel departureDateTime1;
-    private javax.swing.JLabel email;
-    private javax.swing.JTextField emailField;
-    private javax.swing.JLabel firstName;
-    private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel from;
     private javax.swing.JLabel from1;
-    private javax.swing.JButton getBooking;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -748,31 +321,7 @@ public class PassengerTest extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JLabel lastName;
-    private javax.swing.JTextField lastNameField;
-    private javax.swing.JLabel myAccount;
-    private javax.swing.JLabel myBookings;
-    private javax.swing.JPanel myBookingsPanel;
-    private javax.swing.JTable myBookingsTable;
-    private javax.swing.JLabel myPersonalInfo;
-    private javax.swing.JPanel myPersonalInfos;
-    private javax.swing.JLabel myTickets;
-    private javax.swing.JPanel myTicketsPanel;
-    private javax.swing.JScrollPane myTicketsScrollPane;
-    private javax.swing.JTable myTicketsTable;
-    private javax.swing.JPanel panelMyaccount;
-    private javax.swing.JLabel password;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JButton personalInfo;
-    private javax.swing.JButton personalInfo1;
-    private javax.swing.JButton previous;
-    private javax.swing.JButton previous1;
-    private javax.swing.JButton previous3;
-    private javax.swing.JButton save1;
-    private javax.swing.JTextField telephoneNulberField;
-    private javax.swing.JLabel telephoneNumber;
     private javax.swing.JLabel to;
     private javax.swing.JLabel to1;
-    private javax.swing.JButton viewTicket;
     // End of variables declaration//GEN-END:variables
 }

@@ -30,5 +30,12 @@ public class TicketController {
 
         return new TicketDAOImpl().getArrivalAirport(ticketNo);
     }
+    
+    public static void getImage(int ticketNo )
+    {
+        new TicketDAOImpl().getImg(ticketNo);
+    }
+        
+        
 
 }

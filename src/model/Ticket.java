@@ -13,6 +13,7 @@ public class Ticket {
         this.seat = seat;
         this.flight = flight;
     }
+    
 
     @Override
     public String toString() {

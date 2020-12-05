@@ -48,11 +48,11 @@ public class SearchFlightsTableModel extends AbstractTableModel {
             case 2:
                 return flights.get(row).getDepartureAirport();
             case 3:
-                return flights.get(row).getDepartureDate();
+                return flights.get(row).getDepartureDateTimeToString();
             case 4:
                 return flights.get(row).getArrivalAirport();
             case 5:
-                return flights.get(row).getArrivalDate();
+                return flights.get(row).getArrivalDateTimeToString();
             default:
                 return "";
         }

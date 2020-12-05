@@ -36,17 +36,33 @@ public class CustomerFlightSearchChoice implements ActionListener {
             break;
 
             case "Next": {
-                // new signUp();
+
                 if (frame.getOneWay().isSelected()) {
-                    
                     String stringIdFlight = frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1).toString();
                     int idFlight = Integer.parseInt(stringIdFlight);
                     Flight selectedFlight = FlightController.getFlight(idFlight);
-                    
+
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedFlight);
-                   
-                    new PassengerView(flights, frame.getSelectPassenger());
+
+                    if (frame.getLoggedInCustomer() == null) {
+                        new PassengerView(flights, frame.getSelectPassenger());
+                    } else {
+
+                        String[] options = {"yes", "no"};
+
+                        int x = JOptionPane.showOptionDialog(null, "Are you taking a ticket for you ?",
+                                "Customer Account",
+                                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+                        if (x == 0) {                           
+                          new PassengerView(flights, frame.getSelectPassenger(),frame.getLoggedInCustomer());
+                        } else if (x == 1) {
+                            new PassengerView(flights, frame.getSelectPassenger());
+                        }
+
+                    }
+
                 }
                 if (frame.getRoundTrip().isSelected()) {
                     String stringIdFlight = frame.getSearchDepartureFlightsAR().getValueAt(frame.getSearchDepartureFlightsAR().getSelectedRow(), 1).toString();

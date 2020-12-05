@@ -116,7 +116,8 @@ public class TicketDAOImpl implements TicketDAO {
             int length = 12;
            // String format = String.format("%0" + length + "d", ticketNo); // result 00015
 
-            Barcode barcode = BarcodeFactory.createEAN13(String.format("%0" + length + "d", ticketNo));
+            //Barcode barcode = BarcodeFactory.createEAN13(String.format("%0" + length + "d", ticketNo));
+            Barcode barcode = BarcodeFactory.	createInt2of5(String.format("%0" + length + "d", ticketNo));
 
             barcode.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14));
             // BufferedImage image = BarcodeImageHandler.getImage(barcode);

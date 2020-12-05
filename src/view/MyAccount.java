@@ -61,6 +61,7 @@ public class MyAccount extends javax.swing.JFrame {
     private Booking selectedBooking;
 
     //My Ticket Details
+    private javax.swing.JLabel barcode;
     private javax.swing.JLabel arrivalDateTime2;
     private javax.swing.JLabel arrivalTimeDate;
     private javax.swing.JLabel departureTimeDate;
@@ -76,6 +77,12 @@ public class MyAccount extends javax.swing.JFrame {
     private javax.swing.JButton previous4;
     private javax.swing.JLabel to;
     private javax.swing.JLabel to2;
+    private javax.swing.JLabel airline;
+    private javax.swing.JLabel airline2;
+    private javax.swing.JLabel seatNo;
+    private javax.swing.JLabel seatNo2;
+    private javax.swing.JLabel className;
+
     private CustomerAccount loggedInCustomer;
     private Ticket selectedTicket;
 
@@ -374,11 +381,9 @@ public class MyAccount extends javax.swing.JFrame {
         myBookingsPanel.add(previous2);
         previous2.setBounds(3, 555, 40, 20);
 
-        System.out.println("AAAAA");
         ArrayList<Booking> bookings = BookingController.getBookings(loggedInCustomer.getIdAccount());
         System.out.println((loggedInCustomer.getIdAccount()));
-  
-        System.out.println(bookings.size() +"ertyuj");
+
         SearchBookingsTableModel model = new SearchBookingsTableModel(bookings);
 
         myBookingsTable.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
@@ -400,11 +405,11 @@ public class MyAccount extends javax.swing.JFrame {
         getBooking.setBorder(null);
         getBooking.setBorderPainted(false);
         getBooking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-       
+
         getBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 //If a booking is selected
-               
+
                 if (!myBookingsTable.getSelectionModel().isSelectionEmpty()) {
                     String stringBookingNo = myBookingsTable.getValueAt(myBookingsTable.getSelectedRow(), 0).toString();
                     int bookingNo = Integer.parseInt(stringBookingNo);
@@ -425,7 +430,6 @@ public class MyAccount extends javax.swing.JFrame {
         myBookingsPanel.setBounds(0, 0, 530, 580);
         myBookingsPanel.setVisible(false);
 
-      
         myTicketDetailsPanel = new javax.swing.JPanel();
         myTicketDetails = new javax.swing.JLabel();
         previous4 = new javax.swing.JButton();
@@ -441,130 +445,214 @@ public class MyAccount extends javax.swing.JFrame {
         from2 = new javax.swing.JLabel();
         departureTimeDate = new javax.swing.JLabel();
         departureTimeDate2 = new javax.swing.JLabel();
+      
+        barcode = new javax.swing.JLabel();
+        airline = new javax.swing.JLabel();
+        airline2 = new javax.swing.JLabel();
+        seatNo = new javax.swing.JLabel();
+        seatNo2 = new javax.swing.JLabel();
+        airline = new javax.swing.JLabel();
+        className =new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(55, 112, 155));
-        getContentPane().setLayout(null);
+ 
+    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        myTicketDetailsPanel.setBackground(new java.awt.Color(55, 112, 155));
-        myTicketDetailsPanel.setLayout(null);
+    setBackground(
 
-        myTicketDetails.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        myTicketDetails.setForeground(new java.awt.Color(255, 255, 255));
-        myTicketDetails.setText("My Ticket Details");
-        myTicketDetailsPanel.add(myTicketDetails);
-        myTicketDetails.setBounds(170, 10, 200, 40);
+    new java.awt.Color(55, 112, 155));
+    getContentPane()
 
-        previous4.setBackground(new java.awt.Color(255, 255, 255));
-        previous4.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
-        previous4.setText("Previous");
-        previous4.setBorder(null);
-        previous4.setBorderPainted(false);
-        previous4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        previous4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myTicketsPanel.setVisible(true);
-                myTicketDetailsPanel.setVisible(false);
-            }
-        });
+    .setLayout(null);
+
+    myTicketDetailsPanel.setBackground (
+
+    new java.awt.Color(55, 112, 155));
+    myTicketDetailsPanel.setLayout (
+
+    null);
+
+    myTicketDetails.setFont (
+
+    new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+    myTicketDetails.setForeground (
+
+    new java.awt.Color(255, 255, 255));
+    myTicketDetails.setText (
+
+    "My Ticket Details");
+    myTicketDetailsPanel.add (myTicketDetails);
+
+    myTicketDetails.setBounds (
+
+    170, 10, 200, 40);
+        
+      
+
+    previous4.setBackground (
+
+    new java.awt.Color(255, 255, 255));
+    previous4.setFont (
+
+    new java.awt.Font("Yu Gothic UI Light", 0, 10)); // NOI18N
+    previous4.setText (
+
+    "Previous");
+    previous4.setBorder (
+
+    null);
+    previous4.setBorderPainted (
+
+    false);
+    previous4.setCursor (
+
+    new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    previous4.addActionListener ( new java.awt.event.ActionListener() {
+            
+
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        myTicketsPanel.setVisible(true);
+        myTicketDetailsPanel.setVisible(false);
+    }
+}
+);
 
     }
 
     public void initMyTicketDetails() {
         //My Ticket Details
 
+         this.setSize(550, 615);
         departureTimeDate2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         departureTimeDate2.setForeground(new java.awt.Color(255, 255, 255));
-        departureTimeDate2.setText("jLabel1");
+        departureTimeDate2.setText(selectedTicket.getFlight().getDepartureDateTimeToString());
         myTicketDetailsPanel.add(departureTimeDate2);
-        departureTimeDate2.setBounds(310, 200, 70, 20);
+        departureTimeDate2.setBounds(310, 204, 150, 20);
 
         to2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         to2.setForeground(new java.awt.Color(255, 255, 255));
-        to2.setText("jLabel1");
+        to2.setText(TicketController.getArrivalAirport(selectedTicket.getTicketNo()).getIdAirport());
         myTicketDetailsPanel.add(to2);
-        to2.setBounds(60, 260, 70, 20);
+        to2.setBounds(60, 268, 70, 20);
 
         arrivalDateTime2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         arrivalDateTime2.setForeground(new java.awt.Color(255, 255, 255));
-        arrivalDateTime2.setText("jLabel1");
+        arrivalDateTime2.setText(selectedTicket.getFlight().getDepartureDateTimeToString());
+
         myTicketDetailsPanel.add(arrivalDateTime2);
-        arrivalDateTime2.setBounds(310, 260, 70, 20);
+        arrivalDateTime2.setBounds(310, 264, 150, 20);
 
         flight2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         flight2.setForeground(new java.awt.Color(255, 255, 255));
-        flight2.setText("jLabel1");
+        
+        //System.out.println(TicketController.getTicket( selectedTicket.getFlight().getIdFlight()));
+        
+        flight2.setText(Integer.toString(selectedTicket.getFlight().getIdFlight()));
+
         myTicketDetailsPanel.add(flight2);
-        flight2.setBounds(310, 130, 70, 20);
+        flight2.setBounds(310, 134, 70, 20);
 
         myTicketDetailsPanel.add(previous4);
         previous4.setBounds(3, 555, 60, 20);
 
-        to.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        to.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
         to.setForeground(new java.awt.Color(255, 255, 255));
         to.setText("To");
         myTicketDetailsPanel.add(to);
-        to.setBounds(60, 240, 160, 30);
+        to.setBounds(60, 244, 160, 30);
 
-        arrivalTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        arrivalTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
         arrivalTimeDate.setForeground(new java.awt.Color(255, 255, 255));
         arrivalTimeDate.setText("Arrival Date Time");
         myTicketDetailsPanel.add(arrivalTimeDate);
         arrivalTimeDate.setBounds(310, 240, 170, 30);
 
-        flight.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        flight.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
         flight.setForeground(new java.awt.Color(255, 255, 255));
-        flight.setText("Flight");
+        flight.setText("Flight No");
         myTicketDetailsPanel.add(flight);
         flight.setBounds(310, 110, 90, 30);
 
-        nameOfPassenger.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        nameOfPassenger.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
         nameOfPassenger.setForeground(new java.awt.Color(255, 255, 255));
         nameOfPassenger.setText("Name Of Passenger");
         myTicketDetailsPanel.add(nameOfPassenger);
         nameOfPassenger.setBounds(60, 110, 180, 30);
 
-        from.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        from.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
         from.setForeground(new java.awt.Color(255, 255, 255));
         from.setText("From");
         myTicketDetailsPanel.add(from);
         from.setBounds(60, 180, 160, 30);
 
-        departureTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        departureTimeDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
         departureTimeDate.setForeground(new java.awt.Color(255, 255, 255));
         departureTimeDate.setText("Departure Date Time");
         myTicketDetailsPanel.add(departureTimeDate);
-        departureTimeDate.setBounds(310, 180, 180, 30);
-
-        from.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
-        from.setForeground(new java.awt.Color(255, 255, 255));
-        from.setText("From");
-        myTicketDetailsPanel.add(from);
-        from.setBounds(60, 180, 160, 30);
+        departureTimeDate.setBounds(310, 180, 200, 30);
 
         nameOfPasenger2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         nameOfPasenger2.setForeground(new java.awt.Color(255, 255, 255));
 
-        System.out.println(selectedTicket);
 
-        if (selectedTicket != null) {
-            System.out.println("gegrg");
+
             nameOfPasenger2.setText(PassengerController.getLastNamePassengerByTicketNo(selectedTicket.getTicketNo()) + " " + PassengerController.getFirstNamePassengerByTicketNo(selectedTicket.getTicketNo()));
 
-        }
+       
 
         myTicketDetailsPanel.add(nameOfPasenger2);
-        nameOfPasenger2.setBounds(60, 130, 70, 20);
+        nameOfPasenger2.setBounds(60, 134, 120, 20);
 
         from2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         from2.setForeground(new java.awt.Color(255, 255, 255));
 
-        if (selectedTicket != null) {
-            from2.setText(TicketController.getDepartureAirport(selectedTicket.getTicketNo()).toString());
-        }
+        from2.setText(TicketController.getDepartureAirport(selectedTicket.getTicketNo()).getIdAirport());
+        
 
         myTicketDetailsPanel.add(from2);
-        from2.setBounds(60, 200, 70, 20);
+        from2.setBounds(60, 204, 70, 20);
+        
+        TicketController.getImage(selectedTicket.getTicketNo());
+         barcode.setIcon(new javax.swing.ImageIcon("img\\Tickets Barcodes\\" + selectedTicket.getTicketNo() + ".png"));
+        myTicketDetailsPanel.add(barcode);
+        barcode.setBounds(145, 385, 280, 150);
+        
+        
+        
+        airline.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
+        airline.setForeground(new java.awt.Color(255, 255, 255));
+        airline.setText("Airline");
+        myTicketDetailsPanel.add(airline);
+        airline.setBounds(60, 308, 200, 30);   
+                             
+        airline2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        airline2.setForeground(new java.awt.Color(255, 255, 255));
+        airline2.setText(selectedTicket.getFlight().getAirlineName());
+        
+
+        myTicketDetailsPanel.add(airline2);
+        airline2.setBounds(60, 332, 150, 20);
+
+        seatNo.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N
+        seatNo.setForeground(new java.awt.Color(255, 255, 255));
+        seatNo.setText("Seat");
+        myTicketDetailsPanel.add(seatNo);
+        seatNo.setBounds(310, 308, 160, 30);   
+                             
+        seatNo2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        seatNo2.setForeground(new java.awt.Color(255, 255, 255));
+        seatNo2.setText(Integer.toString(selectedTicket.getSeat().getSeatNo()));
+        seatNo2.setBounds(310, 332, 200, 20);
+        myTicketDetailsPanel.add(seatNo2);
+
+
+        className.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        className.setForeground(new java.awt.Color(255, 255, 255));
+        className.setText(selectedTicket.getSeat().getClassName());    
+        myTicketDetailsPanel.add(className);
+        className.setBounds(310, 346, 200, 20);
+              
+
+        
 
         getContentPane().add(myTicketDetailsPanel);
         myTicketDetailsPanel.setBounds(0, 0, 570, 580);
@@ -572,9 +660,15 @@ public class MyAccount extends javax.swing.JFrame {
 
     }
     
+    
+    
+    
+    
+    
+    
     public void initMyTickets()
     {
-          //My Ticket
+         //My Tickets
         myTicketsPanel = new javax.swing.JPanel();
         myTickets = new javax.swing.JLabel();
         previous3 = new javax.swing.JButton();
