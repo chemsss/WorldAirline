@@ -5,6 +5,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.*;
 import java.security.MessageDigest;
+import javax.swing.*;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import view.*;
 
 public class WorldAirline {
@@ -27,7 +29,13 @@ public class WorldAirline {
         System.out.println(date.toString());*/
         
        
-        EmployeeHome fza=new  EmployeeHome();
+        /*JFrame test = new JFrame();
+        test.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        test.setSize(1920,1080);
+        test.setVisible(true);
+        test.add(new EmployeeSearchFlight(test));*/ 
+        
+        new EmployeeHome();
   
                 
     }

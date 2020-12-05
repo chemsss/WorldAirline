@@ -85,7 +85,7 @@ public class EmployeeHomeTest extends javax.swing.JFrame {
         );
 
         jPanel1.add(jInternalFrame1);
-        jInternalFrame1.setBounds(0, 0, 820, 480);
+        jInternalFrame1.setBounds(40, 30, 820, 480);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1100, 570);
@@ -154,7 +154,7 @@ public class EmployeeHomeTest extends javax.swing.JFrame {
 
     private void SearchFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFlightActionPerformed
         // TODO add your handling code here:
-        SearchFlight SearchForAFlight=new SearchFlight();
+        EmployeeSearchFlightTest SearchForAFlight=new EmployeeSearchFlightTest();
     }//GEN-LAST:event_SearchFlightActionPerformed
 
     /**

@@ -7,7 +7,10 @@ package view;
 
 import DataAcessObjectImpl.FlightDAOImpl;
 import controller.SearchFlightsTableModel;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import model.Flight;
 
 /**
@@ -15,13 +18,37 @@ import model.Flight;
  * @author Unknow
  */
 public class EmployeeHome extends javax.swing.JFrame {
-
+    
+    // Variables declaration - do not modify                     
+    private javax.swing.JMenuItem AddCoupon;
+    private javax.swing.JMenuItem AddFlight;
+    private javax.swing.JMenuItem DeleteBooking;
+    private javax.swing.JScrollPane DepartureScrollPane;
+    private javax.swing.JMenu ManageCoupons;
+    private javax.swing.JMenuItem SearchCoupon;
+    private javax.swing.JMenuItem SearchFlight;
+    private javax.swing.JMenuItem UpdateBooking;
+    private javax.swing.JMenuItem Update_DeleteFlight;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenu manageBookings;
+    private javax.swing.JMenu manageFlight;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JTable searchDeapartureFlights;
+    // End of variables declaration     
+    
     /**
      * Creates new form EmployeeHome
      */
     public EmployeeHome() {
+        jPanel2 = new JPanel();
         initComponents();
         this.setVisible(true);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        System.out.println((int) screenSize.getWidth());
+        System.out.println((int) screenSize.getHeight());
+        this.setSize((int) screenSize.getWidth() ,(int) screenSize.getHeight());
     }
 
     /**
@@ -34,7 +61,6 @@ public class EmployeeHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
         DepartureScrollPane = new javax.swing.JScrollPane();
         searchDeapartureFlights = new javax.swing.JTable();
         menuBar = new javax.swing.JMenuBar();
@@ -55,39 +81,6 @@ public class EmployeeHome extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(200, 191, 191));
         jPanel1.setLayout(null);
 
-        jInternalFrame1.setClosable(true);
-        jInternalFrame1.setVisible(true);
-
-        ArrayList<Flight> flights =  new ArrayList<Flight>();
-        flights.add(new FlightDAOImpl().find(5));
-        System.out.println(flights.get(0).getIdFlight());
-        SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
-        searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
-        searchDeapartureFlights.setModel(model);
-        searchDeapartureFlights.setFocusable(false);
-        searchDeapartureFlights.setGridColor(new java.awt.Color(0, 0, 0));
-        searchDeapartureFlights.setOpaque(false);
-        searchDeapartureFlights.setRowHeight(20);
-        searchDeapartureFlights.setSelectionBackground(new java.awt.Color(200, 191, 191));
-        searchDeapartureFlights.setShowHorizontalLines(false);
-        searchDeapartureFlights.setShowVerticalLines(false);
-        searchDeapartureFlights.getTableHeader().setReorderingAllowed(false);
-        DepartureScrollPane.setViewportView(searchDeapartureFlights);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DepartureScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DepartureScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jInternalFrame1);
-        jInternalFrame1.setBounds(0, 0, 820, 480);
-
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1100, 570);
 
@@ -96,8 +89,11 @@ public class EmployeeHome extends javax.swing.JFrame {
         SearchFlight.setText("Search Fligt");
         SearchFlight.setToolTipText("");
         SearchFlight.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchFlightActionPerformed(evt);
+                getContentPane().removeAll();
+                jPanel2 = new EmployeeSearchFlight();
+                initComponents();
             }
         });
         manageFlight.add(SearchFlight);
@@ -107,8 +103,9 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         Update_DeleteFlight.setText("Update/Delete Flight");
         Update_DeleteFlight.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Update_DeleteFlightActionPerformed(evt);
+                
             }
         });
         manageFlight.add(Update_DeleteFlight);
@@ -119,6 +116,14 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         UpdateBooking.setText("SearchBooking");
         manageBookings.add(UpdateBooking);
+        UpdateBooking.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getContentPane().removeAll();
+                jPanel2 = new EmployeeBookingSearch();
+                initComponents();
+            }
+        });
 
         DeleteBooking.setText("Update/Delete Booking");
         manageBookings.add(DeleteBooking);
@@ -132,8 +137,9 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         SearchCoupon.setText("Search/Delete Coupon");
         SearchCoupon.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchCouponActionPerformed(evt);
+                
             }
         });
         ManageCoupons.add(SearchCoupon);
@@ -141,41 +147,12 @@ public class EmployeeHome extends javax.swing.JFrame {
         menuBar.add(ManageCoupons);
 
         setJMenuBar(menuBar);
+        
+        jPanel1.add(jPanel2);
 
         pack();
-    }// </editor-fold>                        
-
-    private void Update_DeleteFlightActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        // TODO add your handling code here:
-    }                                                   
-
-    private void SearchCouponActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-    }                                            
-
-    private void SearchFlightActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-        SearchFlight SearchForAFlight=new SearchFlight();
-    }                                            
-
-   
-   
-
-    // Variables declaration - do not modify                     
-    private javax.swing.JMenuItem AddCoupon;
-    private javax.swing.JMenuItem AddFlight;
-    private javax.swing.JMenuItem DeleteBooking;
-    private javax.swing.JScrollPane DepartureScrollPane;
-    private javax.swing.JMenu ManageCoupons;
-    private javax.swing.JMenuItem SearchCoupon;
-    private javax.swing.JMenuItem SearchFlight;
-    private javax.swing.JMenuItem UpdateBooking;
-    private javax.swing.JMenuItem Update_DeleteFlight;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenu manageBookings;
-    private javax.swing.JMenu manageFlight;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JTable searchDeapartureFlights;
-    // End of variables declaration                   
+    }// </editor-fold>      
+    
+    
+                
 }
