@@ -101,22 +101,26 @@ public class Flight {
         this.seats = seat;
     }
     
-    public void addFlight(Flight flight)
-    {
-        
-    }
-    
     public String getDepartureDateTimeToString()
     {
-        String timeStamp = new SimpleDateFormat("dd-MMM-yy hh:mm a").format(departureDate);
+        String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(departureDate);
         
         return timeStamp;
     }
     
      public String getArrivalDateTimeToString()
     {
-        String timeStamp = new SimpleDateFormat("dd-MMM-yy hh:mm a").format(arrivalDate);
+        String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(arrivalDate);
         
         return timeStamp;
     }
+     
+     public FlightSeat getseatFromClass(String className) {
+         for(int i=0; i<seats.size(); ++i) {
+             if(seats.get(i).getClassName().equals(className) && seats.get(i).getIsAvailable()==true) {
+                 return seats.get(i);
+             }
+         }
+         return null;
+     }
 }

@@ -40,7 +40,6 @@ public class MainMenuTest extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1068, 601));
         getContentPane().setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N

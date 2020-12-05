@@ -40,11 +40,11 @@ public class CustomerFlightSearchChoice implements ActionListener {
             
             case "Next":
                 // new signUp();
-                System.out.println("ZAFAZFJIAJIFEZOJIFJEZFJZEFEJG");
+
                 if(frame.getOneWay().isSelected()) {
                     String stringIdFlight = frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1).toString();
                     int idFlight = Integer.parseInt(stringIdFlight);
-                    System.out.println("FLIGHT ID : "+stringIdFlight);
+
                     //Flight selectedFlight = FlightController.getFlight(frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1))
                     Flight selectedFlight = FlightController.getFlight(idFlight);
                     ArrayList<Flight> flights = new ArrayList<>();
@@ -52,18 +52,18 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     new PassengerView(flights, frame.getSelectPassenger());
                 }
                 if(frame.getRoundTrip().isSelected()) {
-                    System.out.println("AAAAAAAAAAAAAAAAAAAAA");
+
                     String stringIdFlight = frame.getSearchDepartureFlightsAR().getValueAt(frame.getSearchDepartureFlightsAR().getSelectedRow(), 1).toString();
                     int idDepartureFlight = Integer.parseInt(stringIdFlight);
                     stringIdFlight = frame.getSearchArrivalFlightsAR().getValueAt(frame.getSearchArrivalFlightsAR().getSelectedRow(), 1).toString();
                     int idArrivalFlight = Integer.parseInt(stringIdFlight);
-                    System.out.println("FLIGHT ID : "+idDepartureFlight + " ARRIVAL FLIGHT ID : " +idArrivalFlight);
+
                     Flight selectedDepFlight = FlightController.getFlight(idDepartureFlight);
                     Flight selectedArrFlight = FlightController.getFlight(idArrivalFlight);
                    
                     ArrayList<Flight> flights = new ArrayList<>();
-                    flights.add(selectedDepFlight);
                     flights.add(selectedArrFlight);
+                    flights.add(selectedDepFlight);
                     new PassengerView(flights, frame.getSelectPassenger());
                 }
                 

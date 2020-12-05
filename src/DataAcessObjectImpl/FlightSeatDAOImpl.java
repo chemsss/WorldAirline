@@ -14,7 +14,7 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
     @Override
     public ArrayList<FlightSeat> findByIdFlight(int flight_idFlight) {
 
-        ArrayList<FlightSeat> flightSeats = null; // in case of flightSeat doesn't exist
+        ArrayList<FlightSeat> flightSeats = new ArrayList<>(); // in case of flightSeat doesn't exist
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
             ResultSet myRs = myStmt.executeQuery("select * from flightseat where flight_idFlight=" + flight_idFlight);

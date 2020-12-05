@@ -51,7 +51,7 @@ public class FlightSeat {
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-    
+        
      @Override
     public String toString() {
         return "FlightSeat{" + "seatNo=" + seatNo + ", className=" + className + ", seatPrice=" + seatPrice + ", isAvailable=" + isAvailable + '}';

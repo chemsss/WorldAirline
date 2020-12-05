@@ -54,7 +54,6 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         initComponents();
         //this.setSize((int) screenSize.getWidth() ,(int) screenSize.getHeight());
-        setExtendedState(Frame.MAXIMIZED_BOTH);
         System.out.println(screenWidth +" "+ screenHeight);
         System.out.println(getMonitorSizes());
         setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -130,6 +129,7 @@ private String getMonitorSizes() {
         roundTrip.setFocusable(false);
 
         roundTrip.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 arrival.setVisible(true);
                 arrivalDate.setVisible(true);
@@ -324,7 +324,7 @@ private String getMonitorSizes() {
         Next.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Next.setFocusable(false);
         oneWayPanel.add(Next);
-        Next.setBounds(710, 560, 110, 30);
+        Next.setBounds(4*screenWidth/7 -110, 560, 110, 30);
         Next.setActionCommand("Next");
         Next.addActionListener(new CustomerFlightSearchChoice(this));
 
@@ -347,7 +347,7 @@ private String getMonitorSizes() {
         DepartureScrollPane.setViewportView(searchDeapartureFlights);
 
         oneWayPanel.add(DepartureScrollPane);
-        DepartureScrollPane.setBounds(0, 40, 860, 500);
+        DepartureScrollPane.setBounds(0, 40, 4*screenWidth/7, 500);
 
         departureAR.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureAR.setForeground(new java.awt.Color(255, 255, 255));
@@ -356,7 +356,7 @@ private String getMonitorSizes() {
         departureAR.setBounds(0, 0, 150, 30);
 
         getContentPane().add(oneWayPanel);
-        oneWayPanel.setBounds(510, 190, 820, 590);
+        oneWayPanel.setBounds(510, 190, 4*screenWidth/7, 590);
 
         roundTripPanel.setOpaque(false);
         roundTripPanel.setLayout(null);
@@ -371,7 +371,7 @@ private String getMonitorSizes() {
         NextAR.setActionCommand("Next");
         NextAR.addActionListener(new CustomerFlightSearchChoice(this));
         roundTripPanel.add(NextAR);
-        NextAR.setBounds(710, 560, 110, 30);
+        NextAR.setBounds(4*screenWidth/7 - 110, 560, 110, 30);
 
         //ArrayList<Flight> flights =  new ArrayList<Flight>();
         //    flights.add(new FlightDAOImpl().find(5));
@@ -390,7 +390,7 @@ private String getMonitorSizes() {
         DepartureScrollPaneAR.setViewportView(searchDepartureFlightsAR);
 
         roundTripPanel.add(DepartureScrollPaneAR);
-        DepartureScrollPaneAR.setBounds(0, 310, 860, 230);
+        DepartureScrollPaneAR.setBounds(0, 310, 4*screenWidth/7, 230);
 
         //   ArrayList<Flight> flights =  new ArrayList<Flight>();
         //flights.add(new FlightDAOImpl().find(5));
@@ -408,9 +408,10 @@ private String getMonitorSizes() {
         searchArrivalFlightsAR.getTableHeader().setReorderingAllowed(false);
         ArrivalScrollPaneAR.setViewportView(searchArrivalFlightsAR);
 
+        
+        ArrivalScrollPaneAR.setBounds(0, 40, 4*screenWidth/7, 230);
         roundTripPanel.add(ArrivalScrollPaneAR);
-        ArrivalScrollPaneAR.setBounds(0, 40, 860, 230);
-
+        
         departureAR1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureAR1.setForeground(new java.awt.Color(255, 255, 255));
         departureAR1.setText("Depart>>");
@@ -426,7 +427,7 @@ private String getMonitorSizes() {
         getContentPane().add(roundTripPanel);
         roundTripPanel.setVisible(true);
         oneWayPanel.setVisible(false);
-        roundTripPanel.setBounds(510, 190, 820, 590);
+        roundTripPanel.setBounds(510, 190, 4*screenWidth/7 , 590);
 
         backGround.setIcon(new javax.swing.ImageIcon("img\\planeProgram.jpg")); // NOI18N
         getContentPane().add(backGround);

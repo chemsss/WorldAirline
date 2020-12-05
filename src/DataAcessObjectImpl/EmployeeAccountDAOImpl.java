@@ -83,4 +83,37 @@ public class EmployeeAccountDAOImpl implements EmployeeAccountDAO {
         
     }
     
+    public boolean update(EmployeeAccount account) {
+
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement(/*"SELECT * FROM customeraccount WHERE idCustomerAccount=" +account.getIdAccount() +"; "
+                                                                                            + */"UPDATE employeeaccount " +
+                                                                                            "SET email=?, " +
+                                                                                            "password=?, " +
+                                                                                            "firstName=?, " +
+                                                                                            "lastName=?, " +
+                                                                                            "address=?, " +
+                                                                                            "birthDate=?, " +
+                                                                                            "telephoneNumber=? " +
+                                                                                            "WHERE idEmployeeAccount=?");
+            myStmt.setString(1, account.getEmail());
+            myStmt.setString(2, account.getPassword());
+            myStmt.setString(3, account.getFirstName());
+            myStmt.setString(4, account.getLastName());
+            myStmt.setString(5, account.getAddress());
+            myStmt.setDate(6, account.getBirthDate());
+            myStmt.setString(7, account.getTelephoneNumber());
+            myStmt.setInt(8, account.getIdAccount());
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
 }

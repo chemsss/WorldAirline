@@ -7,16 +7,33 @@ public class Booking {
     private int bookingNo;//booking no
     private Date bookingDate;// booking date
     private ArrayList<Ticket> tickets; //tickets
+    private Coupon coupon;
+    
 
     public Booking(Date bookingDate, ArrayList<Ticket> tickets) {
         this.bookingNo = bookingNo;
         this.bookingDate = bookingDate;
         this.tickets = tickets;
+        this.coupon = null;
     }
     public Booking(int bookingNo, Date bookingDate, ArrayList<Ticket> tickets) {
         this.bookingNo = bookingNo;
         this.bookingDate = bookingDate;
         this.tickets = tickets;
+        this.coupon = null;
+    }
+    
+    public Booking(Date bookingDate, ArrayList<Ticket> tickets, Coupon coupon) {
+        this.bookingNo = bookingNo;
+        this.bookingDate = bookingDate;
+        this.tickets = tickets;
+        this.coupon = coupon;
+    }
+    public Booking(int bookingNo, Date bookingDate, ArrayList<Ticket> tickets, Coupon coupon) {
+        this.bookingNo = bookingNo;
+        this.bookingDate = bookingDate;
+        this.tickets = tickets;
+        this.coupon = coupon;
     }
 
     @Override

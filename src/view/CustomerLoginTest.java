@@ -33,8 +33,6 @@ public class CustomerLoginTest extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 181, 204));
         jPanel1.setLayout(null);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\output-onlinepngtools (5).png")); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(50, 100, 280, 260);
 
@@ -105,6 +103,7 @@ public class CustomerLoginTest extends javax.swing.JFrame {
         jButton3.setBounds(260, 420, 130, 40);
 
         jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        jPasswordField1.setFocusCycleRoot(true);
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);

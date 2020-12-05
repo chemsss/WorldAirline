@@ -76,4 +76,40 @@ public class CustomerAccountDAOImpl implements CustomerAccountDAO {
         
     }
     
+    public boolean update(CustomerAccount account) {
+
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement(/*"SELECT * FROM customeraccount WHERE idCustomerAccount=" +account.getIdAccount() +"; "
+                                                                                            + */"UPDATE customeraccount " +
+                                                                                            "SET email=?, " +
+                                                                                            "password=?, " +
+                                                                                            "ageCategory=?, " +
+                                                                                            "firstName=?, " +
+                                                                                            "lastName=?, " +
+                                                                                            "address=?, " +
+                                                                                            "birthDate=?, " +
+                                                                                            "telephoneNumber=? " +
+                                                                                            "WHERE idCustomerAccount=?");
+            myStmt.setString(1, account.getEmail());
+            myStmt.setString(2, account.getPassword());
+            myStmt.setString(3, account.getAgeCategory());
+            myStmt.setString(4, account.getFirstName());
+            myStmt.setString(5, account.getLastName());
+            myStmt.setString(6, account.getAddress());
+            myStmt.setDate(7, account.getBirthDate());
+            myStmt.setString(8, account.getTelephoneNumber());
+            myStmt.setInt(9, account.getIdAccount());
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+        
+    }
+    
+    
 }

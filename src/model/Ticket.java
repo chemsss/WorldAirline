@@ -6,24 +6,14 @@ public class Ticket {
     //private Passenger passengerInfos; //passenger
     private FlightSeat seat;// seat
     private Flight flight;//flight
-    private Coupon coupon;
     
     public Ticket(int ticketNo, FlightSeat seat, Flight flight) {
         this.ticketNo = ticketNo;
         //this.passengerInfos = passengerInfos;
         this.seat = seat;
         this.flight = flight;
-        this.coupon = null;
     }
     
-    public Ticket(int ticketNo, FlightSeat seat, Flight flight, Coupon coupon) {
-        this.ticketNo = ticketNo;
-        //this.passengerInfos = passengerInfos;
-        this.seat = seat;
-        this.flight = flight;
-        this.coupon = coupon;
-    }
-
     @Override
     public String toString() {
         return "Ticket{" + "ticketNo=" + ticketNo + ", seat=" + seat + ", flight=" + flight + '}';

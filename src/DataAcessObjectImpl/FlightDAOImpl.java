@@ -45,12 +45,15 @@ public class FlightDAOImpl implements FlightDAO {
                         new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")), 
                         new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")), 
                         new FlightSeatDAOImpl().findByIdFlight(id));
+                
+                return flight;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
+        
         return flight;
+
     }
     
     

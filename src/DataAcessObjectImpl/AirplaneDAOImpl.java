@@ -40,13 +40,16 @@ public class AirplaneDAOImpl implements AirplaneDAO {
             myStmt.setInt(2, airplane.getSeatCapacity());
             myStmt.executeUpdate();
             
+            return true;
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }
         
-        return true;
     }
+    
+    
     
     
     
