@@ -20,7 +20,10 @@ import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import javax.imageio.ImageIO;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class CustomerHomeFlightSearch extends javax.swing.JFrame {
@@ -56,7 +59,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         //this.setSize((int) screenSize.getWidth() ,(int) screenSize.getHeight());
         System.out.println(screenWidth +" "+ screenHeight);
         System.out.println(getMonitorSizes());
-        setExtendedState(Frame.MAXIMIZED_BOTH);
+        //setExtendedState(Frame.MAXIMIZED_BOTH);
+        setSize(1600, 900);
         this.setVisible(true);
 
     }
@@ -72,6 +76,12 @@ private String getMonitorSizes() {
 }
     private void initComponents() {
 
+        try {             
+            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("img\\430119.jpg")))));         
+        } catch (IOException e) {             
+            e.printStackTrace();         
+        }
+        
         roundTripPanel = new JPanel();
         DepartureScrollPaneAR = new JScrollPane();
         ArrivalScrollPaneAR = new JScrollPane();
@@ -115,6 +125,8 @@ private String getMonitorSizes() {
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
+        
+
 
         jPanel1.setBackground(new java.awt.Color(200, 191, 191));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -139,7 +151,7 @@ private String getMonitorSizes() {
         });
         jPanel1.add(roundTrip);
         roundTrip.setBounds(30, 20, 120, 30);
-
+        
         myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         myAccount.setIcon(new javax.swing.ImageIcon("img\\Icon-Small-50.png")); // NOI18N
         if(loggedInCustomer!=null)
@@ -429,8 +441,8 @@ private String getMonitorSizes() {
         oneWayPanel.setVisible(false);
         roundTripPanel.setBounds(510, 190, 4*screenWidth/7 , 590);
 
-        backGround.setIcon(new javax.swing.ImageIcon("img\\planeProgram.jpg")); // NOI18N
-        getContentPane().add(backGround);
+        backGround.setIcon(new javax.swing.ImageIcon("img\\auqwj-tjqus.jpg")); // NOI18N
+        //getContentPane().add(backGround);
         backGround.setBounds(0, 0, screenWidth, screenHeight);
 
      

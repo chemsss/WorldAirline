@@ -78,14 +78,11 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        myAccount.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\Icon-Small-50.png")); // NOI18N
         myAccount.setText(" My account");
-        myAccount.setActionCommand(" My account");
         myAccount.setBorder(null);
         myAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         myAccount.setFocusable(false);
         myAccount.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        myAccount.setOpaque(false);
         myAccount.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         myAccount.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(myAccount);
@@ -135,13 +132,11 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         selectPassenger.setBounds(130, 270, 110, 20);
 
         to.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        to.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
         to.setText("To");
         jPanel1.add(to);
         to.setBounds(30, 120, 70, 40);
 
         seat.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        seat.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\seat.png")); // NOI18N
         seat.setText("Seat");
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
@@ -153,7 +148,6 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         fromDeparture.setBounds(130, 80, 110, 20);
 
         from.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        from.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\location.png")); // NOI18N
         from.setText("From");
         jPanel1.add(from);
         from.setBounds(30, 70, 70, 40);
@@ -161,7 +155,6 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         arrivalDate.setBounds(130, 220, 110, 20);
 
         departure.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        departure.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
         departure.setText("Departure");
         jPanel1.add(departure);
         departure.setBounds(30, 170, 80, 40);
@@ -211,13 +204,11 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         firstClass.setBounds(130, 320, 110, 30);
 
         passengers.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        passengers.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\users.png")); // NOI18N
         passengers.setText("Passenger(s)");
         jPanel1.add(passengers);
         passengers.setBounds(30, 260, 90, 40);
 
         arrival.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        arrival.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar.png")); // NOI18N
         arrival.setText("Arrival");
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
@@ -332,9 +323,9 @@ public class WorldAirlineCustomerProgramTest extends javax.swing.JFrame {
         getContentPane().add(roundTripPanel);
         roundTripPanel.setBounds(510, 190, 820, 590);
 
+        backGround.setBackground(new java.awt.Color(240, 20, 240));
         backGround.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         backGround.setForeground(new java.awt.Color(51, 102, 255));
-        backGround.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\planeProgram.jpg")); // NOI18N
         getContentPane().add(backGround);
         backGround.setBounds(0, -50, 1920, 1380);
 
