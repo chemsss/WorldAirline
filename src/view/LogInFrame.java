@@ -41,7 +41,10 @@ public final class LogInFrame extends JFrame {
         initCustomerLogin();
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setSize(new Dimension(822, 526));
+
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
 
     }
 
@@ -60,9 +63,17 @@ public final class LogInFrame extends JFrame {
 
         initCustomerLogin();
 
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setSize(new Dimension(822, 526));
+
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+
     }
 
     public void initCustomerLogin() {
+
+        setUndecorated(true);
 
         getContentPane().setLayout(null);
 
@@ -199,12 +210,8 @@ public final class LogInFrame extends JFrame {
         getContentPane().add(jPanel2);
         jPanel2.setBounds(380, 0, 440, 530);
 
-        setSize(new Dimension(822, 526));
-        setUndecorated(true);
-       getRootPane().setBorder(BorderFactory.createMatteBorder(2,2, 2, 2, Color.white));
-        setVisible(true);
+        getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white));
 
-        
     }
 
     public String[] getEntry() {

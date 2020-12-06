@@ -280,12 +280,16 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         searchDepartureFlights.setGridColor(new java.awt.Color(0, 0, 0));
         searchDepartureFlights.setOpaque(false);
         searchDepartureFlights.setRowHeight(20);
+        searchDepartureFlights.setForeground(new Color (0,0,0));
+
         searchDepartureFlights.setSelectionBackground(new java.awt.Color(0, 204, 0));
         searchDepartureFlights.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         searchDepartureFlights.setShowHorizontalLines(false);
         searchDepartureFlights.setShowVerticalLines(false);
         searchDepartureFlights.getTableHeader().setReorderingAllowed(false);
         departureScrollPane.setViewportView(searchDepartureFlights);
+        departureScrollPane.getViewport().setBackground(Color.WHITE);
+
         oneWayPanel.add(departureScrollPane);
         departureScrollPane.setBounds(0, 40, 860, 500);
         departureRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
@@ -313,6 +317,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         searchDepartureFlightsRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchDepartureFlightsRoundTrip.setModel(model);
         searchDepartureFlightsRoundTrip.setFocusable(false);
+        searchDepartureFlightsRoundTrip.setForeground(new Color (0,0,0));
+
         searchDepartureFlightsRoundTrip.setGridColor(new java.awt.Color(0, 0, 0));
         searchDepartureFlightsRoundTrip.setOpaque(false);
         searchDepartureFlightsRoundTrip.setRowHeight(20);
@@ -322,10 +328,14 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         searchDepartureFlightsRoundTrip.setShowVerticalLines(false);
         searchDepartureFlightsRoundTrip.getTableHeader().setReorderingAllowed(false);
         departureScrollPaneRoundTrip.setViewportView(searchDepartureFlightsRoundTrip);
+                departureScrollPaneRoundTrip.getViewport().setBackground(Color.WHITE);
+
         roundTripPanel.add(departureScrollPaneRoundTrip);
         departureScrollPaneRoundTrip.setBounds(0, 310, 820, 230);
 
         searchArrivalFlightsRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
+                searchArrivalFlightsRoundTrip.setForeground(new Color (0,0,0));
+
         searchArrivalFlightsRoundTrip.setModel(model);
         searchArrivalFlightsRoundTrip.setFocusable(false);
         searchArrivalFlightsRoundTrip.setGridColor(new java.awt.Color(0, 0, 0));
@@ -337,6 +347,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         searchArrivalFlightsRoundTrip.setShowVerticalLines(false);
         searchArrivalFlightsRoundTrip.getTableHeader().setReorderingAllowed(false);
         ArrivalScrollPaneRoundTrip.setViewportView(searchArrivalFlightsRoundTrip);
+        ArrivalScrollPaneRoundTrip.getViewport().setBackground(Color.WHITE);
+
         roundTripPanel.add(ArrivalScrollPaneRoundTrip);
         ArrivalScrollPaneRoundTrip.setBounds(0, 40, 820, 230);
         departureRoundTrip1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
