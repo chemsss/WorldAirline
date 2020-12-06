@@ -3,10 +3,6 @@ import DataAcessObject.CustomerAccountDAO;
 import model.CustomerAccount;
 import java.sql.*;
 
-/**
- *
- * @author Chems
- */
 public class CustomerAccountDAOImpl implements CustomerAccountDAO {
     
     @Override
@@ -50,6 +46,8 @@ public class CustomerAccountDAOImpl implements CustomerAccountDAO {
         
         return null;
     }
+    
+    
     
     @Override
     public boolean create(CustomerAccount account) {

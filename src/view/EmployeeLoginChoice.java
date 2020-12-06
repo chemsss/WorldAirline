@@ -5,7 +5,6 @@ import java.awt.event.*;
 import java.math.BigInteger;
 import java.security.*;
 import javax.swing.*;
-import static view.CustomerLoginChoice.getMD5Hash;
 
 public class EmployeeLoginChoice implements ActionListener {
 
