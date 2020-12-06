@@ -42,14 +42,14 @@ public class CustomerFlightSearchChoice implements ActionListener {
                 // new signUp();
 
                 if(frame.getOneWay().isSelected()) {
-                    String stringIdFlight = frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1).toString();
+                    String stringIdFlight = frame.getSearchDepartureFlights().getValueAt(frame.getSearchDepartureFlights().getSelectedRow(), 1).toString();
                     int idFlight = Integer.parseInt(stringIdFlight);
 
-                    //Flight selectedFlight = FlightController.getFlight(frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1))
+                    //Flight selectedFlight = FlightController.getFlight(frame.getSearchDepartureFlights().getValueAt(frame.getSearchDepartureFlights().getSelectedRow(), 1))
                     Flight selectedFlight = FlightController.getFlight(idFlight);
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedFlight);
-                    new PassengerView(flights, frame.getSelectPassenger());
+                    new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getLoggedInCustomer());
                 }
                 if(frame.getRoundTrip().isSelected()) {
 
@@ -64,7 +64,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedArrFlight);
                     flights.add(selectedDepFlight);
-                    new PassengerView(flights, frame.getSelectPassenger());
+                    new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getLoggedInCustomer());
                 }
                 
                 

@@ -16,7 +16,7 @@ import model.Ticket;
 public class TicketController {
 
     public static Ticket getTicket(int ticketNo) {
-
+        
         return new TicketDAOImpl().getTicket(ticketNo);
     }
 

@@ -58,6 +58,7 @@ public class BookingDAOImpl implements BookingDAO {
         
         return bookings;
     }
+    
 
     public boolean add(Date bookingDate, int idAccount) {
                 
@@ -100,5 +101,7 @@ public class BookingDAOImpl implements BookingDAO {
         }
         
     }
+    
+    
 
 }

@@ -47,11 +47,11 @@ public class CustomerFlightSearchController {
                 }*/ /*if((frame.getArrivalDate()).compareTo(frame.getDepartureDate()) < 0) {
                             throw new DateException("Departure date is after arrival date.");
                         }*/ else {
-                frame.setSearchDepartureFlightsModel(new SearchFlightsTableModel(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
+                        /*frame.setSearchDepartureFlightsModel(new SearchFlightsTableModel(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
                         ((Airport) frame.getToArrival().getSelectedItem()).getIdAirport(),
                         frame.getDepartureDate(),
                         frame.getSelectPassenger(),
-                        frame.getFirstClass()));
+                        frame.getFirstClass()));*/
 
                 System.out.println(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport());
                 System.out.println(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport());
@@ -73,13 +73,13 @@ public class CustomerFlightSearchController {
             if (((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport().equals(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport())) {
                 throw new Exceptions.AirportException();
             } else {
-                frame.setSearchArrivalFlightsRoundTripModel(new SearchFlightsTableModel(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
+                frame.setSearchArrivalFlightsARModel(new SearchFlightsTableModel(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
                         ((Airport) frame.getToArrival().getSelectedItem()).getIdAirport(),
                         frame.getDepartureDate(),
                         frame.getSelectPassenger(),
                         frame.getFirstClass()));
 
-                frame.setSearchDepartureFlightsRoundTripModel(new SearchFlightsTableModel(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport(),
+                frame.setSearchDepartureFlightsARModel(new SearchFlightsTableModel(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport(),
                         ((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
                         frame.getDepartureDate(),
                         frame.getSelectPassenger(),

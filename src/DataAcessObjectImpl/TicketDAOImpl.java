@@ -134,4 +134,25 @@ public class TicketDAOImpl implements TicketDAO {
         
     }
 
+    
+    public Ticket getTicket(int ticketNo) {
+        
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from ticket where ticketNo=" +ticketNo +";");
+
+            if(myRs.first()) {
+                
+                Ticket ticket = new Ticket(ticketNo, new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("flight_idFlight")).get(myRs.getInt("flightSeat_seatNo") - 1), new FlightDAOImpl().find(myRs.getInt("flight_idFlight")));
+                
+                return ticket;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+        return null;        
+        
+    }
+
 }

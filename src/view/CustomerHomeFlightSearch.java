@@ -47,7 +47,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
     int screenWidth = screenSize.width;
 
 
-    private JTable searchDeapartureFlights, searchDepartureFlightsAR, searchArrivalFlightsAR;
+    private JTable searchDepartureFlights, searchDepartureFlightsAR, searchArrivalFlightsAR;
     private ActionListener controller;
 
     private CustomerAccount loggedInCustomer;
@@ -112,7 +112,7 @@ private String getMonitorSizes() {
         oneWayPanel = new JPanel();
         Next = new JButton();
         DepartureScrollPane = new JScrollPane();
-        searchDeapartureFlights = new JTable();
+        searchDepartureFlights = new JTable();
         departureAR = new JLabel();
         arrivalAR = new JLabel();
         searchDepartureFlightsAR = new JTable();
@@ -345,18 +345,18 @@ private String getMonitorSizes() {
         flights.add(new FlightDAOImpl().find(6));
         System.out.println(flights.get(0).getIdFlight());
         SearchFlightsTableModel model = new SearchFlightsTableModel();
-        searchDeapartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
-        searchDeapartureFlights.setModel(model);
-        searchDeapartureFlights.setFocusable(false);
-        searchDeapartureFlights.setGridColor(new java.awt.Color(0, 0, 0));
-        searchDeapartureFlights.setOpaque(false);
-        searchDeapartureFlights.setRowHeight(20);
-        searchDeapartureFlights.setSelectionBackground(new java.awt.Color(200, 191, 191));
-        searchDeapartureFlights.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        searchDeapartureFlights.setShowHorizontalLines(false);
-        searchDeapartureFlights.setShowVerticalLines(false);
-        searchDeapartureFlights.getTableHeader().setReorderingAllowed(false);
-        DepartureScrollPane.setViewportView(searchDeapartureFlights);
+        searchDepartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
+        searchDepartureFlights.setModel(model);
+        searchDepartureFlights.setFocusable(false);
+        searchDepartureFlights.setGridColor(new java.awt.Color(0, 0, 0));
+        searchDepartureFlights.setOpaque(false);
+        searchDepartureFlights.setRowHeight(20);
+        searchDepartureFlights.setSelectionBackground(new java.awt.Color(200, 191, 191));
+        searchDepartureFlights.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        searchDepartureFlights.setShowHorizontalLines(false);
+        searchDepartureFlights.setShowVerticalLines(false);
+        searchDepartureFlights.getTableHeader().setReorderingAllowed(false);
+        DepartureScrollPane.setViewportView(searchDepartureFlights);
 
         oneWayPanel.add(DepartureScrollPane);
         DepartureScrollPane.setBounds(0, 40, 4*screenWidth/7, 500);
@@ -493,8 +493,8 @@ private String getMonitorSizes() {
         return toArrival;
     }
 
-    public javax.swing.JTable getSearchDeapartureFlights() {
-        return searchDeapartureFlights;
+    public javax.swing.JTable getSearchDepartureFlights() {
+        return searchDepartureFlights;
     }
 
     public JTable getSearchDepartureFlightsAR() {
@@ -505,16 +505,22 @@ private String getMonitorSizes() {
         return searchArrivalFlightsAR;
     }
 
-    public void setSearchDeapartureFlightsModel(SearchFlightsTableModel searchDeapartureFlights) {
-        this.searchDeapartureFlights.setModel(searchDeapartureFlights);
+    public void setSearchDepartureFlightsModel(SearchFlightsTableModel searchDepartureFlights) {
+        this.searchDepartureFlights.setModel(searchDepartureFlights);
     }
 
-    public void setSearchDepartureFlightsARModel(SearchFlightsTableModel searchDeapartureFlights) {
-        this.searchDepartureFlightsAR.setModel(searchDeapartureFlights);
+    public void setSearchDepartureFlightsARModel(SearchFlightsTableModel searchDepartureFlights) {
+        this.searchDepartureFlightsAR.setModel(searchDepartureFlights);
     }
 
-    public void setSearchArrivalFlightsARModel(SearchFlightsTableModel searchDeapartureFlights) {
-        this.searchArrivalFlightsAR.setModel(searchDeapartureFlights);
+    public void setSearchArrivalFlightsARModel(SearchFlightsTableModel searchDepartureFlights) {
+        this.searchArrivalFlightsAR.setModel(searchDepartureFlights);
     }
 
+    public CustomerAccount getLoggedInCustomer() {
+        return loggedInCustomer;
+    }
+
+    
+    
 }

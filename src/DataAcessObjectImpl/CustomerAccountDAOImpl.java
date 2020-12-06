@@ -48,6 +48,31 @@ public class CustomerAccountDAOImpl implements CustomerAccountDAO {
     }
     
     
+    public CustomerAccount findByBookingNo(int bookingNo) {
+        
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM booking,customeraccount WHERE bookingNo=" + bookingNo + " AND customerAccount.idaccount=idCustomerAccount ;");
+            
+            if(myRs.first()) {
+                //(String ageCategory, ArrayList<Booking> bookings, int idAccount, String email, String password, String firstName, String lastName, Date birthDate, String telephoneNumber)
+                //super(idAccount, email, password, firstName, lastName, birthDate, telephoneNumber);
+                return new CustomerAccount(myRs.getString("ageCategory"), new BookingDAOImpl().findByIdCustomerAccount(myRs.getInt("idCustomerAccount")), myRs.getInt("idCustomerAccount"), myRs.getString("email"), myRs.getString("password"), myRs.getString("firstName"), myRs.getString("lastName"), myRs.getString("address"), myRs.getDate("birthDate"), myRs.getString("telephoneNumber"));
+                //bookings.add(new Booking(myRs.getInt("bookingNo"), myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(myRs.getInt("bookingNo"))));
+            }
+            else {
+                return null;
+            }
+            
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return null;
+        
+    }
+    
+    
     
     @Override
     public boolean create(CustomerAccount account) {
