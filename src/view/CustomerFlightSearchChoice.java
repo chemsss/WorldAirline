@@ -69,6 +69,16 @@ public class CustomerFlightSearchChoice implements ActionListener {
                 
                 
                 break;
+                
+                case "My account": 
+                    if(frame.getMyAccount().getText().equals(" My account")) {
+                        new MyAccount(frame.getLoggedInCustomer());
+                    }
+                    else if(frame.getMyAccount().getText().equals(" Log in")){
+                        new CustomerLoginSignUp();
+                    }
+                
+                    break;
 
         }
 

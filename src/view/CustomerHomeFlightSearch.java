@@ -521,6 +521,10 @@ private String getMonitorSizes() {
         return loggedInCustomer;
     }
 
+    public javax.swing.JButton getMyAccount() {
+        return myAccount;
+    }
+
     
     
 }

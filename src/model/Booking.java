@@ -64,4 +64,10 @@ public class Booking {
     public void setTickets(ArrayList<Ticket> tickets) {
         this.tickets = tickets;
     }    
+
+    public Coupon getCoupon() {
+        return coupon;
+    }
+    
+    
 }

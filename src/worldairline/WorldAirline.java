@@ -17,7 +17,7 @@ public class WorldAirline {
     public static void main(String[] args) throws SQLException {
         
          
-       MainMenu menu = new MainMenu();
+       //MainMenu menu = new MainMenu();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
@@ -68,7 +68,8 @@ public class WorldAirline {
         System.out.println(new TicketDAOImpl().getPrice(2));
         //System.out.println(new TicketDAOImpl().findByFlightSeat(1, 120));
         System.out.println(BookingController.getTicketPrice(1, 120));
-                
+        
+        new FlightDAOImpl().add( 20, 5, "test2324", "MIA", "BOD", new Timestamp(120,11,30, 10, 34, 50, 0), new Timestamp(120,11,30, 10, 34, 50, 0));
     }
     
 }

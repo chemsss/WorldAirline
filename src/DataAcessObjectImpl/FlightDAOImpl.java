@@ -109,4 +109,68 @@ public class FlightDAOImpl implements FlightDAO {
             return flights;
         }
     }
+    
+    public boolean update(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate, int newIdFlight) {
+        
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement(/*"SELECT * FROM customeraccount WHERE idCustomerAccount=" +account.getIdAccount() +"; "
+                                                                                            + */"UPDATE flight " +
+                                                                                            "SET idFlight=?, " +
+                                                                                            "airplane_idAirplane=?, " +
+                                                                                            "airlineName=?," +
+                                                                                            "departureAirport_idAirport=?, " +
+                                                                                            "arrivalAirport_idAirport=?, " +
+                                                                                            "departureDate=?, " +
+                                                                                            "arrivalDate=? " +        
+                                                                                            "WHERE flight.idFlight=?");
+            myStmt.setInt(1, newIdFlight);
+            myStmt.setInt(2, idAirplane);
+            myStmt.setString(3, airlineName);
+            myStmt.setString(4, idDepartureAirport);
+            myStmt.setString(5, idArrivalAirport);
+            myStmt.setTimestamp(6, departureDate);
+            myStmt.setTimestamp(7, arrivalDate);
+            myStmt.setInt(8, idFlight);
+            
+
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public boolean add(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {
+        
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO flight "
+                    + "(`idFlight`, `airplane_idAirplane`, `airlineName`, `departureAirport_idAirport`, `arrivalAirport_idAirport`, `departureDate`, `arrivalDate`) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?);");
+            
+            myStmt.setInt(1, idFlight);
+            myStmt.setInt(2, idAirplane);
+            myStmt.setString(3, airlineName);
+            myStmt.setString(4, idDepartureAirport);
+            myStmt.setString(5, idArrivalAirport);
+            myStmt.setTimestamp(6, departureDate);
+            myStmt.setTimestamp(7, arrivalDate);            
+
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+    
+    
+    
+    
 }
