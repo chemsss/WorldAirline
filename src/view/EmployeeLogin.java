@@ -1,19 +1,17 @@
 package view;
 
-import controller.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class EmployeeLogin extends JFrame {
+public final class EmployeeLogin extends JFrame {
 
-    private JButton jButton1, jButton2, jButton3;
-    private JLabel jLabel1, jLabel2, jLabel3;
-    private JPanel jPanel1, jPanel2;
-    private JTextField jTextField2;
-    private JPasswordField password;
+    private final JButton  jButton2;
+    private final JLabel jLabel1, jLabel2, jLabel3;
+    private final JPanel jPanel1, jPanel2;
+    private final JTextField jTextField2;
+    private final JPasswordField password;
 
-    private ActionListener controller;
 
     public EmployeeLogin() {
         super("Employee login");
@@ -24,13 +22,11 @@ public class EmployeeLogin extends JFrame {
         jPanel2 = new JPanel();
         //jTextField1 = new JTextField();
         jTextField2 = new JTextField();
-        jButton1 = new JButton();
         jButton2 = new JButton();
-        jButton3 = new JButton();
         jLabel2 = new JLabel();
         password = new JPasswordField("Password");
 
-        controller = new EmployeeLoginChoice(this); // création du controller
+        //controller = new EmployeeLoginChoice(this); // création du controller
         initEmployeeLogin();
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -47,9 +43,9 @@ public class EmployeeLogin extends JFrame {
         jPanel1.setBackground(new Color(255, 0, 0));
         jPanel1.setLayout(null);
 
-       jLabel1.setIcon(new javax.swing.ImageIcon("img\\employee.png")); // NOI18N
+       jLabel1.setIcon(new javax.swing.ImageIcon("img\\employee_127px.png")); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(50, 100, 280, 260);
+        jLabel1.setBounds(110, 100, 280, 260);
 
         jLabel3.setBackground(new Color(255, 255, 255));
         jLabel3.setFont(new Font("Segoe UI Light", 0, 36)); // NOI18N
@@ -64,9 +60,9 @@ public class EmployeeLogin extends JFrame {
         jPanel2.setBackground(new Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        jLabel2.setBackground(new Color(255, 255, 255));
+        jLabel2.setBackground(new Color(255, 0, 0));
         jLabel2.setFont(new Font("Tahoma", 1, 25)); // NOI18N
-        jLabel2.setForeground(new Color(0, 181, 204));
+        jLabel2.setForeground(new Color(255, 0, 0));
         jLabel2.setText("X");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(410, 0, 30, 40);
@@ -108,7 +104,7 @@ public class EmployeeLogin extends JFrame {
         jButton2.setText("Login");
         jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
         jButton2.setBorderPainted(false);
-        jButton2.addActionListener(controller);
+        //jButton2.addActionListener(controller);
         
         
         

@@ -3,7 +3,6 @@ package controller;
 import model.Booking;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import DataAcessObjectImpl.FlightDAOImpl;
 import java.util.Date;
 import model.Ticket;
 

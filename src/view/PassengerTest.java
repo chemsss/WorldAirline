@@ -115,17 +115,7 @@ public class PassengerTest extends javax.swing.JFrame {
 
         departure1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         departure1.setForeground(new java.awt.Color(255, 255, 255));
-        departure1.setIcon(new javax.swing.JLabel() {
-            public javax.swing.Icon getIcon() {
-                try {
-                    return new javax.swing.ImageIcon(
-                        new java.net.URL("file:/D:/GITHUB/worldAirline/img/airplane_take_off_40px.png")
-                    );
-                } catch (java.net.MalformedURLException e) {
-                }
-                return null;
-            }
-        }.getIcon());
+        departure1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\airplane_take_off_40px.png")); // NOI18N
         departure1.setText("Departure");
         jPanel1.add(departure1);
         departure1.setBounds(50, 70, 160, 30);

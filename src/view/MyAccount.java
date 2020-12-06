@@ -1,8 +1,6 @@
 package view;
 
-import DataAcessObjectImpl.BookingDAOImpl;
 import controller.BookingController;
-import controller.CustomerController;
 import controller.PassengerController;
 import controller.SearchBookingsTableModel;
 import controller.SearchTicketsTableModel;
@@ -521,7 +519,7 @@ public class MyAccount extends javax.swing.JFrame {
     public void initMyTicketDetails() {
         //My Ticket Details
 
-         this.setSize(550, 615);
+        this.setSize(550, 615);
         departureTimeDate2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         departureTimeDate2.setForeground(new java.awt.Color(255, 255, 255));
         departureTimeDate2.setText(selectedTicket.getFlight().getDepartureDateTimeToString());
@@ -529,24 +527,22 @@ public class MyAccount extends javax.swing.JFrame {
         departureTimeDate2.setBounds(310, 204, 150, 20);
 
         to2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        to2.setForeground(new java.awt.Color(255, 255, 255));
-        to2.setText(TicketController.getArrivalAirport(selectedTicket.getTicketNo()).getIdAirport());
+        to2.setForeground(new java.awt.Color(255, 255, 255));        
+        to2.setText((selectedTicket).getFlight().getArrivalAirport().getIdAirport());
+        
         myTicketDetailsPanel.add(to2);
         to2.setBounds(60, 268, 70, 20);
 
         arrivalDateTime2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         arrivalDateTime2.setForeground(new java.awt.Color(255, 255, 255));
-        arrivalDateTime2.setText(selectedTicket.getFlight().getDepartureDateTimeToString());
+        arrivalDateTime2.setText((selectedTicket).getFlight().getArrivalDateTimeToString());
 
         myTicketDetailsPanel.add(arrivalDateTime2);
         arrivalDateTime2.setBounds(310, 264, 150, 20);
 
         flight2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        flight2.setForeground(new java.awt.Color(255, 255, 255));
-        
-        //System.out.println(TicketController.getTicket( selectedTicket.getFlight().getIdFlight()));
-        
-        flight2.setText(Integer.toString(selectedTicket.getFlight().getIdFlight()));
+        flight2.setForeground(new java.awt.Color(255, 255, 255));      
+        flight2.setText(Integer.toString((selectedTicket).getFlight().getIdFlight()));
 
         myTicketDetailsPanel.add(flight2);
         flight2.setBounds(310, 134, 70, 20);
@@ -595,9 +591,9 @@ public class MyAccount extends javax.swing.JFrame {
 
 
 
-            nameOfPasenger2.setText(PassengerController.getLastNamePassengerByTicketNo(selectedTicket.getTicketNo()) + " " + PassengerController.getFirstNamePassengerByTicketNo(selectedTicket.getTicketNo()));
+       nameOfPasenger2.setText(PassengerController.getLastNamePassengerByTicketNo(selectedTicket.getTicketNo()) + " " + PassengerController.getFirstNamePassengerByTicketNo(selectedTicket.getTicketNo()));
 
-       
+  
 
         myTicketDetailsPanel.add(nameOfPasenger2);
         nameOfPasenger2.setBounds(60, 134, 120, 20);
@@ -605,17 +601,14 @@ public class MyAccount extends javax.swing.JFrame {
         from2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         from2.setForeground(new java.awt.Color(255, 255, 255));
 
-        from2.setText(TicketController.getDepartureAirport(selectedTicket.getTicketNo()).getIdAirport());
+        from2.setText((selectedTicket).getFlight().getDepartureAirport().getIdAirport());
         
-
         myTicketDetailsPanel.add(from2);
         from2.setBounds(60, 204, 70, 20);
         
-        TicketController.getImage(selectedTicket.getTicketNo());
          barcode.setIcon(new javax.swing.ImageIcon("img\\Tickets Barcodes\\" + selectedTicket.getTicketNo() + ".png"));
         myTicketDetailsPanel.add(barcode);
         barcode.setBounds(145, 385, 280, 150);
-        
         
         
         airline.setFont(new java.awt.Font("Yu Gothic UI", 0, 20)); // NOI18N

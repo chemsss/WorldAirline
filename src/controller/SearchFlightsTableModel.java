@@ -9,7 +9,7 @@ public class SearchFlightsTableModel extends AbstractTableModel {
 
     private final String[] Titles = {"Airline", "Flight Number", "From", "Departure", "To", "Arrival"};
 
-    private ArrayList<Flight> flights;
+    private final ArrayList<Flight> flights;
 
     public SearchFlightsTableModel(ArrayList<Flight> flights) {
         this.flights = flights;

@@ -25,7 +25,7 @@ public class MainMenuChoice implements ActionListener {
                 break;
 
             case "Book a Flight !":
-                new CustomerLogin(frame);
+                new CustomerLoginSignUp(frame);
                 //frame.dispose(); // on ferme la fenetre actuelle
                 break;
             case "Admin":

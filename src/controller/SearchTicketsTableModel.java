@@ -10,7 +10,7 @@ public class SearchTicketsTableModel extends AbstractTableModel {
 
     private final String[] Titles = {"Ticket Number", "Flight Number", "Last Name", "First Name"};
 
-    private ArrayList<Ticket> tickets;
+    private final ArrayList<Ticket> tickets;
  
     public SearchTicketsTableModel(int bookingNumber) {
         tickets = new TicketDAOImpl().findByBookingNo(bookingNumber);

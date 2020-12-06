@@ -7,7 +7,6 @@ package controller;
 
 import DataAcessObjectImpl.TicketDAOImpl;
 import model.Airport;
-import model.Flight;
 import model.Ticket;
 
 /**
@@ -21,6 +20,7 @@ public class TicketController {
         return new TicketDAOImpl().getTicket(ticketNo);
     }
 
+    /*
     public static Airport getDepartureAirport(int ticketNo) {
 
         return new TicketDAOImpl().getDepartureAirport(ticketNo);
@@ -36,6 +36,7 @@ public class TicketController {
         new TicketDAOImpl().getImg(ticketNo);
     }
         
+*/
         
 
 }

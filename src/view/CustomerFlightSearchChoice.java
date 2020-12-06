@@ -38,7 +38,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
             case "Next": {
 
                 if (frame.getOneWay().isSelected()) {
-                    String stringIdFlight = frame.getSearchDeapartureFlights().getValueAt(frame.getSearchDeapartureFlights().getSelectedRow(), 1).toString();
+                    String stringIdFlight = frame.getSearchDepartureFlights().getValueAt(frame.getSearchDepartureFlights().getSelectedRow(), 1).toString();
                     int idFlight = Integer.parseInt(stringIdFlight);
                     Flight selectedFlight = FlightController.getFlight(idFlight);
 
@@ -46,7 +46,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     flights.add(selectedFlight);
 
                     if (frame.getLoggedInCustomer() == null) {
-                        new PassengerView(flights, frame.getSelectPassenger());
+                        new PassengersInfosPayement(flights, frame.getSelectPassenger());
                     } else {
 
                         String[] options = {"yes", "no"};
@@ -56,18 +56,18 @@ public class CustomerFlightSearchChoice implements ActionListener {
                                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
                         if (x == 0) {                           
-                          new PassengerView(flights, frame.getSelectPassenger(),frame.getLoggedInCustomer());
+                          new PassengersInfosPayement(flights, frame.getSelectPassenger(),frame.getLoggedInCustomer());
                         } else if (x == 1) {
-                            new PassengerView(flights, frame.getSelectPassenger());
+                            new PassengersInfosPayement(flights, frame.getSelectPassenger());
                         }
 
                     }
 
                 }
                 if (frame.getRoundTrip().isSelected()) {
-                    String stringIdFlight = frame.getSearchDepartureFlightsAR().getValueAt(frame.getSearchDepartureFlightsAR().getSelectedRow(), 1).toString();
+                    String stringIdFlight = frame.getSearchDepartureFlightsRoundTrip().getValueAt(frame.getSearchDepartureFlightsRoundTrip().getSelectedRow(), 1).toString();
                     int idDepartureFlight = Integer.parseInt(stringIdFlight);
-                    stringIdFlight = frame.getSearchArrivalFlightsAR().getValueAt(frame.getSearchArrivalFlightsAR().getSelectedRow(), 1).toString();
+                    stringIdFlight = frame.getSearchArrivalFlightsRoundTrip().getValueAt(frame.getSearchArrivalFlightsRoundTrip().getSelectedRow(), 1).toString();
                     int idArrivalFlight = Integer.parseInt(stringIdFlight);
                     System.out.println("FLIGHT ID : " + idDepartureFlight + " ARRIVAL FLIGHT ID : " + idArrivalFlight);
                     Flight selectedDepFlight = FlightController.getFlight(idDepartureFlight);
@@ -76,7 +76,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedDepFlight);
                     flights.add(selectedArrFlight);
-                    new PassengerView(flights, frame.getSelectPassenger());
+                    new PassengersInfosPayement(flights, frame.getSelectPassenger());
                 }
 
             }
@@ -90,7 +90,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
             break;
 
             case "Unlogged": {
-                new CustomerLogin();
+                new CustomerLoginSignUp();
             }
 
             break;
