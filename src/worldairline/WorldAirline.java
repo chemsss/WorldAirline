@@ -36,7 +36,7 @@ pa
             //   CustomerAccount customer = new CustomerAccount(7, "Child", "capron2009@hotmail.fr", "motdepassetitouan", "Titouan", "Capron", "32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
             //           new Date(109, 03, 04), "+33 6 89024763");
             CustomerAccount customer = new CustomerAccountDAOImpl().find(7);
-            CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
+       //     CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
             //Flight flight;
             // System.out.println(flight);
 
@@ -47,10 +47,10 @@ pa
             flights.add(new FlightDAOImpl().find(5));
             flights.add(new FlightDAOImpl().find(5));
 
-           PassengersInfosFrame pv = new PassengersInfosFrame(flights,  1);
+          // PassengersInfosFrame pv = new PassengersInfosFrame(flights,  1);
         //    MainMenu menu = new MainMenu();
 
-
+        MainMenu menu = new MainMenu();
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(WorldAirline.class.getName()).log(Level.SEVERE, null, ex);
         }

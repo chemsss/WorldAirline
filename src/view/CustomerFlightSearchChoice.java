@@ -1,22 +1,13 @@
 package view;
 
-import Exceptions.DateException;
-import com.toedter.calendar.JDateChooser;
 import controller.CustomerFlightSearchController;
 import controller.FlightController;
 import java.awt.event.*;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
-import view.CustomerHomeFlightSearch;
 import model.*;
-import controller.SearchFlightsTableModel;
+
 import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
-import javax.swing.JTable;
+
 
 public class CustomerFlightSearchChoice implements ActionListener {
 
@@ -84,13 +75,13 @@ public class CustomerFlightSearchChoice implements ActionListener {
             break;
 
             case "Logged": {
-                new MyAccount(frame.getLoggedInCustomer());
+                new MyAccountFrame(frame.getLoggedInCustomer());
             }
 
             break;
 
             case "Unlogged": {
-                new CustomerLoginSignUp();
+                new LogInFrame();
             }
 
             break;

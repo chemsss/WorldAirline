@@ -29,6 +29,8 @@ public class MainMenuTest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        airplane1 = new javax.swing.JLabel();
+        airplane = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -40,7 +42,16 @@ public class MainMenuTest extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1068, 601));
         getContentPane().setLayout(null);
+
+        airplane1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\world_127px.png")); // NOI18N
+        getContentPane().add(airplane1);
+        airplane1.setBounds(50, 230, 170, 190);
+
+        airplane.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\airport_127px.png")); // NOI18N
+        getContentPane().add(airplane);
+        airplane.setBounds(820, 230, 160, 180);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,6 +124,7 @@ public class MainMenuTest extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(60, 20, 920, 70);
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("jLabel1");
         jLabel1.setAlignmentY(0.0F);
@@ -141,6 +153,8 @@ public class MainMenuTest extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel airplane;
+    private javax.swing.JLabel airplane1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

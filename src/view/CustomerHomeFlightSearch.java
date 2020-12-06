@@ -14,17 +14,14 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
-import java.io.File;
-import java.io.IOException;
 import java.util.Date;
-import javax.imageio.ImageIO;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
     private JPanel oneWayPanel, jPanel1, roundTripPanel;
     private JScrollPane departureScrollPane, departureScrollPaneRoundTrip, ArrivalScrollPaneRoundTrip;
-    private JButton Next, search, nextRoundTrip;
+    private JButton next, search, nextRoundTrip;
     private JLabel arrival, backGround, departureRoundTrip, departure, from, passengers, seat, to, worldAirline, departureRoundTrip1, arrivalRoundTrip;
     private JDateChooser arrivalDate, departureDate;
     private JRadioButton businessClass, economyClass, firstClass, roundTrip, oneWay;
@@ -57,16 +54,6 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
     private void initComponents() {
 
-        //Background
-        try {
-            setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("img\\auqwj-tjqus.jpg")))));
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-     
-     
         roundTripPanel = new JPanel();
         departureScrollPaneRoundTrip = new JScrollPane();
         ArrivalScrollPaneRoundTrip = new JScrollPane();
@@ -93,7 +80,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         search = new JButton();
         worldAirline = new JLabel();
         oneWayPanel = new JPanel();
-        Next = new JButton();
+        next = new JButton();
         departureScrollPane = new JScrollPane();
         searchDepartureFlights = new JTable();
         departureRoundTrip = new JLabel();
@@ -107,13 +94,13 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1920, 1080));
         setSize(new java.awt.Dimension(1920, 1080));
         getContentPane().setLayout(null);
-        jPanel1.setBackground(new java.awt.Color(200, 191, 191));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
         buttonGroup1.add(roundTrip);
         roundTrip.setFont(new Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        roundTrip.setForeground(new Color(255, 255, 255));
+        roundTrip.setForeground(new Color(0, 0, 0));
         roundTrip.setText("ROUND TRIP");
         roundTrip.setContentAreaFilled(false);
         roundTrip.setFocusable(false);
@@ -128,6 +115,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         jPanel1.add(roundTrip);
         roundTrip.setBounds(30, 20, 120, 30);
         myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        myAccount.setForeground(new Color(255, 255, 255)); // NOI18N
+
         myAccount.setIcon(new javax.swing.ImageIcon("img\\male_user_70px.png")); // NOI18N
         myAccount.addActionListener((new CustomerFlightSearchChoice(this)));
         if (loggedInCustomer != null) {
@@ -152,7 +141,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         roundTrip.setSelected(true);
         buttonGroup1.add(oneWay);
         oneWay.setFont(new Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        oneWay.setForeground(new java.awt.Color(255, 255, 255));
+        oneWay.setForeground(new java.awt.Color(0, 0, 0));
         oneWay.setText("ONE-WAY");
         oneWay.setContentAreaFilled(false);
         oneWay.setFocusable(false);
@@ -185,11 +174,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         to.setBounds(30, 120, 70, 40);
         toArrival.setModel(new DefaultComboBoxModel(AirportController.getAllAirports()));
         toArrival.setOpaque(false);
-        /*     toArrival.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-        toArrivalActionPerformed(evt);
-        }
-        });*/
+
         jPanel1.add(toArrival);
         toArrival.setBounds(128, 130, 160, 30);
         AutoCompleteDecorator.decorate(toArrival);
@@ -218,11 +203,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         economyClass.setBounds(130, 380, 120, 30);
         selectPassenger.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
         selectPassenger.setOpaque(false);
-        /*     selectPassenger.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-        selectPassengerActionPerformed(evt);
-        }
-        });*/
+
         jPanel1.add(selectPassenger);
         selectPassenger.setBounds(130, 270, 120, 25);
         seat.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
@@ -232,51 +213,40 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         seat.setBounds(30, 340, 80, 40);
         buttonGroup2.add(firstClass);
         firstClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        firstClass.setForeground(new java.awt.Color(255, 255, 255));
+        firstClass.setForeground(new java.awt.Color(0, 0, 0));
         firstClass.setText("First Class");
         firstClass.setContentAreaFilled(false);
         firstClass.setFocusable(false);
-        /*  firstClass.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-        firstClassActionPerformed(evt);
-        }
-        });*/
+
         jPanel1.add(firstClass);
         firstClass.setBounds(130, 320, 110, 30);
         buttonGroup2.add(businessClass);
         businessClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        businessClass.setForeground(new java.awt.Color(255, 255, 255));
+        businessClass.setForeground(new java.awt.Color(0, 0, 0));
         businessClass.setText("Business Class");
         businessClass.setContentAreaFilled(false);
         businessClass.setFocusable(false);
-        /*   businessClass.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-        businessClassActionPerformed(evt);
-        }
-        });*/
+
         jPanel1.add(businessClass);
         businessClass.setBounds(130, 350, 110, 30);
         buttonGroup2.add(economyClass);
         economyClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        economyClass.setForeground(new java.awt.Color(255, 255, 255));
+        economyClass.setForeground(new java.awt.Color(0, 0, 0));
         economyClass.setText("Economy Class");
         economyClass.setContentAreaFilled(false);
         economyClass.setFocusable(false);
-        /*economyClass.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-        //economyClassActionPerformed(evt);
-        }
-        });*/
-        search.setBackground(new java.awt.Color(102, 102, 102));
+
+        search.setBackground(new Color(55, 112, 155));
         search.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         search.setForeground(new java.awt.Color(255, 255, 255));
         search.setText("Search");
         search.setBorderPainted(false);
-        search.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         search.setFocusable(false);
         jPanel1.add(search);
         search.setBounds(130, 440, 110, 30);
         search.setActionCommand("Search");
+        
         search.addActionListener(new CustomerFlightSearchChoice(this));
         getContentPane().add(jPanel1);
         jPanel1.setBounds(60, 230, 360, 500);
@@ -284,20 +254,21 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         worldAirline.setText("WorldAirline");
         getContentPane().add(worldAirline);
         worldAirline.setBounds((screenWidth / 2) - 300, 20, 600, 110);
-        worldAirline.setForeground(new java.awt.Color(0, 0, 0));
+        worldAirline.setForeground(new java.awt.Color(255, 255, 255));
         oneWayPanel.setOpaque(false);
         oneWayPanel.setLayout(null);
-        Next.setBackground(new java.awt.Color(102, 102, 102));
-        Next.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        Next.setForeground(new java.awt.Color(255, 255, 255));
-        Next.setText("Next");
-        Next.setBorderPainted(false);
-        Next.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Next.setFocusable(false);
-        oneWayPanel.add(Next);
-        Next.setBounds(710, 560, 110, 30);
-        Next.setActionCommand("Next");
-        Next.addActionListener(new CustomerFlightSearchChoice(this));
+       
+        next.setBackground(new java.awt.Color(255, 255, 255));
+        next.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        next.setForeground(new java.awt.Color(0, 0, 0));
+        next.setText("Next");
+        next.setBorderPainted(false);
+        next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        next.setFocusable(false);
+        oneWayPanel.add(next);
+        next.setBounds(710, 560, 110, 30);
+        next.setActionCommand("next");
+        next.addActionListener(new CustomerFlightSearchChoice(this));
         ArrayList<Flight> flights = new ArrayList<Flight>();
         flights.add(new FlightDAOImpl().find(5));
         flights.add(new FlightDAOImpl().find(6));
@@ -309,7 +280,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         searchDepartureFlights.setGridColor(new java.awt.Color(0, 0, 0));
         searchDepartureFlights.setOpaque(false);
         searchDepartureFlights.setRowHeight(20);
-        searchDepartureFlights.setSelectionBackground(new java.awt.Color(200, 191, 191));
+        searchDepartureFlights.setSelectionBackground(new java.awt.Color(0, 204, 0));
         searchDepartureFlights.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         searchDepartureFlights.setShowHorizontalLines(false);
         searchDepartureFlights.setShowVerticalLines(false);
@@ -326,27 +297,26 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         oneWayPanel.setBounds(510, 190, 820, 590);
         roundTripPanel.setOpaque(false);
         roundTripPanel.setLayout(null);
-        nextRoundTrip.setBackground(new java.awt.Color(102, 102, 102));
+        nextRoundTrip.setBackground(new java.awt.Color(255, 255, 255));
         nextRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        nextRoundTrip.setForeground(new java.awt.Color(255, 255, 255));
+        nextRoundTrip.setForeground(new java.awt.Color(0, 0, 0));
         nextRoundTrip.setText("Next");
+        nextRoundTrip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         nextRoundTrip.setBorderPainted(false);
-        nextRoundTrip.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nextRoundTrip.setFocusable(false);
         nextRoundTrip.setActionCommand("Next");
         nextRoundTrip.addActionListener(new CustomerFlightSearchChoice(this));
         roundTripPanel.add(nextRoundTrip);
         nextRoundTrip.setBounds(710, 560, 110, 30);
-        //ArrayList<Flight> flights =  new ArrayList<Flight>();
-        //    flights.add(new FlightDAOImpl().find(5));
-        //  SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
+
         searchDepartureFlightsRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchDepartureFlightsRoundTrip.setModel(model);
         searchDepartureFlightsRoundTrip.setFocusable(false);
         searchDepartureFlightsRoundTrip.setGridColor(new java.awt.Color(0, 0, 0));
         searchDepartureFlightsRoundTrip.setOpaque(false);
         searchDepartureFlightsRoundTrip.setRowHeight(20);
-        searchDepartureFlightsRoundTrip.setSelectionBackground(new java.awt.Color(200, 191, 191));
+        searchDepartureFlightsRoundTrip.setSelectionBackground(new java.awt.Color(0, 204, 0));
         searchDepartureFlightsRoundTrip.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         searchDepartureFlightsRoundTrip.setShowHorizontalLines(false);
         searchDepartureFlightsRoundTrip.setShowVerticalLines(false);
@@ -354,16 +324,14 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         departureScrollPaneRoundTrip.setViewportView(searchDepartureFlightsRoundTrip);
         roundTripPanel.add(departureScrollPaneRoundTrip);
         departureScrollPaneRoundTrip.setBounds(0, 310, 820, 230);
-        //   ArrayList<Flight> flights =  new ArrayList<Flight>();
-        //flights.add(new FlightDAOImpl().find(5));
-        // SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
+
         searchArrivalFlightsRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchArrivalFlightsRoundTrip.setModel(model);
         searchArrivalFlightsRoundTrip.setFocusable(false);
         searchArrivalFlightsRoundTrip.setGridColor(new java.awt.Color(0, 0, 0));
         searchArrivalFlightsRoundTrip.setOpaque(false);
         searchArrivalFlightsRoundTrip.setRowHeight(20);
-        searchArrivalFlightsRoundTrip.setSelectionBackground(new java.awt.Color(200, 191, 191));
+        searchArrivalFlightsRoundTrip.setSelectionBackground(new java.awt.Color(0, 204, 0));
         searchArrivalFlightsRoundTrip.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         searchArrivalFlightsRoundTrip.setShowHorizontalLines(false);
         searchArrivalFlightsRoundTrip.setShowVerticalLines(false);
@@ -385,10 +353,11 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         roundTripPanel.setVisible(true);
         oneWayPanel.setVisible(false);
         roundTripPanel.setBounds(510, 190, 820, 590);
-        backGround.setIcon(new javax.swing.ImageIcon("img\\auqwj-tjqus.jpg")); // NOI18N
-        backGround.setBounds(0, 0, screenWidth, screenHeight);
-        //getContentPane().add(backGround);
 
+        //backGround.setIcon(new javax.swing.ImageIcon("img\\auqwj-tjqus.jpg")); // NOI18N
+        // backGround.setBounds(0, 0, screenWidth, screenHeight);
+        //getContentPane().add(backGround);
+        this.getContentPane().setBackground((new Color(55, 112, 155)));
         pack();
     }
 

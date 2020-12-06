@@ -46,13 +46,13 @@ public final class MainMenu extends JFrame {
         contentPane.add(jLabel4);
         jLabel4.setBounds(310, 100, 410, 50);
 
-        jButton4.setBackground(new Color(55,112,155));
+        jButton4.setBackground(new Color(0,204,0));
         jButton4.setForeground(new Color(255, 255, 255));
         jButton4.setText("Contacts");
         jButton4.setFocusPainted(false);
         jButton4.addActionListener(controller);
         jButton4.setActionCommand("Contacts");
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N)
+        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N)
         
         
         contentPane.add(jButton4);
@@ -64,8 +64,8 @@ public final class MainMenu extends JFrame {
         jButton2.addActionListener(controller);
         jButton2.setActionCommand("Subscribe");
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N)
-        jButton2.setBackground(new Color(55,112,155));
-        jButton2.setForeground(new Color(255, 255, 255));
+        jButton2.setBackground(new Color(255,255,255));
+        jButton2.setForeground(new Color(0, 0, 0));
        
         contentPane.add(jButton2);
         jButton2.setBounds(150, 530, 100, 23);
@@ -87,8 +87,8 @@ public final class MainMenu extends JFrame {
         contentPane.add(jTextField1);
         jTextField1.setBounds(10, 527, 130, 28);
  
-        jButton3.setBackground(new Color(55,112,155));
-        jButton3.setForeground(new Color(255,255, 255));
+        jButton3.setBackground(new Color(255,255,255));
+        jButton3.setForeground(new Color(0,0, 0));
         jButton3.setText("Book a Flight !");
         jButton3.setFocusPainted(false);
         jButton3.addActionListener(controller);
@@ -116,15 +116,17 @@ public final class MainMenu extends JFrame {
         contentPane.add(jLabel2);
         jLabel2.setBounds(60, 20, 920, 70);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+       /* jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new ImageIcon("img\\airplane.jpg")); // NOI18N
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(null);
        
         contentPane.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1068, 601);
-
+        jLabel1.setBounds(0, 0, 1068, 601);*/
+       
+       contentPane.setBackground((new Color(55, 112, 155)));
+         
         pack();
       
     }
