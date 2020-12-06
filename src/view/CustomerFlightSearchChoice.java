@@ -46,7 +46,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     flights.add(selectedFlight);
 
                     if (frame.getLoggedInCustomer() == null) {
-                        new PassengersInfosPayement(flights, frame.getSelectPassenger());
+                        new PassengersInfosFrame(flights, frame.getSelectPassenger());
                     } else {
 
                         String[] options = {"yes", "no"};
@@ -56,9 +56,9 @@ public class CustomerFlightSearchChoice implements ActionListener {
                                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
                         if (x == 0) {                           
-                          new PassengersInfosPayement(flights, frame.getSelectPassenger(),frame.getLoggedInCustomer());
+                          new PassengersInfosFrame(flights, frame.getSelectPassenger(),frame.getLoggedInCustomer());
                         } else if (x == 1) {
-                            new PassengersInfosPayement(flights, frame.getSelectPassenger());
+                            new PassengersInfosFrame(flights, frame.getSelectPassenger());
                         }
 
                     }
@@ -76,7 +76,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedDepFlight);
                     flights.add(selectedArrFlight);
-                    new PassengersInfosPayement(flights, frame.getSelectPassenger());
+                    new PassengersInfosFrame(flights, frame.getSelectPassenger());
                 }
 
             }

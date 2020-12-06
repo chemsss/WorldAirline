@@ -653,12 +653,6 @@ public class MyAccount extends javax.swing.JFrame {
 
     }
     
-    
-    
-    
-    
-    
-    
     public void initMyTickets()
     {
          //My Tickets

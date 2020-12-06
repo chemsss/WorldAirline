@@ -47,7 +47,7 @@ pa
             flights.add(new FlightDAOImpl().find(5));
             flights.add(new FlightDAOImpl().find(5));
 
-         //  PassengersInfosPayement pv = new PassengersInfosPayement(flights,  1);
+           PassengersInfosFrame pv = new PassengersInfosFrame(flights,  1);
         //    MainMenu menu = new MainMenu();
 
 
