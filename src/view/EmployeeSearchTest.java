@@ -87,7 +87,7 @@ public class EmployeeSearchTest extends javax.swing.JPanel {
         DepartureScrollPane1.setViewportView(searchDeapartureFlights1);
 
         jPanel2.add(DepartureScrollPane1);
-        DepartureScrollPane1.setBounds(210, 140, 452, 402);
+        DepartureScrollPane1.setBounds(40, 120, 800, 402);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

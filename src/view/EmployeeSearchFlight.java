@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.*;
 import model.Flight;
+import DataAcessObjectImpl.*;
 
 /**
  *
@@ -28,15 +29,7 @@ public class EmployeeSearchFlight extends JPanel {
     private javax.swing.JLabel title1;
     // End of variables declaration  
     
-    // Variables declaration - do not modify                     
-    private javax.swing.JScrollPane DepartureScrollPane;
-    private javax.swing.JLabel idflight;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton search;
-    private javax.swing.JTable searchDeapartureFlights;
-    private javax.swing.JTextField textidflight;
-    private javax.swing.JLabel title;
-    // End of variables declaration     
+ 
     
     public EmployeeSearchFlight() {
         super();
@@ -69,13 +62,17 @@ public class EmployeeSearchFlight extends JPanel {
         search1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FlightDAOImpl request=new FlightDAOImpl();
+                Flight azer;
+               azer= request.find(Integer.parseInt(textidflight1.getText()));
+                System.out.println(azer.getDepartureAirport());
                 
             }
         });
         add(search1);
         search1.setBounds(400, 60, 90, 23);
 
-        textidflight1.setText("jTextField1");
+        textidflight1.setText("");
         textidflight1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
