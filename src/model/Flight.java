@@ -1,5 +1,6 @@
 package model;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -34,7 +35,6 @@ public class Flight {
     }
 
     public Flight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getIdFlight() {
@@ -101,9 +101,28 @@ public class Flight {
         this.seats = seat;
     }
     
-    public void addFlight(Flight flight)
+    public String getDepartureDateTimeToString()
     {
+        System.out.println(departureDate);
+        String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(departureDate);
         
+        return timeStamp;
     }
     
+     public String getArrivalDateTimeToString()
+    {
+
+        String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(arrivalDate);
+        System.out.println(timeStamp);
+        return timeStamp;
+    }
+     
+     public FlightSeat getseatFromClass(String className) {
+         for(int i=0; i<seats.size(); ++i) {
+             if(seats.get(i).getClassName().equals(className) && seats.get(i).getIsAvailable()==true) {
+                 return seats.get(i);
+             }
+         }
+         return null;
+     }
 }
