@@ -27,7 +27,7 @@ public class WorldAirline {
 
       
        CustomerAccount cm=null;
-        //CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
+        CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
         
         /*
         if(new BookingDAOImpl().add(new Date(120,3,21), 5, 3)==false) {
@@ -69,7 +69,7 @@ public class WorldAirline {
         //System.out.println(new TicketDAOImpl().findByFlightSeat(1, 120));
         System.out.println(BookingController.getTicketPrice(1, 120));
         
-        new FlightDAOImpl().add( 20, 5, "test2324", "MIA", "BOD", new Timestamp(120,11,30, 10, 34, 50, 0), new Timestamp(120,11,30, 10, 34, 50, 0));
+        //new FlightDAOImpl().add( 21, 5, "test2324", "MIA", "BOD", new Timestamp(120,11,30, 15, 34, 50, 0), new Timestamp(120,11,30, 17, 34, 50, 0));
     }
     
 }

@@ -83,6 +83,7 @@ public class FlightDAOImpl implements FlightDAO {
             
             Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
             while (myRs.next()) {
+                System.out.println("zeiojfjiozegjiorejiogjio");
                 ResultSet myRs2 = myStmt2.executeQuery("SELECT COUNT(*) FROM flightseat WHERE flight_idFlight=" +myRs.getInt("idFlight") +" AND className='" +className +"' AND isAvailable=1;" );
                 if(myRs2.first()) {
                     if(myRs2.getInt("COUNT(*)") >= nbOfSeats) {
@@ -95,6 +96,8 @@ public class FlightDAOImpl implements FlightDAO {
                                 new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")), 
                                 new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")), 
                                 new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("idFlight"))));
+                            System.out.println(myRs.getTimestamp("departureDate").toString() +"fjezijiofzeijofzejiofze");
+                            System.out.println(myRs.getTimestamp("arrivalDate").toString());
                         }
                     }
                 }
