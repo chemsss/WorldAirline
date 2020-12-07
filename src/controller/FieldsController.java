@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
  *
  * @author Chems
  */
-public class SignUpController {
+public class FieldsController {
     
-    public static boolean checkFields(String email, String password, String lastName, String firstName, String telephoneNumber ) {
+    public static boolean checkSignUp(String email, String password, String lastName, String firstName, String telephoneNumber ) {
         String str = "";
         if(email.split("@").length!=2 || email.split("@")[1].split("\\.").length!=2) {
             str = str +"Your email has to be in the same format as the following example : email@hotmail.com\n";

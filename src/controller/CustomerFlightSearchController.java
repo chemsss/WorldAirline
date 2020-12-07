@@ -46,7 +46,7 @@ public class CustomerFlightSearchController {
                         ((Airport) frame.getToArrival().getSelectedItem()).getIdAirport(),
                         frame.getDepartureDate(),
                         frame.getSelectPassenger(),
-                        frame.getFirstClass()));
+                        frame.getSelectedClass()));
 
                 System.out.println(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport());
                 System.out.println(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport());
@@ -68,33 +68,34 @@ public class CustomerFlightSearchController {
 
         try {
             if (((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport().equals(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport())) {
-                throw new Exceptions.AirportException();
+                throw new AirportException();
             } 
            if((frame.getDepartureDate()==null && frame.getReturnDate()==null) || (frame.getDepartureDate()==null || frame.getReturnDate()==null) )
             {
                 throw new EmptyFields();
             }
-            
+            if(frame.getDepartureDate().compareTo(frame.getReturnDate()) > 0)
+            {
+                throw new DateException("You can't have the return date before the depart date.");
+            }
             
             else {
                 frame.setSearchReturnFlightsRoundTripModel(new SearchFlightsTableModel(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
                         ((Airport) frame.getToArrival().getSelectedItem()).getIdAirport(),
                         frame.getDepartureDate(),
                         frame.getSelectPassenger(),
-                        frame.getFirstClass()));
+                        frame.getSelectedClass()));
 
                 frame.setSearchDepartureFlightsRoundTripModel(new SearchFlightsTableModel(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport(),
                         ((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
                         frame.getDepartureDate(),
                         frame.getSelectPassenger(),
-                        frame.getFirstClass()));
+                        frame.getSelectedClass()));
 
             }
-        } catch (Exceptions.AirportException  exception) {
+        } catch (AirportException | DateException | EmptyFields exception) {
             System.out.println(exception.getMessage());
         
-        } catch (EmptyFields ex) {
-            System.out.println(ex.getMessage());
         }
 
     }

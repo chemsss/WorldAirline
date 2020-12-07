@@ -301,7 +301,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         oneWayPanel.add(departureRoundTrip);
         departureRoundTrip.setBounds(0, 0, 150, 30);
         getContentPane().add(oneWayPanel);
-        oneWayPanel.setBounds(510, 190, 820, 590);
+        oneWayPanel.setBounds(510, 190, 860, 590);
         roundTripPanel.setOpaque(false);
         roundTripPanel.setLayout(null);
         nextRoundTrip.setBackground(new java.awt.Color(255, 255, 255));
@@ -334,7 +334,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
                 departureScrollPaneRoundTrip.getViewport().setBackground(Color.WHITE);
 
         roundTripPanel.add(departureScrollPaneRoundTrip);
-        departureScrollPaneRoundTrip.setBounds(0, 310, 820, 230);
+        departureScrollPaneRoundTrip.setBounds(0, 310, 860, 230);
 
         searchReturnFlightsRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
                 searchReturnFlightsRoundTrip.setForeground(new Color (0,0,0));
@@ -353,7 +353,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         returnScrollPaneRoundTrip.getViewport().setBackground(Color.WHITE);
 
         roundTripPanel.add(returnScrollPaneRoundTrip);
-        returnScrollPaneRoundTrip.setBounds(0, 40, 820, 230);
+        returnScrollPaneRoundTrip.setBounds(0, 40, 860, 230);
         departureRoundTrip1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureRoundTrip1.setForeground(new java.awt.Color(255, 255, 255));
         departureRoundTrip1.setText("Depart>>");
@@ -367,7 +367,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         getContentPane().add(roundTripPanel);
         roundTripPanel.setVisible(true);
         oneWayPanel.setVisible(false);
-        roundTripPanel.setBounds(510, 190, 820, 590);
+        roundTripPanel.setBounds(510, 190, 860, 590);
 
         //backGround.setIcon(new javax.swing.ImageIcon("img\\auqwj-tjqus.jpg")); // NOI18N
         // backGround.setBounds(0, 0, screenWidth, screenHeight);
@@ -392,6 +392,19 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
     public JRadioButton getEconomyClass() {
         return economyClass;
+    }
+    
+    public String getSelectedClass() {
+        if(firstClass.isSelected()) {
+            return firstClass.getText();
+        }
+        else if(businessClass.isSelected()) {
+            return businessClass.getText();
+        }
+        else if(economyClass.isSelected()) {
+            return economyClass.getText();
+        }
+        return "";
     }
 
     public String getFirstClass() {
