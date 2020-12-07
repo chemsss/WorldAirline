@@ -2,40 +2,21 @@ package view;
 
 import Exceptions.EmptyFields;
 import com.toedter.calendar.JDateChooser;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 import model.CustomerAccount;
 import model.Flight;
 
 public class PassengersInfosFrame extends javax.swing.JFrame {
 
-    //Passenger Informations
+    //Flight Details
     private javax.swing.JLabel flightDetails;
     private javax.swing.JPanel flightDetailsPanel;
-    private javax.swing.JPanel jPanel3;
 
-    public JPanel getFlightDetailsPanel() {
-        return flightDetailsPanel;
-    }
-
-    public JPanel getjPanel3() {
-        return jPanel3;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-    private javax.swing.JScrollPane jScrollPane1;
-
+    // For One Way
     private javax.swing.JLabel arrival;
     private javax.swing.JLabel arrivalAirport;
     private javax.swing.JLabel arrivalDateTime;
@@ -45,6 +26,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     private javax.swing.JLabel from;
     private javax.swing.JLabel to;
 
+    //For Round Trip
     private javax.swing.JLabel arrival2;
     private javax.swing.JLabel arrivalAirport2;
     private javax.swing.JLabel arrivalDateTime2;
@@ -54,22 +36,29 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     private javax.swing.JLabel from2;
     private javax.swing.JLabel to2;
     private JButton jButton1;
+
+    //Passengers Details
     ArrayList<JLabel[]> labels = new ArrayList();
     ArrayList<JTextField[]> textFields = new ArrayList();
     ArrayList<JDateChooser> birthDates = new ArrayList();
+    private javax.swing.JScrollPane passengersScrollPane;
+    private javax.swing.JPanel passengersPanel;
 
+    //Selected flight(s)
     ArrayList<Flight> flights = new ArrayList();
 
+    //Account Customer 
     private CustomerAccount loggedInCustomer;
 
+    //Nber of passengers
     private final int numberOfPassengers;
 
-    JPanel Payement;
+    //payement JPanel
+    JPanel payment;
 
-  
     public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers) {
         super();
-        Payement = new PayementPanel(this);
+        payment = new PaymentPanel(this);
         this.flights = selectedFlight;
         this.numberOfPassengers = numberOfPassengers;
         initComponents();
@@ -80,7 +69,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
     public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers, CustomerAccount loggedInCustomer) {
         super();
-        Payement = new PayementPanel(this);
+        payment = new PaymentPanel(this);
         this.loggedInCustomer = loggedInCustomer;
         this.flights = selectedFlight;
         this.numberOfPassengers = numberOfPassengers;
@@ -94,8 +83,8 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
         flightDetailsPanel = new javax.swing.JPanel();
         flightDetails = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
+        passengersScrollPane = new javax.swing.JScrollPane();
+        passengersPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -298,10 +287,10 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
         getContentPane().add(flightDetailsPanel);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(null);
-        jPanel3.setPreferredSize(new Dimension(100, 435 * numberOfPassengers));
+        passengersPanel.setBackground(new java.awt.Color(255, 255, 255));
+        passengersPanel.setForeground(new java.awt.Color(255, 255, 255));
+        passengersPanel.setLayout(null);
+        passengersPanel.setPreferredSize(new Dimension(100, 435 * numberOfPassengers));
 
         int y = 15;
         int y2 = 83;
@@ -441,17 +430,23 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
                                         throw new EmptyFields();
                                     }
                                 }
-                            }
-                            jPanel3.setVisible(false);
-                            flightDetailsPanel.setVisible(false);
-                            jScrollPane1.setVisible(false);
-                            getContentPane().repaint();
-                            
-                            getContentPane().add(Payement);
-                            Payement.setVisible(true);
-                            setSize(630, 750);
+                                for (int k = 0; k < birthDates.size(); k++) {
+                                    if (birthDates.get(i).getDate() == null) {
+                                        throw new EmptyFields();
 
-                          
+                                    }
+
+                                }
+                            }
+                            passengersPanel.setVisible(false);
+                            flightDetailsPanel.setVisible(false);
+                            passengersScrollPane.setVisible(false);
+
+                            getContentPane().repaint();
+
+                            getContentPane().add(payment);
+                            payment.setVisible(true);
+                            setSize(630, 750);
 
                         } catch (EmptyFields exception) {
                             System.out.println(exception.getMessage());
@@ -461,7 +456,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
                 });
 
-                jPanel3.add(jButton1);
+                passengersPanel.add(jButton1);
 
             } else {
 
@@ -471,183 +466,39 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
         for (int i = 0; i < labels.size(); i++) {
             for (int j = 0; j < 9; j++) {
-                jPanel3.add(labels.get(i)[j]);
+                passengersPanel.add(labels.get(i)[j]);
             }
 
         }
 
         for (int i = 0; i < textFields.size(); i++) {
             for (int j = 0; j < 7; j++) {
-                jPanel3.add(textFields.get(i)[j]);
+                passengersPanel.add(textFields.get(i)[j]);
             }
 
         }
 
         for (int i = 0; i < birthDates.size(); i++) {
-            jPanel3.add(birthDates.get(i));
+            passengersPanel.add(birthDates.get(i));
         }
 
-        jScrollPane1.setViewportView(jPanel3);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 290, 630, 490);
+        passengersScrollPane.setViewportView(passengersPanel);
+        getContentPane().add(passengersScrollPane);
+        passengersScrollPane.setBounds(0, 290, 630, 490);
 
         pack();
 
     }
 
-    private void initPayement() {
-        /*
-        
-        this.setSize(635, 750);
-        jPanel2 = new javax.swing.JPanel();
-        payment = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        creditCards = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        couponCode = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        dateExp = new javax.swing.JTextField();
-        couponCodeField = new javax.swing.JTextField();
-        previous = new javax.swing.JButton();
-        next = new javax.swing.JButton();
-        payUsing1 = new javax.swing.JLabel();
-        cardNumber1 = new javax.swing.JTextField();
-        next1 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
-
-        jPanel2.setBackground(new java.awt.Color(55, 112, 155));
-        jPanel2.setLayout(null);
-
-        payment.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 30)); // NOI18N
-        payment.setForeground(new java.awt.Color(255, 255, 255));
-        payment.setText("Payment");
-        jPanel2.add(payment);
-        payment.setBounds(260, 20, 160, 40);
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("1000$");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(490, 520, 130, 30);
-
-        creditCards.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        creditCards.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\25654-2-major-credit-card-logo-transparent_400x400.png")); // NOI18N
-        jPanel2.add(creditCards);
-        creditCards.setBounds(170, 150, 420, 40);
-
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\lock_30px.png")); // NOI18N
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(50, 410, 60, 30);
-
-        couponCode.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        couponCode.setForeground(new java.awt.Color(255, 255, 255));
-        couponCode.setText("Coupon code :");
-        jPanel2.add(couponCode);
-        couponCode.setBounds(370, 600, 100, 40);
-
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Total Price :");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(340, 520, 130, 30);
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\credit_card_30px.png")); // NOI18N
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(50, 310, 40, 30);
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar_30px.png")); // NOI18N
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(50, 350, 30, 50);
-
-        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        jTextField3.setText("Security Code");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
-        jPanel2.add(jTextField3);
-        jTextField3.setBounds(120, 412, 210, 32);
-
-        dateExp.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        dateExp.setText("MM / YY");
-        dateExp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
-        jPanel2.add(dateExp);
-        dateExp.setBounds(120, 362, 210, 32);
-
-        couponCodeField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        couponCodeField.setText("Code");
-        couponCodeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
-        jPanel2.add(couponCodeField);
-        couponCodeField.setBounds(480, 610, 80, 25);
-
-        previous.setBackground(new java.awt.Color(255, 255, 255));
-        previous.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        previous.setText("Previous");
-        previous.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
-        previous.setBorderPainted(false);
-        previous.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPanel3.setVisible(true);
-                flightDetailsPanel.setVisible(true);
-                jScrollPane1.setVisible(true);
-                jPanel2.setVisible(false);
-                setSize(643, 815);
-
-            }
-        });
-        jPanel2.add(previous);
-        previous.setBounds(30, 670, 90, 30);
-
-        next.setBackground(new java.awt.Color(255, 255, 255));
-        next.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 12)); // NOI18N
-        next.setText("OK");
-        next.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
-        next.setBorderPainted(false);
-        jPanel2.add(next);
-        next.setBounds(575, 610, 35, 25);
-
-        payUsing1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
-        payUsing1.setForeground(new java.awt.Color(255, 255, 255));
-        payUsing1.setText("Pay using :");
-        jPanel2.add(payUsing1);
-        payUsing1.setBounds(50, 150, 130, 30);
-
-        cardNumber1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        cardNumber1.setText("Card number");
-        cardNumber1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            }
-        });
-        jPanel2.add(cardNumber1);
-        cardNumber1.setBounds(120, 312, 210, 32);
-
-        next1.setBackground(new java.awt.Color(255, 255, 255));
-        next1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        next1.setText("Next");
-        next1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
-        next1.setBorderPainted(false);
-        jPanel2.add(next1);
-        next1.setBounds(510, 670, 90, 30);
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 630, 720);
-
-         */
+    public JPanel getFlightDetailsPanel() {
+        return flightDetailsPanel;
     }
 
+    public JPanel getPassengersPanel() {
+        return passengersPanel;
+    }
+
+    public JScrollPane getPassengersScrollPane() {
+        return passengersScrollPane;
+    }
 }

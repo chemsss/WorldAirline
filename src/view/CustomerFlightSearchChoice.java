@@ -1,22 +1,12 @@
 package view;
 
-import Exceptions.DateException;
-import com.toedter.calendar.JDateChooser;
 import controller.CustomerFlightSearchController;
 import controller.FlightController;
 import java.awt.event.*;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
-import view.CustomerHomeFlightSearch;
 import model.*;
-import controller.SearchFlightsTableModel;
+
 import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
-import javax.swing.JTable;
 
 public class CustomerFlightSearchChoice implements ActionListener {
 
@@ -34,55 +24,79 @@ public class CustomerFlightSearchChoice implements ActionListener {
                 new CustomerFlightSearchController(frame);
             }
             break;
-                
-                
-                
-            
-            case "Next":
-                // new signUp();
 
-                if(frame.getOneWay().isSelected()) {
-                    String stringIdFlight = frame.getSearchDepartureFlights().getValueAt(frame.getSearchDepartureFlights().getSelectedRow(), 1).toString();
-                    int idFlight = Integer.parseInt(stringIdFlight);
+            case "Next": {
+                System.out.println("ertt");
 
-                    //Flight selectedFlight = FlightController.getFlight(frame.getSearchDepartureFlights().getValueAt(frame.getSearchDepartureFlights().getSelectedRow(), 1))
-                    Flight selectedFlight = FlightController.getFlight(idFlight);
-                    ArrayList<Flight> flights = new ArrayList<>();
-                    flights.add(selectedFlight);
-                    new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getLoggedInCustomer());
+                if (frame.getOneWay().isSelected()) //If one Way is selected
+                {
+                    System.out.println("tete");
+                    if (!frame.getSearchDepartureFlights().getSelectionModel().isSelectionEmpty()) { //If we select a flight
+                        
+                        System.out.println("etetet");
+                        String stringIdFlight = frame.getSearchDepartureFlights().getValueAt(frame.getSearchDepartureFlights().getSelectedRow(), 1).toString();
+                        int idFlight = Integer.parseInt(stringIdFlight);
+                        Flight selectedFlight = FlightController.getFlight(idFlight);
+
+                        ArrayList<Flight> flights = new ArrayList<>();
+                        flights.add(selectedFlight);
+
+                        if (frame.getLoggedInCustomer() == null) {
+                            new PassengersInfosFrame(flights, frame.getSelectPassenger());
+                        } else {
+
+                            String[] options = {"yes", "no"};
+
+                            int x = JOptionPane.showOptionDialog(null, "Are you taking a ticket for you ?",
+                                    "Customer Account",
+                                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+                            if (x == 0) {
+                                new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getLoggedInCustomer());
+                            } else if (x == 1) {
+                                new PassengersInfosFrame(flights, frame.getSelectPassenger());
+                            }
+
+                        }
+                    }
                 }
-                if(frame.getRoundTrip().isSelected()) {
+                if (frame.getRoundTrip().isSelected()) {
 
-                    String stringIdFlight = frame.getSearchDepartureFlightsAR().getValueAt(frame.getSearchDepartureFlightsAR().getSelectedRow(), 1).toString();
+                   if ( (!frame.getSearchDepartureFlightsRoundTrip().getSelectionModel().isSelectionEmpty()) && (!frame.getSearchReturnFlightsRoundTrip().getSelectionModel().isSelectionEmpty()))
+                   { //If we select a flight
+                    String stringIdFlight = frame.getSearchDepartureFlightsRoundTrip().getValueAt(frame.getSearchDepartureFlightsRoundTrip().getSelectedRow(), 1).toString();
                     int idDepartureFlight = Integer.parseInt(stringIdFlight);
-                    stringIdFlight = frame.getSearchArrivalFlightsAR().getValueAt(frame.getSearchArrivalFlightsAR().getSelectedRow(), 1).toString();
+                    stringIdFlight = frame.getSearchReturnFlightsRoundTrip().getValueAt(frame.getSearchReturnFlightsRoundTrip().getSelectedRow(), 1).toString();
                     int idArrivalFlight = Integer.parseInt(stringIdFlight);
 
                     Flight selectedDepFlight = FlightController.getFlight(idDepartureFlight);
                     Flight selectedArrFlight = FlightController.getFlight(idArrivalFlight);
-                   
+
                     ArrayList<Flight> flights = new ArrayList<>();
-                    flights.add(selectedArrFlight);
                     flights.add(selectedDepFlight);
-                    new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getLoggedInCustomer());
+                    flights.add(selectedArrFlight);
+                    new PassengersInfosFrame(flights, frame.getSelectPassenger());
+                   }
                 }
-                
-                
-                break;
-                
-                case "My account": 
-                    if(frame.getMyAccount().getText().equals(" My account")) {
-                        new MyAccount(frame.getLoggedInCustomer());
-                    }
-                    else if(frame.getMyAccount().getText().equals(" Log in")){
-                        new CustomerLoginSignUp();
-                    }
-                
-                    break;
+
+            }
+            
+            break;
+
+            case "Logged": {
+                new MyAccountFrame(frame.getLoggedInCustomer());
+            }
+
+            break;
+
+            case "Unlogged": {
+                new LogInFrame();
+            }
+
+            break;
 
         }
 
     }
-    
-}
 
+}
