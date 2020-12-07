@@ -2,7 +2,7 @@ package worldairline;
 import DataAcessObject.*;
 import DataAcessObjectImpl.*;
 import controller.BookingController;
-import controller.SignUpController;
+import controller.FieldsController;
 import java.sql.*;
 import java.util.ArrayList;
 import model.*;
@@ -61,7 +61,7 @@ public class WorldAirline {
         System.out.println(toString.length());*/
        
        String test = "CACA-CA234A_@ACACC.A";
-       boolean test123 = SignUpController.checkFields(test, "Hello123", "Chems", "Bkh", "+33 423423");
+       boolean test123 = FieldsController.checkSignUp(test, "Hello123", "Chems", "Bkh", "+33 423423");
        System.out.println(test.split("@")[1].split("\\.").length);
         System.out.println(test);
         
