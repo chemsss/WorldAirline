@@ -36,27 +36,26 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     private javax.swing.JLabel from2;
     private javax.swing.JLabel to2;
     private JButton jButton1;
-  
+
     //Passengers Details
     ArrayList<JLabel[]> labels = new ArrayList();
     ArrayList<JTextField[]> textFields = new ArrayList();
     ArrayList<JDateChooser> birthDates = new ArrayList();
     private javax.swing.JScrollPane passengersScrollPane;
     private javax.swing.JPanel passengersPanel;
-    
+
     //Selected flight(s)
     ArrayList<Flight> flights = new ArrayList();
-   
+
     //Account Customer 
     private CustomerAccount loggedInCustomer;
-   
+
     //Nber of passengers
     private final int numberOfPassengers;
 
     //payement JPanel
     JPanel payment;
 
-  
     public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers) {
         super();
         payment = new PaymentPanel(this);
@@ -431,18 +430,23 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
                                         throw new EmptyFields();
                                     }
                                 }
+                                for (int k = 0; k < birthDates.size(); k++) {
+                                    if (birthDates.get(i).getDate() == null) {
+                                        throw new EmptyFields();
+
+                                    }
+
+                                }
                             }
                             passengersPanel.setVisible(false);
                             flightDetailsPanel.setVisible(false);
                             passengersScrollPane.setVisible(false);
-                           
+
                             getContentPane().repaint();
-                            
+
                             getContentPane().add(payment);
                             payment.setVisible(true);
                             setSize(630, 750);
-
-                          
 
                         } catch (EmptyFields exception) {
                             System.out.println(exception.getMessage());
@@ -485,10 +489,11 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
         pack();
 
     }
-     public JPanel getFlightDetailsPanel() {
+
+    public JPanel getFlightDetailsPanel() {
         return flightDetailsPanel;
     }
-     
+
     public JPanel getPassengersPanel() {
         return passengersPanel;
     }
@@ -496,6 +501,4 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     public JScrollPane getPassengersScrollPane() {
         return passengersScrollPane;
     }
- }
-
-
+}

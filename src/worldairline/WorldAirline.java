@@ -49,8 +49,8 @@ pa
 
           // PassengersInfosFrame pv = new PassengersInfosFrame(flights,  1);
         //    MainMenu menu = new MainMenu();
-
-        MainMenu menu = new MainMenu();
+         CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
+        //MainMenu menu = new MainMenu();
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(WorldAirline.class.getName()).log(Level.SEVERE, null, ex);
         }

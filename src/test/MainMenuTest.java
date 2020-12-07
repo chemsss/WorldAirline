@@ -40,6 +40,9 @@ public class MainMenuTest extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
+        calendarPanel1 = new com.github.lgooddatepicker.components.CalendarPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1068, 601));
@@ -131,6 +134,12 @@ public class MainMenuTest extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1068, 601);
+        getContentPane().add(datePicker1);
+        datePicker1.setBounds(200, 170, 134, 20);
+        getContentPane().add(datePicker2);
+        datePicker2.setBounds(430, 230, 134, 20);
+        getContentPane().add(calendarPanel1);
+        calendarPanel1.setBounds(150, 110, 229, 203);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,6 +164,9 @@ public class MainMenuTest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel airplane;
     private javax.swing.JLabel airplane1;
+    private com.github.lgooddatepicker.components.CalendarPanel calendarPanel1;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private com.github.lgooddatepicker.components.DatePicker datePicker2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

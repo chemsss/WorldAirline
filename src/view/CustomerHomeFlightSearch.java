@@ -20,24 +20,27 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
     private JPanel oneWayPanel, jPanel1, roundTripPanel;
-    private JScrollPane departureScrollPane, departureScrollPaneRoundTrip, ArrivalScrollPaneRoundTrip;
+    private JScrollPane departureScrollPane, departureScrollPaneRoundTrip, returnScrollPaneRoundTrip;
     private JButton next, search, nextRoundTrip;
-    private JLabel arrival, backGround, departureRoundTrip, departure, from, passengers, seat, to, worldAirline, departureRoundTrip1, arrivalRoundTrip;
-    private JDateChooser arrivalDate, departureDate;
+    private JLabel arrival, departureRoundTrip, departure, from, passengers, seat, to, worldAirline, departureRoundTrip1, arrivalRoundTrip;
+   
+    private JDateChooser returnDate, departureDate;
     private JRadioButton businessClass, economyClass, firstClass, roundTrip, oneWay;
-    private ButtonGroup buttonGroup1;
-    private ButtonGroup buttonGroup2;
+    private ButtonGroup OneWayOrRoundTrip;
+
+
+    private ButtonGroup className;
     private JComboBox<Airport> fromDeparture, toArrival;
     private JComboBox<String> selectPassenger;
+   
     private javax.swing.JButton myAccount;
 
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     int screenHeight = screenSize.height;
     int screenWidth = screenSize.width;
 
-    private JTable searchDepartureFlights, searchDepartureFlightsRoundTrip, searchArrivalFlightsRoundTrip;
+    private JTable searchDepartureFlights, searchDepartureFlightsRoundTrip, searchReturnFlightsRoundTrip;
     private CustomerAccount loggedInCustomer;
-    private ImageIcon backImage;
 
     public CustomerAccount getLoggedInCustomer() {
         return loggedInCustomer;
@@ -56,10 +59,10 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
         roundTripPanel = new JPanel();
         departureScrollPaneRoundTrip = new JScrollPane();
-        ArrivalScrollPaneRoundTrip = new JScrollPane();
+        returnScrollPaneRoundTrip = new JScrollPane();
         nextRoundTrip = new JButton();
-        buttonGroup1 = new ButtonGroup();
-        buttonGroup2 = new ButtonGroup();
+        OneWayOrRoundTrip = new ButtonGroup();
+        className = new ButtonGroup();
         jPanel1 = new JPanel();
         oneWay = new JRadioButton();
         economyClass = new JRadioButton();
@@ -68,7 +71,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         seat = new JLabel();
         fromDeparture = new JComboBox<>();
         from = new JLabel();
-        arrivalDate = new JDateChooser();
+        returnDate = new JDateChooser();
         departure = new JLabel();
         departureDate = new JDateChooser();
         roundTrip = new JRadioButton();
@@ -86,9 +89,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         departureRoundTrip = new JLabel();
         arrivalRoundTrip = new JLabel();
         searchDepartureFlightsRoundTrip = new JTable();
-        searchArrivalFlightsRoundTrip = new JTable();
+        searchReturnFlightsRoundTrip = new JTable();
         departureRoundTrip1 = new JLabel();
-        backGround = new JLabel();
         myAccount = new javax.swing.JButton();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -98,7 +100,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
-        buttonGroup1.add(roundTrip);
+        OneWayOrRoundTrip.add(roundTrip);
         roundTrip.setFont(new Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         roundTrip.setForeground(new Color(0, 0, 0));
         roundTrip.setText("ROUND TRIP");
@@ -107,7 +109,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         roundTrip.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 arrival.setVisible(true);
-                arrivalDate.setVisible(true);
+                returnDate.setVisible(true);
                 oneWayPanel.setVisible(false);
                 roundTripPanel.setVisible(true);
             }
@@ -139,7 +141,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         myAccount.setBounds(screenWidth - 180, 50, 200, 200);
         myAccount.setCursor(new Cursor(Cursor.HAND_CURSOR));
         roundTrip.setSelected(true);
-        buttonGroup1.add(oneWay);
+        OneWayOrRoundTrip.add(oneWay);
         oneWay.setFont(new Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         oneWay.setForeground(new java.awt.Color(0, 0, 0));
         oneWay.setText("ONE-WAY");
@@ -149,7 +151,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 arrival.setVisible(false);
-                arrivalDate.setVisible(false);
+                returnDate.setVisible(false);
                 oneWayPanel.setVisible(true);
                 roundTripPanel.setVisible(false);
 
@@ -191,15 +193,16 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         arrival.setText("Return");
         jPanel1.add(arrival);
         arrival.setBounds(30, 210, 80, 40);
-        jPanel1.add(arrivalDate);
-        arrivalDate.setBounds(130, 215, 155, 29);
-        arrivalDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        jPanel1.add(returnDate);
+        returnDate.setBounds(130, 215, 155, 29);
+        returnDate.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         passengers.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         passengers.setIcon(new javax.swing.ImageIcon("img\\users.png")); // NOI18N
         passengers.setText("Passenger(s)");
         jPanel1.add(passengers);
         passengers.setBounds(30, 260, 90, 40);
         jPanel1.add(economyClass);
+       economyClass. setSelected(true);
         economyClass.setBounds(130, 380, 120, 30);
         selectPassenger.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
         selectPassenger.setOpaque(false);
@@ -211,7 +214,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         seat.setText("Seat");
         jPanel1.add(seat);
         seat.setBounds(30, 340, 80, 40);
-        buttonGroup2.add(firstClass);
+        className.add(firstClass);
         firstClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         firstClass.setForeground(new java.awt.Color(0, 0, 0));
         firstClass.setText("First Class");
@@ -220,7 +223,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
         jPanel1.add(firstClass);
         firstClass.setBounds(130, 320, 110, 30);
-        buttonGroup2.add(businessClass);
+        className.add(businessClass);
         businessClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         businessClass.setForeground(new java.awt.Color(0, 0, 0));
         businessClass.setText("Business Class");
@@ -229,7 +232,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
         jPanel1.add(businessClass);
         businessClass.setBounds(130, 350, 110, 30);
-        buttonGroup2.add(economyClass);
+        className.add(economyClass);
         economyClass.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         economyClass.setForeground(new java.awt.Color(0, 0, 0));
         economyClass.setText("Economy Class");
@@ -267,7 +270,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         next.setFocusable(false);
         oneWayPanel.add(next);
         next.setBounds(710, 560, 110, 30);
-        next.setActionCommand("next");
+        next.setActionCommand("Next");
         next.addActionListener(new CustomerFlightSearchChoice(this));
         ArrayList<Flight> flights = new ArrayList<Flight>();
         flights.add(new FlightDAOImpl().find(5));
@@ -333,24 +336,24 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         roundTripPanel.add(departureScrollPaneRoundTrip);
         departureScrollPaneRoundTrip.setBounds(0, 310, 820, 230);
 
-        searchArrivalFlightsRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
-                searchArrivalFlightsRoundTrip.setForeground(new Color (0,0,0));
+        searchReturnFlightsRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
+                searchReturnFlightsRoundTrip.setForeground(new Color (0,0,0));
 
-        searchArrivalFlightsRoundTrip.setModel(model);
-        searchArrivalFlightsRoundTrip.setFocusable(false);
-        searchArrivalFlightsRoundTrip.setGridColor(new java.awt.Color(0, 0, 0));
-        searchArrivalFlightsRoundTrip.setOpaque(false);
-        searchArrivalFlightsRoundTrip.setRowHeight(20);
-        searchArrivalFlightsRoundTrip.setSelectionBackground(new java.awt.Color(0, 204, 0));
-        searchArrivalFlightsRoundTrip.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        searchArrivalFlightsRoundTrip.setShowHorizontalLines(false);
-        searchArrivalFlightsRoundTrip.setShowVerticalLines(false);
-        searchArrivalFlightsRoundTrip.getTableHeader().setReorderingAllowed(false);
-        ArrivalScrollPaneRoundTrip.setViewportView(searchArrivalFlightsRoundTrip);
-        ArrivalScrollPaneRoundTrip.getViewport().setBackground(Color.WHITE);
+        searchReturnFlightsRoundTrip.setModel(model);
+        searchReturnFlightsRoundTrip.setFocusable(false);
+        searchReturnFlightsRoundTrip.setGridColor(new java.awt.Color(0, 0, 0));
+        searchReturnFlightsRoundTrip.setOpaque(false);
+        searchReturnFlightsRoundTrip.setRowHeight(20);
+        searchReturnFlightsRoundTrip.setSelectionBackground(new java.awt.Color(0, 204, 0));
+        searchReturnFlightsRoundTrip.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        searchReturnFlightsRoundTrip.setShowHorizontalLines(false);
+        searchReturnFlightsRoundTrip.setShowVerticalLines(false);
+        searchReturnFlightsRoundTrip.getTableHeader().setReorderingAllowed(false);
+        returnScrollPaneRoundTrip.setViewportView(searchReturnFlightsRoundTrip);
+        returnScrollPaneRoundTrip.getViewport().setBackground(Color.WHITE);
 
-        roundTripPanel.add(ArrivalScrollPaneRoundTrip);
-        ArrivalScrollPaneRoundTrip.setBounds(0, 40, 820, 230);
+        roundTripPanel.add(returnScrollPaneRoundTrip);
+        returnScrollPaneRoundTrip.setBounds(0, 40, 820, 230);
         departureRoundTrip1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureRoundTrip1.setForeground(new java.awt.Color(255, 255, 255));
         departureRoundTrip1.setText("Depart>>");
@@ -373,11 +376,12 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         pack();
     }
 
-    //getters for the Search button action listener
-    public Date getArrivalDate() {
-        return arrivalDate.getDate();
+    public Date getReturnDate() {
+        return returnDate.getDate();
     }
-
+    public ButtonGroup getOneWayOrRoundTrip() {
+        return OneWayOrRoundTrip;
+    }
     public JRadioButton getBusinessClass() {
         return businessClass;
     }
@@ -422,8 +426,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         return searchDepartureFlightsRoundTrip;
     }
 
-    public JTable getSearchArrivalFlightsRoundTrip() {
-        return searchArrivalFlightsRoundTrip;
+    public JTable getSearchReturnFlightsRoundTrip() {
+        return searchReturnFlightsRoundTrip;
     }
 
     public void setSearchDepartureFlightsModel(SearchFlightsTableModel searchDepartureFlights) {
@@ -434,8 +438,8 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         this.searchDepartureFlightsRoundTrip.setModel(searchDepartureFlights);
     }
 
-    public void setSearchArrivalFlightsRoundTripModel(SearchFlightsTableModel searchDepartureFlights) {
-        this.searchArrivalFlightsRoundTrip.setModel(searchDepartureFlights);
+    public void setSearchReturnFlightsRoundTripModel(SearchFlightsTableModel searchDepartureFlights) {
+        this.searchReturnFlightsRoundTrip.setModel(searchDepartureFlights);
     }
 
 }
