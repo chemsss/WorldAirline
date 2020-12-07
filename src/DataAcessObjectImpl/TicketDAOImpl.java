@@ -6,9 +6,17 @@
 package DataAcessObjectImpl;
 
 import DataAcessObject.TicketDAO;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import model.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
+import net.sourceforge.barbecue.Barcode;
+import net.sourceforge.barbecue.BarcodeFactory;
+import net.sourceforge.barbecue.BarcodeImageHandler;
 
 /**
  *
@@ -153,6 +161,93 @@ public class TicketDAOImpl implements TicketDAO {
         }
         return null;        
         
+    }
+    
+    @Override
+    public void inserImg(int ticketNo) {
+
+        try {
+            //créer la chaîne de connexion à la base de données
+            Connection con = DatabaseConnection.getInstance();
+            //objet pour créer la requête
+            Statement st = con.createStatement();
+            //l'image à insérer
+
+            int length = 12;
+           // String format = String.format("%0" + length + "d", ticketNo); // result 00015
+
+            //Barcode barcode = BarcodeFactory.createEAN13(String.format("%0" + length + "d", ticketNo));
+            Barcode barcode = BarcodeFactory.	createInt2of5(String.format("%0" + length + "d", ticketNo));
+
+            barcode.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14));
+            // BufferedImage image = BarcodeImageHandler.getImage(barcode);
+            File file = new File("img\\Tickets Barcodes\\" + ticketNo + ".png");
+           
+            if (!file.exists()) {
+            BarcodeImageHandler.savePNG(barcode, file);
+
+            FileInputStream input = new FileInputStream(file);
+
+            //creation de la requête
+            PreparedStatement ps
+                    = con.prepareStatement("UPDATE Ticket SET barCodeImage = ? WHERE ticketNo = " + ticketNo);
+
+            //image
+            ps.setBinaryStream(1, (InputStream) input, (int) file.length());
+            //exécution de la requête
+            ps.executeUpdate();
+            System.out.println("Image inserted with success!");
+                        //fermer le preparedStatement
+            }
+            else
+            {
+                System.out.println("image already exists");
+            }
+
+            //fermer la connexion
+        } catch (Exception e) {
+            // System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getImg(int ticketNo) {
+        try {
+            //créer la chaîne de connexion à la base de données
+            Connection con = DatabaseConnection.getInstance();
+            //objet pour créer la requête
+            Statement st = con.createStatement();
+            //l'image à insérer
+
+            ResultSet rs = st.executeQuery("SELECT barcodeImage FROM Ticket WHERE ticketNo=" + ticketNo);
+
+            int i = 0;
+            while (rs.next()) {
+
+                InputStream input = rs.getBinaryStream(1);
+                File outFile = new File("img\\Tickets Barcodes\\" + ticketNo + ".png");
+
+                if (!outFile.exists()) {
+                    OutputStream output = new FileOutputStream(outFile);
+                    i++;
+                    int b = 0;
+
+                    while ((b = input.read()) > -1) {
+                        output.write(b);
+                    }
+                    //fermer le OutputStream
+                    output.close();
+                    //fermer le InputStream
+                    input.close();
+                } else {
+                    System.out.println("image already exists");
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

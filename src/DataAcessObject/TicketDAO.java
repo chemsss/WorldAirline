@@ -9,4 +9,6 @@ import model.*;
 public interface TicketDAO {
     
     public ArrayList<Ticket> findByBookingNo (int booking_bookingNo);
+    public void getImg(int ticketNo);
+    public void inserImg(int ticketNo);
 }
