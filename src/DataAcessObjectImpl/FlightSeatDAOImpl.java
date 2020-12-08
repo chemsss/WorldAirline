@@ -36,4 +36,25 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
         return flightSeats;
     }
 
+    
+    public boolean setSeatTaken(int idFlight, int idFlightSeat) {
+        
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("UPDATE flightseat SET isAvailable=? WHERE flight_idFlight=? AND seatNo=?");
+            myStmt.setInt(1, 0);
+            myStmt.setInt(2, idFlight);
+            myStmt.setInt(3, idFlightSeat);
+            
+            myStmt.executeUpdate();
+            
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+    }
+    
 }

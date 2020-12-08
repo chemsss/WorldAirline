@@ -115,6 +115,8 @@ public class Flight {
         return timeStamp;
     }
      
+    
+     
      public FlightSeat getseatFromClass(String className) {
          for(int i=0; i<seats.size(); ++i) {
              if(seats.get(i).getClassName().equals(className) && seats.get(i).getIsAvailable()==true) {

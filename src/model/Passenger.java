@@ -1,5 +1,6 @@
 package model;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -40,6 +41,19 @@ public class Passenger {
         this.passportNo = passportNo;
         this.tickets=(ArrayList)tickets.clone();
     }
+    
+    public Passenger(String email, String firstName, String lastName, String address, Date dateOfBirth, String telephoneNumber, String nationality, String passportNo) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.birthDate = dateOfBirth;
+        this.telephoneNumber = telephoneNumber;
+        this.nationality = nationality;
+        this.passportNo = passportNo;
+        this.tickets= new ArrayList<>();
+    }
+    
     public int getIdPassenger() {
         return idPassenger;
     }
@@ -80,12 +94,12 @@ public class Passenger {
         this.address = address;
     }
 
-    public Date getDateOfBirth() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.birthDate = dateOfBirth;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getTelephoneNumber() {
@@ -112,9 +126,34 @@ public class Passenger {
         this.passportNo = passportNo;
     }
 
+    public String getBirthDateDateToString()
+    {
+        System.out.println(birthDate);
+        String timeStamp = new SimpleDateFormat("dd").format(birthDate);
+
+        return timeStamp;
+    }
+    
+    public String getBirthDateMonthToString()
+    {
+        System.out.println(birthDate);
+        String timeStamp = new SimpleDateFormat("MM").format(birthDate);
+
+        return timeStamp;
+    }
+    public String getBirthDayYearToString()
+    {
+        System.out.println(birthDate);
+        String timeStamp = new SimpleDateFormat("yyyy").format(birthDate);
+
+        return timeStamp;
+    }
+
+    
     @Override
     public String toString() {
         return "Passenger{" + "idPassenger=" + idPassenger + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", birthDate=" + birthDate + ", telephoneNumber=" + telephoneNumber + ", nationality=" + nationality + ", passportNo=" + passportNo + ", tickets=" + tickets + '}';
     }
+    
         
 }

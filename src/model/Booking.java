@@ -1,6 +1,7 @@
 package model;
 import java.util.ArrayList;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class Booking {
     
@@ -11,7 +12,7 @@ public class Booking {
     
 
     public Booking(Date bookingDate, ArrayList<Ticket> tickets) {
-        this.bookingNo = bookingNo;
+        this.bookingNo = 0;
         this.bookingDate = bookingDate;
         this.tickets = tickets;
         this.coupon = null;
@@ -69,5 +70,28 @@ public class Booking {
         return coupon;
     }
     
+        public String getBookingDateDayToString()
+    {
+        System.out.println(bookingDate);
+        String timeStamp = new SimpleDateFormat("dd").format(bookingDate);
+
+        return timeStamp;
+    }
+    
+    public String getBookingDateMonthToString()
+    {
+        System.out.println(bookingDate);
+        String timeStamp = new SimpleDateFormat("MM").format(bookingDate);
+
+        return timeStamp;
+    }
+    public String getBookingDateYearToString()
+    {
+        System.out.println(bookingDate);
+        String timeStamp = new SimpleDateFormat("yyyy").format(bookingDate);
+
+        return timeStamp;
+    }
+
     
 }
