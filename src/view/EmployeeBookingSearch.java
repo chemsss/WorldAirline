@@ -5,6 +5,9 @@
  */
 package view;
 
+import controller.BookingController;
+import controller.SearchBookingsTableModel;
+import controller.SearchTicketsTableModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
@@ -43,34 +46,7 @@ public class EmployeeBookingSearch extends JPanel {
 
         setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        
         jScrollPane3.setViewportView(jTable1);
 
         add(jScrollPane3);
@@ -81,7 +57,7 @@ public class EmployeeBookingSearch extends JPanel {
         add(idflight2);
         idflight2.setBounds(30, 60, 200, 22);
 
-        textidflight2.setText("jTextField1");
+        textidflight2.setText("");
         textidflight2.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +71,13 @@ public class EmployeeBookingSearch extends JPanel {
         search2.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (!textidflight2.getText().isEmpty())
+                {
+                    BookingController.getBooking(Integer.parseInt(textidflight2.getText()));
+      
+                   // jTable1.setModel(new SearchBookingsTableModel(Integer.parseInt(textidflight2.getText())));
+                    
+                }
                 
             }
         });

@@ -32,21 +32,18 @@ public class EmployeeUpdateDeleteBookingTest extends javax.swing.JPanel {
         textidflight1 = new javax.swing.JTextField();
         idflight1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        nameflight1 = new javax.swing.JLabel();
         deparrturedate2 = new javax.swing.JLabel();
-        airplane2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableseat1 = new javax.swing.JTable();
         update1 = new javax.swing.JButton();
         delete1 = new javax.swing.JButton();
-        deleteseat2 = new javax.swing.JButton();
+        deletetickets = new javax.swing.JButton();
         choicedeparturedate2 = new com.toedter.calendar.JDateChooser();
-        choicearrivalairport2 = new javax.swing.JComboBox();
-        choiceairplane2 = new javax.swing.JComboBox();
-        choiceclass = new javax.swing.JLabel();
         priceofaseat2 = new javax.swing.JTextField();
         priceofaseat3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        priceofaseat4 = new javax.swing.JLabel();
+        priceofaseat5 = new javax.swing.JTextField();
+        deletetickets1 = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -81,20 +78,10 @@ public class EmployeeUpdateDeleteBookingTest extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(240, 240, 0));
         jPanel6.setLayout(null);
 
-        nameflight1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        nameflight1.setText("Choose the flight:");
-        jPanel6.add(nameflight1);
-        nameflight1.setBounds(40, 30, 140, 22);
-
         deparrturedate2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         deparrturedate2.setText("Date of the booking:");
         jPanel6.add(deparrturedate2);
-        deparrturedate2.setBounds(40, 70, 150, 22);
-
-        airplane2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        airplane2.setText("Number of tickets:");
-        jPanel6.add(airplane2);
-        airplane2.setBounds(40, 110, 140, 22);
+        deparrturedate2.setBounds(40, 40, 150, 22);
 
         tableseat1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,51 +109,57 @@ public class EmployeeUpdateDeleteBookingTest extends javax.swing.JPanel {
 
         update1.setText("update");
         jPanel6.add(update1);
-        update1.setBounds(410, 230, 67, 23);
+        update1.setBounds(40, 200, 67, 23);
 
         delete1.setText("Delete");
         jPanel6.add(delete1);
-        delete1.setBounds(610, 230, 63, 23);
+        delete1.setBounds(210, 200, 63, 23);
 
-        deleteseat2.setText("delete seat");
-        jPanel6.add(deleteseat2);
-        deleteseat2.setBounds(790, 110, 90, 23);
-        jPanel6.add(choicedeparturedate2);
-        choicedeparturedate2.setBounds(190, 70, 120, 20);
-
-        choicearrivalairport2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel6.add(choicearrivalairport2);
-        choicearrivalairport2.setBounds(190, 110, 120, 20);
-
-        choiceairplane2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel6.add(choiceairplane2);
-        choiceairplane2.setBounds(190, 30, 120, 20);
-
-        choiceclass.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        choiceclass.setText("Class name:");
-        jPanel6.add(choiceclass);
-        choiceclass.setBounds(40, 150, 140, 30);
-
-        priceofaseat2.setText("jTextField1");
-        jPanel6.add(priceofaseat2);
-        priceofaseat2.setBounds(190, 190, 120, 20);
-
-        priceofaseat3.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        priceofaseat3.setText("Price of a seat:");
-        jPanel6.add(priceofaseat3);
-        priceofaseat3.setBounds(40, 190, 110, 30);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        deletetickets.setText("Delete ticket");
+        deletetickets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                deleteticketsActionPerformed(evt);
             }
         });
-        jPanel6.add(jComboBox1);
-        jComboBox1.setBounds(190, 150, 120, 20);
+        jPanel6.add(deletetickets);
+        deletetickets.setBounds(780, 130, 110, 23);
+        jPanel6.add(choicedeparturedate2);
+        choicedeparturedate2.setBounds(190, 40, 120, 20);
+
+        priceofaseat2.setText("jTextField1");
+        priceofaseat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceofaseat2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(priceofaseat2);
+        priceofaseat2.setBounds(190, 130, 120, 20);
+
+        priceofaseat3.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        priceofaseat3.setText("Coupon:");
+        jPanel6.add(priceofaseat3);
+        priceofaseat3.setBounds(40, 120, 140, 30);
+
+        priceofaseat4.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        priceofaseat4.setText("Customer account:");
+        jPanel6.add(priceofaseat4);
+        priceofaseat4.setBounds(40, 80, 140, 30);
+
+        priceofaseat5.setText("jTextField1");
+        jPanel6.add(priceofaseat5);
+        priceofaseat5.setBounds(190, 90, 120, 20);
+
+        deletetickets1.setText("Update ticket");
+        deletetickets1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletetickets1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(deletetickets1);
+        deletetickets1.setBounds(780, 80, 110, 23);
 
         add(jPanel6);
-        jPanel6.setBounds(30, 110, 920, 280);
+        jPanel6.setBounds(70, 140, 920, 280);
     }// </editor-fold>//GEN-END:initComponents
 
     private void search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search1ActionPerformed
@@ -177,27 +170,32 @@ public class EmployeeUpdateDeleteBookingTest extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textidflight1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void deleteticketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteticketsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_deleteticketsActionPerformed
+
+    private void priceofaseat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceofaseat2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priceofaseat2ActionPerformed
+
+    private void deletetickets1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletetickets1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deletetickets1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel airplane2;
-    private javax.swing.JComboBox choiceairplane2;
-    private javax.swing.JComboBox choicearrivalairport2;
-    private javax.swing.JLabel choiceclass;
     private com.toedter.calendar.JDateChooser choicedeparturedate2;
     private javax.swing.JButton delete1;
-    private javax.swing.JButton deleteseat2;
+    private javax.swing.JButton deletetickets;
+    private javax.swing.JButton deletetickets1;
     private javax.swing.JLabel deparrturedate2;
     private javax.swing.JLabel idflight1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel nameflight1;
     private javax.swing.JTextField priceofaseat2;
     private javax.swing.JLabel priceofaseat3;
+    private javax.swing.JLabel priceofaseat4;
+    private javax.swing.JTextField priceofaseat5;
     private javax.swing.JButton search1;
     private javax.swing.JTable tableseat1;
     private javax.swing.JTextField textidflight1;

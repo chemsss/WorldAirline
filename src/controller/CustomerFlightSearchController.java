@@ -7,8 +7,6 @@ package controller;
 
 import Exceptions.DateException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Airport;

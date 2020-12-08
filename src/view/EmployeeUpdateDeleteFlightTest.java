@@ -50,6 +50,12 @@ public class EmployeeUpdateDeleteFlightTest extends javax.swing.JPanel {
         choiceairplane1 = new javax.swing.JComboBox();
         textnameflight1 = new javax.swing.JTextField();
         nameflight = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
 
         setLayout(null);
 
@@ -126,34 +132,29 @@ public class EmployeeUpdateDeleteFlightTest extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableseat);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(330, 30, 440, 180);
+        jScrollPane1.setBounds(440, 30, 440, 180);
 
         update.setText("update");
         jPanel3.add(update);
-        update.setBounds(410, 230, 67, 23);
+        update.setBounds(540, 240, 67, 23);
 
         delete.setText("Delete");
         jPanel3.add(delete);
-        delete.setBounds(610, 230, 63, 23);
+        delete.setBounds(730, 240, 63, 23);
 
         deleteseat1.setText("delete seat");
         jPanel3.add(deleteseat1);
-        deleteseat1.setBounds(800, 60, 90, 23);
+        deleteseat1.setBounds(900, 50, 90, 23);
 
         addseat.setText("add seat");
         jPanel3.add(addseat);
-        addseat.setBounds(800, 150, 90, 23);
+        addseat.setBounds(900, 160, 90, 23);
         jPanel3.add(choicearrivaldate1);
         choicearrivaldate1.setBounds(190, 70, 120, 20);
         jPanel3.add(choicedeparturedate1);
         choicedeparturedate1.setBounds(190, 30, 120, 20);
 
         choicedepartureaiport1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        choicedepartureaiport1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choicedepartureaiport1ActionPerformed(evt);
-            }
-        });
         jPanel3.add(choicedepartureaiport1);
         choicedepartureaiport1.setBounds(190, 110, 120, 20);
 
@@ -171,6 +172,11 @@ public class EmployeeUpdateDeleteFlightTest extends javax.swing.JPanel {
         choiceairplane1.setBounds(190, 230, 120, 20);
 
         textnameflight1.setText("jTextField2");
+        textnameflight1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textnameflight1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(textnameflight1);
         textnameflight1.setBounds(190, 190, 120, 20);
 
@@ -179,8 +185,32 @@ public class EmployeeUpdateDeleteFlightTest extends javax.swing.JPanel {
         jPanel3.add(nameflight);
         nameflight.setBounds(40, 190, 140, 22);
 
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(jComboBox3);
+        jComboBox3.setBounds(320, 30, 40, 20);
+
+        jLabel2.setText("H");
+        jPanel3.add(jLabel2);
+        jLabel2.setBounds(370, 30, 10, 14);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(jComboBox1);
+        jComboBox1.setBounds(390, 30, 40, 20);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(jComboBox4);
+        jComboBox4.setBounds(320, 70, 40, 20);
+
+        jLabel3.setText("H");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(370, 70, 10, 14);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel3.add(jComboBox2);
+        jComboBox2.setBounds(390, 70, 40, 20);
+
         add(jPanel3);
-        jPanel3.setBounds(30, 110, 930, 320);
+        jPanel3.setBounds(30, 110, 1020, 340);
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
@@ -191,9 +221,9 @@ public class EmployeeUpdateDeleteFlightTest extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_textidflightActionPerformed
 
-    private void choicedepartureaiport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choicedepartureaiport1ActionPerformed
+    private void textnameflight1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textnameflight1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_choicedepartureaiport1ActionPerformed
+    }//GEN-LAST:event_textnameflight1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -211,6 +241,12 @@ public class EmployeeUpdateDeleteFlightTest extends javax.swing.JPanel {
     private javax.swing.JLabel deparrturedate1;
     private javax.swing.JLabel departureairport1;
     private javax.swing.JLabel idflight;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameflight;

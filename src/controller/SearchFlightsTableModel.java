@@ -9,11 +9,14 @@ public class SearchFlightsTableModel extends AbstractTableModel {
 
     private final String[] Titles = {"Airline", "Flight Number", "From", "Departure", "To", "Arrival"};
 
-    private final ArrayList<Flight> flights;
+    private  ArrayList<Flight> flights;
+
 
     public SearchFlightsTableModel(ArrayList<Flight> flights) {
         this.flights = flights;
     }
+    
+    
     
     public SearchFlightsTableModel(String DepartureAirportId, String arrivalAirportId, java.util.Date departureDate, int nbOfSeats, String className) {
         flights = new FlightDAOImpl().searchFlights(DepartureAirportId, arrivalAirportId, departureDate, nbOfSeats, className);
@@ -32,6 +35,8 @@ public class SearchFlightsTableModel extends AbstractTableModel {
     public int getRowCount() {
         return flights.size();
     }
+    
+    
 
     @Override
     public String getColumnName(int column) {

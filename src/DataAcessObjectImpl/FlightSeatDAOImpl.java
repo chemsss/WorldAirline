@@ -1,6 +1,7 @@
 package DataAcessObjectImpl;
 
 import DataAcessObject.FlightSeatDAO;
+import java.math.BigDecimal;
 import model.FlightSeat;
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,5 +36,51 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
         }
         return flightSeats;
     }
+    
+     public boolean add( int seatNumber, int idFlight, String className, BigDecimal seatPrice, boolean isAvailable) {
+        
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO flightSeat "
+                    + "( `seatNo`, `flight_idFlight`, `className`, `seatPrice`, `isAvailable`) "
+                    + "VALUES (?, ?, ?, ?, ?);");
+            
+           
+            myStmt.setInt(1, seatNumber);
+            myStmt.setInt(2, idFlight);
+            myStmt.setString(3, className);
+            myStmt.setBigDecimal(4, seatPrice);
+            myStmt.setBoolean(5, isAvailable);
+                      
 
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+     
+      public boolean delete( FlightSeat seat) {
+        
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM flightSeat WHERE seatNo=?"+";");
+            
+           
+            myStmt.setInt(1, seat.getSeatNo());
+     
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+
+     
 }

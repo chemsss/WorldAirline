@@ -88,7 +88,7 @@ public class EmployeeHomeTest extends javax.swing.JFrame {
         jInternalFrame1.setBounds(40, 30, 820, 480);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 1100, 570);
+        jPanel1.setBounds(0, 0, 1090, 570);
 
         manageFlight.setText("Manage flights");
 
