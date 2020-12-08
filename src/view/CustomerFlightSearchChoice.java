@@ -42,19 +42,19 @@ public class CustomerFlightSearchChoice implements ActionListener {
                         flights.add(selectedFlight);
 
                         if (frame.getLoggedInCustomer() == null) {
-                            new PassengersInfosFrame(flights, frame.getSelectPassenger());
+                            new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getSelectedClass());
                         } else {
 
-                            String[] options = {"yes", "no"};
+                            String[] options = {"Yes", "No"};
 
                             int x = JOptionPane.showOptionDialog(null, "Are you taking a ticket for you ?",
                                     "Customer Account",
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
                             if (x == 0) {
-                                new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getLoggedInCustomer());
+                                new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getSelectedClass(), frame.getLoggedInCustomer());
                             } else if (x == 1) {
-                                new PassengersInfosFrame(flights, frame.getSelectPassenger());
+                                new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getSelectedClass());
                             }
 
                         }
@@ -75,7 +75,23 @@ public class CustomerFlightSearchChoice implements ActionListener {
                     ArrayList<Flight> flights = new ArrayList<>();
                     flights.add(selectedDepFlight);
                     flights.add(selectedArrFlight);
-                    new PassengersInfosFrame(flights, frame.getSelectPassenger());
+                    if (frame.getLoggedInCustomer() == null) {
+                            new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getSelectedClass());
+                        } else {
+
+                            String[] options = {"Yes", "No"};
+
+                            int x = JOptionPane.showOptionDialog(null, "Are you taking a ticket for you ?",
+                                    "Customer Account",
+                                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+                            if (x == 0) {
+                                new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getSelectedClass(), frame.getLoggedInCustomer());
+                            } else if (x == 1) {
+                                new PassengersInfosFrame(flights, frame.getSelectPassenger(), frame.getSelectedClass());
+                            }
+
+                        }
                    }
                 }
 

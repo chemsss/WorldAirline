@@ -5,7 +5,10 @@
  */
 package controller;
 
+import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import model.FlightSeat;
 
 /**
  *
@@ -47,6 +50,37 @@ public class FieldsController {
         else {
             return true;
         }
+    }
+    
+    public static boolean checkSeatNumbers(ArrayList<JComboBox<FlightSeat>> DepartAvailableSeatChoice, ArrayList<JComboBox<FlightSeat>> ReturnAvailableSeatChoice, int numberofpassengers) {
+
+        
+        if(numberofpassengers > 1) {
+            for(int i=0 ; i < DepartAvailableSeatChoice.size() ; ++i) {
+                for(int j=0 ; j < DepartAvailableSeatChoice.size() ; ++j) {
+                    if(i!=j) {
+                        if(( (FlightSeat)DepartAvailableSeatChoice.get(i).getSelectedItem() ).getSeatNo() == ( (FlightSeat)DepartAvailableSeatChoice.get(j).getSelectedItem() ).getSeatNo() ) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            if(ReturnAvailableSeatChoice.size()>0) {
+                for(int i=0 ; i < ReturnAvailableSeatChoice.size() ; ++i) {
+                    for(int j=0 ; j < ReturnAvailableSeatChoice.size() ; ++j) {
+                        if(i!=j) {
+                            if( ( (FlightSeat)ReturnAvailableSeatChoice.get(i).getSelectedItem() ).getSeatNo() == ( (FlightSeat)ReturnAvailableSeatChoice.get(j).getSelectedItem() ).getSeatNo() ) {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        
+        return true;
     }
     
 }

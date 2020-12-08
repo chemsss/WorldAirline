@@ -1,6 +1,16 @@
 package view;
 
+import com.toedter.calendar.JDateChooser;
+import controller.PaymentController;
 import java.awt.Dimension;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
+import javax.swing.JTextField;
+import model.Booking;
+import model.FlightSeat;
+import model.Passenger;
+import model.Ticket;
 
 public class PaymentPanel extends javax.swing.JPanel {
 
@@ -162,6 +172,7 @@ public class PaymentPanel extends javax.swing.JPanel {
         cardNumber.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         cardNumber.setText("Card number");
         cardNumber.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             }
         });
@@ -170,9 +181,66 @@ public class PaymentPanel extends javax.swing.JPanel {
 
         next.setBackground(new java.awt.Color(255, 255, 255));
         next.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        next.setText("Next");
+        next.setText("Confirm Payment");
         next.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         next.setBorderPainted(false);
+        next.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //(Booking booking, int idAccount, int idCoupon, ArrayList<Passenger> passengers)
+                //Passenger(String email, String firstName, String lastName, String address, Date dateOfBirth, String telephoneNumber, String nationality, String passportNo)
+                int idAccount;
+                if(frame.getLoggedInCustomer()==null) {
+                    idAccount = 0;
+                }
+                else {
+                    idAccount = frame.getLoggedInCustomer().getIdAccount();
+                }
+                int idCoupon=0;
+                ArrayList<Ticket> departTickets = new ArrayList();
+                ArrayList<Ticket> returnTickets = new ArrayList();
+                ArrayList<Ticket> totalTickets = new ArrayList();
+                ArrayList<Passenger> passengers = new ArrayList();
+                java.util.Date todaysDate = Calendar.getInstance().getTime();
+                java.sql.Date todaysDateSql = new java.sql.Date(todaysDate.getTime());
+                for(int i=0; i < frame.getNumberOfPassengers() ; ++i) {
+                    departTickets.add( new Ticket( 0 , (FlightSeat) frame.getDepartAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(0) ) );
+                    if(frame.getFlights().size() == 2){
+                        returnTickets.add( new Ticket( 0 , (FlightSeat) frame.getReturnAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(1) ) );
+                    }
+                java.util.Date birthDate = ((JDateChooser)frame.getBirthDates().get(i)).getDate();
+                java.sql.Date birthDateSql = new java.sql.Date(birthDate.getTime());
+                    System.out.println(birthDateSql.toString());
+                    passengers.add(new Passenger(((JTextField)frame.getTextFields().get(i)[0]).getText() , ((JTextField)frame.getTextFields().get(i)[1]).getText() , 
+                    ((JTextField)frame.getTextFields().get(i)[2]).getText() , ((JTextField)frame.getTextFields().get(i)[3]).getText() , birthDateSql , 
+                    ((JTextField)frame.getTextFields().get(i)[4]).getText() , ((JTextField)frame.getTextFields().get(i)[5]).getText() , ((JTextField)frame.getTextFields().get(i)[6]).getText()));
+                    System.out.println("Passenger " +(i+1) +((JTextField)frame.getTextFields().get(i)[0]).getText() );
+                }
+                if(frame.getFlights().size() == 2) {
+                    /*for(int i=0; i<departTickets.size() ; ++i) {
+                        totalTickets.add(departTickets.get(i));
+                        totalTickets.add(returnTickets.get(i));
+                    }*/
+                        /*ArrayList<Passenger> passengersCopy = (ArrayList<Passenger>) passengers.clone();
+                        for(int j=0 ; j<passengersCopy.size() ; ++j) {
+                            passengers.add(passengersCopy.get(j));
+                        }*/
+                        Booking booking = new Booking(todaysDateSql, departTickets);
+                        System.out.println("avant addReserv");
+                        PaymentController.addReservation(booking, idAccount, idCoupon, passengers, returnTickets);
+                        System.out.println("apres addReserv");
+                }
+                else {
+                    Booking booking = new Booking(todaysDateSql, departTickets);
+                    System.out.println("avant addReserv");
+                    PaymentController.addReservation(booking, idAccount, idCoupon, passengers);
+                    System.out.println("apres addReserv");
+                    
+                }
+                //Date bookingDate, ArrayList<Ticket> tickets
+                
+            }
+        });
         this.add(next);
         next.setBounds(510, 670, 90, 30);
         this.setBounds(0, 0, 630, 720);

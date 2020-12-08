@@ -124,6 +124,8 @@ public class TicketDAOImpl implements TicketDAO {
 
             myPrepStmt.executeUpdate();
             
+            new FlightSeatDAOImpl().setSeatTaken(idFlight, flightSeatNo);
+            
             return true;
                 
         } catch (SQLException e) {

@@ -6,6 +6,7 @@
 package controller;
 
 import Exceptions.*;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Airport;
@@ -35,11 +36,17 @@ public class CustomerFlightSearchController {
 
         try {
             if (((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport().equals(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport())) {
-                throw new Exceptions.AirportException();
+                throw new AirportException();
             } 
             if(frame.getDepartureDate()==null)
             {
                 throw new EmptyFields();
+            }
+            java.util.Date todaysDate = Calendar.getInstance().getTime();
+            java.sql.Date todaysDateSql = new java.sql.Date(todaysDate.getTime());
+            if(frame.getDepartureDate().compareTo(Calendar.getInstance().getTime()) < 0 )
+            {
+                throw new DateException("You can't book a flight planned before today's date.");
             }
             else {
                 frame.setSearchDepartureFlightsModel(new SearchFlightsTableModel(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport(),
@@ -56,7 +63,7 @@ public class CustomerFlightSearchController {
 
             }
 
-        } catch (Exceptions.AirportException exception) {
+        } catch ( AirportException | DateException exception) {
             System.out.println(exception.getMessage());
         } catch (EmptyFields ex) {
             System.out.println(ex.getMessage());
@@ -74,9 +81,16 @@ public class CustomerFlightSearchController {
             {
                 throw new EmptyFields();
             }
+            System.out.println("pp" +frame.getDepartureDate().compareTo(frame.getReturnDate()));
             if(frame.getDepartureDate().compareTo(frame.getReturnDate()) > 0)
             {
                 throw new DateException("You can't have the return date before the depart date.");
+            }
+            java.util.Date todaysDate = Calendar.getInstance().getTime();
+            java.sql.Date todaysDateSql = new java.sql.Date(todaysDate.getTime());
+            if(frame.getDepartureDate().compareTo(Calendar.getInstance().getTime()) < 0 )
+            {
+                throw new DateException("You can't book a flight planned before today's date.");
             }
             
             else {

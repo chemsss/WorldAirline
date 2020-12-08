@@ -80,8 +80,8 @@ public class WorldAirline {
         
         //(int bookingNo, Passenger passenger, int flightSeatNo, int idFlight)
         /*ArrayList<Ticket> tickets = new ArrayList<>();
-        tickets.add(new Ticket(0, new FlightSeat(152, "Test", new BigDecimal(99.99), false), new FlightDAOImpl().find(4) ));
-        tickets.add(new Ticket(0, new FlightSeat(152, "Test", new BigDecimal(99.99), false), new FlightDAOImpl().find(5) ));
+        tickets.add(new Ticket(0, new FlightSeat(153, "Test", new BigDecimal(99.99), false), new FlightDAOImpl().find(4) ));
+        tickets.add(new Ticket(0, new FlightSeat(153, "Test", new BigDecimal(99.99), false), new FlightDAOImpl().find(5) ));
         Booking booking = new Booking(new Date(120, 10, 23), tickets);
         //Date bookingDate, ArrayList<Ticket> tickets
         ArrayList<Passenger> passengers = new ArrayList<>();
@@ -99,6 +99,7 @@ public class WorldAirline {
         System.out.println("SELECT * FROM booking WHERE bookingDate='" +booking.getBookingDateYearToString() 
                                                 +"-" +booking.getBookingDateMonthToString() +"-"
                                                 +booking.getBookingDateDayToString() +"' AND customerAccount_idaccount" +idAccountString +" AND coupon_idcoupon"  +idCouponString +";");*/
+        //FlightSeat[] availableSeats = new FlightSeatDAOImpl().getAvailableSeats(5, "Economy Class");
         
     }
     

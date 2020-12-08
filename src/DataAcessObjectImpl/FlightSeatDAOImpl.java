@@ -18,14 +18,9 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
             ResultSet myRs = myStmt.executeQuery("select * from flightseat where flight_idFlight=" + flight_idFlight);
-            boolean flightSeatsInit = false;
 
             while (myRs.next()) {
                 
-                if (flightSeatsInit == false) { //seats exists
-                    flightSeats = new ArrayList<>();
-                     flightSeatsInit = true;
-                }
                 flightSeats.add(new FlightSeat(myRs.getInt("seatNo"), myRs.getString("className"), myRs.getBigDecimal("seatPrice"), myRs.getBoolean("isAvailable")));
 
             }
@@ -34,6 +29,31 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
             
         }
         return flightSeats;
+    }
+    
+    public FlightSeat[] getAvailableSeats(int flight_idflight, String className) {
+        
+        ArrayList<FlightSeat> flightSeats = new ArrayList<>(); // in case of flightSeat doesn't exist
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from flightseat where flight_idFlight=" + flight_idflight +" AND className='" +className +"' AND isAvailable=1;");
+
+            while (myRs.next()) {
+                
+                flightSeats.add(new FlightSeat(myRs.getInt("seatNo"), myRs.getString("className"), myRs.getBigDecimal("seatPrice"), myRs.getBoolean("isAvailable")));
+
+            }
+            FlightSeat[] flightSeatsFound = new FlightSeat[flightSeats.size()];
+            for(int i = 0 ; i < flightSeats.size() ; ++i) {
+                flightSeatsFound[i] = flightSeats.get(i);
+            }  
+            return flightSeatsFound;
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            
+        }        
+        return (FlightSeat[]) flightSeats.toArray();
     }
 
     

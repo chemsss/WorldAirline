@@ -2,6 +2,8 @@ package view;
 
 import Exceptions.EmptyFields;
 import com.toedter.calendar.JDateChooser;
+import controller.FieldsController;
+import controller.FlightController;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +11,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import model.CustomerAccount;
 import model.Flight;
+import model.FlightSeat;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class PassengersInfosFrame extends javax.swing.JFrame {
 
@@ -41,6 +45,8 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     ArrayList<JLabel[]> labels = new ArrayList();
     ArrayList<JTextField[]> textFields = new ArrayList();
     ArrayList<JDateChooser> birthDates = new ArrayList();
+    ArrayList<JComboBox<FlightSeat>> DepartAvailableSeatChoice = new ArrayList();
+    ArrayList<JComboBox<FlightSeat>> ReturnAvailableSeatChoice = new ArrayList();
     private javax.swing.JScrollPane passengersScrollPane;
     private javax.swing.JPanel passengersPanel;
 
@@ -53,26 +59,31 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     //Nber of passengers
     private final int numberOfPassengers;
 
+    //Class selected
+    private String className;
+
     //payement JPanel
     JPanel payment;
 
-    public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers) {
+    public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers, String className) {
         super();
         payment = new PaymentPanel(this);
         this.flights = selectedFlight;
         this.numberOfPassengers = numberOfPassengers;
+        this.className = className;
         initComponents();
         this.setVisible(true);
         this.setSize(643, 815);
         this.setLocationRelativeTo(null);
     }
 
-    public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers, CustomerAccount loggedInCustomer) {
+    public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers, String className, CustomerAccount loggedInCustomer) {
         super();
         payment = new PaymentPanel(this);
         this.loggedInCustomer = loggedInCustomer;
         this.flights = selectedFlight;
         this.numberOfPassengers = numberOfPassengers;
+        this.className = className;
         initComponents();
         this.setVisible(true);
         this.setSize(643, 815);
@@ -295,6 +306,9 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
         int y = 15;
         int y2 = 83;
 
+        ArrayList<Integer> seatChoiceDepartBoundsY2 = new ArrayList();
+        ArrayList<Integer> seatChoiceReturnBounds = new ArrayList();
+
         for (int i = 0; i < numberOfPassengers; i++) {
 
             JLabel[] label = new JLabel[9];
@@ -386,9 +400,25 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
             text[2].setBounds(195, y2, 130, 32);
             text[2].setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
 
+            JComboBox<FlightSeat> seatChoice = new JComboBox();
+            seatChoice.setModel(new DefaultComboBoxModel(FlightController.getAvailableSeats(flights.get(0).getIdFlight(), className)));
+            seatChoice.setOpaque(false);
+            seatChoice.setSelectedIndex(i);
+            seatChoiceDepartBoundsY2.add(y2);
+            DepartAvailableSeatChoice.add(seatChoice);
+
             y2 += 40;
             text[3].setBounds(195, y2, 130, 32);
             text[3].setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+
+            if (flights.size() == 2) {
+                JComboBox<FlightSeat> seatChoice2 = new JComboBox();
+                seatChoice2.setModel(new DefaultComboBoxModel(FlightController.getAvailableSeats(this.flights.get(0).getIdFlight(), className)));
+                seatChoice2.setOpaque(false);
+                seatChoice2.setSelectedIndex(i);
+                seatChoiceReturnBounds.add(y2);
+                ReturnAvailableSeatChoice.add(seatChoice2);
+            }
 
             y2 += 40;
             birthDate.setBounds(195, y2, 130, 32);
@@ -435,18 +465,24 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
                                         throw new EmptyFields();
 
                                     }
-
                                 }
+
                             }
-                            passengersPanel.setVisible(false);
-                            flightDetailsPanel.setVisible(false);
-                            passengersScrollPane.setVisible(false);
+                            if (FieldsController.checkSeatNumbers(DepartAvailableSeatChoice, ReturnAvailableSeatChoice, numberOfPassengers) == false) {
+                                JOptionPane.showMessageDialog(null, "Two people cannot share the same seat number.","",  JOptionPane.ERROR_MESSAGE);
+                            }
+                            else {
+                                passengersPanel.setVisible(false);
+                                flightDetailsPanel.setVisible(false);
+                                passengersScrollPane.setVisible(false);
 
-                            getContentPane().repaint();
+                                getContentPane().repaint();
 
-                            getContentPane().add(payment);
-                            payment.setVisible(true);
-                            setSize(630, 750);
+                                getContentPane().add(payment);
+                                payment.setVisible(true);
+                                setSize(630, 750);
+                            }
+                            
 
                         } catch (EmptyFields exception) {
                             System.out.println(exception.getMessage());
@@ -482,6 +518,21 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
             passengersPanel.add(birthDates.get(i));
         }
 
+        for (int i = 0; i < DepartAvailableSeatChoice.size(); i++) {
+            passengersPanel.add(DepartAvailableSeatChoice.get(i));
+            DepartAvailableSeatChoice.get(i).setBounds(485, seatChoiceDepartBoundsY2.get(i), 130, 32);
+            AutoCompleteDecorator.decorate(DepartAvailableSeatChoice.get(i));
+        }
+
+        if (flights.size() == 2) {
+            for (int i = 0; i < ReturnAvailableSeatChoice.size(); i++) {
+                passengersPanel.add(ReturnAvailableSeatChoice.get(i));
+                ReturnAvailableSeatChoice.get(i).setBounds(485, seatChoiceReturnBounds.get(i), 130, 32);
+                AutoCompleteDecorator.decorate(ReturnAvailableSeatChoice.get(i));
+            }
+        }
+
+
         passengersScrollPane.setViewportView(passengersPanel);
         getContentPane().add(passengersScrollPane);
         passengersScrollPane.setBounds(0, 290, 630, 490);
@@ -501,4 +552,35 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     public JScrollPane getPassengersScrollPane() {
         return passengersScrollPane;
     }
+
+    public ArrayList<JTextField[]> getTextFields() {
+        return textFields;
+    }
+
+    public ArrayList<JDateChooser> getBirthDates() {
+        return birthDates;
+    }
+
+    public ArrayList<JComboBox<FlightSeat>> getDepartAvailableSeatChoice() {
+        return DepartAvailableSeatChoice;
+    }
+
+    public ArrayList<JComboBox<FlightSeat>> getReturnAvailableSeatChoice() {
+        return ReturnAvailableSeatChoice;
+    }
+
+    public int getNumberOfPassengers() {
+        return numberOfPassengers;
+    }
+
+    public ArrayList<Flight> getFlights() {
+        return flights;
+    }
+
+    public CustomerAccount getLoggedInCustomer() {
+        return loggedInCustomer;
+    }
+    
+    
+    
 }

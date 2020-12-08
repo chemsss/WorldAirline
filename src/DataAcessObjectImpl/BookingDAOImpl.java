@@ -115,11 +115,68 @@ public class BookingDAOImpl implements BookingDAO {
             {
                 ResultSet myRs2 = myStmt2.executeQuery("SELECT * FROM ticket WHERE booking_bookingNo=" +myRs.getInt("bookingNo") +";");
                 if(!myRs2.first()) {
-                for(int i = 0 ; i < booking.getTickets().size() ; ++i) {
-                    if(new TicketDAOImpl().add(myRs.getInt("bookingNo"), passengers.get(i), booking.getTickets().get(i).getSeat().getSeatNo(),  booking.getTickets().get(i).getFlight().getIdFlight())==false) {
-                        System.out.println("Couldn't add a ticket to the booking, add booking aborted.");
-                        return false;
+                    for(int i = 0 ; i < booking.getTickets().size() ; ++i) {
+                        if(new TicketDAOImpl().add(myRs.getInt("bookingNo"), passengers.get(i), booking.getTickets().get(i).getSeat().getSeatNo(),  booking.getTickets().get(i).getFlight().getIdFlight())==false) {
+                            System.out.println("Couldn't add a ticket to the booking, add booking aborted.");
+                            return false;
+                        }
                     }
+                    return true;
+                }
+            }
+                                                    
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        System.out.println("Add booking returned false (reached and of method).");
+        return false;
+        
+    }
+    
+    public boolean add(Booking booking, int idAccount, int idCoupon, ArrayList<Passenger> passengers, ArrayList<Ticket> returnTickets) {
+                
+        try {
+            
+            String idAccountString;
+            String idCouponString;
+            
+            PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `booking` (`bookingDate`, `customerAccount_idaccount`, `coupon_idcoupon`) VALUES (?, ?, ?);");
+            myPrepStmt.setDate(1, booking.getBookingDate());
+            if(idAccount==0) {
+                myPrepStmt.setNull(2, Types.INTEGER);
+                idAccountString = " is NULL";
+            }
+            else {
+                myPrepStmt.setInt(2, idAccount);
+                idAccountString= "="+String.valueOf(idAccount);
+            }
+            if(idCoupon==0) {
+                myPrepStmt.setNull(3, Types.INTEGER);
+                idCouponString = " is NULL";
+            } else {
+                myPrepStmt.setInt(3, idCoupon);
+                idCouponString = "="+String.valueOf(idCoupon);
+            }
+            myPrepStmt.executeUpdate();
+            
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM booking WHERE bookingDate='" +booking.getBookingDateYearToString() 
+                                                +"-" +booking.getBookingDateMonthToString() +"-"
+                                                +booking.getBookingDateDayToString() +"' AND customerAccount_idaccount" +idAccountString +" AND coupon_idcoupon"  +idCouponString +";");
+            Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
+            while(myRs.next())
+            {
+                ResultSet myRs2 = myStmt2.executeQuery("SELECT * FROM ticket WHERE booking_bookingNo=" +myRs.getInt("bookingNo") +";");
+                if(!myRs2.first()) {
+                    for(int i = 0 ; i < booking.getTickets().size() ; ++i) {
+                        if(new TicketDAOImpl().add(myRs.getInt("bookingNo"), passengers.get(i), booking.getTickets().get(i).getSeat().getSeatNo(),  booking.getTickets().get(i).getFlight().getIdFlight())==false) {
+                            System.out.println("Couldn't add a ticket to the booking, add booking aborted.");
+                            return false;
+                        }
+                        else {
+                            new TicketDAOImpl().add(myRs.getInt("bookingNo"), passengers.get(i), returnTickets.get(i).getSeat().getSeatNo(),  returnTickets.get(i).getFlight().getIdFlight());
+                        }
                     }
                     return true;
                 }
