@@ -1,8 +1,11 @@
 package view;
 
+import controller.CustomerController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.sql.Date;
+import java.util.Calendar;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
@@ -103,11 +106,19 @@ public class SignUpPanel extends javax.swing.JPanel {
 
         signUpButton.setBackground(new java.awt.Color(55, 112, 155));
         signUpButton.setForeground(new java.awt.Color(255, 255, 255));
-        signUpButton.setText("Signup");
+        signUpButton.setText("Sign Up");
         signUpButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         signUpButton.setBorderPainted(false);
         rightSignUpPanel.add(signUpButton);
-        //A FAIRE  signUpButton.addActionListener(this);
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                java.util.Date birthDateJavaUtil = birthDateDate.getDate();
+                java.sql.Date birthDateSql = new java.sql.Date(birthDateJavaUtil.getTime());
+                System.out.println(signUpPasswordField.getText());
+                CustomerController.SignUpCustomerAccount(emailField.getText(), signUpPasswordField.getText(), lastNameField.getText(), firstNameField.getText(), telephoneNumberField.getText(), birthDateSql , addressField.getText());
+            }
+        });
 
         signUpButton.setBounds(160, 450, 130, 40);
 
