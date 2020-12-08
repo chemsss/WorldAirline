@@ -164,9 +164,10 @@ public final class LogInFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (new CustomerController().CustomerLoginConnection(jTextField2.getText(), getMD5Hash(String.valueOf(password.getPassword()))) == true) {
+                if (new CustomerController().CustomerLoginConnection(jTextField2.getText(), FieldsController.getMD5Hash(String.valueOf(password.getPassword()))) == true) {
                     frame.dispose();
-                    new CustomerHomeFlightSearch(new CustomerController().getCustomerAccount(jTextField2.getText(), getMD5Hash(String.valueOf(password.getPassword()))));
+                    dispose();
+                    new CustomerHomeFlightSearch(new CustomerController().getCustomerAccount(jTextField2.getText(), FieldsController.getMD5Hash(String.valueOf(password.getPassword()))));
                 } else {
                     JOptionPane.showMessageDialog(null, "Wrong email/password, please retry ", "", JOptionPane.ERROR_MESSAGE);
                 }
@@ -221,24 +222,5 @@ public final class LogInFrame extends JFrame {
         return list;
     }
 
-    public static String getMD5Hash(String s) {
-
-        String result = s;
-        try {
-            if (s != null) {
-                MessageDigest md = MessageDigest.getInstance("MD5"); // or "SHA-1" 
-                md.update(s.getBytes());
-                BigInteger hash = new BigInteger(1, md.digest());
-                result = hash.toString(16);
-                while (result.length() < 32) { // 40 for SHA-1 
-                    result = "0" + result;
-                }
-            }
-
-        } catch (NoSuchAlgorithmException e) {
-
-        }
-        return result;
-
-    }
+    
 }

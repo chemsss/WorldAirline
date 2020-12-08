@@ -5,6 +5,9 @@
  */
 package controller;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -81,6 +84,28 @@ public class FieldsController {
         
         
         return true;
+    }
+    
+    
+    public static String getMD5Hash(String s) {
+
+        String result = s;
+        try {
+            if (s != null) {
+                MessageDigest md = MessageDigest.getInstance("MD5"); // or "SHA-1" 
+                md.update(s.getBytes());
+                BigInteger hash = new BigInteger(1, md.digest());
+                result = hash.toString(16);
+                while (result.length() < 32) { // 40 for SHA-1 
+                    result = "0" + result;
+                }
+            }
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+        return result;
+
     }
     
 }
