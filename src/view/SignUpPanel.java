@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.util.Calendar;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 public class SignUpPanel extends javax.swing.JPanel {
  //SignUp Panel
@@ -116,7 +117,10 @@ public class SignUpPanel extends javax.swing.JPanel {
                 java.util.Date birthDateJavaUtil = birthDateDate.getDate();
                 java.sql.Date birthDateSql = new java.sql.Date(birthDateJavaUtil.getTime());
                 System.out.println(signUpPasswordField.getText());
-                CustomerController.SignUpCustomerAccount(emailField.getText(), signUpPasswordField.getText(), lastNameField.getText(), firstNameField.getText(), telephoneNumberField.getText(), birthDateSql , addressField.getText());
+                if(CustomerController.SignUpCustomerAccount(emailField.getText(), signUpPasswordField.getText(), lastNameField.getText(), firstNameField.getText(), telephoneNumberField.getText(), birthDateSql , addressField.getText())==true) {
+                    JOptionPane.showMessageDialog(null, "You have successfully signed up !", "Signed up", JOptionPane.INFORMATION_MESSAGE);
+                    frame.dispose();
+                }
             }
         });
 

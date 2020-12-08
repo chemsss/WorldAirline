@@ -18,7 +18,7 @@ public class WorldAirline {
     public static void main(String[] args) throws SQLException {
         
          
-       MainMenu menu = new MainMenu();
+       //MainMenu menu = new MainMenu();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
@@ -61,14 +61,14 @@ public class WorldAirline {
         System.out.println(toString);
         System.out.println(toString.length());*/
        
-       String test = "CACA-CA234A_@ACACC.A";
-       boolean test123 = FieldsController.checkSignUp(test, "Hello123", "Chems", "Bkh", "+33 423423");
-       System.out.println(test.split("@")[1].split("\\.").length);
-        System.out.println(test);
+       //String test = "CACA-CA234A_@ACACC.A";
+       //boolean test123 = FieldsController.checkSignUp(test, "Hello123", "Chems", "Bkh", "+33 423423");
+       //System.out.println(test.split("@")[1].split("\\.").length);
+        //System.out.println(test);
         
-        System.out.println(new TicketDAOImpl().getPrice(2));
+        //System.out.println(new TicketDAOImpl().getPrice(2));
         //System.out.println(new TicketDAOImpl().findByFlightSeat(1, 120));
-        System.out.println(BookingController.getTicketPrice(1, 120));
+        //System.out.println(BookingController.getTicketPrice(1, 120));
         
         
         //new FlightDAOImpl().add( 21, 5, "test2324", "MIA", "BOD", new Timestamp(120,11,30, 15, 34, 50, 0), new Timestamp(120,11,30, 17, 34, 50, 0));
@@ -100,6 +100,8 @@ public class WorldAirline {
                                                 +"-" +booking.getBookingDateMonthToString() +"-"
                                                 +booking.getBookingDateDayToString() +"' AND customerAccount_idaccount" +idAccountString +" AND coupon_idcoupon"  +idCouponString +";");*/
         //FlightSeat[] availableSeats = new FlightSeatDAOImpl().getAvailableSeats(5, "Economy Class");
+        
+        System.out.println(new TicketDAOImpl().getPrice(5, 5) +"€");
         
     }
     

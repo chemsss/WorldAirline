@@ -186,7 +186,7 @@ public class BookingDAOImpl implements BookingDAO {
             System.out.println(e.getMessage());
             return false;
         }
-        System.out.println("Add booking returned false (reached and of method).");
+        System.out.println("Add booking returned false (reached end of add method).");
         return false;
         
     }

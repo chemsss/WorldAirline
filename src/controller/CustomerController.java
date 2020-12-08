@@ -22,7 +22,7 @@ public class CustomerController {
         return new CustomerAccountDAOImpl().find(mail, password);
     }
     
-    public static void SignUpCustomerAccount(String email, String password, String lastName, String firstName, String telephoneNumber, Date birthDate, String address) {
+    public static boolean SignUpCustomerAccount(String email, String password, String lastName, String firstName, String telephoneNumber, Date birthDate, String address) {
         
         if( FieldsController.checkSignUp(email, password, lastName, firstName, telephoneNumber) == true) {
             int childAgeLimit = 12; //age has to bo <ageLimit for the person to be in the ageCategory
@@ -53,19 +53,23 @@ public class CustomerController {
                     if(birthDate.compareTo(todaysDateSqlTestChild) < 0) {
                         System.out.println("regular");
                         new CustomerAccountDAOImpl().create(new CustomerAccount( "Regular", email,  FieldsController.getMD5Hash(password),  firstName,  lastName,  address,  birthDate,  telephoneNumber ));
+                        return true;
                     }
                     else {
                         System.out.println("child <0");
                         System.out.println("child");
                         new CustomerAccountDAOImpl().create(new CustomerAccount( "Child", email,  FieldsController.getMD5Hash(password),  firstName,  lastName,  address,  birthDate,  telephoneNumber ));
+                        return true;
                     }
                 }
             else {
                 System.out.println("senior");
                 new CustomerAccountDAOImpl().create(new CustomerAccount( "Senior", email,  FieldsController.getMD5Hash(password),  firstName,  lastName,  address,  birthDate,  telephoneNumber ));
+                return true;
             }
         }
         
+        return false;
     }
     
             

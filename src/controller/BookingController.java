@@ -37,7 +37,7 @@ public class BookingController {
         
     public static float getTicketPrice(int idFlight, int seatNo) {
         
-        return new TicketDAOImpl().getPrice(new TicketDAOImpl().findByFlightSeat( idFlight, seatNo).getTicketNo());
+        return new TicketDAOImpl().getPrice( idFlight , seatNo );
         
     }
     

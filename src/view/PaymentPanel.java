@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import model.Booking;
 import model.FlightSeat;
@@ -32,6 +33,14 @@ public class PaymentPanel extends javax.swing.JPanel {
     private javax.swing.JButton previous;
    
     private PassengersInfosFrame frame;
+    
+    private ArrayList<Ticket> departTickets;
+    private ArrayList<Ticket> returnTickets;
+    private ArrayList<Passenger> passengers;
+    
+    private ArrayList<JLabel> ticketPriceLabel;
+    private ArrayList<JLabel> returnTicketPriceLabel;
+    
 
     
     public PaymentPanel(PassengersInfosFrame frame) {
@@ -58,6 +67,34 @@ public class PaymentPanel extends javax.swing.JPanel {
         payUsing1 = new javax.swing.JLabel();
         cardNumber = new javax.swing.JTextField();
         next = new javax.swing.JButton();
+        
+        
+        departTickets = new ArrayList();
+        returnTickets = new ArrayList();
+        passengers = new ArrayList();
+        
+        ticketPriceLabel = new ArrayList();
+        returnTicketPriceLabel = new ArrayList();
+
+        
+        for(int i=0; i < frame.getNumberOfPassengers() ; ++i) {
+                    departTickets.add( new Ticket( 0 , (FlightSeat) frame.getDepartAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(0) ) );
+            if(frame.getFlights().size() == 2){
+                    returnTickets.add( new Ticket( 0 , (FlightSeat) frame.getReturnAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(1) ) );
+            }
+            
+            java.util.Date birthDate = ((JDateChooser)frame.getBirthDates().get(i)).getDate();
+            java.sql.Date birthDateSql = new java.sql.Date(birthDate.getTime());
+            
+            System.out.println(birthDateSql.toString());
+            
+            passengers.add(new Passenger(((JTextField)frame.getTextFields().get(i)[0]).getText() , ((JTextField)frame.getTextFields().get(i)[1]).getText() , 
+            ((JTextField)frame.getTextFields().get(i)[2]).getText() , ((JTextField)frame.getTextFields().get(i)[3]).getText() , birthDateSql , 
+            ((JTextField)frame.getTextFields().get(i)[4]).getText() , ((JTextField)frame.getTextFields().get(i)[5]).getText() , ((JTextField)frame.getTextFields().get(i)[6]).getText()));
+            
+            System.out.println("Passenger " +(i+1) +((JTextField)frame.getTextFields().get(i)[0]).getText() );
+        }
+        
 
         this.setBackground(new java.awt.Color(55, 112, 155));
         this.setLayout(null);
@@ -197,34 +234,12 @@ public class PaymentPanel extends javax.swing.JPanel {
                     idAccount = frame.getLoggedInCustomer().getIdAccount();
                 }
                 int idCoupon=0;
-                ArrayList<Ticket> departTickets = new ArrayList();
-                ArrayList<Ticket> returnTickets = new ArrayList();
-                ArrayList<Ticket> totalTickets = new ArrayList();
-                ArrayList<Passenger> passengers = new ArrayList();
+
                 java.util.Date todaysDate = Calendar.getInstance().getTime();
                 java.sql.Date todaysDateSql = new java.sql.Date(todaysDate.getTime());
-                for(int i=0; i < frame.getNumberOfPassengers() ; ++i) {
-                    departTickets.add( new Ticket( 0 , (FlightSeat) frame.getDepartAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(0) ) );
-                    if(frame.getFlights().size() == 2){
-                        returnTickets.add( new Ticket( 0 , (FlightSeat) frame.getReturnAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(1) ) );
-                    }
-                java.util.Date birthDate = ((JDateChooser)frame.getBirthDates().get(i)).getDate();
-                java.sql.Date birthDateSql = new java.sql.Date(birthDate.getTime());
-                    System.out.println(birthDateSql.toString());
-                    passengers.add(new Passenger(((JTextField)frame.getTextFields().get(i)[0]).getText() , ((JTextField)frame.getTextFields().get(i)[1]).getText() , 
-                    ((JTextField)frame.getTextFields().get(i)[2]).getText() , ((JTextField)frame.getTextFields().get(i)[3]).getText() , birthDateSql , 
-                    ((JTextField)frame.getTextFields().get(i)[4]).getText() , ((JTextField)frame.getTextFields().get(i)[5]).getText() , ((JTextField)frame.getTextFields().get(i)[6]).getText()));
-                    System.out.println("Passenger " +(i+1) +((JTextField)frame.getTextFields().get(i)[0]).getText() );
-                }
+
                 if(frame.getFlights().size() == 2) {
-                    /*for(int i=0; i<departTickets.size() ; ++i) {
-                        totalTickets.add(departTickets.get(i));
-                        totalTickets.add(returnTickets.get(i));
-                    }*/
-                        /*ArrayList<Passenger> passengersCopy = (ArrayList<Passenger>) passengers.clone();
-                        for(int j=0 ; j<passengersCopy.size() ; ++j) {
-                            passengers.add(passengersCopy.get(j));
-                        }*/
+
                         Booking booking = new Booking(todaysDateSql, departTickets);
                         System.out.println("avant addReserv");
                         PaymentController.addReservation(booking, idAccount, idCoupon, passengers, returnTickets);

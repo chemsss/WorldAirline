@@ -162,12 +162,12 @@ public class TicketDAOImpl implements TicketDAO {
         
     }*/
     
-    public float getPrice(int ticketNo) {
+    public float getPrice(int idFlight, int seatNo) {
         
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket,flightseat,booking,customeraccount,passenger WHERE ticketNo=" + ticketNo + " AND "
-                    + "ticket.flight_idFlight=flightseat.flight_idFlight AND flightSeat_seatNo=seatNo;");
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket,flightseat WHERE ticket.flight_idFlight=" +idFlight                   //,booking,customeraccount,passenger
+                    +" AND flightseat.flight_idFlight=" +idFlight  +" AND ticket.flightSeat_seatNo=" +seatNo +" AND flightseat.seatNo=" +seatNo +";");  
 
             if (myRs.first()) {
                 return myRs.getBigDecimal("seatPrice").floatValue();
