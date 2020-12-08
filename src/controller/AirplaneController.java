@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataAcessObject;
+package controller;
 
+import DataAcessObjectImpl.AirplaneDAOImpl;
 import model.Airplane;
 
 /**
  *
  * @author Unknow
  */
-public interface AirplaneDAO {
+public class AirplaneController {
     
-    Airplane find(int idAirplane);
-    
-    boolean create(Airplane airplane);
-    
-     Airplane[] findAllAirplanes();
-
+        public static Airplane[] getAllAirports() {
+        return new AirplaneDAOImpl().findAllAirplanes();
+    }
 }

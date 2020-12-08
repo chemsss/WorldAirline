@@ -26,14 +26,11 @@ public class CustomerFlightSearchChoice implements ActionListener {
             break;
 
             case "Next": {
-                System.out.println("ertt");
 
                 if (frame.getOneWay().isSelected()) //If one Way is selected
                 {
-                    System.out.println("tete");
                     if (!frame.getSearchDepartureFlights().getSelectionModel().isSelectionEmpty()) { //If we select a flight
                         
-                        System.out.println("etetet");
                         String stringIdFlight = frame.getSearchDepartureFlights().getValueAt(frame.getSearchDepartureFlights().getSelectedRow(), 1).toString();
                         int idFlight = Integer.parseInt(stringIdFlight);
                         Flight selectedFlight = FlightController.getFlight(idFlight);

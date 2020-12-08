@@ -33,8 +33,6 @@ public class ContactTest extends javax.swing.JFrame {
         abbas = new javax.swing.JLabel();
         td3Ing3 = new javax.swing.JLabel();
         dan = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -43,15 +41,15 @@ public class ContactTest extends javax.swing.JFrame {
         myBookingsPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         myBookingsPanel.setLayout(null);
 
+        worldAirline.setText("WorldAirline");
         worldAirline.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 36)); // NOI18N
         worldAirline.setForeground(new java.awt.Color(255, 255, 255));
-        worldAirline.setText("WorldAirline");
         myBookingsPanel.add(worldAirline);
         worldAirline.setBounds(160, 20, 230, 40);
 
+        chemseddine.setText("BRAHIM KHLIL Chemseddine   :  chemseddine.brahimkhlil@edu.ece.fr ");
         chemseddine.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 16)); // NOI18N
         chemseddine.setForeground(new java.awt.Color(255, 255, 255));
-        chemseddine.setText("BRAHIM KHLIL Chemseddine   :  chemseddine.brahimkhlil@edu.ece.fr ");
         myBookingsPanel.add(chemseddine);
         chemseddine.setBounds(30, 230, 510, 40);
 
@@ -67,31 +65,11 @@ public class ContactTest extends javax.swing.JFrame {
         myBookingsPanel.add(td3Ing3);
         td3Ing3.setBounds(200, 310, 100, 40);
 
+        dan.setText("BELISSA Dan :  dan.belissa@edu.ece.fr");
         dan.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N
         dan.setForeground(new java.awt.Color(255, 255, 255));
-        dan.setText("BELISSA Dan :  dan.belissa@edu.ece.fr");
         myBookingsPanel.add(dan);
         dan.setBounds(30, 110, 390, 40);
-
-        jScrollPane1.setBackground(new java.awt.Color(255, 51, 153));
-
-        jTable1.setBackground(new java.awt.Color(204, 0, 102));
-        jTable1.setForeground(new java.awt.Color(51, 51, 51));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        myBookingsPanel.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 30, 452, 402);
 
         getContentPane().add(myBookingsPanel);
         myBookingsPanel.setBounds(0, 0, 530, 430);
@@ -139,8 +117,6 @@ public class ContactTest extends javax.swing.JFrame {
     private javax.swing.JLabel abbas;
     private javax.swing.JLabel chemseddine;
     private javax.swing.JLabel dan;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel myBookingsPanel;
     private javax.swing.JLabel td3Ing3;
     private javax.swing.JLabel worldAirline;
