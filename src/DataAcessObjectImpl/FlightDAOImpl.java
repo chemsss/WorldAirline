@@ -167,5 +167,23 @@ public boolean update(int idFlight, int idAirplane, String airlineName, String i
         return true;
     }
     
+    public boolean delete( int idFlight) {
+        
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM flight WHERE idFlight=?"+";");
+            
+           
+            myStmt.setInt(1, idFlight);
+     
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
     
 }

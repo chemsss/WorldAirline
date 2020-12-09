@@ -59,4 +59,9 @@ public class FlightController {
         return false;
      }
     
+     public static void deleteFlight (int idFlight)
+    {
+        new FlightDAOImpl().delete(idFlight);
+        JOptionPane.showMessageDialog(null, "The seat has been deleted");
+    }
 }

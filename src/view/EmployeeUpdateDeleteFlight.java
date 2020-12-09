@@ -177,7 +177,7 @@ public class EmployeeUpdateDeleteFlight extends javax.swing.JPanel {
 
         update.setText("update Flight");
         jPanel3.add(update);
-        update.setBounds(540, 240, 100, 20);
+        update.setBounds(510, 240, 110, 20);
         update.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,9 +194,9 @@ public class EmployeeUpdateDeleteFlight extends javax.swing.JPanel {
             }
         });
 
-        delete.setText("Delete");
+        delete.setText("Delete Flight");
         jPanel3.add(delete);
-        delete.setBounds(730, 240, 63, 23);
+        delete.setBounds(720, 240, 110, 20);
         delete.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,6 +207,7 @@ public class EmployeeUpdateDeleteFlight extends javax.swing.JPanel {
                    Timestamp dateArrival=new Timestamp(choicearrivaldate1.getDate().getYear(),choicearrivaldate1.getDate().getMonth(),
                         choicearrivaldate1.getDate().getDay(),Integer.parseInt(jComboBox4.getSelectedItem().toString()),Integer.parseInt(jComboBox2.getSelectedItem().toString()),0,0);
                 
+                   FlightController.deleteFlight(Integer.parseInt(textidflight.getText()));
                 
                 
                 
@@ -219,7 +220,7 @@ public class EmployeeUpdateDeleteFlight extends javax.swing.JPanel {
 
         deleteseat1.setText("delete seat");
         jPanel3.add(deleteseat1);
-        deleteseat1.setBounds(900, 50, 90, 23);
+        deleteseat1.setBounds(900, 50, 100, 23);
         deleteseat1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +257,7 @@ public class EmployeeUpdateDeleteFlight extends javax.swing.JPanel {
 
         addseat.setText("add seat");
         jPanel3.add(addseat);
-        addseat.setBounds(900, 160, 90, 23);
+        addseat.setBounds(900, 160, 100, 23);
         addseat.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
