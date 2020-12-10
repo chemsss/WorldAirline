@@ -37,4 +37,10 @@ public class BookingController {
             JOptionPane.showMessageDialog(null, "Unable to update booking");
         }
         }
+        
+         public static void deleteBooking (int idBooking)
+    {
+        new BookingDAOImpl().delete(idBooking);
+        JOptionPane.showMessageDialog(null, "The booking has been deleted");
+    }
 }

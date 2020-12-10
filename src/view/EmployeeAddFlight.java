@@ -86,6 +86,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         add(textpriceseatseco);
         textpriceseatseco.setBounds(830, 100, 120, 20);
 
+        setBackground(new java.awt.Color(55, 112, 155));
         addaflight.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         addaflight.setText("Add a flight:");
         add(addaflight);

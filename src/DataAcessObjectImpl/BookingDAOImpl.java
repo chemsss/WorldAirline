@@ -118,4 +118,17 @@ public class BookingDAOImpl implements BookingDAO {
         return true;
 
     }
+    public void delete(int bookingNo) {
+
+        Booking booking = null;
+
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM booking WHERE bookingNo=" + bookingNo + ";");
+            myStmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }

@@ -21,10 +21,10 @@ public class PayementPanel extends javax.swing.JPanel {
     private javax.swing.JLabel payment;
     private javax.swing.JButton previous;
    
-    private PassengersInfosFrame frame;
+    private EmployeeAddTicket frame;
 
     
-    public PayementPanel(PassengersInfosFrame frame) {
+    public PayementPanel(EmployeeAddTicket frame) {
         super();
         this.frame = frame;
         initComponents();
@@ -131,12 +131,12 @@ public class PayementPanel extends javax.swing.JPanel {
         previous.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                           
-                            frame.getjScrollPane1().setVisible(true);
+                           /* frame.getjScrollPane1().setVisible(true);
                             frame.getFlightDetailsPanel().setVisible(true);
                             frame.getjPanel3().setVisible(true);
                             frame.setSize(643, 815);
 
-                            setVisible(false);
+                            setVisible(false);*/
                             
                             
 

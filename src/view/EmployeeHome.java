@@ -49,7 +49,7 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         initComponents();
         this.setVisible(true);
-        System.out.println(screenWidth);
+        System.out.println(1);
         System.out.println(screenHeight);
         this.setSize(screenWidth ,screenHeight);
     }

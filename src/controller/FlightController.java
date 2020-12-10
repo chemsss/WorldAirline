@@ -1,11 +1,13 @@
 package controller;
 import DataAcessObjectImpl.FlightDAOImpl;
+import DataAcessObjectImpl.FlightSeatDAOImpl;
 import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import model.Airport;
 import model.Flight;
 import Exceptions.EmptyFields;
 import java.util.Date;
+import model.FlightSeat;
 
 
 public class FlightController {
@@ -64,4 +66,9 @@ public class FlightController {
         new FlightDAOImpl().delete(idFlight);
         JOptionPane.showMessageDialog(null, "The seat has been deleted");
     }
+     
+ 
+
+
+
 }

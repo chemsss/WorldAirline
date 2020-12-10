@@ -54,6 +54,6 @@ public class FlightSeat {
     
      @Override
     public String toString() {
-        return "FlightSeat{" + "seatNo=" + seatNo + ", className=" + className + ", seatPrice=" + seatPrice + ", isAvailable=" + isAvailable + '}';
+        return  ""+seatNo ;
     }   
 }

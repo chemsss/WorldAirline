@@ -17,6 +17,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.Airport;
 import model.Flight;
+import model.Passenger;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.*;
 
@@ -77,7 +78,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     }
 
-    public boolean add(int bookingNo, int idPassenger, int flightSeatNo, int idFlight) {
+  /*  public boolean add(int bookingNo, int idPassenger, int flightSeatNo, int idFlight) {
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
@@ -93,6 +94,42 @@ public class TicketDAOImpl implements TicketDAO {
             myPrepStmt.setInt(4, idFlight);
 
             myPrepStmt.executeUpdate();
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }*/
+    
+    public boolean add(int bookingNo, Passenger passenger, int flightSeatNo, int idFlight) {
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" +flightSeatNo + ";");
+            if(myRs.first()) {
+                System.out.println(myRs.getInt("ticketNo"));
+                System.out.println("Ticket for the seat n°" +flightSeatNo +" in the flight n°" +idFlight +" already exists.");
+                return false;
+            }
+
+            PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO ticket (booking_bookingNo, passenger_idPassenger, flightSeat_seatNo, flight_idFlight) VALUES (?, ?, ?, ?);");
+            myPrepStmt.setInt(1, bookingNo);
+            int idPassenger = new PassengerDAOImpl().add(passenger);
+            if(idPassenger == 0){
+                myPrepStmt.setNull(2, Types.INTEGER);
+            }
+            else {
+                myPrepStmt.setInt(2, idPassenger);
+            }
+            myPrepStmt.setInt(3, flightSeatNo);
+            myPrepStmt.setInt(4, idFlight);
+
+            myPrepStmt.executeUpdate();
+
+            new FlightSeatDAOImpl().setSeatTaken(idFlight, flightSeatNo);
 
             return true;
 
@@ -249,6 +286,17 @@ public class TicketDAOImpl implements TicketDAO {
         }
 
         return arrivalAirport;
+
+    }
+    public void delete(int ticketNo) {
+
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM ticket WHERE ticketNo=" + ticketNo + ";");
+            myStmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }

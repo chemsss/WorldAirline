@@ -54,5 +54,11 @@ public class FlightSeatsController {
         return true;
     }
     
-    
+
+
+    public static FlightSeat[] getAvailableSeats(int idFlight, String className) {
+
+        return new FlightSeatDAOImpl().getAvailableSeats(idFlight, className);
+
+    }
 }

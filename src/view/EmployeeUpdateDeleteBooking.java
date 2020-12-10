@@ -8,9 +8,11 @@ package view;
 import DataAcessObjectImpl.BookingDAOImpl;
 import controller.BookingController;
 import controller.SearchTicketsTableModel;
+import controller.TicketController;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Date;
+import javax.swing.JOptionPane;
 import model.Booking;
 
 /**
@@ -22,6 +24,26 @@ public class EmployeeUpdateDeleteBooking extends javax.swing.JPanel {
     /**
      * Creates new form EmployeeUpdateDeleteBooking
      */
+      // Variables declaration - do not modify                     
+    private com.toedter.calendar.JDateChooser choicedeparturedate2;
+    private javax.swing.JButton delete1;
+    private javax.swing.JButton deletetickets;
+    private javax.swing.JButton addTicket;
+    private javax.swing.JLabel deparrturedate2;
+    private javax.swing.JLabel idflight1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField priceofaseat2;
+    private javax.swing.JLabel priceofaseat3;
+    private javax.swing.JLabel priceofaseat4;
+    private javax.swing.JTextField priceofaseat5;
+    private javax.swing.JButton search1;
+    private javax.swing.JTable tableseat1;
+    private javax.swing.JTextField textidflight1;
+    private javax.swing.JLabel title1;
+    private javax.swing.JButton update1;
+    private Booking selectedBooking;
+    // End of variables declaration   
     public EmployeeUpdateDeleteBooking() {
          super();
         initComponents();
@@ -55,7 +77,7 @@ public class EmployeeUpdateDeleteBooking extends javax.swing.JPanel {
         priceofaseat3 = new javax.swing.JLabel();
         priceofaseat4 = new javax.swing.JLabel();
         priceofaseat5 = new javax.swing.JTextField();
-        deletetickets1 = new javax.swing.JButton();
+        addTicket = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -69,24 +91,28 @@ public class EmployeeUpdateDeleteBooking extends javax.swing.JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (!textidflight1.getText().isEmpty())
                 {
-                    BookingController.getBooking(Integer.parseInt(textidflight1.getText()));
-                    choicedeparturedate2.setDate(BookingController.getBooking(Integer.parseInt(textidflight1.getText())).getBookingDate());
-                    tableseat1.setModel(new SearchTicketsTableModel(Integer.parseInt(textidflight1.getText())));
+                    if(BookingController.getBooking(Integer.parseInt(textidflight1.getText()))==null)
+                    {
+                        JOptionPane.showMessageDialog(null, "The booking has not been founded");
+                    }
+                    else
+                    {
+                        selectedBooking=BookingController.getBooking(Integer.parseInt(textidflight1.getText()));
+                        choicedeparturedate2.setDate(selectedBooking.getBookingDate());
+                        tableseat1.setModel(new SearchTicketsTableModel(Integer.parseInt(textidflight1.getText())));
+                      
+                        
+                    }
                     
                 }
-                
+       
             }
         });
         add(search1);
         search1.setBounds(400, 60, 90, 23);
 
         textidflight1.setText("");
-        textidflight1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                
-            
-            }
-        });
+       
         add(textidflight1);
         textidflight1.setBounds(230, 63, 150, 20);
 
@@ -95,7 +121,7 @@ public class EmployeeUpdateDeleteBooking extends javax.swing.JPanel {
         add(idflight1);
         idflight1.setBounds(30, 60, 200, 22);
 
-        jPanel6.setBackground(new java.awt.Color(240, 240, 0));
+        jPanel6.setBackground(new java.awt.Color(55, 112, 155));
         jPanel6.setLayout(null);
 
         deparrturedate2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
@@ -112,21 +138,62 @@ public class EmployeeUpdateDeleteBooking extends javax.swing.JPanel {
         update1.setText("update");
         update1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookingController.updateBooking(Integer.parseInt(textidflight1.getText()), (Date) choicedeparturedate2.getDate(), Integer.parseInt(priceofaseat5.getText()), Integer.parseInt(priceofaseat2.getText()), Integer.parseInt(textidflight1.getText()));
-              
+                
+                if (!textidflight1.getText().isEmpty())
+                {
+                    try
+                    {
+                         BookingController.updateBooking(Integer.parseInt(textidflight1.getText()), (Date) choicedeparturedate2.getDate(), Integer.parseInt(priceofaseat5.getText()), Integer.parseInt(priceofaseat2.getText()), Integer.parseInt(textidflight1.getText()));
+                    }
+                   catch(Exception e)
+                   {
+                       System.out.println(e.getMessage());
+                   }
+                }
+                else 
+                {
+                    JOptionPane.showMessageDialog(null, "Please enter the id");
+                }
+               
             }
         });
         jPanel6.add(update1);
-        update1.setBounds(40, 200, 67, 23);
+        update1.setBounds(40, 150, 100, 23);
 
         delete1.setText("Delete");
         jPanel6.add(delete1);
-        delete1.setBounds(210, 200, 63, 23);
-
+        delete1.setBounds(210, 150, 100, 23);
+        delete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
+                if (!textidflight1.getText().isEmpty())
+                {
+                     try
+                    {
+                        BookingController.deleteBooking(Integer.parseInt(textidflight1.getText()));
+                    }
+                   catch(Exception e)
+                   {
+                       System.out.println(e.getMessage());
+                   }
+                
+                }
+               
+              
+            }
+        });
         deletetickets.setText("Delete ticket");
         deletetickets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-              
+                
+              if (!tableseat1.getSelectionModel().isSelectionEmpty())  //If we select a flight
+                {
+                    String stringTicketNumber = tableseat1.getValueAt(tableseat1.getSelectedRow(), 0).toString();
+                    int TicketNumber = Integer.parseInt(stringTicketNumber); 
+                    
+                    TicketController.deleteFlight(TicketNumber);
+                     
+                 }
             }
         });
         jPanel6.add(deletetickets);
@@ -141,12 +208,12 @@ public class EmployeeUpdateDeleteBooking extends javax.swing.JPanel {
             }
         });
         jPanel6.add(priceofaseat2);
-        priceofaseat2.setBounds(190, 130, 120, 20);
+        //priceofaseat2.setBounds(190, 130, 120, 20);
 
         priceofaseat3.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         priceofaseat3.setText("Coupon:");
         jPanel6.add(priceofaseat3);
-        priceofaseat3.setBounds(40, 120, 140, 30);
+        //priceofaseat3.setBounds(40, 120, 140, 30);
 
         priceofaseat4.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         priceofaseat4.setText("Customer account:");
@@ -157,39 +224,38 @@ public class EmployeeUpdateDeleteBooking extends javax.swing.JPanel {
         jPanel6.add(priceofaseat5);
         priceofaseat5.setBounds(190, 90, 120, 20);
 
-        deletetickets1.setText("Update ticket");
-        deletetickets1.addActionListener(new java.awt.event.ActionListener() {
+        addTicket.setText("Add ticket");
+        addTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
+                
+               try
+               {
+                    String strIdFlight;        
+                    int idFlight;
+                    strIdFlight = JOptionPane.showInputDialog("Enter the id of the flight ");
+                    idFlight=Integer.parseInt(strIdFlight);
+                    if(selectedBooking!=null)
+                    {
+                        new EmployeeAddTicket(selectedBooking,idFlight);
+                    }
+                    
+               }
+               catch(NumberFormatException e)
+               {
+                   System.out.println(e.getMessage());
+               }
+                
+                
                 
             }
         });
-        jPanel6.add(deletetickets1);
-        deletetickets1.setBounds(780, 80, 110, 23);
+        jPanel6.add(addTicket);
+        addTicket.setBounds(780, 80, 110, 23);
 
         add(jPanel6);
         jPanel6.setBounds(70, 140, 920, 280);
     }// </editor-fold>                        
 
-                                      
-
-
-    // Variables declaration - do not modify                     
-    private com.toedter.calendar.JDateChooser choicedeparturedate2;
-    private javax.swing.JButton delete1;
-    private javax.swing.JButton deletetickets;
-    private javax.swing.JButton deletetickets1;
-    private javax.swing.JLabel deparrturedate2;
-    private javax.swing.JLabel idflight1;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField priceofaseat2;
-    private javax.swing.JLabel priceofaseat3;
-    private javax.swing.JLabel priceofaseat4;
-    private javax.swing.JTextField priceofaseat5;
-    private javax.swing.JButton search1;
-    private javax.swing.JTable tableseat1;
-    private javax.swing.JTextField textidflight1;
-    private javax.swing.JLabel title1;
-    private javax.swing.JButton update1;
-    // End of variables declaration                   
+                  
 }
