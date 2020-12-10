@@ -82,6 +82,10 @@ public class BookingController {
         return new CouponDAOImpl().findByCode(code).getDiscount();
     }
     
+    public static int getCouponId(String code) {
+        return new CouponDAOImpl().findByCode(code).getIdCoupon();
+    }
+    
     public static float getBookingPrice(ArrayList<Ticket> departTickets, CustomerAccount customer) {
         
         if(customer==null) {

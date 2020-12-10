@@ -5,6 +5,7 @@
  */
 package DataAcessObjectImpl;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,7 +46,7 @@ public class CouponDAOImpl {
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from coupon where discount=" + discount + ";");
+            ResultSet myRs = myStmt.executeQuery("select * from coupon where discount=" + new BigDecimal(discount) + ";");
 
             if (myRs.first()) {
                 coupon = new Coupon(myRs.getInt("idcoupon"), myRs.getString("couponCode"), discount);
@@ -89,7 +90,7 @@ public class CouponDAOImpl {
             ResultSet myRs = myStmt.executeQuery("select * from coupon where couponCode='" + code + "';");
 
             if (myRs.first()) {
-                coupon = new Coupon(myRs.getInt("idcoupon"), code, myRs.getInt("discount"));
+                coupon = new Coupon(myRs.getInt("idcoupon"), code, myRs.getBigDecimal("discount").floatValue());
                 return coupon;
             }
         } catch (SQLException e) {

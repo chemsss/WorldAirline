@@ -123,6 +123,9 @@ public class WorldAirline {
         /*ArrayList<String> arrayTest = new ArrayList();
         System.out.println(arrayTest.size());*/
                 
+        
+        float f = (float) 10.2323;
+        System.out.println(Float.toString(12.2f));
     }
     
 }

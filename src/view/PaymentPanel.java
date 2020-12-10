@@ -24,7 +24,7 @@ public class PaymentPanel extends javax.swing.JPanel {
     private javax.swing.JTextField dateExp;
     private javax.swing.JLabel amountWithoutDiscount;
     private javax.swing.JLabel lock;
-    private javax.swing.JLabel amountAfterDiscount;
+    private javax.swing.JLabel totalPriceLabel;
     private javax.swing.JLabel creditCardsPng;
     private javax.swing.JLabel calendarPng;
     private javax.swing.JTextField securityCode;
@@ -33,6 +33,9 @@ public class PaymentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel payUsing1;
     private javax.swing.JLabel payment;
     private javax.swing.JButton previous;
+    private javax.swing.JLabel amountWithCoupon;
+    private javax.swing.JLabel priceAfterCouponLabel;
+
 
     private PassengersInfosFrame frame;
 
@@ -43,6 +46,8 @@ public class PaymentPanel extends javax.swing.JPanel {
     private JLabel[] ticketPriceLabell;
     private ArrayList<JLabel> ticketPriceLabel;
     private ArrayList<JLabel> returnTicketPriceLabel;
+    
+    private int idCoupon=0;
 
     public PaymentPanel(PassengersInfosFrame frame) {
         super();
@@ -57,7 +62,7 @@ public class PaymentPanel extends javax.swing.JPanel {
         creditCards = new javax.swing.JLabel();
         lock = new javax.swing.JLabel();
         couponCode = new javax.swing.JLabel();
-        amountAfterDiscount = new javax.swing.JLabel();
+        totalPriceLabel = new javax.swing.JLabel();
         creditCardsPng = new javax.swing.JLabel();
         calendarPng = new javax.swing.JLabel();
         securityCode = new javax.swing.JTextField();
@@ -68,6 +73,8 @@ public class PaymentPanel extends javax.swing.JPanel {
         payUsing1 = new javax.swing.JLabel();
         cardNumber = new javax.swing.JTextField();
         next = new javax.swing.JButton();
+        amountWithCoupon = new JLabel();
+        priceAfterCouponLabel = new JLabel();
 
         departTickets = new ArrayList();
         returnTickets = new ArrayList();
@@ -84,7 +91,6 @@ public class PaymentPanel extends javax.swing.JPanel {
         } else {
             idAccount = frame.getLoggedInCustomer().getIdAccount();
         }
-        int idCoupon = 0;
 
         System.out.println("NUMBER OF PASSENGERS : " +frame.getNumberOfPassengers());
         for (int i = 0; i < frame.getNumberOfPassengers(); ++i) {
@@ -195,6 +201,13 @@ public class PaymentPanel extends javax.swing.JPanel {
         }
         this.add(amountWithoutDiscount);
         amountWithoutDiscount.setBounds(490, 520, 130, 30);
+        
+        
+        amountWithCoupon.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 24)); // NOI18N
+        amountWithCoupon.setForeground(new java.awt.Color(255, 255, 255));
+        
+        this.add(amountWithCoupon);
+        amountWithCoupon.setBounds(490, 550, 130, 30);
 
         creditCards.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         creditCards.setIcon(new javax.swing.ImageIcon("img\\paymentMethods.png")); // NOI18N
@@ -212,11 +225,18 @@ public class PaymentPanel extends javax.swing.JPanel {
         this.add(couponCode);
         couponCode.setBounds(370, 600, 100, 40);
 
-        amountAfterDiscount.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
-        amountAfterDiscount.setForeground(new java.awt.Color(255, 255, 255));
-        amountAfterDiscount.setText("Total Price :");
-        this.add(amountAfterDiscount);
-        amountAfterDiscount.setBounds(340, 520, 130, 30);
+        totalPriceLabel.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        totalPriceLabel.setForeground(new java.awt.Color(255, 255, 255));
+        totalPriceLabel.setText("Total Price :");
+        this.add(totalPriceLabel);
+        totalPriceLabel.setBounds(340, 520, 130, 30);
+        
+        priceAfterCouponLabel.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        priceAfterCouponLabel.setForeground(new java.awt.Color(255, 255, 255));
+        priceAfterCouponLabel.setText("Total Price after discount :");
+        priceAfterCouponLabel.setVisible(false);
+        this.add(priceAfterCouponLabel);
+        priceAfterCouponLabel.setBounds(196, 550, 304, 30);
 
         creditCardsPng.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
         creditCardsPng.setIcon(new javax.swing.ImageIcon("img\\credit_card_30px.png")); // NOI18N
@@ -285,10 +305,16 @@ public class PaymentPanel extends javax.swing.JPanel {
                 if(couponCodeField.getText()!=null) {
                     if(BookingController.checkCode(couponCodeField.getText())==true) {
                         System.out.println("CHECK CODE TRUE " +couponCodeField.getText());
-                        amountAfterDiscount.setText(String.valueOf(BookingController.getCodeDiscount(couponCodeField.getText())));
-                        amountAfterDiscount.setVisible(true);
-                        add(amountAfterDiscount);
-                        amountAfterDiscount.setBounds(340, 520, 130, 30);
+                        idCoupon = BookingController.getCouponId( couponCodeField.getText() );
+                        if(frame.getFlights().size()==2) {
+                            amountWithCoupon.setText(String.valueOf((1-BookingController.getCodeDiscount(couponCodeField.getText())) * BookingController.getBookingPrice(departTickets, returnTickets, frame.getLoggedInCustomer())) +"€");
+                        }
+                        else {
+                            amountWithCoupon.setText(String.valueOf((1-BookingController.getCodeDiscount(couponCodeField.getText())) * BookingController.getBookingPrice(departTickets, frame.getLoggedInCustomer())) +"€");
+                        }
+                        //amountWithCoupon.setText(String.valueOf(BookingController.getCodeDiscount(couponCodeField.getText())));
+                        amountWithCoupon.setVisible(true);
+                        priceAfterCouponLabel.setVisible(true);
                     }
                     
                 }
@@ -332,7 +358,7 @@ public class PaymentPanel extends javax.swing.JPanel {
                 else {
                     idAccount = frame.getLoggedInCustomer().getIdAccount();
                 }
-                int idCoupon=0;
+                
                 
                 for(int i=0; i < frame.getNumberOfPassengers() ; ++i) {
                     departTickets.add( new Ticket( 0 , (FlightSeat) frame.getDepartAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(0) ) );
@@ -373,7 +399,7 @@ public class PaymentPanel extends javax.swing.JPanel {
             }
         });
         this.add(next);
-        next.setBounds(510, 670, 90, 30);
+        next.setBounds(490, 670, 110, 30);
         this.setBounds(0, 0, 630, 720);
 
     }
