@@ -57,7 +57,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     private CustomerAccount loggedInCustomer;
 
     //Nber of passengers
-    private final int numberOfPassengers;
+    private int numberOfPassengers;
 
     //Class selected
     private String className;
@@ -67,7 +67,6 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
     public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers, String className) {
         super();
-        payment = new PaymentPanel(this);
         this.flights = selectedFlight;
         this.numberOfPassengers = numberOfPassengers;
         this.className = className;
@@ -75,11 +74,11 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
         this.setVisible(true);
         this.setSize(643, 815);
         this.setLocationRelativeTo(null);
+        //payment = new PaymentPanel(this);
     }
 
     public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers, String className, CustomerAccount loggedInCustomer) {
         super();
-        payment = new PaymentPanel(this);
         this.loggedInCustomer = loggedInCustomer;
         this.flights = selectedFlight;
         this.numberOfPassengers = numberOfPassengers;
@@ -88,6 +87,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
         this.setVisible(true);
         this.setSize(643, 815);
         this.setLocationRelativeTo(null);
+        //payment = new PaymentPanel(this);
     }
 
     private void initComponents() {
@@ -460,13 +460,11 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
                                         throw new EmptyFields();
                                     }
                                 }
-                                for (int k = 0; k < birthDates.size(); k++) {
-                                    if (birthDates.get(i).getDate() == null) {
-                                        throw new EmptyFields();
-
-                                    }
+                            }
+                            for (int k = 0; k < birthDates.size(); k++) {
+                                if (birthDates.get(k).getDate() == null) {
+                                    throw new EmptyFields();
                                 }
-
                             }
                             if (FieldsController.checkSeatNumbers(DepartAvailableSeatChoice, ReturnAvailableSeatChoice, numberOfPassengers) == false) {
                                 JOptionPane.showMessageDialog(null, "Two people cannot share the same seat number.","",  JOptionPane.ERROR_MESSAGE);
@@ -477,7 +475,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
                                 passengersScrollPane.setVisible(false);
 
                                 getContentPane().repaint();
-
+                                setPayment();
                                 getContentPane().add(payment);
                                 payment.setVisible(true);
                                 setSize(630, 750);
@@ -539,6 +537,11 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
         pack();
 
+    }
+    
+
+    public void setPayment() {
+        payment = new PaymentPanel(this);
     }
 
     public JPanel getFlightDetailsPanel() {

@@ -39,7 +39,7 @@ public class CouponDAOImpl {
     }
     
     
-    public Coupon findByDiscount(int discount) {
+    public Coupon findByDiscount(float discount) {
         
         Coupon coupon = null; 
 
@@ -59,13 +59,34 @@ public class CouponDAOImpl {
         
     }
     
-        public Coupon findByCode(String code) {
+    public boolean checkCode(String code) {
         
         Coupon coupon = null; 
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from coupon where couponCode'=" + code + "';");
+            ResultSet myRs = myStmt.executeQuery("select * from coupon where couponCode='" + code + "';");
+
+            if (myRs.first()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }        
+    }
+    
+    
+    public Coupon findByCode(String code) {
+        
+        Coupon coupon = null; 
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from coupon where couponCode='" + code + "';");
 
             if (myRs.first()) {
                 coupon = new Coupon(myRs.getInt("idcoupon"), code, myRs.getInt("discount"));

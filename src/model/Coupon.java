@@ -13,9 +13,9 @@ public class Coupon {
     
     private int idCoupon;
     private String couponCode;
-    private int discount;
+    private float discount;
 
-    public Coupon(int idCoupon, String couponCode, int discount) {
+    public Coupon(int idCoupon, String couponCode, float discount) {
         this.idCoupon = idCoupon;
         this.couponCode = couponCode;
         this.discount = discount;
@@ -37,7 +37,7 @@ public class Coupon {
         this.couponCode = couponCode;
     }
 
-    public int getDiscount() {
+    public float getDiscount() {
         return discount;
     }
 

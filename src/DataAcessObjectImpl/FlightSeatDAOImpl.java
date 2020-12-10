@@ -77,4 +77,22 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
         
     }
     
+    
+    public float getPrice(int idFlight, int seatNo) {
+        
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM flightseat WHERE flight_idFlight=" +idFlight +" AND seatNo=" +seatNo +";");  
+
+            if (myRs.first()) {
+                return myRs.getBigDecimal("seatPrice").floatValue();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+        return 0;
+        
+    }
+    
 }

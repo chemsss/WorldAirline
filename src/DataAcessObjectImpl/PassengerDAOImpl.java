@@ -68,14 +68,14 @@ public class PassengerDAOImpl {
             Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
             ResultSet myRs = myStmt2.executeQuery("SELECT * FROM passenger WHERE email='"+passenger.getEmail()+"' AND firstName='"+passenger.getFirstName() +"' AND lastName='"
                                                  +passenger.getLastName() +"' AND address='"+passenger.getAddress() +"' AND birthDate='"
-                                                 +passenger.getBirthDayYearToString() +"-"+passenger.getBirthDateMonthToString()+"-"+passenger.getBirthDateDateToString()
+                                                 +passenger.getBirthDayYearToString() +"-"+passenger.getBirthDateMonthToString()+"-"+passenger.getBirthDateDayToString()
                                                  +"' AND telephoneNumber='" +passenger.getTelephoneNumber() +"' AND passportNo='" +passenger.getPassportNo() +"';");
             
             if(myRs.first()) {
                 return myRs.getInt("idPassenger");
             }
             else {
-                PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `worldairline2`.`passenger` (`email`, `firstName`, `lastName`, `address`, `birthDate`, `telephoneNumber`, `nationality`, `passportNo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+                PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO passenger (`email`, `firstName`, `lastName`, `address`, `birthDate`, `telephoneNumber`, `nationality`, `passportNo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
                 myStmt.setString(1, passenger.getEmail());
                 myStmt.setString(2, passenger.getFirstName());
                 myStmt.setString(3, passenger.getLastName());
@@ -90,7 +90,7 @@ public class PassengerDAOImpl {
                 
                 ResultSet myRs2 = myStmt2.executeQuery("SELECT * FROM passenger WHERE email='"+passenger.getEmail()+"' AND firstName='"+passenger.getFirstName() +"' AND lastName='"
                                                  +passenger.getLastName() +"' AND address='"+passenger.getAddress() +"' AND birthDate='"
-                                                 +passenger.getBirthDayYearToString() +"-"+passenger.getBirthDateMonthToString()+"-"+passenger.getBirthDateDateToString()
+                                                 +passenger.getBirthDayYearToString() +"-"+passenger.getBirthDateMonthToString()+"-"+passenger.getBirthDateDayToString()
                                                  +"' AND telephoneNumber='" +passenger.getTelephoneNumber() +"' AND passportNo='" +passenger.getPassportNo() +"';");
                 if(myRs2.first())
                 {

@@ -51,7 +51,9 @@ public class BookingDAOImpl implements BookingDAO {
                 if(myRs.getInt("coupon_idcoupon")==0) {
                     bookings.add(new Booking(myRs.getInt("bookingNo"), myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(myRs.getInt("bookingNo")), new CouponDAOImpl().find(myRs.getInt("coupon_idcoupon"))));
                 }
-                bookings.add(new Booking(myRs.getInt("bookingNo"), myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(myRs.getInt("bookingNo"))));
+                else {
+                    bookings.add(new Booking(myRs.getInt("bookingNo"), myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(myRs.getInt("bookingNo"))));
+                }
             }
             
         } catch(SQLException e) {
@@ -232,6 +234,21 @@ public class BookingDAOImpl implements BookingDAO {
         
         return true;
         
+    }
+    
+    
+    public void delete(int bookingNo) {
+        
+        Booking booking = null;
+
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM booking WHERE bookingNo=" + bookingNo + ";");
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+                
     }
     
     

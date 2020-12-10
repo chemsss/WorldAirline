@@ -47,12 +47,8 @@ public class MainMenuTest extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1068, 601));
         getContentPane().setLayout(null);
-
-        airplane1.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\world_127px.png")); // NOI18N
         getContentPane().add(airplane1);
         airplane1.setBounds(50, 230, 170, 190);
-
-        airplane.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\airport_127px.png")); // NOI18N
         getContentPane().add(airplane);
         airplane.setBounds(820, 230, 160, 180);
 
@@ -139,7 +135,7 @@ public class MainMenuTest extends javax.swing.JFrame {
         getContentPane().add(datePicker2);
         datePicker2.setBounds(430, 230, 134, 20);
         getContentPane().add(calendarPanel1);
-        calendarPanel1.setBounds(150, 110, 229, 203);
+        calendarPanel1.setBounds(150, 110, 229, 201);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

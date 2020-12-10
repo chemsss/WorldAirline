@@ -126,7 +126,7 @@ public class Passenger {
         this.passportNo = passportNo;
     }
 
-    public String getBirthDateDateToString()
+    public String getBirthDateDayToString()
     {
         System.out.println(birthDate);
         String timeStamp = new SimpleDateFormat("dd").format(birthDate);

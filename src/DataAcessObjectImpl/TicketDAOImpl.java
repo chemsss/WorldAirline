@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import model.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
+import model.CustomerAccount;
 import model.Passenger;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeFactory;
@@ -130,6 +131,7 @@ public class TicketDAOImpl implements TicketDAO {
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            System.out.println("Reached end of add ticket method.");
             return false;
         }
         
@@ -162,14 +164,38 @@ public class TicketDAOImpl implements TicketDAO {
         
     }*/
     
-    public float getPrice(int idFlight, int seatNo) {
+    public float getPriceLoggedCustomer(int idFlight, int seatNo) {
         
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket,flightseat WHERE ticket.flight_idFlight=" +idFlight                   //,booking,customeraccount,passenger
-                    +" AND flightseat.flight_idFlight=" +idFlight  +" AND ticket.flightSeat_seatNo=" +seatNo +" AND flightseat.seatNo=" +seatNo +";");  
-
+            Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket,booking WHERE ticket.flight_idFlight=" +idFlight +" AND ticket.flightSeat_seatNo=" +seatNo  
+                    +" AND ticket.booking_bookingNo=booking.bookingNo;"); 
+            
             if (myRs.first()) {
+                ResultSet myRs2 = myStmt2.executeQuery("SELECT * FROM customeraccount WHERE customeraccount.idCustomerAccount="  +myRs.getString("customerAccount_idaccount") +";"); 
+                if(myRs2.first()) {
+                    switch (myRs2.getString("ageCategory")) {
+                        case "Regular":
+                            System.out.println("REGULAR");
+                            return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
+                        case "Senior":
+                            System.out.println("SENIOR");
+                            return (float) (0.8 * (new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
+                        case "Child":
+                            System.out.println("CHILD");
+                            return (float) (0.9 * (new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
+                        default:
+                            break;
+                    }
+                    
+                }
+                else {
+                    System.out.println("Couldn't find a customer linked to the booking.");
+                    return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
+                }
+                
+                
                 return myRs.getBigDecimal("seatPrice").floatValue();
             }
         } catch (SQLException e) {
@@ -177,6 +203,14 @@ public class TicketDAOImpl implements TicketDAO {
             return 0;
         }
         return 0;
+        
+    }
+    
+    
+    
+    public float getPriceNotLogged(int idFlight, int seatNo) {
+        
+        return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
         
     }
 
@@ -199,6 +233,18 @@ public class TicketDAOImpl implements TicketDAO {
         }
         return null;        
         
+    }
+    
+    public void delete(int ticketNo) {
+        
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM ticket WHERE ticketNo=" + ticketNo + ";");
+            myStmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+                
     }
     
     @Override

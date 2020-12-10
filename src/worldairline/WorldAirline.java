@@ -23,12 +23,12 @@ public class WorldAirline {
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
       
-       //CustomerAccount customer = new CustomerAccount("Child","capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
-               //new Date(109,03,04),"+33 6 89024763");
+       CustomerAccount customer = new CustomerAccount("Child","capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
+               new Date(109,03,04),"+33 6 89024763");
 
       
-       CustomerAccount cm=null;
-        //CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
+       //CustomerAccount cm=null;
+        CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
         
         /*
         if(new BookingDAOImpl().add(new Date(120,3,21), 5, 3)==false) {
@@ -101,8 +101,28 @@ public class WorldAirline {
                                                 +booking.getBookingDateDayToString() +"' AND customerAccount_idaccount" +idAccountString +" AND coupon_idcoupon"  +idCouponString +";");*/
         //FlightSeat[] availableSeats = new FlightSeatDAOImpl().getAvailableSeats(5, "Economy Class");
         
-        System.out.println(new TicketDAOImpl().getPrice(5, 5) +"€");
+        //System.out.println(new TicketDAOImpl().getPriceLoggedCustomer(5, 25) +"€");
+        //new BookingDAOImpl().delete(42);
+        /*String nationality = "Fra4nce";
         
+        String str3 = "";
+        for(int i=0 ; i < nationality.length() ; ++i) {
+            if( Character.isDigit( nationality.charAt(i)) ) {
+                str3 = "Your nationality can't contain digits.";
+                System.out.println(nationality.charAt(i));
+            }
+        }
+        if(!str3.equals("")) {
+            str3 += "Your phone number can't contain letters.";
+        }
+                
+        if(!str3.equals("")) {
+            JOptionPane.showMessageDialog(null , str3, "", 0);
+        }*/
+        
+        /*ArrayList<String> arrayTest = new ArrayList();
+        System.out.println(arrayTest.size());*/
+                
     }
     
 }
