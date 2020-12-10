@@ -324,7 +324,7 @@ public class PaymentPanel extends javax.swing.JPanel {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
-                /*
+                
                 int idAccount;
                 if(frame.getLoggedInCustomer()==null) {
                     idAccount = 0;
@@ -368,7 +368,7 @@ public class PaymentPanel extends javax.swing.JPanel {
                     PaymentController.addReservation(booking, idAccount, idCoupon, passengers);
                     System.out.println("apres addReserv");
 
-                }*/
+                }
 
             }
         });
