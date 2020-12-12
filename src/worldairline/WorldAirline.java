@@ -3,6 +3,7 @@ import DataAcessObject.*;
 import DataAcessObjectImpl.*;
 import controller.BookingController;
 import controller.FieldsController;
+import controller.FlightController;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class WorldAirline {
     public static void main(String[] args) throws SQLException {
         
          
-       MainMenu menu = new MainMenu();
+       //MainMenu menu = new MainMenu();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
@@ -123,9 +124,29 @@ public class WorldAirline {
         /*ArrayList<String> arrayTest = new ArrayList();
         System.out.println(arrayTest.size());*/
                 
-        
+        /*
         float f = (float) 10.2323;
         System.out.println(Float.toString(12.2f));
+        Flight flight = new Flight(0 , "EcoAirline", new Timestamp(120, 02,9,13,40,07,0), new Timestamp(120, 02,05,15,40,03,0),
+                new Airplane(9, "Zoeing A013", 200), new Airport("CHH", "GARGES-LES-GONNESSES Sud", "Garges-Les-Gonnesses", "France"), new Airport("CCC", "Roubaix Nord", "Roubaix", "France"), new ArrayList<FlightSeat>());
+        //int idFlight, String airlineName, Timestamp departureDate, Timestamp arrivalDate, Airplane airplane, Airport departureAirport, Airport arrivalAirport, ArrayList<FlightSeat> seats
+        if((new FlightDAOImpl().add(flight , 25, 75, 100, (float)500.99, (float)200.99, (float)99.99)) == false) {
+        
+
+
+        //int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate, 
+        //int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, float priceFirst, float priceBusiness, float priceEconomy
+            System.out.println("add flight failed");
+            Timestamp time = new Timestamp( 120 , 11 , 05 , 13 , 40 , 0 , 0);
+            System.out.println(time.toString());
+        }
+        float price = (float) 50.9999;
+        String priceS = String.format("%.2f", price);
+        
+        System.out.println(priceS.replace(",", "."));
+        */
+        
+        FlightController.addFlight(9, "EcoAirline", "CHH", "CCC", new Timestamp(120, 02,9,13,40,07,0), new Timestamp(120, 02,05,15,40,03,0), 10, 90, 100, (float)1000.98, (float)700.50, (float)200.12);
     }
     
 }

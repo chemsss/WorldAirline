@@ -24,20 +24,7 @@ public class FlightDAOImpl implements FlightDAO {
             ResultSet myRs = myStmt.executeQuery("select * from flight where idFlight=" + id + ";");
 
             if (myRs.first()) {
-                //int airplane_idAirplane = myRs.getInt("airplane_idAirplane");
-                //AirplaneDAOImpl airplaneDAO = new AirplaneDAOImpl();
-                //String airlineName = myRs.getString("airlineName");
-
-                //String departureAirport_idAiport = myRs.getString("departureAirport_idAirport");
-                //String arrivalAirport_idAiport = myRs.getString("arrivalAirport_idAirport");
-
-                //AirportDAOImpl departureAirportDAO = new AirportDAOImpl();
-                //AirportDAOImpl arrivalAirportDAO = new AirportDAOImpl();
-
-                // Timestamp departureDate = myRs.getTimestamp("departureDate");
-                //Timestamp arrivalDate = myRs.getTimestamp("arrivalDate");
-                //FlightSeatDAOImpl flightSeatDAO = new FlightSeatDAOImpl();
-
+                
                 flight = new Flight(id, myRs.getString("airlineName"), 
                         myRs.getTimestamp("departureDate"), 
                         myRs.getTimestamp("arrivalDate"), 
@@ -83,7 +70,6 @@ public class FlightDAOImpl implements FlightDAO {
             
             Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
             while (myRs.next()) {
-                System.out.println("zeiojfjiozegjiorejiogjio");
                 ResultSet myRs2 = myStmt2.executeQuery("SELECT COUNT(*) FROM flightseat WHERE flight_idFlight=" +myRs.getInt("idFlight") +" AND className='" +className +"' AND isAvailable=1;" );
                 if(myRs2.first()) {
                     if(myRs2.getInt("COUNT(*)") >= nbOfSeats) {
@@ -96,8 +82,6 @@ public class FlightDAOImpl implements FlightDAO {
                                 new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")), 
                                 new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")), 
                                 new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("idFlight"))));
-                            System.out.println(myRs.getTimestamp("departureDate").toString() +"fjezijiofzeijofzejiofze");
-                            System.out.println(myRs.getTimestamp("arrivalDate").toString());
                         }
                     }
                 }
@@ -147,23 +131,59 @@ public class FlightDAOImpl implements FlightDAO {
         return true;
     }
     
-    public boolean add(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {
-        
+    public boolean add(Flight flight , int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, float priceFirst, float priceBusiness, float priceEconomy) {
+ //int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate       
         try {
             
             PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO flight "
-                    + "(`idFlight`, `airplane_idAirplane`, `airlineName`, `departureAirport_idAirport`, `arrivalAirport_idAirport`, `departureDate`, `arrivalDate`) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?);");
+                    + "(`airplane_idAirplane`, `airlineName`, `departureAirport_idAirport`, `arrivalAirport_idAirport`, `departureDate`, `arrivalDate`) "
+                    + "VALUES (?, ?, ?, ?, ?, ?);");
             
-            myStmt.setInt(1, idFlight);
-            myStmt.setInt(2, idAirplane);
-            myStmt.setString(3, airlineName);
-            myStmt.setString(4, idDepartureAirport);
-            myStmt.setString(5, idArrivalAirport);
-            myStmt.setTimestamp(6, departureDate);
-            myStmt.setTimestamp(7, arrivalDate);            
+            myStmt.setInt(1, flight.getAirplane().getIdAirplane());
+            myStmt.setString(2, flight.getAirlineName());
+            myStmt.setString(3, flight.getDepartureAirport().getIdAirport());
+            myStmt.setString(4, flight.getArrivalAirport().getIdAirport());
+            myStmt.setString(5, ""+flight.getDepartureDateTimeSQLToString());
+            myStmt.setString(6, ""+flight.getArrivalDateTimeSQLToString());            
 
             myStmt.executeUpdate();
+            //departureDate.getYear()+"-"+departureDate.getMonth()+"-"+departureDate.getDay() +" "
+                    //+departureDate.getHours()+":"+departureDate.getMinutes()+":"+departureDate.getSeconds()
+            //arrivalDate.getYear()+"-"+arrivalDate.getMonth()+"-"+arrivalDate.getDay() +" "
+                    //+arrivalDate.getHours()+":"+arrivalDate.getMinutes()+":"+arrivalDate.getSeconds()
+            
+            Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM flight WHERE "
+                    + "airplane_idAirplane =" +flight.getAirplane().getIdAirplane() +" AND airlineName='" +flight.getAirlineName() +"' AND departureAirport_idAirport='" 
+                    +flight.getDepartureAirport().getIdAirport() +"' AND arrivalAirport_idAirport='" +flight.getArrivalAirport().getIdAirport() 
+                    +"' AND departureDate='"+flight.getDepartureDateTimeSQLToString() +"'" 
+                    +" AND arrivalDate='"+flight.getArrivalDateTimeSQLToString() +"' ;");
+                    
+            if(myRs.first()) {
+                for(int i=0 ; i < nbSeatsFirstClass ; ++i) {
+                    System.out.println("first class : " +i);
+                    if(new FlightSeatDAOImpl().addIntoFlight(i+1, myRs.getInt("idFlight"), "First Class", priceFirst)==false) {
+                        System.out.println("Couldn't create seat in flight " +myRs.getInt("idFlight") +"First Class, nb of seats  " +nbSeatsFirstClass +" Price " +priceFirst);
+                    }
+
+                }
+                for(int i=nbSeatsFirstClass ; i < nbSeatsBusinessClass+nbSeatsFirstClass ; ++i) {
+                    System.out.println("Business class : " +i);
+                    if(new FlightSeatDAOImpl().addIntoFlight(i+1, myRs.getInt("idFlight"), "Business Class", priceBusiness)==false) {
+                        System.out.println("Couldn't create seat in flight " +myRs.getInt("idFlight") +" Business Class, nb of seats  " +nbSeatsBusinessClass +" Price " +priceBusiness);
+                    }
+                }
+                for(int i=nbSeatsBusinessClass+nbSeatsFirstClass ; i < nbSeatsEconomyClass+nbSeatsBusinessClass+nbSeatsFirstClass ; ++i) {
+                    System.out.println("Economy class : " +i);
+                    if(new FlightSeatDAOImpl().addIntoFlight(i+1, myRs.getInt("idFlight"), "Economy Class", priceEconomy)==false) {
+                        System.out.println("Couldn't create seat in flight " +myRs.getInt("idFlight") +" Economy Class, nb of seats  " +nbSeatsEconomyClass +" Price " +priceEconomy);
+                    }
+                }
+            }
+            else {
+                System.out.println("Couldn't find the just created flight to create the seats. " +flight.getDepartureDateTimeSQLToString() + " " +flight.getArrivalDateTimeSQLToString());
+            }
+            
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());

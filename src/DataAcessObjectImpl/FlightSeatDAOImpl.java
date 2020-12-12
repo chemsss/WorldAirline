@@ -1,6 +1,7 @@
 package DataAcessObjectImpl;
 
 import DataAcessObject.FlightSeatDAO;
+import java.math.BigDecimal;
 import model.FlightSeat;
 import java.sql.*;
 import java.util.ArrayList;
@@ -92,6 +93,34 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
             return 0;
         }
         return 0;
+        
+    }
+    
+    
+    public boolean addIntoFlight(int seatNo, int idFlight, String className, float seatPrice) {
+        
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO flightseat "
+                    + "(`seatNo`, `flight_idFlight`, `className`, `seatPrice`, `isAvailable`) "
+                    + "VALUES (?, ?, ?, ?, ?);");
+            
+            String price = String.format("%.2f", seatPrice);
+            
+            myStmt.setInt(1, seatNo);
+            myStmt.setInt(2, idFlight);
+            myStmt.setString(3, className);
+            myStmt.setBigDecimal(4, new BigDecimal( price.replace(',', '.') ) );
+            myStmt.setInt(5, 1);         
+
+            myStmt.executeUpdate();
+            
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
         
     }
     

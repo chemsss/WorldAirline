@@ -115,6 +115,21 @@ public class Flight {
         return timeStamp;
     }
      
+    public String getDepartureDateTimeSQLToString()
+    {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(departureDate);
+        
+        return timeStamp;
+    }
+    
+    public String getArrivalDateTimeSQLToString()
+    {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(arrivalDate);
+        
+        return timeStamp;
+    }
+    
+     
     
      
      public FlightSeat getseatFromClass(String className) {

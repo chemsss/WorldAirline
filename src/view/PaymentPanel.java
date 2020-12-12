@@ -84,21 +84,16 @@ public class PaymentPanel extends javax.swing.JPanel {
         ticketPriceLabel = new ArrayList();
         returnTicketPriceLabel = new ArrayList();
         
-        System.out.println("AAAAAAAAAAAAAAJIOFEJIO3FJIJREJJRJJJIREJIREIJREGJOREIGREIJGREJGRZE\nJIOFEZOIFZEOIFJZEFJOZEOZEJGPREJGZEPOGJREPJGEZRJG\nIREJIOGREJPGERIGJREIOGJERJGOREIG\nFZEOIOFIEROIEZOPGJREIJGREIJGJIRZEG");
-
-        System.out.println(frame.getLoggedInCustomer().toString());
+        //System.out.println(frame.getLoggedInCustomer().toString());
         if (frame.getLoggedInCustomer() == null) {
             idAccount = 0;
-            System.out.println("CUSTOMER NUUUUUUUUUUUUULL");
         } else {
             idAccount = frame.getLoggedInCustomer().getIdAccount();
-            System.out.println("CUSTOMERRRRRRR " +frame.getLoggedInCustomer().getIdAccount());
         }
 
-        System.out.println("NUMBER OF PASSENGERS : " +frame.getNumberOfPassengers());
         for (int i = 0; i < frame.getNumberOfPassengers(); ++i) {
             departTickets.add(new Ticket(0, (FlightSeat) frame.getDepartAvailableSeatChoice().get(i).getSelectedItem(), frame.getFlights().get(0)));
-            System.out.println((new Ticket(0, (FlightSeat) frame.getDepartAvailableSeatChoice().get(i).getSelectedItem(), frame.getFlights().get(0))).toString());
+            
             if (frame.getFlights().size() == 2) {
                 returnTickets.add(new Ticket(0, (FlightSeat) frame.getReturnAvailableSeatChoice().get(i).getSelectedItem(), frame.getFlights().get(1)));
             }
@@ -111,8 +106,6 @@ public class PaymentPanel extends javax.swing.JPanel {
             passengers.add(new Passenger(((JTextField) frame.getTextFields().get(i)[0]).getText(), ((JTextField) frame.getTextFields().get(i)[1]).getText(),
                     ((JTextField) frame.getTextFields().get(i)[2]).getText(), ((JTextField) frame.getTextFields().get(i)[3]).getText(), birthDateSql,
                     ((JTextField) frame.getTextFields().get(i)[4]).getText(), ((JTextField) frame.getTextFields().get(i)[5]).getText(), ((JTextField) frame.getTextFields().get(i)[6]).getText()));
-
-            System.out.println("Passenger " + (i + 1) + ((JTextField) frame.getTextFields().get(i)[0]).getText());
         }
         
         //ticketPriceLabel = new ArrayList<>(frame.getNumberOfPassengers());
@@ -125,9 +118,8 @@ public class PaymentPanel extends javax.swing.JPanel {
             /*ticketPriceLabell[i].setText("Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
                     +" : " +TicketController.getTicketPriceNotLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo()) +"€");*/
             if(i==0 && frame.getLoggedInCustomer()!=null) {
-                System.out.println("haaaaaaaajzeijfzef");
                 if(frame.getFlights().size()==2) {
-                    ticketPriceLabell[i].setText("Depart Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
+                    ticketPriceLabell[i].setText("Return Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
                     +" : " +String.format("%.2f", TicketController.getTicketPriceLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo(), frame.getLoggedInCustomer())) +"€");
                 }
                 else
@@ -137,43 +129,33 @@ public class PaymentPanel extends javax.swing.JPanel {
             }
             else {
                 if(frame.getFlights().size()==2) {
-                    ticketPriceLabell[i].setText("Depart Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
-                    +" : " +String.format("%.2f", TicketController.getTicketPriceLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo(), frame.getLoggedInCustomer())) +"€");
+                    ticketPriceLabell[i].setText("Return Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
+                    +" : " +String.format("%.2f", TicketController.getTicketPriceNotLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo())) +"€");
                 }
                 else {
                     ticketPriceLabell[i].setText("Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
                         +" : " +String.format("%.2f", TicketController.getTicketPriceNotLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo())) +"€");
                 }
-                
-                System.out.println("fzefzpejfjpzefjpzefjzefz");
             }
-            System.out.println(TicketController.getTicketPriceLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo(), frame.getLoggedInCustomer()) +"€");
-            System.out.println(TicketController.getTicketPriceNotLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo()) +"€");
             
-            //ticketPriceLabell[i].setText("Sebastien Pichon's Ticket : 1000.9900€");
-            System.out.println(165+((i+1)*15));
             this.add(ticketPriceLabell[i]);
             ticketPriceLabell[i].setBounds(340, 525-((i+1)*15*2), 250, 29);
         }
+       
         if(frame.getFlights().size()==2) {
             for(int i = 0 ; i < ticketPriceLabell.length ; ++i) {
                 ticketPriceLabell[i] = new JLabel();
                 ticketPriceLabell[i].setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
                 ticketPriceLabell[i].setForeground(new java.awt.Color(255, 255, 255));
-                /*ticketPriceLabell[i].setText("Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
-                        +" : " +TicketController.getTicketPriceNotLogged(frame.getFlights().get(0).getIdFlight(), departTickets.get(i).getSeat().getSeatNo()) +"€");*/
+                
                 if(i==0 && frame.getLoggedInCustomer()!=null) {
-                    System.out.println("haaaaaaaajzeijfzef");
-                    ticketPriceLabell[i].setText("Return Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
-                        +" : " +String.format("%.2f", TicketController.getTicketPriceLogged(frame.getFlights().get(1).getIdFlight(), departTickets.get(i).getSeat().getSeatNo(), frame.getLoggedInCustomer())) +"€");
+                    ticketPriceLabell[i].setText("Depart Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
+                        +" : " +String.format("%.2f", TicketController.getTicketPriceLogged(frame.getFlights().get(1).getIdFlight(), returnTickets.get(i).getSeat().getSeatNo(), frame.getLoggedInCustomer())) +"€");
                 }
                 else {
-                    ticketPriceLabell[i].setText("Return Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
-                        +" : " +String.format("%.2f", TicketController.getTicketPriceNotLogged(frame.getFlights().get(1).getIdFlight(), departTickets.get(i).getSeat().getSeatNo())) +"€");
-                    System.out.println("fzefzpejfjpzefjpzefjzefz");
+                    ticketPriceLabell[i].setText("Depart Ticket of " +passengers.get(i).getFirstName() +" " +passengers.get(i).getLastName()  
+                        +" : " +String.format("%.2f", TicketController.getTicketPriceNotLogged(frame.getFlights().get(1).getIdFlight(), returnTickets.get(i).getSeat().getSeatNo())) +"€");
                 }
-                System.out.println(TicketController.getTicketPriceLogged(frame.getFlights().get(1).getIdFlight(), departTickets.get(i).getSeat().getSeatNo(), frame.getLoggedInCustomer()) +"€");
-                System.out.println(TicketController.getTicketPriceNotLogged(frame.getFlights().get(1).getIdFlight(), departTickets.get(i).getSeat().getSeatNo()) +"€");
 
                 //ticketPriceLabell[i].setText("Sebastien Pichon's Ticket : 1000.9900€");
                 System.out.println(165+((i+1)*15));
