@@ -48,6 +48,7 @@ public class PaymentPanel extends javax.swing.JPanel {
     private ArrayList<JLabel> returnTicketPriceLabel;
     
     private int idCoupon=0;
+    private int idAccount;
 
     public PaymentPanel(PassengersInfosFrame frame) {
         super();
@@ -85,11 +86,13 @@ public class PaymentPanel extends javax.swing.JPanel {
         
         System.out.println("AAAAAAAAAAAAAAJIOFEJIO3FJIJREJJRJJJIREJIREIJREGJOREIGREIJGREJGRZE\nJIOFEZOIFZEOIFJZEFJOZEOZEJGPREJGZEPOGJREPJGEZRJG\nIREJIOGREJPGERIGJREIOGJERJGOREIG\nFZEOIOFIEROIEZOPGJREIJGREIJGJIRZEG");
 
-        int idAccount;
+        System.out.println(frame.getLoggedInCustomer().toString());
         if (frame.getLoggedInCustomer() == null) {
             idAccount = 0;
+            System.out.println("CUSTOMER NUUUUUUUUUUUUULL");
         } else {
             idAccount = frame.getLoggedInCustomer().getIdAccount();
+            System.out.println("CUSTOMERRRRRRR " +frame.getLoggedInCustomer().getIdAccount());
         }
 
         System.out.println("NUMBER OF PASSENGERS : " +frame.getNumberOfPassengers());
@@ -352,15 +355,14 @@ public class PaymentPanel extends javax.swing.JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
                 
-                int idAccount;
-                if(frame.getLoggedInCustomer()==null) {
+                /*if(frame.getLoggedInCustomer()==null) {
                     idAccount = 0;
                 }
                 else {
                     idAccount = frame.getLoggedInCustomer().getIdAccount();
-                }
+                }*/
                 
-                
+                /*
                 for(int i=0; i < frame.getNumberOfPassengers() ; ++i) {
                     departTickets.add( new Ticket( 0 , (FlightSeat) frame.getDepartAvailableSeatChoice().get(i).getSelectedItem() , frame.getFlights().get(0) ) );
                     if(frame.getFlights().size() == 2){
@@ -377,7 +379,7 @@ public class PaymentPanel extends javax.swing.JPanel {
                     ((JTextField)frame.getTextFields().get(i)[4]).getText() , ((JTextField)frame.getTextFields().get(i)[5]).getText() , ((JTextField)frame.getTextFields().get(i)[6]).getText()));
 
                     System.out.println("Passenger " +(i+1) +((JTextField)frame.getTextFields().get(i)[0]).getText() );
-                }
+                }*/
                  
 
                 java.util.Date todaysDate = Calendar.getInstance().getTime();

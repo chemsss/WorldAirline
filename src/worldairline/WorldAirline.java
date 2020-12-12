@@ -18,17 +18,17 @@ public class WorldAirline {
     public static void main(String[] args) throws SQLException {
         
          
-       //MainMenu menu = new MainMenu();
+       MainMenu menu = new MainMenu();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
       
-       CustomerAccount customer = new CustomerAccount("Child","capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
-               new Date(109,03,04),"+33 6 89024763");
-
+       //CustomerAccount customer = new CustomerAccount("Child", 7, "capron2009@hotmail.fr","motdepassetitouan","Titouan","Capron","32, rue Louise Michel, 92300, LEVALLOIS-PERRET",
+              //new Date(109,03,04),"+33 6 89024763");
+//String ageCategory, int idAccount, String email, String password, String firstName, String lastName, String address, Date birthDate, String telephoneNumber
       
        //CustomerAccount cm=null;
-        CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
+        //CustomerHomeFlightSearch prgm = new CustomerHomeFlightSearch(customer);
         
         /*
         if(new BookingDAOImpl().add(new Date(120,3,21), 5, 3)==false) {

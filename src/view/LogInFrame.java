@@ -68,6 +68,9 @@ public final class LogInFrame extends JFrame {
 
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        frame = new MainMenu();
+        frame.setVisible(false);
+        
 
     }
 

@@ -173,7 +173,7 @@ public class BookingDAOImpl implements BookingDAO {
                 if(!myRs2.first()) {
                     for(int i = 0 ; i < booking.getTickets().size() ; ++i) {
                         if(new TicketDAOImpl().add(myRs.getInt("bookingNo"), passengers.get(i), booking.getTickets().get(i).getSeat().getSeatNo(),  booking.getTickets().get(i).getFlight().getIdFlight())==false) {
-                            System.out.println("Couldn't add a ticket to the booking, add booking aborted.");
+                            System.out.println("Couldn't add a ticket to the booking, add booking aborted......");
                             return false;
                         }
                         else {

@@ -67,6 +67,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
     public PassengersInfosFrame(ArrayList<Flight> selectedFlight, int numberOfPassengers, String className) {
         super();
+        this.loggedInCustomer = null;
         this.flights = selectedFlight;
         this.numberOfPassengers = numberOfPassengers;
         this.className = className;

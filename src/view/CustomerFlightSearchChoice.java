@@ -107,6 +107,7 @@ public class CustomerFlightSearchChoice implements ActionListener {
 
             case "Unlogged": {
                 new LogInFrame();
+                frame.dispose();
             }
 
             break;

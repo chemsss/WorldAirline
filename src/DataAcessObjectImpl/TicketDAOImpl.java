@@ -127,6 +127,17 @@ public class TicketDAOImpl implements TicketDAO {
             
             new FlightSeatDAOImpl().setSeatTaken(idFlight, flightSeatNo);
             
+            
+            Statement myStmt3 = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs3 = myStmt3.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" +flightSeatNo + ";");
+            if(myRs3.first()) {
+                System.out.println(myRs3.getInt("ticketNo"));
+                inserImg(myRs3.getInt("ticketNo"));
+            }
+            else {
+                System.out.println("Couldn't find the ticket to add the barcode.");
+            }
+            
             return true;
                 
         } catch (SQLException e) {
