@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.Booking;
 import model.FlightSeat;
@@ -373,11 +374,16 @@ public class PaymentPanel extends javax.swing.JPanel {
                     System.out.println("avant addReserv");
                     PaymentController.addReservation(booking, idAccount, idCoupon, passengers, returnTickets);
                     System.out.println("apres addReserv");
+                    frame.dispose();
+                    JOptionPane.showMessageDialog(null, "Your payment has been successfully performed. You can find your reservation in the 'my Booking' section in 'my Account'.", "Reservation successfull", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     Booking booking = new Booking(todaysDateSql, departTickets);
                     System.out.println("avant addReserv");
                     PaymentController.addReservation(booking, idAccount, idCoupon, passengers);
                     System.out.println("apres addReserv");
+                    frame.dispose();
+                    JOptionPane.showMessageDialog(null, "Your payment has been successfully performed. You can find your reservation in the 'my Booking' section in 'my Account'.", "Reservation successfull", JOptionPane.INFORMATION_MESSAGE);
+                    
 
                 }
 

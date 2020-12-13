@@ -144,6 +144,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
 
         add.setText("Add");
         add.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
                         if((FlightController.CheckFlightInfo(choicedeparturedate.getDate(), choicearrivaldate.getDate())))
@@ -153,7 +154,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
                 
                         Timestamp dateArrival=new Timestamp(choicearrivaldate.getDate().getYear(),choicearrivaldate.getDate().getMonth(),
                         choicearrivaldate.getDate().getDay(),Integer.parseInt(jComboBox4.getSelectedItem().toString()),Integer.parseInt(jComboBox2.getSelectedItem().toString()),0,0);
-                         FlightController.addFlight( ((Airplane)choiceairplane.getSelectedItem()).getIdAirplane() , "WorldAirline",((Airport) choicedepartureaiport.getSelectedItem()).getIdAirport() , ((Airport) choicearrivalairport.getSelectedItem()).getIdAirport(),dateDeparture  , dateArrival);
+                        //FlightController.addFlight( ((Airplane)choiceairplane.getSelectedItem()).getIdAirplane() , "WorldAirline",((Airport) choicedepartureaiport.getSelectedItem()).getIdAirport() , ((Airport) choicearrivalairport.getSelectedItem()).getIdAirport(),dateDeparture  , dateArrival);
                     }
                 }
               

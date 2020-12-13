@@ -19,7 +19,7 @@ public class WorldAirline {
     public static void main(String[] args) throws SQLException {
         
          
-       //MainMenu menu = new MainMenu();
+       MainMenu menu = new MainMenu();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
@@ -146,7 +146,7 @@ public class WorldAirline {
         System.out.println(priceS.replace(",", "."));
         */
         
-        FlightController.addFlight(9, "EcoAirline", "CHH", "CCC", new Timestamp(120, 02,9,13,40,07,0), new Timestamp(120, 02,05,15,40,03,0), 10, 90, 100, (float)1000.98, (float)700.50, (float)200.12);
+        //FlightController.addFlight(9, "EcoAirline", "CHH", "CCC", new Timestamp(120, 02,9,13,40,07,0), new Timestamp(120, 02,05,15,40,03,0), 10, 90, 100, (float)1000.98, (float)700.50, (float)200.12);
     }
     
 }
