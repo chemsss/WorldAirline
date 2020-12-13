@@ -1,5 +1,7 @@
 package view;
 
+import view.Customer.EmployeeLogin;
+import view.Customer.LogInFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

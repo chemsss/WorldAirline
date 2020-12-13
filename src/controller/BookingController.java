@@ -1,7 +1,8 @@
 package controller;
-
 import DataAcessObjectImpl.BookingDAOImpl;
+import java.sql.Date;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Booking;
 
 public class BookingController {
@@ -15,10 +16,7 @@ public class BookingController {
         return new BookingDAOImpl().find(bookingNo);
 
     }
-<<<<<<< Updated upstream
-=======
-
-    public static void addBooking(Date date, int idAccount, int idCoupon) {
+  public static void addBooking(Date date, int idAccount, int idCoupon) {
         if (new BookingDAOImpl().add(date, idAccount, idCoupon) == false) {
             JOptionPane.showMessageDialog(null, "Unable to add booking");
         }
@@ -56,5 +54,4 @@ public class BookingController {
         }
 
     }
->>>>>>> Stashed changes
 }

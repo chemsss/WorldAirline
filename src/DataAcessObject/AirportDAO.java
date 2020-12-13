@@ -6,10 +6,7 @@
 package DataAcessObject;
 import model.Airport;
 
-/**
- *
- * @author Chems
- */
+
 
 public interface AirportDAO {
     

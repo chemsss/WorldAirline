@@ -1,5 +1,6 @@
 package model;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -39,6 +40,17 @@ public class Passenger {
         this.nationality = nationality;
         this.passportNo = passportNo;
         this.tickets=(ArrayList)tickets.clone();
+    }
+    
+    public Passenger(String email, String firstName, String lastName, String address, Date dateOfBirth, String telephoneNumber, String nationality, String passportNo) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.birthDate = dateOfBirth;
+        this.telephoneNumber = telephoneNumber;
+        this.nationality = nationality;
+        this.passportNo = passportNo;
     }
     public int getIdPassenger() {
         return idPassenger;
@@ -80,11 +92,11 @@ public class Passenger {
         this.address = address;
     }
 
-    public Date getDateOfBirth() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setBirthDate(Date dateOfBirth) {
         this.birthDate = dateOfBirth;
     }
 
@@ -112,6 +124,27 @@ public class Passenger {
         this.passportNo = passportNo;
     }
     
-    
+    public String getBirthDateDayToString()
+    {
+        System.out.println(birthDate);
+        String timeStamp = new SimpleDateFormat("dd").format(birthDate);
+
+        return timeStamp;
+    }
+
+    public String getBirthDateMonthToString()
+    {
+        System.out.println(birthDate);
+        String timeStamp = new SimpleDateFormat("MM").format(birthDate);
+
+        return timeStamp;
+    }
+    public String getBirthDayYearToString()
+    {
+        System.out.println(birthDate);
+        String timeStamp = new SimpleDateFormat("yyyy").format(birthDate);
+
+        return timeStamp;
+    }
     
 }

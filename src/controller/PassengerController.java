@@ -17,8 +17,4 @@ public class PassengerController {
           String firstName = new PassengerDAOImpl().findByTicketNo(TicketNo).getFirstName();
           return firstName;
       }
-      
-            
-      
-      
 }

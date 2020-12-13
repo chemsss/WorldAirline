@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataAcessObjectImpl;
 
 import DataAcessObject.AirportDAO;
@@ -10,17 +5,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.Airport;
 
-/**
- *
- * @author Unknow
- */
+
 public class AirportDAOImpl implements AirportDAO {
 
-    /**
-     *
-     * @param idAirport
-     * @return
-     */
     @Override
     public Airport find(String idAirport) {
 
@@ -41,10 +28,7 @@ public class AirportDAOImpl implements AirportDAO {
         return airport;
     }
     
-    /**
-     *
-     * @return
-     */
+   
     @Override
     public Airport[] findAllAirports() {
         

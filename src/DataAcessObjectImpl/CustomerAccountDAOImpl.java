@@ -47,8 +47,6 @@ public class CustomerAccountDAOImpl implements CustomerAccountDAO {
         return null;
     }
     
-    
-    
     @Override
     public boolean create(CustomerAccount account) {
         

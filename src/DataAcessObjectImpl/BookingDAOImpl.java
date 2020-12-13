@@ -5,10 +5,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-/**
- *
- * @author Unknow
- */
 public class BookingDAOImpl implements BookingDAO {
 
     @Override
@@ -30,8 +26,8 @@ public class BookingDAOImpl implements BookingDAO {
         
         return booking;
     }
-    
-    
+   
+    @Override
     public ArrayList<Booking> findByIdCustomerAccount(int idCustomerAccount) {
         
         ArrayList<Booking> bookings = new ArrayList();
@@ -51,10 +47,8 @@ public class BookingDAOImpl implements BookingDAO {
         System.out.println(bookings);
         return bookings;
     }
-<<<<<<< Updated upstream
-
-=======
     
+    @Override
     public boolean add(Date bookingDate, int idAccount, int idCoupon) {
 
         try {
@@ -78,7 +72,8 @@ public class BookingDAOImpl implements BookingDAO {
         }
 
     }
-
+   
+    @Override
     public boolean update(int bookingNo, Date bookingDate, int idAccount, int idCoupon, int newBookingNo) {
 
         try {
@@ -121,6 +116,8 @@ public class BookingDAOImpl implements BookingDAO {
         return true;
 
     }
+   
+    @Override
     public boolean delete(int bookingNo) {
 
         Booking booking = null;
@@ -139,5 +136,5 @@ public class BookingDAOImpl implements BookingDAO {
 
         
     }
->>>>>>> Stashed changes
+
 }

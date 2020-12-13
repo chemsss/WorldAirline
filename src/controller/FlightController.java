@@ -1,8 +1,11 @@
 package controller;
 
 import DataAcessObjectImpl.FlightDAOImpl;
+import java.sql.Timestamp;
+import javax.swing.JOptionPane;
 import model.Flight;
-
+import Exceptions.EmptyFields;
+import java.util.Date;
 public class FlightController {
 
     public FlightController() {
@@ -14,11 +17,6 @@ public class FlightController {
         return new FlightDAOImpl().find(idFlight);
 
     }
-<<<<<<< Updated upstream
-    
-            
-    
-=======
 
     public static void updateFlight(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {
 
@@ -70,8 +68,5 @@ public class FlightController {
 
         }
     }
-     
-    
 
->>>>>>> Stashed changes
 }

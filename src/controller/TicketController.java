@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import DataAcessObjectImpl.TicketDAOImpl;
-import model.Airport;
+import javax.swing.JOptionPane;
+import model.Passenger;
 import model.Ticket;
 
-/**
- *
- * @author Unknow
- */
 public class TicketController {
 
     public static Ticket getTicket(int ticketNo) {
@@ -20,23 +12,16 @@ public class TicketController {
         return new TicketDAOImpl().getTicket(ticketNo);
     }
 
-    /*
-    public static Airport getDepartureAirport(int ticketNo) {
+    public static void addTicketToBooking(int bookingNo, Passenger passenger, int flightSeatNo, int idFlight) {
 
-        return new TicketDAOImpl().getDepartureAirport(ticketNo);
+        if (new TicketDAOImpl().add(bookingNo, passenger, flightSeatNo, idFlight) == false) {
+            JOptionPane.showMessageDialog(null, "Couldn't add ticket into the booking n°" + bookingNo + ".", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
-    public static Airport getArrivalAirport(int ticketNo) {
-
-        return new TicketDAOImpl().getArrivalAirport(ticketNo);
+    public static void deleteFlight(int idFlight) {
+        new TicketDAOImpl().delete(idFlight);
+        JOptionPane.showMessageDialog(null, "The ticket has been deleted");
     }
-    
-    public static void getImage(int ticketNo )
-    {
-        new TicketDAOImpl().getImg(ticketNo);
-    }
-        
-*/
-        
-
 }

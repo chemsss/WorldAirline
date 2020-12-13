@@ -1,17 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataAcessObject;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import model.*;
 
-/**
- *
- * @author Unknow
- */
 public interface BookingDAO {
-    
-      public Booking find(int bookingNo);
+
+    public Booking find(int bookingNo);
+
+    public ArrayList<Booking> findByIdCustomerAccount(int idCustomerAccount);
+
+    public boolean add(Date bookingDate, int idAccount, int idCoupon);
+
+    public boolean update(int bookingNo, Date bookingDate, int idAccount, int idCoupon, int newBookingNo);
+
+    public boolean delete(int bookingNo);
+
 }
