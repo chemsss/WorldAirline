@@ -25,6 +25,8 @@ public class EmployeeLoginChoice implements ActionListener {
                    
                     System.out.println("oui");
                     frame.dispose();
+                    frame.getMainMenuFrame().dispose();
+                    new EmployeeHome();
                     
                 }
                 else{

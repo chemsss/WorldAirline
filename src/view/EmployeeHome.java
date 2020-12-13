@@ -37,6 +37,8 @@ public class EmployeeHome extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JTable searchDeapartureFlights;
     
+    
+    
     private final int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     // End of variables declaration     

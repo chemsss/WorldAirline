@@ -192,6 +192,27 @@ public class FlightDAOImpl implements FlightDAO {
         
         return true;
     }
+    
+    
+    public int getCountMonth(int month) {
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT COUNT(*) FROM flight WHERE month(departureDate)=" +month +";");
+
+            if (myRs.first()) {
+                return myRs.getInt("COUNT(*)");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+        System.out.println("Reached end of method getCountflightMonth");
+        return 0;
+    }
+    
+    
+    
 
     @Override
     public boolean update(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {

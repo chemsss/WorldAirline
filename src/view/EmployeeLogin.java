@@ -12,10 +12,11 @@ public final class EmployeeLogin extends JFrame {
     private final JTextField jTextField2;
     private final JPasswordField password;
 
+    private MainMenu frame;
 
-    public EmployeeLogin() {
+    public EmployeeLogin(MainMenu frame) {
         super("Employee login");
-
+        this.frame = frame;
         jPanel1 = new JPanel();
         jLabel1 = new JLabel();
         jLabel3 = new JLabel();
@@ -104,7 +105,7 @@ public final class EmployeeLogin extends JFrame {
         jButton2.setText("Login");
         jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
         jButton2.setBorderPainted(false);
-        //jButton2.addActionListener(controller);
+        jButton2.addActionListener(new EmployeeLoginChoice(this));
         
         
         
@@ -127,5 +128,9 @@ public final class EmployeeLogin extends JFrame {
         list[1] = String.valueOf(password.getPassword()); //char[] to String
 
         return list;
+    }
+
+    public MainMenu getMainMenuFrame() {
+        return frame;
     }
 }

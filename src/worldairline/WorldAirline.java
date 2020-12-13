@@ -4,14 +4,21 @@ import DataAcessObjectImpl.*;
 import controller.BookingController;
 import controller.FieldsController;
 import controller.FlightController;
+import java.awt.Frame;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import model.*;
 import java.security.MessageDigest;
 import java.util.Arrays;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import view.*;
+
+import org.jfree.chart.*;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class WorldAirline {
 
@@ -19,7 +26,9 @@ public class WorldAirline {
     public static void main(String[] args) throws SQLException {
         
          
-       MainMenu menu = new MainMenu();
+       //MainMenu menu = new MainMenu();
+       
+       //EmployeeHome home = new EmployeeHome();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
@@ -147,6 +156,57 @@ public class WorldAirline {
         */
         
         //FlightController.addFlight(9, "EcoAirline", "CHH", "CCC", new Timestamp(120, 02,9,13,40,07,0), new Timestamp(120, 02,05,15,40,03,0), 10, 90, 100, (float)1000.98, (float)700.50, (float)200.12);
+        DefaultCategoryDataset datasett = new DefaultCategoryDataset();  
+  
+        // Population in 2005  
+        
+        
+        
+        datasett.addValue(new FlightDAOImpl().getCountMonth(1), "Full flights", "January");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(2), "Full flights", "February");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(3), "Full flights", "Mars");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(4), "Full flights", "April");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(5), "Full flights", "May");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(6), "Full flights", "June"); 
+        datasett.addValue(new FlightDAOImpl().getCountMonth(7), "Full flights", "July");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(8), "Full flights", "August");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(9), "Full flights", "September"); 
+        datasett.addValue(new FlightDAOImpl().getCountMonth(10), "Full flights", "October");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(11), "Full flights", "November");  
+        datasett.addValue(new FlightDAOImpl().getCountMonth(12), "Full flights", "December");
+        
+        /*datasett.addValue(50, "Full flights", "January");  
+        datasett.addValue(60, "Full flights", "February");  
+        datasett.addValue(30, "Full flights", "Mars");  
+        datasett.addValue(50, "Full flights", "April");  
+        datasett.addValue(60, "Full flights", "May");  
+        datasett.addValue(30, "Full flights", "June"); 
+        datasett.addValue(50, "Full flights", "July");  
+        datasett.addValue(60, "Full flights", "August");  
+        datasett.addValue(30, "Full flights", "September"); 
+        datasett.addValue(50, "Full flights", "October");  
+        datasett.addValue(60, "Full flights", "November");  
+        datasett.addValue(30, "Full flights", "December"); */
+/*
+        // Population in 2010  
+        datasett.addValue(15, "USA", "2010");  
+        datasett.addValue(20, "India", "2010");  
+        datasett.addValue(25, "China", "2010");  
+
+        // Population in 2015  
+        datasett.addValue(20, "USA", "2015");  
+        datasett.addValue(25, "India", "2015");  
+        datasett.addValue(30, "China", "2015");  */
+        
+        CategoryDataset dataset = datasett;
+        JFreeChart chart = ChartFactory.createBarChart("Number of flights according through the year", "Month", "Number of flights", dataset);
+        
+        ChartPanel panel = new ChartPanel(chart);
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setVisible(true);
+        frame.setExtendedState(Frame.MAXIMIZED_BOTH);
+        frame.getContentPane().add(panel);
     }
     
 }

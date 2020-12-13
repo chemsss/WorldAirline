@@ -240,7 +240,7 @@ public class BookingDAOImpl implements BookingDAO {
     }
     
     
-    public void delete(int bookingNo) {
+    public boolean delete(int bookingNo) {
         
         Booking booking = null;
 
@@ -248,8 +248,11 @@ public class BookingDAOImpl implements BookingDAO {
             PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM booking WHERE bookingNo=" + bookingNo + ";");
             myStmt.executeUpdate();
             
+            return true;
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            return false;
         }
                 
     }

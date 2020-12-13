@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import model.Coupon;
 
 /**
@@ -40,24 +41,23 @@ public class CouponDAOImpl {
     }
     
     
-    public Coupon findByDiscount(float discount) {
+    public ArrayList<Coupon> findAllCoupons() {
         
-        Coupon coupon = null; 
+        ArrayList<Coupon> coupons = new ArrayList(); 
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from coupon where discount=" + new BigDecimal(discount) + ";");
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM coupon;");
 
-            if (myRs.first()) {
-                coupon = new Coupon(myRs.getInt("idcoupon"), myRs.getString("couponCode"), discount);
-                return coupon;
+            while(myRs.next()) {
+                coupons.add(new Coupon(myRs.getInt("idcoupon"), myRs.getString("couponCode"), myRs.getBigDecimal("discount").floatValue()));
             }
+            return coupons;
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return null;
-        }
-        return null;
-        
+            return new ArrayList<Coupon>();
+        }      
     }
     
     public boolean checkCode(String code) {
@@ -102,12 +102,12 @@ public class CouponDAOImpl {
     }
     
     
-    public boolean add(String code, int idAccount) {
+    public boolean add(String code, float discount) {
         
         try {
             PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `coupon` (`couponCode`, `discount`) VALUES (?, ?);");
             myPrepStmt.setString(1, code);
-            myPrepStmt.setInt(2, idAccount);
+            myPrepStmt.setBigDecimal(2, new BigDecimal(discount));
             
             myPrepStmt.executeUpdate();
             
@@ -119,5 +119,21 @@ public class CouponDAOImpl {
         }
         
     }
+    
+    public boolean delete(String code) {
+        
+        try {
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM coupon WHERE couponCode='" + code + "';");
+            myStmt.executeUpdate();
+                        
+            return true;
+                
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+    }
+    
     
 }
