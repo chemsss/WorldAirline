@@ -15,6 +15,8 @@ import model.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
 import model.CustomerAccount;
+import model.Airport;
+import model.Flight;
 import model.Passenger;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeFactory;
@@ -345,4 +347,44 @@ public class TicketDAOImpl implements TicketDAO {
         }
     }
 
+
+    public Airport getDepartureAirport(int ticketNo) {
+
+        Airport departureAirport = null;
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select flight_idFlight from ticket where ticketNo=" + ticketNo + ";");
+
+            while (myRs.next()) {
+                departureAirport = new FlightDAOImpl().find((myRs.getInt("flight_idFlight"))).getDepartureAirport();
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return departureAirport;
+
+    }
+
+    public Airport getArrivalAirport(int ticketNo) {
+
+        Airport arrivalAirport = null;
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select flight_idFlight from ticket where ticketNo=" + ticketNo + ";");
+
+            while (myRs.next()) {
+                arrivalAirport = new FlightDAOImpl().find((myRs.getInt("flight_idFlight"))).getArrivalAirport();
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return arrivalAirport;
+
+    }
 }

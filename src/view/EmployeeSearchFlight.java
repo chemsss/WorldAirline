@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import model.Flight;
 import DataAcessObjectImpl.*;
+import controller.FlightController;
 
 /**
  *
@@ -62,10 +63,15 @@ public class EmployeeSearchFlight extends JPanel {
         search1.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FlightDAOImpl request=new FlightDAOImpl();
-                Flight azer;
-               azer= request.find(Integer.parseInt(textidflight1.getText()));
-                System.out.println(azer.getDepartureAirport());
+                if (!textidflight1.getText().isEmpty())
+                {
+                    ArrayList<Flight> flight= new ArrayList();
+                    
+                    flight.add(FlightController.getFlight(Integer.parseInt(textidflight1.getText())));
+                    
+                    searchDeapartureFlights1.setModel(new SearchFlightsTableModel(flight));
+                    
+                }
                 
             }
         });
@@ -87,12 +93,10 @@ public class EmployeeSearchFlight extends JPanel {
         add(idflight1);
         idflight1.setBounds(40, 60, 156, 22);
 
-        ArrayList<Flight> flights =  new ArrayList<Flight>();
-        flights.add(new FlightDAOImpl().find(5));
-        System.out.println(flights.get(0).getIdFlight());
-        SearchFlightsTableModel  model = new SearchFlightsTableModel(flights);
+
+
         searchDeapartureFlights1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
-        searchDeapartureFlights1.setModel(model);
+
         searchDeapartureFlights1.setFocusable(false);
         searchDeapartureFlights1.setGridColor(new java.awt.Color(0, 0, 0));
         searchDeapartureFlights1.setOpaque(false);

@@ -184,6 +184,7 @@ public class BookingDAOImpl implements BookingDAO {
                 }
             }
                                                     
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
@@ -213,12 +214,14 @@ public class BookingDAOImpl implements BookingDAO {
             myStmt.setDate(2, bookingDate);
             if(idAccount==0) {
                 myStmt.setNull(3, Types.INTEGER);
+
             }
             else {
                 myStmt.setInt(3, idAccount);
             }
             if(idCoupon==0) {
                 myStmt.setNull(4, Types.INTEGER);
+
             }
             else {
                 myStmt.setInt(4, idCoupon);
@@ -226,7 +229,7 @@ public class BookingDAOImpl implements BookingDAO {
             myStmt.setInt(5, bookingNo);
 
             myStmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;

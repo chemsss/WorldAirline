@@ -107,6 +107,20 @@ public class Flight {
         
         return timeStamp;
     }
+    public String getDepartureMinTimeToString()
+    {
+        System.out.println(departureDate);
+        String timeStamp = new SimpleDateFormat("mm").format(departureDate);
+        
+        return timeStamp;
+    }
+    
+    public String getDepartureHourTimeToString()
+    {
+        
+        return Integer.toString(departureDate.getHours());
+    }
+    
     
      public String getArrivalDateTimeToString()
     {
@@ -131,6 +145,19 @@ public class Flight {
     
      
     
+     
+     
+     public String  getArrivalHourTimeToString()
+    {
+        return Integer.toString(arrivalDate.getHours());
+    }
+     public String getArrivalMinTimeToString()
+    {
+
+        String timeStamp = new SimpleDateFormat("mm").format(arrivalDate);
+        System.out.println(timeStamp);
+        return timeStamp;
+    }
      
      public FlightSeat getseatFromClass(String className) {
          for(int i=0; i<seats.size(); ++i) {

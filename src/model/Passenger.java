@@ -154,6 +154,6 @@ public class Passenger {
     public String toString() {
         return "Passenger{" + "idPassenger=" + idPassenger + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", birthDate=" + birthDate + ", telephoneNumber=" + telephoneNumber + ", nationality=" + nationality + ", passportNo=" + passportNo + ", tickets=" + tickets + '}';
     }
-    
-        
+
+          
 }

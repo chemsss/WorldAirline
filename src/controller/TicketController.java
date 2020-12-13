@@ -68,7 +68,12 @@ public class TicketController {
         new TicketDAOImpl().getImg(ticketNo);
     }
         
-*/
-        
+*/  
 
+      public static void deleteFlight (int idFlight)
+    {
+        new TicketDAOImpl().delete(idFlight);
+        JOptionPane.showMessageDialog(null, "The ticket has been deleted");
+    }
+      
 }

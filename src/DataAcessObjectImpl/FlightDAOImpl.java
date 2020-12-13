@@ -98,7 +98,7 @@ public class FlightDAOImpl implements FlightDAO {
     }
     
     public boolean update(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate, int newIdFlight) {
-        
+    
         try {
             
             PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement(/*"SELECT * FROM customeraccount WHERE idCustomerAccount=" +account.getIdAccount() +"; "
@@ -119,7 +119,7 @@ public class FlightDAOImpl implements FlightDAO {
             myStmt.setTimestamp(6, departureDate);
             myStmt.setTimestamp(7, arrivalDate);
             myStmt.setInt(8, idFlight);
-            
+           
 
             myStmt.executeUpdate();
             
@@ -184,13 +184,28 @@ public class FlightDAOImpl implements FlightDAO {
                 System.out.println("Couldn't find the just created flight to create the seats. " +flight.getDepartureDateTimeSQLToString() + " " +flight.getArrivalDateTimeSQLToString());
             }
             
-            
+       
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }
         
         return true;
+    }
+
+    @Override
+    public boolean update(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean add(int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean delete(int idFlight) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

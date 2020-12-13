@@ -5,6 +5,11 @@
  */
 package view;
 
+import java.util.Date;
+import java.util.Calendar;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+
 /**
  *
  * @author bibes
@@ -13,6 +18,7 @@ public class EmployeeAddFlightTest extends javax.swing.JPanel {
 
     /**
      * Creates new form EmployeeAddFlightTest
+     * 
      */
     public EmployeeAddFlightTest() {
         initComponents();
@@ -51,8 +57,12 @@ public class EmployeeAddFlightTest extends javax.swing.JPanel {
         choicearrivaldate = new com.toedter.calendar.JDateChooser();
         choicedeparturedate = new com.toedter.calendar.JDateChooser();
         departuredate = new javax.swing.JLabel();
-        nameoftheflight = new javax.swing.JLabel();
-        textnameflight = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox2 = new javax.swing.JComboBox();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -154,25 +164,40 @@ public class EmployeeAddFlightTest extends javax.swing.JPanel {
         arrivaldate.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         arrivaldate.setText("Arrival Date:");
         add(arrivaldate);
-        arrivaldate.setBounds(50, 200, 140, 22);
+        arrivaldate.setBounds(50, 170, 140, 22);
         add(choicearrivaldate);
-        choicearrivaldate.setBounds(250, 200, 120, 20);
+        choicearrivaldate.setBounds(250, 170, 120, 20);
         add(choicedeparturedate);
-        choicedeparturedate.setBounds(250, 150, 120, 20);
+        choicedeparturedate.setBounds(250, 100, 120, 20);
 
         departuredate.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         departuredate.setText("Departure Date:");
         add(departuredate);
-        departuredate.setBounds(50, 150, 140, 22);
+        departuredate.setBounds(50, 100, 140, 22);
 
-        nameoftheflight.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        nameoftheflight.setText("Name of the flight:");
-        add(nameoftheflight);
-        nameoftheflight.setBounds(50, 100, 140, 16);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox1);
+        jComboBox1.setBounds(330, 130, 40, 20);
 
-        textnameflight.setText("jTextField2");
-        add(textnameflight);
-        textnameflight.setBounds(250, 100, 120, 20);
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox2);
+        jComboBox2.setBounds(330, 200, 40, 20);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox3);
+        jComboBox3.setBounds(260, 130, 40, 20);
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(jComboBox4);
+        jComboBox4.setBounds(260, 200, 40, 20);
+
+        jLabel1.setText("H");
+        add(jLabel1);
+        jLabel1.setBounds(310, 200, 10, 14);
+
+        jLabel2.setText("H");
+        add(jLabel2);
+        jLabel2.setBounds(310, 130, 10, 14);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -193,14 +218,18 @@ public class EmployeeAddFlightTest extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser choicedeparturedate;
     private javax.swing.JLabel departureairport;
     private javax.swing.JLabel departuredate;
-    private javax.swing.JLabel nameoftheflight;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel nbrseatsbuisness;
     private javax.swing.JLabel nbrseatseco;
     private javax.swing.JLabel numberseatsfrst;
     private javax.swing.JLabel pricefirst;
     private javax.swing.JLabel priceseatbuisness;
     private javax.swing.JLabel priceseateco;
-    private javax.swing.JTextField textnameflight;
     private javax.swing.JTextField textnbrseatfirst;
     private javax.swing.JTextField textnbrseatsbuisness;
     private javax.swing.JTextField textpriceseatbuisness;

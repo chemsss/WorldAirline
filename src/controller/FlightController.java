@@ -3,8 +3,10 @@ import DataAcessObjectImpl.AirplaneDAOImpl;
 import DataAcessObjectImpl.AirportDAOImpl;
 import DataAcessObjectImpl.FlightDAOImpl;
 import DataAcessObjectImpl.FlightSeatDAOImpl;
+import Exceptions.EmptyFields;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import model.Flight;
 import model.FlightSeat;
@@ -24,7 +26,6 @@ public class FlightController {
         if (new FlightDAOImpl().add(flight, nbSeatsFirstClass, nbSeatsBusinessClass, nbSeatsEconomyClass, priceFirst, priceBusiness, priceEconomy) == false) {
             JOptionPane.showMessageDialog(null, "unable to add flight");
         }
-
     }
     
     public static Flight getFlight(int idFlight) {
@@ -38,6 +39,46 @@ public class FlightController {
         return new FlightSeatDAOImpl().getAvailableSeats(idFlight, className);
         
     }
+    
+    public static void updateFlight(int idFlight, int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {
+        
+        if(new FlightDAOImpl().update(idFlight, idAirplane, airlineName, idDepartureAirport, idArrivalAirport, departureDate, arrivalDate)==false) 
+        {
+            JOptionPane.showMessageDialog(null, "unable to update flight");
+        }
+        
+    }
+    
+    public static boolean CheckFlightInfo( Date dateDeparture  ,Date dateArrival)
+     {
+         try
+         {
+             if ((dateDeparture==null)&&(dateArrival==null)||(dateDeparture==null)&&(dateArrival!=null)||(dateArrival==null)&&(dateDeparture!=null))
+         {
+             
+             throw new EmptyFields();
+              
+         }
+             return true;
+         }
+         catch(Exception e)
+         {
+             System.out.println(e.getMessage());
+         }
+       
+               
+         
+        return false;
+     }
+    
+    
+    public static void deleteFlight (int idFlight)
+    {
+        new FlightDAOImpl().delete(idFlight);
+        JOptionPane.showMessageDialog(null, "The seat has been deleted");
+    }
+    
+    
     
             
     

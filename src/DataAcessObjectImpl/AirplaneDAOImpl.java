@@ -3,6 +3,7 @@ package DataAcessObjectImpl;
 
 import DataAcessObject.AirplaneDAO;
 import java.sql.*;
+import java.util.ArrayList;
 import model.Airplane;
 
 /**
@@ -53,5 +54,28 @@ public class AirplaneDAOImpl implements AirplaneDAO {
     
     
     
+    @Override
+    public Airplane[] findAllAirplanes() {
 
+        ArrayList<Airplane> airplanes = new ArrayList<>();
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM airplane;");
+
+            while(myRs.next()) {
+                airplanes.add(new Airplane(myRs.getInt("idAirplane"), myRs.getString("model"), myRs.getInt("seatCapacity")));
+            }
+
+            Airplane[] airplanesFound = new Airplane[airplanes.size()];
+            for(int i = 0 ; i < airplanes.size() ; ++i) {
+              airplanesFound[i] = airplanes.get(i);
+            }
+            return airplanesFound;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }

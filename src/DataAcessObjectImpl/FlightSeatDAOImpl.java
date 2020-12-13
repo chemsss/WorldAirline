@@ -27,7 +27,7 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            
+
         }
         return flightSeats;
     }
@@ -122,6 +122,16 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
             return false;
         }
         
+    }
+
+    @Override
+    public boolean add(int seatNumber, int idFlight, String className, BigDecimal seatPrice, boolean isAvailable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean delete(FlightSeat seat) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

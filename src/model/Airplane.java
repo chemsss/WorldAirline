@@ -8,7 +8,7 @@ public class Airplane {
 
     @Override
     public String toString() {
-        return "Airplane{" + "idAirplane=" + idAirplane + ", model=" + model + ", seatCapacity=" + seatCapacity + '}';
+        return  model ;
     }
 
     public Airplane(int idAirplane, String model, int seatCapacity) {
