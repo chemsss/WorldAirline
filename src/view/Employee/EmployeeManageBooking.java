@@ -1,6 +1,5 @@
 package view.Employee;
 
-import DataAcessObjectImpl.BookingDAOImpl;
 import controller.BookingController;
 import controller.FlightController;
 import controller.SearchTicketsTableModel;

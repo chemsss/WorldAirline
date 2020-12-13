@@ -1,6 +1,6 @@
 package view;
 
-import view.Customer.EmployeeLogin;
+import view.Employee.EmployeeLogin;
 import view.Customer.LogInFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,17 +22,13 @@ public class MainMenuChoice implements ActionListener {
                 break;
 
             case "Subscribe":
-             //   new CustomerLogin();
-                //  frame.dispose(); // on ferme la fenetre actuelle
                 break;
 
             case "Book a Flight !":
-                new LogInFrame(frame);
-                //frame.dispose(); // on ferme la fenetre actuelle
+                new LogInFrame(frame);  
                 break;
             case "Admin":
                  new EmployeeLogin();
-               //  frame.dispose(); // on ferme la fenetre actuelle
                 break;
         }
 

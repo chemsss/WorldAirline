@@ -55,7 +55,6 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         initComponents();
         setPreferredSize(new Dimension(screenWidth, screenHeight));
         setBounds(0, 0, screenWidth, screenHeight);
-
         this.setBackground(new java.awt.Color(55, 112, 155));
     }
 

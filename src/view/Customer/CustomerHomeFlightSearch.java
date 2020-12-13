@@ -1,6 +1,5 @@
 package view.Customer;
 
-import view.Customer.CustomerFlightSearchChoice;
 import DataAcessObjectImpl.FlightDAOImpl;
 import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;

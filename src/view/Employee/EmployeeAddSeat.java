@@ -3,7 +3,6 @@ package view.Employee;
 import Exceptions.EmptyFields;
 import controller.FlightSeatsController;
 import java.math.BigDecimal;
-import javax.swing.JOptionPane;
 import model.FlightSeat;
 
 public class EmployeeAddSeat extends javax.swing.JFrame {

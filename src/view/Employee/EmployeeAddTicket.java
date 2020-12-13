@@ -2,18 +2,13 @@ package view.Employee;
 
 import Exceptions.EmptyFields;
 import com.toedter.calendar.JDateChooser;
-import controller.FieldsController;
-import controller.FlightController;
 import controller.FlightSeatsController;
 import controller.TicketController;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.*;
 import model.Booking;
-import model.CustomerAccount;
 import model.Flight;
 import model.FlightSeat;
 import model.Passenger;

@@ -1,6 +1,5 @@
 package view.Customer;
 
-import controller.PassengerController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
@@ -26,7 +25,6 @@ public class MyAccountFrame extends javax.swing.JFrame {
     JPanel MyBookings;
 
     private CustomerAccount loggedInCustomer;
-    private Ticket selectedTicket;
 
     public MyAccountFrame(CustomerAccount loggedInCustomer) {
         this.loggedInCustomer = loggedInCustomer;

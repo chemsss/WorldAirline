@@ -1,8 +1,5 @@
 package view.Customer;
 
-import view.Employee.EmployeeAddTicket;
-import java.awt.Dimension;
-
 public class PaymentPanel extends javax.swing.JPanel {
 
     private javax.swing.JTextField cardNumber;

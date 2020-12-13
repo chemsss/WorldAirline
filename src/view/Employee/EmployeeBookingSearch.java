@@ -1,4 +1,4 @@
-package view.Customer;
+package view.Employee;
 
 import controller.BookingController;
 import controller.SearchBookingsTableModel;
@@ -13,14 +13,10 @@ public class EmployeeBookingSearch extends JPanel {
     private javax.swing.JLabel title;
     private javax.swing.JLabel bookingNo;
     private javax.swing.JTextField bookingNoField;
-
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-
     private javax.swing.JButton search;
-
     private ArrayList<Booking> bookings;
-
     private final int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 

@@ -1,4 +1,4 @@
-package view.Customer;
+package view.Employee;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -26,7 +26,6 @@ public final class EmployeeLogin extends JFrame {
         jLabel2 = new JLabel();
         password = new JPasswordField("Password");
 
-        //controller = new EmployeeLoginChoice(this); // création du controller
         initEmployeeLogin();
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -84,8 +83,6 @@ public final class EmployeeLogin extends JFrame {
         jPanel2.add(password);
         password.setBounds(70, 220, 270, 60);
 
-        //jTextField1.setBounds(70, 200, 270, 50);
-
         jTextField2.setFont(new Font("Segoe UI Light", 0, 20)); // NOI18N
         jTextField2.setForeground(new Color(51, 51, 51));
         jTextField2.setText("Enter email adress...");
@@ -103,11 +100,7 @@ public final class EmployeeLogin extends JFrame {
         jButton2.setForeground(new Color(255, 255, 255));
         jButton2.setText("Login");
         jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
-        jButton2.setBorderPainted(false);
-        //jButton2.addActionListener(controller);
-        
-        
-        
+        jButton2.setBorderPainted(false);        
         jButton2.setActionCommand("Login");
         jButton2.setFocusPainted(false);
 

@@ -1,4 +1,4 @@
-package view.Customer;
+package view.Employee;
 
 import controller.EmployeeLoginController;
 import java.awt.event.*;

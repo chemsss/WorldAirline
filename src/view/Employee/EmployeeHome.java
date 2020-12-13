@@ -1,18 +1,12 @@
 package view.Employee;
 
-import view.Employee.EmployeeManageBooking;
-import view.Employee.EmployeeSearchFlight;
-import view.Employee.EmployeeAddFlight;
-import java.awt.Color;
+
 import java.awt.Frame;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
-import view.Employee.EmployeeManageFlight;
-import view.Customer.EmployeeBookingSearch;
 
 public class EmployeeHome extends javax.swing.JFrame {
 
-    // Variables declaration - do not modify                     
     private javax.swing.JMenuItem AddCoupon;
     private javax.swing.JMenuItem AddFlight;
     private javax.swing.JMenuItem DeleteBooking;
@@ -35,7 +29,6 @@ public class EmployeeHome extends javax.swing.JFrame {
 
         initComponents();
         setExtendedState(Frame.MAXIMIZED_BOTH);
-        //this.setSize(screenWidth ,screenHeight);
 
         this.setVisible(true);
 

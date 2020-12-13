@@ -1,11 +1,8 @@
 package view.Customer;
 
-import view.Customer.LogInFrame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
 
 public class SignUpPanel extends javax.swing.JPanel {
  //SignUp Panel
