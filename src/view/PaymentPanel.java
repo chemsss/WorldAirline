@@ -1,5 +1,6 @@
 package view;
 
+import test.EmployeeAddTicket;
 import java.awt.Dimension;
 
 public class PaymentPanel extends javax.swing.JPanel {
@@ -80,6 +81,7 @@ public class PaymentPanel extends javax.swing.JPanel {
         this.add(couponCode);
         couponCode.setBounds(370, 600, 100, 40);
 
+<<<<<<< Updated upstream:src/view/PaymentPanel.java
         amountAfterDiscount.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
         amountAfterDiscount.setForeground(new java.awt.Color(255, 255, 255));
         amountAfterDiscount.setText("Total Price :");
@@ -104,7 +106,35 @@ public class PaymentPanel extends javax.swing.JPanel {
         });
         this.add(securityCode);
         securityCode.setBounds(120, 412, 210, 32);
+=======
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Total Price :");
+        this.add(jLabel6);
+        jLabel6.setBounds(340, 520, 130, 30);
 
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\credit_card_30px.png")); // NOI18N
+        this.add(jLabel7);
+        jLabel7.setBounds(50, 310, 40, 30);
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\GITHUB\\worldAirline\\img\\calendar_30px.png")); // NOI18N
+        this.add(jLabel8);
+        jLabel8.setBounds(50, 350, 30, 50);
+
+        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+                jTextField3.setBounds(120, 412, 210, 32);
+
+        jTextField3.setText("Security Code");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            }
+        });
+        this.add(jTextField3);
+>>>>>>> Stashed changes:src/view/PayementPanel.java
+
+        
         dateExp.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         dateExp.setText("MM / YY");
         dateExp.addActionListener(new java.awt.event.ActionListener() {
