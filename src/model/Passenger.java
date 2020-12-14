@@ -126,7 +126,6 @@ public class Passenger {
     
     public String getBirthDateDayToString()
     {
-        System.out.println(birthDate);
         String timeStamp = new SimpleDateFormat("dd").format(birthDate);
 
         return timeStamp;
@@ -134,14 +133,12 @@ public class Passenger {
 
     public String getBirthDateMonthToString()
     {
-        System.out.println(birthDate);
         String timeStamp = new SimpleDateFormat("MM").format(birthDate);
 
         return timeStamp;
     }
     public String getBirthDayYearToString()
     {
-        System.out.println(birthDate);
         String timeStamp = new SimpleDateFormat("yyyy").format(birthDate);
 
         return timeStamp;

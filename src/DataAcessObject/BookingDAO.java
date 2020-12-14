@@ -15,5 +15,8 @@ public interface BookingDAO {
     public boolean update(int bookingNo, Date bookingDate, int idAccount, int idCoupon, int newBookingNo);
 
     public boolean delete(int bookingNo);
+   
+    public ArrayList<Booking> findAllBookings();
+
 
 }

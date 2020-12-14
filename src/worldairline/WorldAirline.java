@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import view.Employee.EmployeeHome;
 
 public class WorldAirline {
 
@@ -41,6 +42,8 @@ pa
         
         
         try {
+            new EmployeeHome();
+            
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());

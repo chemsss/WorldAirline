@@ -39,10 +39,10 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
     private javax.swing.JTextField textNbrSeatFirst;
     private javax.swing.JTextField textnbrSeatsBusiness;
     private javax.swing.JTextField textpriceSeatBusiness;
-    private javax.swing.JTextField textNbreSeateco;
+    private javax.swing.JTextField textNbreSeatEco;
     private javax.swing.JTextField textPriceSeatFirst;
     private javax.swing.JTextField textPriceSeatsEco;
-      private javax.swing.JLabel airline;
+    private javax.swing.JLabel airline;
     private javax.swing.JTextField airlineField;
 
     private javax.swing.JPanel center;
@@ -64,7 +64,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         addAflight = new javax.swing.JLabel();
         nbrSeatsEco = new javax.swing.JLabel();
         priceSeatEco = new javax.swing.JLabel();
-        textNbreSeateco = new javax.swing.JTextField();
+        textNbreSeatEco = new javax.swing.JTextField();
         textnbrSeatsBusiness = new javax.swing.JTextField();
         textpriceSeatBusiness = new javax.swing.JTextField();
         nbrSeatsBusiness = new javax.swing.JLabel();
@@ -109,7 +109,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
 
         nbrSeatsEco.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N // NOI18N
         nbrSeatsEco.setForeground(new java.awt.Color(255, 255, 255));
-        nbrSeatsEco.setText("Seats Number (Economy Class):");
+        nbrSeatsEco.setText("Number of Seats (Economy Class):");
         center.add(nbrSeatsEco);
         nbrSeatsEco.setBounds(530, 100, 310, 25);
 
@@ -121,7 +121,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
 
         nbrSeatsBusiness.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N // NOI18N
         nbrSeatsBusiness.setForeground(new java.awt.Color(255, 255, 255));
-        nbrSeatsBusiness.setText("Seats Number (Business Class):");
+        nbrSeatsBusiness.setText("Number of Seats (Business Class):");
         center.add(nbrSeatsBusiness);
         nbrSeatsBusiness.setBounds(530, 220, 280, 25);
 
@@ -133,13 +133,13 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
 
         numberSeatsFrst.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N // NOI18N
         numberSeatsFrst.setForeground(new java.awt.Color(255, 255, 255));
-        numberSeatsFrst.setText("Seats Number (First Class):");
+        numberSeatsFrst.setText("Number of Seats (First Class):");
         center.add(numberSeatsFrst);
         numberSeatsFrst.setBounds(530, 340, 280, 25);
 
         priceFirst.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N // NOI18N
         priceFirst.setForeground(new java.awt.Color(255, 255, 255));
-        priceFirst.setText("Price of a seat for this class:");
+        priceFirst.setText("Seat Price :");
         center.add(priceFirst);
         priceFirst.setBounds(530, 370, 260, 25);
 
@@ -256,10 +256,10 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         center.add(hourlyDepartureLabel);
         hourlyDepartureLabel.setBounds(315, 148, 10, 16);
 
-        textNbreSeateco.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        textNbreSeateco.setText("");
-        center.add(textNbreSeateco);
-        textNbreSeateco.setBounds(830, 90, 150, 32);
+        textNbreSeatEco.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        textNbreSeatEco.setText("");
+        center.add(textNbreSeatEco);
+        textNbreSeatEco.setBounds(830, 90, 150, 32);
 
         textPriceSeatsEco.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         textPriceSeatsEco.setText("");
@@ -286,9 +286,18 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         center.add(textPriceSeatFirst);
         textPriceSeatFirst.setBounds(830, 370, 150, 32);
 
+        if(!(textNbreSeatEco.getText().isEmpty() || textPriceSeatsEco.getText().isEmpty() || textnbrSeatsBusiness.getText().isEmpty() || textpriceSeatBusiness.getText().isEmpty()|| textNbrSeatFirst.getText().isEmpty() || textPriceSeatFirst.getText().isEmpty()))
+        {
+            FlightController.checkFlightSeat(textNbreSeatEco.getText(), textPriceSeatsEco.getText());
+            FlightController.checkFlightSeat(textnbrSeatsBusiness.getText(), textpriceSeatBusiness.getText());
+            FlightController.checkFlightSeat(textNbrSeatFirst.getText(),textPriceSeatFirst.getText());
+           
+        }
         add(center);
         center.setBounds(200, 30, 1000, 1000);
 
     }
+    
+    
 
 }

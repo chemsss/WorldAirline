@@ -63,7 +63,6 @@ public class EmployeeHome extends javax.swing.JFrame {
         manageFlight.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         manageFlight.setBackground(new java.awt.Color(255, 255, 255));
 
-        //manageFlight.
         SearchFlight.setText("Search Flight");
         SearchFlight.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
@@ -72,7 +71,7 @@ public class EmployeeHome extends javax.swing.JFrame {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getContentPane().removeAll();
-                jPanel2 = new EmployeeSearchFlight();
+                jPanel2 = new EmployeeFlightSearch();
                 initComponents();
                 setSize(screenWidth, screenHeight);
                 setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -104,7 +103,6 @@ public class EmployeeHome extends javax.swing.JFrame {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getContentPane().removeAll();
-                //jPanel2 = new EmployeeUpdateDeleteFlight();
                  jPanel2 = new EmployeeManageFlight();
    
                 initComponents();
@@ -150,7 +148,7 @@ public class EmployeeHome extends javax.swing.JFrame {
                 jPanel2 = new EmployeeManageBooking();
                 initComponents();
                 setSize(screenWidth, screenHeight);
-                                setExtendedState(Frame.MAXIMIZED_BOTH);
+                setExtendedState(Frame.MAXIMIZED_BOTH);
 
             }
         });
@@ -168,7 +166,7 @@ public class EmployeeHome extends javax.swing.JFrame {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getContentPane().removeAll();
-               // jPanel2 = new EmployeeAddCoupon();
+                jPanel2 = new EmployeeAddCoupon();
                 initComponents();
                 setSize(screenWidth, screenHeight);   
                 setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -185,7 +183,7 @@ public class EmployeeHome extends javax.swing.JFrame {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getContentPane().removeAll();
-           //     jPanel2 = new EmployeeSearchDeleteCoupon();
+               jPanel2 = new EmployeeManageCoupon();
                 initComponents();
                 setSize(screenWidth, screenHeight);
                                 setExtendedState(Frame.MAXIMIZED_BOTH);

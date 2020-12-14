@@ -47,11 +47,11 @@ public class EmployeeBookingSearch extends JPanel {
         add(title);
         title.setBounds((screenWidth / 2) - 100, 20, 300, 40);
 
-        jTable1.setModel(new SearchBookingsTableModel(bookings));
+        jTable1.setModel(new SearchBookingsTableModel(BookingController.findAllBookings()));
 
         search.setBackground(new java.awt.Color(255, 255, 255));
         search.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        search.setText("Next");
+        search.setText("Search");
         search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         search.setBorderPainted(false);
 
@@ -61,7 +61,8 @@ public class EmployeeBookingSearch extends JPanel {
 
                 if (!bookingNoField.getText().isEmpty()) {
 
-                    if (BookingController.checkBooking(Integer.parseInt(bookingNoField.getText()))) {
+                    if (BookingController.checkBooking(bookingNoField.getText())) {
+                    
                         bookings.add(BookingController.getBooking(Integer.parseInt(bookingNoField.getText())));
 
                         jTable1.setModel(new SearchBookingsTableModel(bookings));

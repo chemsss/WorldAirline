@@ -85,7 +85,7 @@ public class EmployeeManageBooking extends javax.swing.JPanel {
                 if (!bookingNoField.getText().isEmpty()) {
                     if (BookingController.getBooking(Integer.parseInt(bookingNoField.getText())) == null) {
                         JOptionPane.showMessageDialog(null, "The booking has not been founded");
-                  
+
                     } else {
                         selectedBooking = BookingController.getBooking(Integer.parseInt(bookingNoField.getText()));
                         choiceDepartureDate.setDate(selectedBooking.getBookingDate());
@@ -131,13 +131,13 @@ public class EmployeeManageBooking extends javax.swing.JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 if (!bookingNoField.getText().isEmpty()) {
-                   
+
                     try {
                         BookingController.updateBooking(Integer.parseInt(bookingNoField.getText()), (Date) choiceDepartureDate.getDate(), Integer.parseInt(customerAccountField.getText()), Integer.parseInt(priceofaseat2.getText()), Integer.parseInt(bookingNoField.getText()));
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
-                    
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Please enter the Booking No");
                 }
@@ -159,25 +159,21 @@ public class EmployeeManageBooking extends javax.swing.JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 if (!bookingNoField.getText().isEmpty()) {
-                   
+
                     try {
-                        if((BookingController.checkBooking(Integer.parseInt(bookingNoField.getText()))))
-                        {
+                        if ((BookingController.checkBooking(bookingNoField.getText()))) {
                             BookingController.deleteBooking(Integer.parseInt(bookingNoField.getText()));
                         }
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
 
-                    
-                }
-                  else {
+                } else {
                     JOptionPane.showMessageDialog(null, "Please enter the Booking No");
                 }
 
             }
         });
-
         deleteTickets.setBackground(new java.awt.Color(255, 255, 255));
         deleteTickets.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         deleteTickets.setText("Delete ticket");
@@ -194,11 +190,10 @@ public class EmployeeManageBooking extends javax.swing.JPanel {
 
                     TicketController.deleteFlight(TicketNumber);
 
-                }
-                else{
-                            JOptionPane.showMessageDialog(null, "Please, select a booking");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please, select a booking");
 
-            }
+                }
             }
         });
         center.add(deleteTickets);
@@ -231,14 +226,14 @@ public class EmployeeManageBooking extends javax.swing.JPanel {
                     if (selectedBooking != null) {
 
                         String strIdFlight;
-                        int idFlight;
-                        strIdFlight = JOptionPane.showInputDialog("Enter the id of the flight ");
-                        idFlight = Integer.parseInt(strIdFlight);
+                        strIdFlight = JOptionPane.showInputDialog("Enter the Flight Id");
+                        int idFlight = Integer.parseInt(strIdFlight);
 
-                        if (FlightController.checkFlight(idFlight)) {
+                        if (FlightController.checkFlight(strIdFlight)) {
                             new EmployeeAddTicket(selectedBooking, idFlight);
 
                         }
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Please Select a Booking");
 

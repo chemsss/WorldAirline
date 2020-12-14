@@ -110,8 +110,6 @@ public class MyTicketsPanel extends javax.swing.JPanel {
                     int TicketNo = Integer.parseInt(stringTicketNo);
 
                     selectedTicket = TicketController.getTicket(TicketNo);
-                    System.out.println(selectedTicket);
-
                   
                     setVisible(false);
                     myTicketDetailPanel = new MyTicketDetailPanel((MyTicketsPanel) myPanel,selectedTicket,frame);

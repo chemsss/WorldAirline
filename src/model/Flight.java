@@ -26,7 +26,7 @@ public class Flight {
         this.airplane = airplane;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
-        this.seats = (ArrayList) seats.clone();
+        this.seats = seats;
     }
     
     @Override
@@ -103,14 +103,13 @@ public class Flight {
     
     public String getDepartureDateTimeToString()
     {
-        System.out.println(departureDate);
+
         String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(departureDate);
         
         return timeStamp;
     }
     public String getDepartureMinTimeToString()
     {
-        System.out.println(departureDate);
         String timeStamp = new SimpleDateFormat("mm").format(departureDate);
         
         return timeStamp;
@@ -127,7 +126,6 @@ public class Flight {
     {
 
         String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(arrivalDate);
-        System.out.println(timeStamp);
         return timeStamp;
     }
      
@@ -140,7 +138,6 @@ public class Flight {
     {
 
         String timeStamp = new SimpleDateFormat("mm").format(arrivalDate);
-        System.out.println(timeStamp);
         return timeStamp;
     }
      

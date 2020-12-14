@@ -127,7 +127,7 @@ public class EmployeeManageFlight extends JPanel {
 
                 if (!textidFlight.getText().isEmpty()) {
 
-                    if (FlightController.checkFlight(Integer.parseInt(textidFlight.getText()))) {
+                    if (FlightController.checkFlight((textidFlight.getText()))) {
                         flight = FlightController.getFlight(Integer.parseInt(textidFlight.getText()));
 
                         ArrayList<Flight> flight = new ArrayList();

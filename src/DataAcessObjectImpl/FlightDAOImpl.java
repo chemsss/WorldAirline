@@ -33,8 +33,29 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
-    public Flight findAllFlights() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Flight> findAllFlights() {
+   
+       ArrayList<Flight> flights = new ArrayList();
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from flight;");
+
+            while (myRs.next()) {
+                        flights.add(new Flight(myRs.getInt("idFlight"), myRs.getString("airlineName"),
+                        myRs.getTimestamp("departureDate"),
+                        myRs.getTimestamp("arrivalDate"),
+                        new AirplaneDAOImpl().find(myRs.getInt("airplane_idAirplane")),
+                        new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")),
+                        new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")),   
+                        new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("idFlight"))));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return flights;
+
     }
 
     @Override

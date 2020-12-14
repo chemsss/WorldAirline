@@ -1,4 +1,5 @@
 package controller;
+
 import DataAcessObjectImpl.BookingDAOImpl;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class BookingController {
         return new BookingDAOImpl().find(bookingNo);
 
     }
-  public static void addBooking(Date date, int idAccount, int idCoupon) {
+
+    public static void addBooking(Date date, int idAccount, int idCoupon) {
         if (new BookingDAOImpl().add(date, idAccount, idCoupon) == false) {
             JOptionPane.showMessageDialog(null, "Unable to add booking");
         }
@@ -41,17 +43,31 @@ public class BookingController {
         }
     }
 
-    public static boolean checkBooking(int bookingNo) {
-        if (new BookingDAOImpl().find(bookingNo) == null) {
+    public static boolean checkBooking(String bookingNo) {
 
-            JOptionPane.showMessageDialog(null, "There is no Booking with this Number");
+        try {
 
+            int intBookingNo = Integer.parseInt(bookingNo);
+
+            if (new BookingDAOImpl().find(intBookingNo) == null) {
+
+                JOptionPane.showMessageDialog(null, "There is no Booking with this Number");
+
+                return false;
+
+            } else {
+                return true;
+
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
             return false;
-
-        } else {
-            return true;
-
         }
 
+    }
+
+    public static ArrayList<Booking> findAllBookings()
+    {
+        return new BookingDAOImpl().findAllBookings();
     }
 }

@@ -8,7 +8,7 @@ import javax.swing.*;
 import model.Flight;
 import controller.FlightController;
 
-public class EmployeeSearchFlight extends JPanel {
+public class EmployeeFlightSearch extends JPanel {
 
     private javax.swing.JScrollPane DepartureScrollPane;
     private javax.swing.JLabel idFlight;
@@ -20,7 +20,7 @@ public class EmployeeSearchFlight extends JPanel {
     private final int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-    public EmployeeSearchFlight() {
+    public EmployeeFlightSearch() {
         super();
         initComponents();
         setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -43,16 +43,15 @@ public class EmployeeSearchFlight extends JPanel {
 
         title1.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         title1.setForeground(new java.awt.Color(255, 255, 255));
-
         title1.setText("Search Flight");
         add(title1);
         title1.setBounds((screenWidth / 2) - 100, 20, 300, 40);
 
-        searchDeapartureFlights.setModel(new SearchFlightsTableModel(flight));
+        searchDeapartureFlights.setModel(new SearchFlightsTableModel(FlightController.getAllFlights()));
 
         search.setBackground(new java.awt.Color(255, 255, 255));
         search.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        search.setText("Next");
+        search.setText("Search");
         search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 181, 204)));
         search.setBorderPainted(false);
         search.setBounds(550, 122, 90, 30);
@@ -63,7 +62,9 @@ public class EmployeeSearchFlight extends JPanel {
 
                 if (!textidFlight.getText().isEmpty()) {
                    
-                    if (FlightController.checkFlight(Integer.parseInt(textidFlight.getText()))) {
+                    if (FlightController.checkFlight(textidFlight.getText())) {
+                       
+                        
                         flight.add(FlightController.getFlight(Integer.parseInt(textidFlight.getText())));
 
 
@@ -85,7 +86,7 @@ public class EmployeeSearchFlight extends JPanel {
 
         idFlight.setFont(new java.awt.Font("Yu Gothic UI light", 0, 20)); // NOI18N
         idFlight.setForeground(new java.awt.Color(255, 255, 255));
-        idFlight.setText("Enter the flight Id: ");
+        idFlight.setText("Enter the Flight Id: ");
         add(idFlight);
         idFlight.setBounds(200, 120, 300, 30);
 
@@ -101,7 +102,6 @@ public class EmployeeSearchFlight extends JPanel {
         add(DepartureScrollPane);
         DepartureScrollPane.setBounds(200, 200, 1000, 500);
 
-        //   searchDeapartureFlights.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         this.setLayout(null);
 
     }

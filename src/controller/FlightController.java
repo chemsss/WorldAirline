@@ -5,7 +5,10 @@ import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import model.Flight;
 import Exceptions.EmptyFields;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+
 public class FlightController {
 
     public FlightController() {
@@ -54,18 +57,45 @@ public class FlightController {
         JOptionPane.showMessageDialog(null, "The seat has been deleted");
     }
 
-    public static boolean checkFlight(int idFlight) {
-        if (new FlightDAOImpl().find(idFlight) == null) {
-            
-        JOptionPane.showMessageDialog(null, "There is no flight with this Id");
-            
+    public static boolean checkFlight(String idFlight) {
+
+        try {
+
+            int intIdFlight = Integer.parseInt(idFlight);
+
+            if (new FlightDAOImpl().find(intIdFlight) == null) {
+                JOptionPane.showMessageDialog(null, "There is no flight with this Id");
+                return false;
+
+            } else {
+                return true;
+
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
             return false;
         }
 
-        else
-        {
+    }
+
+    public static ArrayList<Flight> getAllFlights() {
+
+        return new FlightDAOImpl().findAllFlights();
+
+    }
+
+    public static boolean checkFlightSeat(String numberSeats, String seatPrice) {
+        try {
+
+            int intNumberSeats = Integer.parseInt(numberSeats);
+            BigDecimal bigDecimalSeatPrice = new BigDecimal(seatPrice);
+
             return true;
 
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+
+            return false;
         }
     }
 

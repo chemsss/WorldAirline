@@ -143,7 +143,6 @@ public class TicketDAOImpl implements TicketDAO {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println("erzfe");
         }
 
         return ticket;
