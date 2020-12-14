@@ -115,9 +115,7 @@ public class MyTicketsPanel extends javax.swing.JPanel {
                     myTicketDetailPanel = new MyTicketDetailPanel((MyTicketsPanel) myPanel,selectedTicket,frame);
                     myTicketDetailPanel.setVisible(true);
                     frame.getContentPane().add(myTicketDetailPanel);     
-                    frame.setSize(550,615);
-
-               
+                    frame.setSize(550,615);              
                 }
 
             }

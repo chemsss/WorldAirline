@@ -103,7 +103,6 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
                     + "(`seatNo`, `flight_idFlight`, `className`, `seatPrice`, `isAvailable`) "
                     + "VALUES (?, ?, ?, ?, ?);");
             
-            //String price = String.format("%.2f", seatPrice);
             
             myStmt.setInt(1, seatNo);
             myStmt.setInt(2, idFlight);

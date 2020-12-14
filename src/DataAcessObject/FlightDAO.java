@@ -1,5 +1,6 @@
 package DataAcessObject;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +15,7 @@ public interface FlightDAO {
     boolean add(int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate);
     boolean delete(int idFlight);
     ArrayList<Flight> findAllFlights();
-     
+    boolean add(Flight flight , int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, BigDecimal priceFirst, BigDecimal priceBusiness, BigDecimal priceEconomy);
+
      
 }

@@ -1,19 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-/**
- *
- * @author Unknow
- */
 public class Contact extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
     public Contact() {
         initComponents();
         this.setSize(530, 430);
@@ -35,7 +23,6 @@ public class Contact extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         panel.setBackground(new java.awt.Color(55, 112, 155));
-        panel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel.setLayout(null);
 
         worldAirline.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 36)); // NOI18N
@@ -72,7 +59,7 @@ public class Contact extends javax.swing.JFrame {
         panel.setBounds(0, 0, 530, 430);
 
         pack();
-    }// </editor-fold>                        
+    }                        
 
  
     private javax.swing.JLabel abbas;

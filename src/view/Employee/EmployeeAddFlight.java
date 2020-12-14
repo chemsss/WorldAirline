@@ -5,8 +5,10 @@ import controller.AirportController;
 import controller.FlightController;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import model.Airplane;
 import model.Airport;
 
@@ -90,10 +92,9 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         selectHourlyArrival = new javax.swing.JComboBox();
         hourlyArrivalLabel = new javax.swing.JLabel();
         hourlyDepartureLabel = new javax.swing.JLabel();
-        center = new javax.swing.JPanel();        
+        center = new javax.swing.JPanel();
         airline = new javax.swing.JLabel();
         airlineField = new javax.swing.JTextField();
-
 
         setBackground(new java.awt.Color(55, 112, 155));
         center.setBackground(new java.awt.Color(55, 112, 155));
@@ -149,44 +150,107 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         add.setBorderPainted(false);
         add.setText("Add");
         add.addActionListener(new java.awt.event.ActionListener() {
-            @Override
+           
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-/*
-                if ((FlightController.CheckFlightInfo(choiceDepartureDate.getDate(), choiceArrivalDate.getDate(),airlineField.getText()))) {
-                    Timestamp dateDeparture = new Timestamp(choiceDepartureDate.getDate().getYear(), choiceDepartureDate.getDate().getMonth(),
-                            choiceDepartureDate.getDate().getDay(), Integer.parseInt(selectHourlyDeparture.getSelectedItem().toString()), Integer.parseInt(selectMinutesDeparture.getSelectedItem().toString()), 0, 0);
 
-                    Timestamp dateArrival = new Timestamp(choiceArrivalDate.getDate().getYear(), choiceArrivalDate.getDate().getMonth(),
-                            choiceArrivalDate.getDate().getDay(), Integer.parseInt(selectHourlyArrival.getSelectedItem().toString()), Integer.parseInt(selectMinutesArrival.getSelectedItem().toString()), 0, 0);
-                    
-                    FlightController.addFlight(((Airplane) choiceAirplane.getSelectedItem()).getIdAirplane(), airline.getText(), ((Airport) choiceDepartureAirport.getSelectedItem()).getIdAirport(), ((Airport) choiceArrivalAirport.getSelectedItem()).getIdAirport(), dateDeparture, dateArrival);
-                }*/
+                try {
+                    if ((FlightController.CheckFlightInfo(choiceDepartureDate.getDate(), choiceArrivalDate.getDate(), airlineField.getText()))) {
+
+                        Timestamp dateDeparture = new Timestamp(choiceDepartureDate.getDate().getTime());
+                        dateDeparture.setHours(Integer.parseInt(selectHourlyDeparture.getSelectedItem().toString()));
+                        dateDeparture.setMinutes(Integer.parseInt(selectMinutesDeparture.getSelectedItem().toString()));
+
+                        Timestamp dateArrival = new Timestamp(choiceArrivalDate.getDate().getTime());
+                        dateArrival.setHours(Integer.parseInt(selectHourlyArrival.getSelectedItem().toString()));
+                        dateArrival.setMinutes(Integer.parseInt(selectMinutesArrival.getSelectedItem().toString()));
+
+                        if (!(textNbreSeatEco.getText().isEmpty() || textPriceSeatsEco.getText().isEmpty() || textnbrSeatsBusiness.getText().isEmpty() || textpriceSeatBusiness.getText().isEmpty() || textNbrSeatFirst.getText().isEmpty() || textPriceSeatFirst.getText().isEmpty())) {
+
+                            FlightController.checkFlightSeat(textNbreSeatEco.getText(), textPriceSeatsEco.getText());
+
+                            int nbSeatsEconomyClass = Integer.parseInt(textNbreSeatEco.getText());
+                            BigDecimal priceEconomy = new BigDecimal(textPriceSeatsEco.getText());
+
+                            FlightController.checkFlightSeat(textnbrSeatsBusiness.getText(), textpriceSeatBusiness.getText());
+                            int nbSeatsBusinessClass = Integer.parseInt(textnbrSeatsBusiness.getText());
+                            BigDecimal priceBusiness = new BigDecimal(textPriceSeatsEco.getText());
+
+                            FlightController.checkFlightSeat(textNbrSeatFirst.getText(), textPriceSeatFirst.getText());
+
+                            int nbSeatsFirstClass = Integer.parseInt(textNbrSeatFirst.getText());
+                            BigDecimal priceFirst = new BigDecimal(textPriceSeatFirst.getText());
+
+                            int totalSeats = Integer.parseInt(textNbreSeatEco.getText()) + Integer.parseInt(textnbrSeatsBusiness.getText()) + Integer.parseInt(textNbrSeatFirst.getText());
+
+                            if (((Airplane) choiceAirplane.getSelectedItem()).getSeatCapacity() >= totalSeats) {
+
+                                FlightController.addFlight(((Airplane) choiceAirplane.getSelectedItem()).getIdAirplane(), airlineField.getText(), ((Airport) choiceDepartureAirport.getSelectedItem()).getIdAirport(), ((Airport) choiceArrivalAirport.getSelectedItem()).getIdAirport(), dateDeparture, dateArrival, nbSeatsFirstClass, nbSeatsBusinessClass, nbSeatsEconomyClass, priceFirst, priceBusiness, priceEconomy);
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Number of seats is over airplane's seat capacity");
+
+                            }
+                        } else {
+                            System.out.println(choiceArrivalDate.getDate().toString());
+                            System.out.println(choiceDepartureDate.getDate().toString());
+
+                            System.out.println(dateDeparture.toString());
+                            System.out.println(dateArrival.toString());
+
+                            JOptionPane.showMessageDialog(null, "The fields for the seats are empty or invalid.");
+
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please, enter valid datas for the flight");
+
+                    }
+
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
+
+
+                }
             }
 
-        });
+        }
+        );
         add(add);
-        add.setBounds((screenWidth / 2) - 70, 650, 90, 30);
- 
-        airline.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N
-        airline.setForeground(new java.awt.Color(255, 255, 255));
-        airline.setText("Airline:");
-        center.add(airline);
-        airline.setBounds(50, 310, 110, 40);
-        choiceArrivalAirport.setModel(new DefaultComboBoxModel(AirportController.getAllAirports()));
-        center.add(choiceArrivalAirport);
-        choiceArrivalAirport.setBounds(240, 500, 160, 30);
 
-                airlineField.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
-        airlineField.setText("");
+        add.setBounds(
+                (screenWidth / 2) - 70, 650, 90, 30);
+
+        airline.setFont(
+                new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N
+        airline.setForeground(
+                new java.awt.Color(255, 255, 255));
+        airline.setText(
+                "Airline:");
+        center.add(airline);
+
+        airline.setBounds(
+                50, 310, 110, 40);
+        choiceArrivalAirport.setModel(
+                new DefaultComboBoxModel(AirportController.getAllAirports()));
+        center.add(choiceArrivalAirport);
+
+        choiceArrivalAirport.setBounds(
+                240, 500, 160, 30);
+
+        airlineField.setFont(
+                new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        airlineField.setText(
+                "");
         airlineField.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             }
         });
         center.add(airlineField);
-        
-         center.add(airlineField);
+
+        center.add(airlineField);
         airlineField.setBounds(240, 320, 160, 32);
-        
+
         arrivalAirport.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 20)); // NOI18N
         arrivalAirport.setForeground(new java.awt.Color(255, 255, 255));
         arrivalAirport.setText("Arrival Airport:");
@@ -229,19 +293,19 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         center.add(departureDate);
         departureDate.setBounds(50, 100, 140, 25);
 
-        selectMinutesDeparture.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
+        selectMinutesDeparture.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
         center.add(selectMinutesDeparture);
         selectMinutesDeparture.setBounds(340, 140, 60, 30);
 
-        selectMinutesArrival.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
+        selectMinutesArrival.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"}));
         center.add(selectMinutesArrival);
         selectMinutesArrival.setBounds(340, 240, 60, 30);
 
-        selectHourlyDeparture.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        selectHourlyDeparture.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
         center.add(selectHourlyDeparture);
         selectHourlyDeparture.setBounds(240, 140, 60, 30);
 
-        selectHourlyArrival.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0","1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
+        selectHourlyArrival.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"}));
         center.add(selectHourlyArrival);
         selectHourlyArrival.setBounds(240, 240, 60, 30);
 
@@ -287,18 +351,9 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         center.add(textPriceSeatFirst);
         textPriceSeatFirst.setBounds(830, 370, 150, 32);
 
-        if(!(textNbreSeatEco.getText().isEmpty() || textPriceSeatsEco.getText().isEmpty() || textnbrSeatsBusiness.getText().isEmpty() || textpriceSeatBusiness.getText().isEmpty()|| textNbrSeatFirst.getText().isEmpty() || textPriceSeatFirst.getText().isEmpty()))
-        {
-            FlightController.checkFlightSeat(textNbreSeatEco.getText(), textPriceSeatsEco.getText());
-            FlightController.checkFlightSeat(textnbrSeatsBusiness.getText(), textpriceSeatBusiness.getText());
-            FlightController.checkFlightSeat(textNbrSeatFirst.getText(),textPriceSeatFirst.getText());
-           
-        }
         add(center);
         center.setBounds(200, 30, 1000, 1000);
 
     }
-    
-    
 
 }

@@ -224,6 +224,65 @@ public class FlightDAOImpl implements FlightDAO {
     public boolean add(int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+   
+    @Override
+    public boolean add(Flight flight , int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, BigDecimal priceFirst, BigDecimal priceBusiness, BigDecimal priceEconomy) {
+        try {
+            
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO flight "
+                    + "(`airplane_idAirplane`, `airlineName`, `departureAirport_idAirport`, `arrivalAirport_idAirport`, `departureDate`, `arrivalDate`) "
+                    + "VALUES (?, ?, ?, ?, ?, ?);");
+            
+            myStmt.setInt(1, flight.getAirplane().getIdAirplane());
+            myStmt.setString(2, flight.getAirlineName());
+            myStmt.setString(3, flight.getDepartureAirport().getIdAirport());
+            myStmt.setString(4, flight.getArrivalAirport().getIdAirport());
+            myStmt.setString(5, ""+flight.getDepartureDateTimeSQLToString());
+            myStmt.setString(6, ""+flight.getArrivalDateTimeSQLToString());            
+
+            myStmt.executeUpdate();
+         
+            Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM flight WHERE "
+                    + "airplane_idAirplane =" +flight.getAirplane().getIdAirplane() +" AND airlineName='" +flight.getAirlineName() +"' AND departureAirport_idAirport='" 
+                    +flight.getDepartureAirport().getIdAirport() +"' AND arrivalAirport_idAirport='" +flight.getArrivalAirport().getIdAirport() 
+                    +"' AND departureDate='"+flight.getDepartureDateTimeSQLToString() +"'" 
+                    +" AND arrivalDate='"+flight.getArrivalDateTimeSQLToString() +"' ;");
+                    
+            if(myRs.first()) {
+                for(int i=0 ; i < nbSeatsFirstClass ; ++i) {
+                    System.out.println("first class : " +i);
+                    if(new FlightSeatDAOImpl().addIntoFlight(i+1, myRs.getInt("idFlight"), "First Class", priceFirst)==false) {
+                        System.out.println("Couldn't create seat in flight " +myRs.getInt("idFlight") +"First Class, nb of seats  " +nbSeatsFirstClass +" Price " +priceFirst);
+                    }
+
+                }
+                for(int i=nbSeatsFirstClass ; i < nbSeatsBusinessClass+nbSeatsFirstClass ; ++i) {
+                    System.out.println("Business class : " +i);
+                    if(new FlightSeatDAOImpl().addIntoFlight(i+1, myRs.getInt("idFlight"), "Business Class", priceBusiness)==false) {
+                        System.out.println("Couldn't create seat in flight " +myRs.getInt("idFlight") +" Business Class, nb of seats  " +nbSeatsBusinessClass +" Price " +priceBusiness);
+                    }
+                }
+                for(int i=nbSeatsBusinessClass+nbSeatsFirstClass ; i < nbSeatsEconomyClass+nbSeatsBusinessClass+nbSeatsFirstClass ; ++i) {
+                    System.out.println("Economy class : " +i);
+                    if(new FlightSeatDAOImpl().addIntoFlight(i+1, myRs.getInt("idFlight"), "Economy Class", priceEconomy)==false) {
+                        System.out.println("Couldn't create seat in flight " +myRs.getInt("idFlight") +" Economy Class, nb of seats  " +nbSeatsEconomyClass +" Price " +priceEconomy);
+                    }
+                }
+            }
+            else {
+                System.out.println("Couldn't find the just created flight to create the seats. " +flight.getDepartureDateTimeSQLToString() + " " +flight.getArrivalDateTimeSQLToString());
+            }
+            
+       
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        
+        return true;
+    }
+    
 
     @Override
     public boolean delete(int idFlight) {

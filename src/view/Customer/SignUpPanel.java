@@ -94,6 +94,8 @@ public class SignUpPanel extends javax.swing.JPanel {
         close.setFont(new Font("Tahoma", 1, 25)); // NOI18N
         close.setForeground(new Color(55, 112, 155));
         close.setText("X");
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         rightSignUpPanel.add(close);
         close.setBounds(410, 0, 30, 40);
 
@@ -124,6 +126,9 @@ public class SignUpPanel extends javax.swing.JPanel {
                 }
             }
         });
+        signUpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        //A FAIRE  signUpButton.addActionListener(this);
 
         signUpButton.setBounds(160, 450, 130, 40);
 

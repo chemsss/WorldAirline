@@ -15,4 +15,7 @@ public interface FlightSeatDAO {
     public FlightSeat[] getAvailableSeats(int flight_idflight, String className);
 
     public boolean setSeatTaken(int idFlight, int idFlightSeat);
+    
+    public boolean addIntoFlight(int seatNo, int idFlight, String className, BigDecimal seatPrice);
+
 }

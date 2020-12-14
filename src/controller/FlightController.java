@@ -13,6 +13,7 @@ import model.Flight;
 import model.FlightSeat;
 
 
+
 public class FlightController {
 
     public FlightController() {
@@ -23,12 +24,11 @@ public class FlightController {
 
         Flight flight = new Flight(0 , airlineName, departureDate, arrivalDate,
                 new AirplaneDAOImpl().find(idAirplane), new AirportDAOImpl().find(idDepartureAirport), new AirportDAOImpl().find(idArrivalAirport), new ArrayList<FlightSeat>());
-//int idFlight, String airlineName, Timestamp departureDate, Timestamp arrivalDate, Airplane airplane, Airport departureAirport, Airport arrivalAirport, ArrayList<FlightSeat> seats
         if (new FlightDAOImpl().add(flight, nbSeatsFirstClass, nbSeatsBusinessClass, nbSeatsEconomyClass, priceFirst, priceBusiness, priceEconomy) == false) {
             JOptionPane.showMessageDialog(null, "unable to add flight");
         }
     }
-    
+      
     public static Flight getFlight(int idFlight) {
 
         return new FlightDAOImpl().find(idFlight);

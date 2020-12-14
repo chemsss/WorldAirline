@@ -1,6 +1,5 @@
 package view.Customer;
 
-import DataAcessObjectImpl.FlightDAOImpl;
 import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import model.*;
@@ -17,7 +16,7 @@ import java.awt.Toolkit;
 import java.util.Date;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
-public class CustomerHomeFlightSearch extends javax.swing.JFrame {
+public class CustomerHome extends javax.swing.JFrame {
 
     private JPanel oneWayPanel, jPanel1, roundTripPanel;
     private JScrollPane departureScrollPane, departureScrollPaneRoundTrip, returnScrollPaneRoundTrip;
@@ -46,7 +45,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         return loggedInCustomer;
     }
 
-    public CustomerHomeFlightSearch(CustomerAccount customer) {
+    public CustomerHome(CustomerAccount customer) {
 
         loggedInCustomer = customer;
         initComponents();
@@ -101,6 +100,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
         OneWayOrRoundTrip.add(roundTrip);
+       
         roundTrip.setFont(new Font("Yu Gothic UI Light", 1, 14)); // NOI18N
         roundTrip.setForeground(new Color(0, 0, 0));
         roundTrip.setText("ROUND TRIP");
@@ -115,12 +115,13 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
             }
         });
         jPanel1.add(roundTrip);
-        roundTrip.setBounds(30, 20, 120, 30);
-        myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        myAccount.setForeground(new Color(255, 255, 255)); // NOI18N
+        roundTrip.setBounds(30, 20, 150, 30);
+        
+        myAccount.setFont(new java.awt.Font("Yu Gothic UI", 0, 14));
+        myAccount.setForeground(new Color(255, 255, 255)); 
 
-        myAccount.setIcon(new javax.swing.ImageIcon("img\\male_user_70px.png")); // NOI18N
-        myAccount.addActionListener((new CustomerFlightSearchChoice(this)));
+        myAccount.setIcon(new javax.swing.ImageIcon("img\\male_user_70px.png"));
+        myAccount.addActionListener((new CustomerHomeChoice(this)));
         if (loggedInCustomer != null) {
             myAccount.setText(" My account");
             myAccount.setActionCommand("Logged");
@@ -158,7 +159,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
             }
         });
         jPanel1.add(oneWay);
-        oneWay.setBounds(190, 20, 110, 30);
+        oneWay.setBounds(190, 20, 200, 30);
         from.setFont(new Font("Yu Gothic UI", 0, 12)); // NOI18N
         from.setIcon(new ImageIcon("img\\location.png")); // NOI18N
         from.setText("From");
@@ -250,8 +251,9 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         search.setBounds(130, 440, 110, 30);
         search.setActionCommand("Search");
         
-        search.addActionListener(new CustomerFlightSearchChoice(this));
+        search.addActionListener(new CustomerHomeChoice(this));
         getContentPane().add(jPanel1);
+        
         jPanel1.setBounds(60, 230, 360, 500);
         worldAirline.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 110)); // NOI18N
         worldAirline.setText("WorldAirline");
@@ -271,11 +273,10 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         oneWayPanel.add(next);
         next.setBounds(710, 560, 110, 30);
         next.setActionCommand("Next");
-        next.addActionListener(new CustomerFlightSearchChoice(this));
+        next.addActionListener(new CustomerHomeChoice(this));
         ArrayList<Flight> flights = new ArrayList<Flight>();
-        flights.add(new FlightDAOImpl().find(5));
-        flights.add(new FlightDAOImpl().find(6));
-        System.out.println(flights.get(0).getIdFlight());
+        
+        
         SearchFlightsTableModel model = new SearchFlightsTableModel();
        
         searchDepartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
@@ -315,7 +316,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         nextRoundTrip.setBorderPainted(false);
         nextRoundTrip.setFocusable(false);
         nextRoundTrip.setActionCommand("Next");
-        nextRoundTrip.addActionListener(new CustomerFlightSearchChoice(this));
+        nextRoundTrip.addActionListener(new CustomerHomeChoice(this));
         roundTripPanel.add(nextRoundTrip);
         nextRoundTrip.setBounds(710, 560, 110, 30);
 
@@ -371,9 +372,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         oneWayPanel.setVisible(false);
         roundTripPanel.setBounds(510, 190, 860, 590);
 
-        //backGround.setIcon(new javax.swing.ImageIcon("img\\auqwj-tjqus.jpg")); // NOI18N
-        // backGround.setBounds(0, 0, screenWidth, screenHeight);
-        //getContentPane().add(backGround);
+       
         this.getContentPane().setBackground((new Color(55, 112, 155)));
         pack();
     }

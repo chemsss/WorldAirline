@@ -17,12 +17,17 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
+
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import view.*;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import view.Employee.EmployeeHome;
+import view.MainMenu;
 
 public class WorldAirline {
 
