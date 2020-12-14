@@ -1,5 +1,7 @@
 package controller;
 
+import DataAcessObjectImpl.AirplaneDAOImpl;
+import DataAcessObjectImpl.AirportDAOImpl;
 import DataAcessObjectImpl.FlightDAOImpl;
 import java.sql.Timestamp;
 import javax.swing.JOptionPane;
@@ -8,6 +10,7 @@ import Exceptions.EmptyFields;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import model.FlightSeat;
 
 public class FlightController {
 
@@ -94,8 +97,17 @@ public class FlightController {
 
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
-
+            JOptionPane.showMessageDialog(null, "Please, enter valid datas");
             return false;
+        }
+    }
+
+        public static void addFlight(int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate, int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, BigDecimal priceFirst, BigDecimal priceBusiness, BigDecimal priceEconomy) {
+
+        Flight flight = new Flight(0, airlineName, departureDate, arrivalDate,
+                new AirplaneDAOImpl().find(idAirplane), new AirportDAOImpl().find(idDepartureAirport), new AirportDAOImpl().find(idArrivalAirport), new ArrayList<FlightSeat>());
+        if (new FlightDAOImpl().add(flight, nbSeatsFirstClass, nbSeatsBusinessClass, nbSeatsEconomyClass, priceFirst, priceBusiness, priceEconomy) == false) {
+            JOptionPane.showMessageDialog(null, "unable to add flight");
         }
     }
 

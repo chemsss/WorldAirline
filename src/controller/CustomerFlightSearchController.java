@@ -4,13 +4,13 @@ import Exceptions.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Airport;
-import view.Customer.CustomerHomeFlightSearch;
+import view.Customer.CustomerHome;
 
 public class CustomerFlightSearchController {
 
-    CustomerHomeFlightSearch frame;
+    CustomerHome frame;
 
-    public CustomerFlightSearchController(CustomerHomeFlightSearch frame) {
+    public CustomerFlightSearchController(CustomerHome frame) {
         this.frame = frame;
 
         if (frame.getOneWay().isSelected()) {

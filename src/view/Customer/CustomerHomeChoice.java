@@ -8,11 +8,11 @@ import model.*;
 
 import java.util.ArrayList;
 
-public class CustomerFlightSearchChoice implements ActionListener {
+public class CustomerHomeChoice implements ActionListener {
 
-    private CustomerHomeFlightSearch frame;
+    private CustomerHome frame;
 
-    public CustomerFlightSearchChoice(CustomerHomeFlightSearch f) {
+    public CustomerHomeChoice(CustomerHome f) {
         frame = f;
     }
 

@@ -105,7 +105,6 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
     }
       
     @Override
-
     public boolean setSeatTaken(int idFlight, int idFlightSeat) {
 
         try {
@@ -125,5 +124,31 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
         }
 
     }
+    @Override
+    public boolean addIntoFlight(int seatNo, int idFlight, String className, BigDecimal seatPrice) {
 
+        try {
+
+            PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO flightseat "
+                    + "(seatNo, flight_idFlight, className, seatPrice, isAvailable) "
+                    + "VALUES (?, ?, ?, ?, ?);");
+
+            String price = String.format("%.2f", seatPrice);
+
+            myStmt.setInt(1, seatNo);
+            myStmt.setInt(2, idFlight);
+            myStmt.setString(3, className);
+            myStmt.setBigDecimal(4, new BigDecimal( price.replace(',', '.') ) );
+            myStmt.setInt(5, 1);
+
+            myStmt.executeUpdate();
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
 }

@@ -1,24 +1,24 @@
 package model;
+
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-
 public class Flight {
-    
+
     private int idFlight; //flight id
-    
+
     private String airlineName; // airline name
     private Timestamp departureDate; //flight date/H departure
     private Timestamp arrivalDate; //flight date/H arrival
-    
+
     private Airplane airplane; // airplane model
     private Airport departureAirport; // airport departure
     private Airport arrivalAirport; // arrival airport
     private ArrayList<FlightSeat> seats;  //array of flight seat
-    
+
     public Flight(int idFlight, String airlineName, Timestamp departureDate, Timestamp arrivalDate, Airplane airplane, Airport departureAirport, Airport arrivalAirport, ArrayList<FlightSeat> seats) {
-        
+
         this.idFlight = idFlight;
         this.airlineName = airlineName;
         this.departureDate = departureDate;
@@ -28,7 +28,7 @@ public class Flight {
         this.arrivalAirport = arrivalAirport;
         this.seats = seats;
     }
-    
+
     @Override
     public String toString() {
         return "Flight{" + "idFlight=" + idFlight + ", airlineName=" + airlineName + ", departureDate=" + departureDate + ", arrivalDate=" + arrivalDate + ", airplane=" + airplane + ", departureAirport=" + departureAirport + ", arrivalAirport=" + arrivalAirport + ", seats=" + seats + '}';
@@ -100,53 +100,59 @@ public class Flight {
     public void setSeat(ArrayList<FlightSeat> seat) {
         this.seats = seat;
     }
-    
-    public String getDepartureDateTimeToString()
-    {
+
+    public String getDepartureDateTimeToString() {
 
         String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(departureDate);
-        
+
         return timeStamp;
     }
-    public String getDepartureMinTimeToString()
-    {
+
+    public String getDepartureMinTimeToString() {
         String timeStamp = new SimpleDateFormat("mm").format(departureDate);
-        
+
         return timeStamp;
     }
-    
-    public String getDepartureHourTimeToString()
-    {
-        
+
+    public String getDepartureHourTimeToString() {
+
         return Integer.toString(departureDate.getHours());
     }
-    
-    
-     public String getArrivalDateTimeToString()
-    {
+
+    public String getArrivalDateTimeToString() {
 
         String timeStamp = new SimpleDateFormat("dd/MM/yy hh:mm a").format(arrivalDate);
         return timeStamp;
     }
-     
-     
-     public String  getArrivalHourTimeToString()
-    {
+
+    public String getArrivalHourTimeToString() {
         return Integer.toString(arrivalDate.getHours());
     }
-     public String getArrivalMinTimeToString()
-    {
+
+    public String getArrivalMinTimeToString() {
 
         String timeStamp = new SimpleDateFormat("mm").format(arrivalDate);
         return timeStamp;
     }
-     
-     public FlightSeat getseatFromClass(String className) {
-         for(int i=0; i<seats.size(); ++i) {
-             if(seats.get(i).getClassName().equals(className) && seats.get(i).getIsAvailable()==true) {
-                 return seats.get(i);
-             }
-         }
-         return null;
-     }
+
+    public FlightSeat getseatFromClass(String className) {
+        for (int i = 0; i < seats.size(); ++i) {
+            if (seats.get(i).getClassName().equals(className) && seats.get(i).getIsAvailable() == true) {
+                return seats.get(i);
+            }
+        }
+        return null;
+    }
+
+    public String getDepartureDateTimeSQLToString() {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(departureDate);
+
+        return timeStamp;
+    }
+
+    public String getArrivalDateTimeSQLToString() {
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(arrivalDate);
+
+        return timeStamp;
+    }
 }
