@@ -149,8 +149,9 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         add.setBorderPainted(false);
         add.setText("Add");
         add.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-
+/*
                 if ((FlightController.CheckFlightInfo(choiceDepartureDate.getDate(), choiceArrivalDate.getDate(),airlineField.getText()))) {
                     Timestamp dateDeparture = new Timestamp(choiceDepartureDate.getDate().getYear(), choiceDepartureDate.getDate().getMonth(),
                             choiceDepartureDate.getDate().getDay(), Integer.parseInt(selectHourlyDeparture.getSelectedItem().toString()), Integer.parseInt(selectMinutesDeparture.getSelectedItem().toString()), 0, 0);
@@ -159,7 +160,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
                             choiceArrivalDate.getDate().getDay(), Integer.parseInt(selectHourlyArrival.getSelectedItem().toString()), Integer.parseInt(selectMinutesArrival.getSelectedItem().toString()), 0, 0);
                     
                     FlightController.addFlight(((Airplane) choiceAirplane.getSelectedItem()).getIdAirplane(), airline.getText(), ((Airport) choiceDepartureAirport.getSelectedItem()).getIdAirport(), ((Airport) choiceArrivalAirport.getSelectedItem()).getIdAirport(), dateDeparture, dateArrival);
-                }
+                }*/
             }
 
         });
@@ -202,7 +203,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         center.add(choiceDepartureAirport);
         choiceDepartureAirport.setBounds(240, 440, 160, 30);
 
-        choiceAirplane.setModel(new DefaultComboBoxModel(AirplaneController.getAllAirports()));
+        choiceAirplane.setModel(new DefaultComboBoxModel(AirplaneController.getAllAirplanes()));
         center.add(choiceAirplane);
         choiceAirplane.setBounds(240, 380, 160, 30);
 

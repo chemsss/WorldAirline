@@ -182,7 +182,7 @@ public class EmployeeAddFlight extends javax.swing.JPanel {
         add(choicedepartureaiport);
         choicedepartureaiport.setBounds(250, 300, 120, 20);
 
-        choiceairplane.setModel(new DefaultComboBoxModel(AirplaneController.getAllAirports()));
+        choiceairplane.setModel(new DefaultComboBoxModel(AirplaneController.getAllAirplanes()));
         add(choiceairplane);
         choiceairplane.setBounds(250, 250, 120, 20);
 

@@ -47,7 +47,7 @@ public class EmployeeManageFlight extends JPanel {
     private javax.swing.JButton updateFlight, deleteFlight, addSeat, deleteSeat;
     private javax.swing.JLabel flightSeatsLabel;
     final Airport[] tab = AirportController.getAllAirports();
-    final Airplane[] tab1 = AirplaneController.getAllAirports();
+    final Airplane[] tab1 = AirplaneController.getAllAirplanes();
     private ArrayList<FlightSeat> flightSeats;
 
     private javax.swing.JPanel center;
@@ -263,7 +263,7 @@ public class EmployeeManageFlight extends JPanel {
           choiceDepartureAirport.setBounds(240, 380, 160, 30);
 
 
-        choiceAirplane.setModel(new DefaultComboBoxModel(AirplaneController.getAllAirports()));
+        choiceAirplane.setModel(new DefaultComboBoxModel(AirplaneController.getAllAirplanes()));
         center.add(choiceAirplane);
         choiceAirplane.setBounds(240, 380, 160, 30);
         choiceAirplane.setVisible(false);

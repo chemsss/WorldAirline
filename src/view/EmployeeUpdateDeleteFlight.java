@@ -78,7 +78,7 @@ public class EmployeeUpdateDeleteFlight extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox();
         final Airport[] tab=AirportController.getAllAirports();
-        final Airplane[] tab1=AirplaneController.getAllAirports();
+        final Airplane[] tab1=AirplaneController.getAllAirplanes();
         
 
         setLayout(null);

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import model.*;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-import view.PaymentPanel;
+//import view.PaymentPanel;
 
 /**
  *
