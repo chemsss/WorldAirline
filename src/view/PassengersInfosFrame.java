@@ -407,6 +407,12 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
             seatChoice.setSelectedIndex(i);
             seatChoiceDepartBoundsY2.add(y2);
             DepartAvailableSeatChoice.add(seatChoice);
+            
+            JLabel labelSeatChoice = new JLabel("Depart Seat:");
+            labelSeatChoice.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 16));
+            passengersPanel.add(labelSeatChoice);
+            labelSeatChoice.setBounds(400, y2, 130, 32);
+            
 
             y2 += 40;
             text[3].setBounds(195, y2, 130, 32);
@@ -419,6 +425,11 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
                 seatChoice2.setSelectedIndex(i);
                 seatChoiceReturnBounds.add(y2);
                 ReturnAvailableSeatChoice.add(seatChoice2);
+                
+                JLabel labelSeatChoice2 = new JLabel("Return Seat:");
+                labelSeatChoice2.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 16));
+                passengersPanel.add(labelSeatChoice2);
+                labelSeatChoice2.setBounds(400, y2, 130, 32);
             }
 
             y2 += 40;

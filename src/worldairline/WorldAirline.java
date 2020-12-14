@@ -27,9 +27,9 @@ public class WorldAirline {
     public static void main(String[] args) throws SQLException {
         
          
-       //MainMenu menu = new MainMenu();
+       MainMenu menu = new MainMenu();
        
-       EmployeeHome home = new EmployeeHome();
+       //EmployeeHome home = new EmployeeHome();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
