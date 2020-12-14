@@ -79,6 +79,12 @@ public class FlightController {
     }
     
     
+    public static int getCountMonth(int month) {
+        return new FlightDAOImpl().getCountMonth(month);
+        
+    }
+    
+    
     
             
     

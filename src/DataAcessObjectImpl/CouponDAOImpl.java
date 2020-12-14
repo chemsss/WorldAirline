@@ -29,7 +29,7 @@ public class CouponDAOImpl {
             ResultSet myRs = myStmt.executeQuery("select * from coupon where idcoupon=" + idCoupon + ";");
 
             if (myRs.first()) {
-                coupon = new Coupon(idCoupon, myRs.getString("couponCode"), myRs.getInt("discount"));
+                coupon = new Coupon(idCoupon, myRs.getString("couponCode"), myRs.getBigDecimal("discount").floatValue());
                 return coupon;
             }
         } catch (SQLException e) {

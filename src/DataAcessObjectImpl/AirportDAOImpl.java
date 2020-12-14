@@ -89,6 +89,88 @@ public class AirportDAOImpl implements AirportDAO {
     }
     
     
+    public ArrayList<Double> findPercentageAllAirpots() {
+        
+        ArrayList<Double> pourcentages = new ArrayList();
+        try {
+           Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM airport;");
+            
+            while(myRs.next()) {
+                
+                pourcentages.add(findAirportPourcentage(myRs.getString("idAirport")));
+                
+            }
+            return pourcentages;
+            
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return pourcentages;
+        }
+        
+    }
+    
+    public ArrayList<String> findAllAirportNames() {
+        
+        
+        ArrayList<String> names = new ArrayList();
+        try {
+           Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM airport;");
+            
+            while(myRs.next()) {
+                
+                names.add(myRs.getString("name"));
+                
+            }
+            return names;
+            
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return names;
+        }
+                
+        
+    }
+    
+    
+    public double findAirportPourcentage(String idAirport) {
+        
+        ArrayList<Double> pourcentages = new ArrayList();
+        try {
+           Statement myStmt = DatabaseConnection.getInstance().createStatement();
+           ResultSet myRs = myStmt.executeQuery("SELECT COUNT(*) FROM flight WHERE flight.arrivalAirport_idAirport='" +idAirport +"';");
+           
+           Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
+           ResultSet myRs2 = myStmt2.executeQuery("SELECT COUNT(*) FROM flight;");
+           
+            
+            if(myRs.first()) {
+                myRs2.first();
+                /*System.out.println(myRs.getInt("COUNT(*)"));
+                System.out.println(myRs2.getInt("COUNT(*)"));
+                System.out.println((double)((double)myRs.getInt("COUNT(*)")/(double)myRs2.getInt("COUNT(*)"))*100 );*/
+                double pourcentage = (double)((double)myRs.getInt("COUNT(*)")/(double)myRs2.getInt("COUNT(*)"))*100;
+                return pourcentage;
+            }
+            else {
+                return 0;
+            }
+            
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
+                
+    }
+    
+    
+    
+    
+    
     
     
     

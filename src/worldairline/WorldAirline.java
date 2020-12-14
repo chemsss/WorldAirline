@@ -13,6 +13,7 @@ import java.security.MessageDigest;
 import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import view.*;
 
@@ -28,7 +29,7 @@ public class WorldAirline {
          
        //MainMenu menu = new MainMenu();
        
-       //EmployeeHome home = new EmployeeHome();
+       EmployeeHome home = new EmployeeHome();
         
        //WorldAirlineCustomerProgram test=new WorldAirlineCustomerProgram();
        
@@ -156,7 +157,7 @@ public class WorldAirline {
         */
         
         //FlightController.addFlight(9, "EcoAirline", "CHH", "CCC", new Timestamp(120, 02,9,13,40,07,0), new Timestamp(120, 02,05,15,40,03,0), 10, 90, 100, (float)1000.98, (float)700.50, (float)200.12);
-        DefaultCategoryDataset datasett = new DefaultCategoryDataset();  
+        /*DefaultCategoryDataset datasett = new DefaultCategoryDataset();  
   
         // Population in 2005  
         
@@ -175,38 +176,21 @@ public class WorldAirline {
         datasett.addValue(new FlightDAOImpl().getCountMonth(11), "Full flights", "November");  
         datasett.addValue(new FlightDAOImpl().getCountMonth(12), "Full flights", "December");
         
-        /*datasett.addValue(50, "Full flights", "January");  
-        datasett.addValue(60, "Full flights", "February");  
-        datasett.addValue(30, "Full flights", "Mars");  
-        datasett.addValue(50, "Full flights", "April");  
-        datasett.addValue(60, "Full flights", "May");  
-        datasett.addValue(30, "Full flights", "June"); 
-        datasett.addValue(50, "Full flights", "July");  
-        datasett.addValue(60, "Full flights", "August");  
-        datasett.addValue(30, "Full flights", "September"); 
-        datasett.addValue(50, "Full flights", "October");  
-        datasett.addValue(60, "Full flights", "November");  
-        datasett.addValue(30, "Full flights", "December"); */
-/*
-        // Population in 2010  
-        datasett.addValue(15, "USA", "2010");  
-        datasett.addValue(20, "India", "2010");  
-        datasett.addValue(25, "China", "2010");  
-
-        // Population in 2015  
-        datasett.addValue(20, "USA", "2015");  
-        datasett.addValue(25, "India", "2015");  
-        datasett.addValue(30, "China", "2015");  */
         
         CategoryDataset dataset = datasett;
         JFreeChart chart = ChartFactory.createBarChart("Number of flights according through the year", "Month", "Number of flights", dataset);
         
         ChartPanel panel = new ChartPanel(chart);
+        JPanel panel1 = new JPanel();
+        panel1.add(panel);
+        
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-        frame.getContentPane().add(panel);
+        frame.getContentPane().add(panel1);*/
+        
+        System.out.println(new AirportDAOImpl().findAirportPourcentage("CDG"));
     }
     
 }
