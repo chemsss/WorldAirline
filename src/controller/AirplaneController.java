@@ -6,9 +6,7 @@
 package controller;
 
 import DataAcessObjectImpl.AirplaneDAOImpl;
-import DataAcessObjectImpl.AirportDAOImpl;
 import model.Airplane;
-import model.Airport;
 
 /**
  *
@@ -16,9 +14,8 @@ import model.Airport;
  */
 public class AirplaneController {
  
-    public static Airplane[] getAllAirports() {
+    public static Airplane[] getAllAirplanes() {
         return new AirplaneDAOImpl().findAllAirplanes();
     }
-    
     
 }

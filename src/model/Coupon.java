@@ -5,17 +5,17 @@
  */
 package model;
 
-/**
- *
- * @author Chems
- */
+
+import java.math.BigDecimal;
+
 public class Coupon {
     
     private int idCoupon;
     private String couponCode;
-    private float discount;
 
-    public Coupon(int idCoupon, String couponCode, float discount) {
+     private BigDecimal discount;
+
+    public Coupon(int idCoupon, String couponCode, BigDecimal discount) {
         this.idCoupon = idCoupon;
         this.couponCode = couponCode;
         this.discount = discount;
@@ -37,11 +37,12 @@ public class Coupon {
         this.couponCode = couponCode;
     }
 
-    public float getDiscount() {
+
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 

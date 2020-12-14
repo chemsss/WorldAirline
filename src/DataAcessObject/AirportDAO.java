@@ -6,14 +6,12 @@
 package DataAcessObject;
 import model.Airport;
 
-/**
- *
- * @author Chems
- */
+
 
 public interface AirportDAO {
     
     Airport find(String idAirport);
     Airport[] findAllAirports();
     boolean create(Airport airport);
+    
 }

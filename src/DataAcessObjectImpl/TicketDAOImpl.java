@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataAcessObjectImpl;
 
 import DataAcessObject.TicketDAO;
@@ -16,16 +11,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.CustomerAccount;
 import model.Airport;
-import model.Flight;
 import model.Passenger;
 import net.sourceforge.barbecue.Barcode;
 import net.sourceforge.barbecue.BarcodeFactory;
 import net.sourceforge.barbecue.BarcodeImageHandler;
 
-/**
- *
- * @author Unknow
- */
 public class TicketDAOImpl implements TicketDAO {
 
     @Override
@@ -55,6 +45,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     }
     
+    @Override
     public ArrayList<Ticket> findByIdPassenger(int passenger_idPassenger) {
 
         ArrayList<Ticket> tickets = new ArrayList<>();
@@ -102,6 +93,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
     
     
+    @Override
     public boolean add(int bookingNo, Passenger passenger, int flightSeatNo, int idFlight) {
                 
         try {
@@ -271,33 +263,31 @@ public class TicketDAOImpl implements TicketDAO {
             //l'image à insérer
 
             int length = 12;
-           // String format = String.format("%0" + length + "d", ticketNo); // result 00015
+            // String format = String.format("%0" + length + "d", ticketNo); // result 00015
 
             //Barcode barcode = BarcodeFactory.createEAN13(String.format("%0" + length + "d", ticketNo));
-            Barcode barcode = BarcodeFactory.	createInt2of5(String.format("%0" + length + "d", ticketNo));
+            Barcode barcode = BarcodeFactory.createInt2of5(String.format("%0" + length + "d", ticketNo));
 
             barcode.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14));
             // BufferedImage image = BarcodeImageHandler.getImage(barcode);
             File file = new File("img\\Tickets Barcodes\\" + ticketNo + ".png");
-           
+
             if (!file.exists()) {
-            BarcodeImageHandler.savePNG(barcode, file);
+                BarcodeImageHandler.savePNG(barcode, file);
 
-            FileInputStream input = new FileInputStream(file);
+                FileInputStream input = new FileInputStream(file);
 
-            //creation de la requête
-            PreparedStatement ps
-                    = con.prepareStatement("UPDATE Ticket SET barCodeImage = ? WHERE ticketNo = " + ticketNo);
+                //creation de la requête
+                PreparedStatement ps
+                        = con.prepareStatement("UPDATE Ticket SET barCodeImage = ? WHERE ticketNo = " + ticketNo);
 
-            //image
-            ps.setBinaryStream(1, (InputStream) input, (int) file.length());
-            //exécution de la requête
-            ps.executeUpdate();
-            System.out.println("Image inserted with success!");
-                        //fermer le preparedStatement
-            }
-            else
-            {
+                //image
+                ps.setBinaryStream(1, (InputStream) input, (int) file.length());
+                //exécution de la requête
+                ps.executeUpdate();
+                System.out.println("Image inserted with success!");
+                //fermer le preparedStatement
+            } else {
                 System.out.println("image already exists");
             }
 
@@ -347,7 +337,7 @@ public class TicketDAOImpl implements TicketDAO {
         }
     }
 
-
+    @Override
     public Airport getDepartureAirport(int ticketNo) {
 
         Airport departureAirport = null;
@@ -368,6 +358,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     }
 
+    @Override
     public Airport getArrivalAirport(int ticketNo) {
 
         Airport arrivalAirport = null;

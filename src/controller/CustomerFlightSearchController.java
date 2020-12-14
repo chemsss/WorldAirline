@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import Exceptions.*;
@@ -14,12 +9,8 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Airport;
-import view.CustomerHomeFlightSearch;
+import view.Customer.CustomerHomeFlightSearch;
 
-/**
- *
- * @author Chems
- */
 public class CustomerFlightSearchController {
 
     CustomerHomeFlightSearch frame;
@@ -59,12 +50,7 @@ public class CustomerFlightSearchController {
                         frame.getSelectPassenger(),
                         frame.getSelectedClass()));
 
-                System.out.println(((Airport) frame.getFromDeparture().getSelectedItem()).getIdAirport());
-                System.out.println(((Airport) frame.getToArrival().getSelectedItem()).getIdAirport());
-                System.out.println(frame.getDepartureDate().toString());
-                System.out.println(frame.getSelectPassenger());
-                //System.out.println(((JRadioButton) frame.getFirstClass()).getText());
-
+              
             }
 
         } catch ( AirportException | DateException exception) {

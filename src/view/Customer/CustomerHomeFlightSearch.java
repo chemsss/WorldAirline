@@ -1,4 +1,4 @@
-package view;
+package view.Customer;
 
 import DataAcessObjectImpl.FlightDAOImpl;
 import com.toedter.calendar.JDateChooser;
@@ -277,6 +277,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
         flights.add(new FlightDAOImpl().find(6));
         System.out.println(flights.get(0).getIdFlight());
         SearchFlightsTableModel model = new SearchFlightsTableModel();
+       
         searchDepartureFlights.setFont(new java.awt.Font("Yu Gothic UI", 0, 12));
         searchDepartureFlights.setModel(model);
         searchDepartureFlights.setFocusable(false);
@@ -295,6 +296,7 @@ public class CustomerHomeFlightSearch extends javax.swing.JFrame {
 
         oneWayPanel.add(departureScrollPane);
         departureScrollPane.setBounds(0, 40, 860, 500);
+        
         departureRoundTrip.setFont(new java.awt.Font("Yu Gothic UI", 0, 24)); // NOI18N
         departureRoundTrip.setForeground(new java.awt.Color(255, 255, 255));
         departureRoundTrip.setText("Depart>>");

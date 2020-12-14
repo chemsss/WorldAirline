@@ -1,4 +1,4 @@
-package view;
+package view.Customer;
 
 import com.toedter.calendar.JDateChooser;
 import controller.BookingController;
@@ -15,6 +15,7 @@ import model.Booking;
 import model.FlightSeat;
 import model.Passenger;
 import model.Ticket;
+
 
 public class PaymentPanel extends javax.swing.JPanel {
 
@@ -243,6 +244,8 @@ public class PaymentPanel extends javax.swing.JPanel {
         this.add(securityCode);
         securityCode.setBounds(120, 412, 210, 32);
 
+
+        
         dateExp.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         dateExp.setText("MM / YY");
         dateExp.addActionListener(new java.awt.event.ActionListener() {
@@ -294,10 +297,10 @@ public class PaymentPanel extends javax.swing.JPanel {
                         System.out.println("CHECK CODE TRUE " +couponCodeField.getText());
                         idCoupon = BookingController.getCouponId( couponCodeField.getText() );
                         if(frame.getFlights().size()==2) {
-                            amountWithCoupon.setText(String.valueOf((1-BookingController.getCodeDiscount(couponCodeField.getText())) * BookingController.getBookingPrice(departTickets, returnTickets, frame.getLoggedInCustomer())) +"€");
+                            amountWithCoupon.setText(String.valueOf((1-BookingController.getCodeDiscount(couponCodeField.getText()).floatValue()) * BookingController.getBookingPrice(departTickets, returnTickets, frame.getLoggedInCustomer())) +"€");
                         }
                         else {
-                            amountWithCoupon.setText(String.valueOf((1-BookingController.getCodeDiscount(couponCodeField.getText())) * BookingController.getBookingPrice(departTickets, frame.getLoggedInCustomer())) +"€");
+                            amountWithCoupon.setText(String.valueOf((1-BookingController.getCodeDiscount(couponCodeField.getText()).floatValue()) * BookingController.getBookingPrice(departTickets, frame.getLoggedInCustomer())) +"€");
                         }
                         //amountWithCoupon.setText(String.valueOf(BookingController.getCodeDiscount(couponCodeField.getText())));
                         amountWithCoupon.setVisible(true);

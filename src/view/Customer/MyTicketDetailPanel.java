@@ -1,11 +1,7 @@
-package view;
+package view.Customer;
 
 import controller.PassengerController;
-import controller.SearchTicketsTableModel;
-import controller.TicketController;
 import javax.swing.JPanel;
-import model.Booking;
-import model.CustomerAccount;
 import model.Ticket;
 
 public class MyTicketDetailPanel extends javax.swing.JPanel {

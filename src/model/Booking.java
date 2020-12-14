@@ -37,6 +37,10 @@ public class Booking {
         this.coupon = coupon;
     }
 
+    public Booking() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public String toString() {
         return "Booking{" + "bookingNo=" + bookingNo + ", bookingDate=" + bookingDate + ", tickets=" + tickets + '}';

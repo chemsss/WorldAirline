@@ -26,7 +26,7 @@ public class Flight {
         this.airplane = airplane;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
-        this.seats = (ArrayList) seats.clone();
+        this.seats = seats;
     }
     
     @Override
@@ -146,7 +146,7 @@ public class Flight {
      
     
      
-     
+   
      public String  getArrivalHourTimeToString()
     {
         return Integer.toString(arrivalDate.getHours());

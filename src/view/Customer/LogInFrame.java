@@ -1,4 +1,4 @@
-package view;
+package view.Customer;
 
 import controller.*;
 import java.awt.*;
@@ -7,6 +7,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.swing.*;
+import view.MainMenu;
 
 public final class LogInFrame extends JFrame {
 

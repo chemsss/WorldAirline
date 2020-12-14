@@ -6,10 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import model.Airplane;
 
-/**
- *
- * @author Chems
- */
+
 public class AirplaneDAOImpl implements AirplaneDAO {
 
     @Override
@@ -30,7 +27,6 @@ public class AirplaneDAOImpl implements AirplaneDAO {
         }
         return airplane;
     }
-    
     
     @Override
     public boolean create(Airplane airplane) {

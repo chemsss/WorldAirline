@@ -1,18 +1,12 @@
 package DataAcessObjectImpl;
 
 import DataAcessObject.FlightDAO;
+import java.math.BigDecimal;
 import model.Flight;
 import java.sql.*;
 import java.util.ArrayList;
 
-
-/**
- *
- * @author Chems
- */
 public class FlightDAOImpl implements FlightDAO {
-    
-  
 
     @Override
     public Flight find(int id) {
@@ -42,55 +36,62 @@ public class FlightDAOImpl implements FlightDAO {
         return flight;
 
     }
-    
-    
-    //Coder une méthode find qui renvoie une arrayList de vols selon la date saisie
 
     @Override
-    public Flight findAllFlights() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Flight> findAllFlights() {
+   
+       ArrayList<Flight> flights = new ArrayList();
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from flight;");
+
+            while (myRs.next()) {
+                        flights.add(new Flight(myRs.getInt("idFlight"), myRs.getString("airlineName"),
+                        myRs.getTimestamp("departureDate"),
+                        myRs.getTimestamp("arrivalDate"),
+                        new AirplaneDAOImpl().find(myRs.getInt("airplane_idAirplane")),
+                        new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")),
+                        new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")),   
+                        new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("idFlight"))));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return flights;
+
     }
 
-    /**
-     *
-     * @param DepartureAirportId
-     * @param arrivalAirportId
-     * @param departureDate
-     * @param nbOfSeats
-     * @param className
-     * @return
-     */
     @Override
     public ArrayList<Flight> searchFlights(String DepartureAirportId, String arrivalAirportId, java.util.Date departureDate, int nbOfSeats, String className) {
-        
+
         ArrayList<Flight> flights = new ArrayList<>();
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("SELECT * FROM flight WHERE departureAirport_idAirport='"+DepartureAirportId +"' AND arrivalAirport_idAirport='"+arrivalAirportId +"';");
-            
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM flight WHERE departureAirport_idAirport='" + DepartureAirportId + "' AND arrivalAirport_idAirport='" + arrivalAirportId + "';");
+
             Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
             while (myRs.next()) {
-                ResultSet myRs2 = myStmt2.executeQuery("SELECT COUNT(*) FROM flightseat WHERE flight_idFlight=" +myRs.getInt("idFlight") +" AND className='" +className +"' AND isAvailable=1;" );
-                if(myRs2.first()) {
-                    if(myRs2.getInt("COUNT(*)") >= nbOfSeats) {
-                        
-                        if(myRs.getTimestamp("departureDate").compareTo(departureDate) > 0) {
-                            flights.add(new Flight(myRs.getInt("idFlight"), myRs.getString("airlineName"), 
-                                myRs.getTimestamp("departureDate"), 
-                                myRs.getTimestamp("arrivalDate"), 
-                                new AirplaneDAOImpl().find(myRs.getInt("airplane_idAirplane")), 
-                                new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")), 
-                                new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")), 
-                                new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("idFlight"))));
+                ResultSet myRs2 = myStmt2.executeQuery("SELECT COUNT(*) FROM flightseat WHERE flight_idFlight=" + myRs.getInt("idFlight") + " AND className='" + className + "' AND isAvailable=1;");
+                if (myRs2.first()) {
+                    if (myRs2.getInt("COUNT(*)") >= nbOfSeats) {
+
+                        if (myRs.getTimestamp("departureDate").compareTo(departureDate) > 0) {
+                            flights.add(new Flight(myRs.getInt("idFlight"), myRs.getString("airlineName"),
+                                    myRs.getTimestamp("departureDate"),
+                                    myRs.getTimestamp("arrivalDate"),
+                                    new AirplaneDAOImpl().find(myRs.getInt("airplane_idAirplane")),
+                                    new AirportDAOImpl().find(myRs.getString("departureAirport_idAirport")),
+                                    new AirportDAOImpl().find(myRs.getString("arrivalAirport_idAirport")),
+                                    new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("idFlight"))));
                         }
                     }
                 }
-                
-                
-                
+
             }
             return flights;
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return flights;
@@ -131,7 +132,7 @@ public class FlightDAOImpl implements FlightDAO {
         return true;
     }
     
-    public boolean add(Flight flight , int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, float priceFirst, float priceBusiness, float priceEconomy) {
+    public boolean add(Flight flight , int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, BigDecimal priceFirst, BigDecimal priceBusiness, BigDecimal priceEconomy) {
  //int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate       
         try {
             

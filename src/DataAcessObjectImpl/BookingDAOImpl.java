@@ -1,4 +1,5 @@
 package DataAcessObjectImpl;
+
 import DataAcessObject.BookingDAO;
 import model.Booking;
 import java.sql.*;
@@ -30,15 +31,36 @@ public class BookingDAOImpl implements BookingDAO {
                 }
                 
             }
-          
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
+
         return booking;
     }
-    
-    
+
+     @Override
+    public ArrayList<Booking> findAllBookings() {
+
+        ArrayList<Booking> bookings = new ArrayList();
+
+        try {
+            Statement myStmt = DatabaseConnection.getInstance().createStatement();
+            ResultSet myRs = myStmt.executeQuery("select * from booking ;");
+
+            while (myRs.next()) {
+
+                bookings.add(new Booking(myRs.getInt("bookingNo"), myRs.getDate("bookingDate"), new TicketDAOImpl().findByBookingNo(myRs.getInt("bookingNo"))));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return bookings;
+    }
+
+    @Override
     public ArrayList<Booking> findByIdCustomerAccount(int idCustomerAccount) {
         
         ArrayList<Booking> bookings = new ArrayList<>();
@@ -194,6 +216,7 @@ public class BookingDAOImpl implements BookingDAO {
         
     }
     
+    @Override
     public boolean update(int bookingNo, Date bookingDate, int idAccount, int idCoupon, int newBookingNo) {
 
         try {
@@ -240,6 +263,7 @@ public class BookingDAOImpl implements BookingDAO {
     }
     
     
+    @Override
     public boolean delete(int bookingNo) {
         
         Booking booking = null;
@@ -258,5 +282,30 @@ public class BookingDAOImpl implements BookingDAO {
     }
     
     
+
+    @Override
+    public boolean add(Date bookingDate, int idAccount, int idCoupon) {
+
+        try {
+            PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO booking (bookingDate, customerAccount_idaccount, coupon_idcoupon) VALUES (?, ?, ?);");
+            myPrepStmt.setDate(1, bookingDate);
+            myPrepStmt.setInt(2, idAccount);
+            if (idCoupon == 0) {
+                myPrepStmt.setNull(3, Types.INTEGER);
+            } else {
+                myPrepStmt.setInt(3, idCoupon);
+            }
+
+            myPrepStmt.executeUpdate();
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
 
 }

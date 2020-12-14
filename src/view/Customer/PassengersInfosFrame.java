@@ -1,4 +1,4 @@
-package view;
+package view.Customer;
 
 import Exceptions.EmptyFields;
 import com.toedter.calendar.JDateChooser;

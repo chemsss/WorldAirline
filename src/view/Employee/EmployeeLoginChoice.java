@@ -1,4 +1,4 @@
-package view;
+package view.Employee;
 
 import controller.EmployeeLoginController;
 import java.awt.event.*;
@@ -23,7 +23,6 @@ public class EmployeeLoginChoice implements ActionListener {
                 
                 if (new EmployeeLoginController().EmployeeLoginConnection(entry[0], getMD5Hash(entry[1])) == true) {
                    
-                    System.out.println("oui");
                     frame.dispose();
                     frame.getMainMenuFrame().dispose();
                     new EmployeeHome();

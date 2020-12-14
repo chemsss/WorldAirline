@@ -6,10 +6,6 @@ import model.FlightSeat;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author Unknow
- */
 public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
 
     @Override
@@ -32,6 +28,7 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
         return flightSeats;
     }
     
+    @Override
     public FlightSeat[] getAvailableSeats(int flight_idflight, String className) {
         
         ArrayList<FlightSeat> flightSeats = new ArrayList<>(); // in case of flightSeat doesn't exist
@@ -58,6 +55,7 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
     }
 
     
+    @Override
     public boolean setSeatTaken(int idFlight, int idFlightSeat) {
         
         try {
@@ -97,7 +95,7 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
     }
     
     
-    public boolean addIntoFlight(int seatNo, int idFlight, String className, float seatPrice) {
+    public boolean addIntoFlight(int seatNo, int idFlight, String className, BigDecimal seatPrice) {
         
         try {
             
@@ -105,12 +103,12 @@ public class FlightSeatDAOImpl implements FlightSeatDAO { //A FINIR
                     + "(`seatNo`, `flight_idFlight`, `className`, `seatPrice`, `isAvailable`) "
                     + "VALUES (?, ?, ?, ?, ?);");
             
-            String price = String.format("%.2f", seatPrice);
+            //String price = String.format("%.2f", seatPrice);
             
             myStmt.setInt(1, seatNo);
             myStmt.setInt(2, idFlight);
             myStmt.setString(3, className);
-            myStmt.setBigDecimal(4, new BigDecimal( price.replace(',', '.') ) );
+            myStmt.setBigDecimal(4, seatPrice );
             myStmt.setInt(5, 1);         
 
             myStmt.executeUpdate();

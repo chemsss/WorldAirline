@@ -1,4 +1,4 @@
-package view;
+package view.Customer;
 
 import controller.CustomerController;
 import java.awt.Color;
@@ -9,6 +9,7 @@ import java.util.Calendar;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+
 
 public class SignUpPanel extends javax.swing.JPanel {
  //SignUp Panel

@@ -4,6 +4,7 @@ import DataAcessObjectImpl.AirportDAOImpl;
 import DataAcessObjectImpl.FlightDAOImpl;
 import DataAcessObjectImpl.FlightSeatDAOImpl;
 import Exceptions.EmptyFields;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,12 +14,12 @@ import model.FlightSeat;
 
 
 public class FlightController {
-    
-    public FlightController(){
-        
+
+    public FlightController() {
+
     }
     
-    public static void addFlight(int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate, int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, float priceFirst, float priceBusiness, float priceEconomy) {
+    public static void addFlight(int idAirplane, String airlineName, String idDepartureAirport, String idArrivalAirport, Timestamp departureDate, Timestamp arrivalDate, int nbSeatsFirstClass, int nbSeatsBusinessClass, int nbSeatsEconomyClass, BigDecimal priceFirst, BigDecimal priceBusiness, BigDecimal priceEconomy) {
 
         Flight flight = new Flight(0 , airlineName, departureDate, arrivalDate,
                 new AirplaneDAOImpl().find(idAirplane), new AirportDAOImpl().find(idDepartureAirport), new AirportDAOImpl().find(idArrivalAirport), new ArrayList<FlightSeat>());
@@ -29,11 +30,11 @@ public class FlightController {
     }
     
     public static Flight getFlight(int idFlight) {
-        
+
         return new FlightDAOImpl().find(idFlight);
-        
+
     }
-    
+
     public static FlightSeat[] getAvailableSeats(int idFlight, String className) {
         
         return new FlightSeatDAOImpl().getAvailableSeats(idFlight, className);
@@ -49,6 +50,28 @@ public class FlightController {
         
     }
     
+    public static boolean CheckFlightInfo( Date dateDeparture  ,Date dateArrival, String airlineField)
+     {
+         try
+         {
+             if ((dateDeparture==null)&&(dateArrival==null)||(dateDeparture==null)&&(dateArrival!=null)||(dateArrival==null)&&(dateDeparture!=null) ||airlineField==null)
+         {
+             
+             throw new EmptyFields();
+              
+         }
+             return true;
+         }
+         catch(EmptyFields e)
+         {
+             System.out.println(e.getMessage());
+         }
+       
+               
+         
+        return false;
+     }
+    
     public static boolean CheckFlightInfo( Date dateDeparture  ,Date dateArrival)
      {
          try
@@ -61,7 +84,7 @@ public class FlightController {
          }
              return true;
          }
-         catch(Exception e)
+         catch(EmptyFields e)
          {
              System.out.println(e.getMessage());
          }
@@ -85,7 +108,46 @@ public class FlightController {
     }
     
     
-    
-            
+    public static boolean checkFlight(String idFlight) {
+
+        try {
+
+            int intIdFlight = Integer.parseInt(idFlight);
+
+            if (new FlightDAOImpl().find(intIdFlight) == null) {
+                JOptionPane.showMessageDialog(null, "There is no flight with this Id");
+                return false;
+
+            } else {
+                return true;
+
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
+    public static ArrayList<Flight> getAllFlights() {
+
+        return new FlightDAOImpl().findAllFlights();
+
+    }
+
+    public static boolean checkFlightSeat(String numberSeats, String seatPrice) {
+        try {
+
+            int intNumberSeats = Integer.parseInt(numberSeats);
+            BigDecimal bigDecimalSeatPrice = new BigDecimal(seatPrice);
+
+            return true;
+
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Please, enter valid datas");
+            return false;
+        }
+    }
     
 }

@@ -14,6 +14,9 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import view.*;
 
@@ -24,10 +27,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class WorldAirline {
 
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
+        
         
          
-       MainMenu menu = new MainMenu();
+       //MainMenu menu = new MainMenu();
        
        //EmployeeHome home = new EmployeeHome();
         
@@ -48,7 +52,7 @@ public class WorldAirline {
         
         if(new CouponDAOImpl().add("GLSTKF", 10)==false) {
             System.out.println("nnn");
-            
+      
         }*/
         //CustomerAccount customer = new CustomerAccount("Child", 8, "test1234@hotmail.fr", "password", "FirstName", "LastName", "address nulle", new Date(120, 10, 29), "+33 6 12325894");
         //(String ageCategory, int idAccount, String email, String password, String firstName, String lastName, String address, Date birthDate, String telephoneNumber)
@@ -190,7 +194,20 @@ public class WorldAirline {
         frame.setExtendedState(Frame.MAXIMIZED_BOTH);
         frame.getContentPane().add(panel1);*/
         
-        System.out.println(new AirportDAOImpl().findAirportPourcentage("CDG"));
+        //System.out.println(new AirportDAOImpl().findAirportPourcentage("CDG"));
+        try {
+
+
+        new MainMenu();
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // If Nimbus is not available, you can set the GUI to another look and feel.
+        }
     }
-    
+
 }

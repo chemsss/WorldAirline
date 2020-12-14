@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import DataAcessObjectImpl.FlightSeatDAOImpl;
@@ -13,10 +8,6 @@ import model.CustomerAccount;
 import model.Passenger;
 import model.Ticket;
 
-/**
- *
- * @author Unknow
- */
 public class TicketController {
 
     public static Ticket getTicket(int ticketNo) {
@@ -55,12 +46,11 @@ public class TicketController {
     /*
     public static Airport getDepartureAirport(int ticketNo) {
 
-        return new TicketDAOImpl().getDepartureAirport(ticketNo);
-    }
 
-    public static Airport getArrivalAirport(int ticketNo) {
+        if (new TicketDAOImpl().add(bookingNo, passenger, flightSeatNo, idFlight) == false) {
+            JOptionPane.showMessageDialog(null, "Couldn't add ticket into the booking n°" + bookingNo + ".", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
-        return new TicketDAOImpl().getArrivalAirport(ticketNo);
     }
     
     public static void getImage(int ticketNo )
