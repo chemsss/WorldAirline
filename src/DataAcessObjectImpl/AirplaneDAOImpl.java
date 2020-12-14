@@ -1,11 +1,9 @@
-
 package DataAcessObjectImpl;
 
 import DataAcessObject.AirplaneDAO;
 import java.sql.*;
 import java.util.ArrayList;
 import model.Airplane;
-
 
 public class AirplaneDAOImpl implements AirplaneDAO {
 
@@ -27,45 +25,41 @@ public class AirplaneDAOImpl implements AirplaneDAO {
         }
         return airplane;
     }
-    
+
     @Override
     public boolean create(Airplane airplane) {
-        
+
         try {
             PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO airplane (`model`, `seatCapacity`) VALUES (?, ?);");
             myStmt.setString(1, airplane.getModel());
             myStmt.setInt(2, airplane.getSeatCapacity());
             myStmt.executeUpdate();
-            
+
             return true;
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }
-        
+
     }
-    
-    
-    
-    
-    
+
     @Override
     public Airplane[] findAllAirplanes() {
- 
-       ArrayList<Airplane> airplanes = new ArrayList<>();
+
+        ArrayList<Airplane> airplanes = new ArrayList<>();
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM airplane;");
 
-            while(myRs.next()) {
+            while (myRs.next()) {
                 airplanes.add(new Airplane(myRs.getInt("idAirplane"), myRs.getString("model"), myRs.getInt("seatCapacity")));
             }
 
             Airplane[] airplanesFound = new Airplane[airplanes.size()];
-            for(int i = 0 ; i < airplanes.size() ; ++i) {
-              airplanesFound[i] = airplanes.get(i);
+            for (int i = 0; i < airplanes.size(); ++i) {
+                airplanesFound[i] = airplanes.get(i);
             }
             return airplanesFound;
 
@@ -74,10 +68,9 @@ public class AirplaneDAOImpl implements AirplaneDAO {
             return null;
         }
     }
-    
-    
-    public int getSeatCapacity(int idAirplane) {
 
+    @Override
+    public int getSeatCapacity(int idAirplane) {
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
@@ -85,18 +78,15 @@ public class AirplaneDAOImpl implements AirplaneDAO {
 
             if (myRs.first()) {
                 return myRs.getInt("seatCapacity");
-            }
-            else {
+            } else {
                 System.out.println("Couldn't find airplane to get seat capacity.");
             }
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return 0;
         }
         return 0;
     }
-    
-    
-    
+
 }

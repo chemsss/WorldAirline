@@ -4,9 +4,10 @@ import model.Passenger;
 
 public interface PassengerDAO {
 
-    public Passenger find(int idPassenger);
+    Passenger find(int idPassenger);
 
-    public Passenger findByTicketNo(int ticketNo);
+    Passenger findByTicketNo(int ticketNo);
 
-    public int add(Passenger passenger);
+    int add(Passenger passenger);
+    
 }

@@ -2,8 +2,8 @@ package controller;
 
 import DataAcessObjectImpl.FlightSeatDAOImpl;
 import DataAcessObjectImpl.TicketDAOImpl;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
-import model.Airport;
 import model.CustomerAccount;
 import model.Passenger;
 import model.Ticket;
@@ -23,42 +23,25 @@ public class TicketController {
         
     }
     
-    public static float getTicketPriceNotLogged(int idFlight, int seatNo) {
+    public static BigDecimal getTicketPriceNotLogged(int idFlight, int seatNo) {
         return new TicketDAOImpl().getPriceNotLogged(idFlight, seatNo);
     }
     
-    public static float getTicketPriceLogged(int idFlight, int seatNo, CustomerAccount customer) {
+    public static BigDecimal getTicketPriceLogged(int idFlight, int seatNo, CustomerAccount customer) {
         switch (customer.getAgeCategory()) {
                         case "Regular":
                             System.out.println("REGULAR");
                             return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
                         case "Senior":
                             System.out.println("SENIOR");
-                            return (float) (0.8 * (new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
+                            return new BigDecimal(0.8).multiply((new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
                         case "Child":
                             System.out.println("CHILD");
-                            return (float) (0.9 * (new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
+                            return new BigDecimal(0.9).multiply((new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
         }
         System.out.println("Neither age categories.");
         return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
     }
-    
-    /*
-    public static Airport getDepartureAirport(int ticketNo) {
-
-
-        if (new TicketDAOImpl().add(bookingNo, passenger, flightSeatNo, idFlight) == false) {
-            JOptionPane.showMessageDialog(null, "Couldn't add ticket into the booking n°" + bookingNo + ".", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-    }
-    
-    public static void getImage(int ticketNo )
-    {
-        new TicketDAOImpl().getImg(ticketNo);
-    }
-        
-*/  
 
       public static void deleteFlight (int idFlight)
     {

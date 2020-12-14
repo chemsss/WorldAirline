@@ -4,6 +4,7 @@ import model.*;
 import DataAcessObjectImpl.CustomerAccountDAOImpl;
 import java.sql.Date;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 public class CustomerController {
 
@@ -70,6 +71,18 @@ public class CustomerController {
         }
         
         return false;
+    }
+    
+    
+    public static void update(CustomerAccount account) {
+        
+        if(new CustomerAccountDAOImpl().update(account)==true) {
+            JOptionPane.showMessageDialog(null, "Successfully changed account informations.", "Changes successfull", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Unable to change account informations.", "", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
     
             

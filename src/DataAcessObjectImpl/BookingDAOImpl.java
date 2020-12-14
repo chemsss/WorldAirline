@@ -86,6 +86,7 @@ public class BookingDAOImpl implements BookingDAO {
     }
     
 
+    @Override
     public boolean add(Date bookingDate, int idAccount) {
                 
         try {
@@ -104,6 +105,7 @@ public class BookingDAOImpl implements BookingDAO {
         
     }
     
+    @Override
     public boolean add(Booking booking, int idAccount, int idCoupon, ArrayList<Passenger> passengers) {
                 
         try {
@@ -158,6 +160,7 @@ public class BookingDAOImpl implements BookingDAO {
         
     }
     
+    @Override
     public boolean add(Booking booking, int idAccount, int idCoupon, ArrayList<Passenger> passengers, ArrayList<Ticket> returnTickets) {
                 
         try {

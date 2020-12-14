@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DataAcessObject;
+import java.util.ArrayList;
 import model.Airport;
 
 
@@ -13,5 +14,8 @@ public interface AirportDAO {
     Airport find(String idAirport);
     Airport[] findAllAirports();
     boolean create(Airport airport);
+    double findAirportPourcentage(String idAirport);
+    ArrayList<String> findAllAirportNames();
+    ArrayList<Double> findPercentageAllAirpots();
     
 }

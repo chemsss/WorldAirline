@@ -1,5 +1,6 @@
 package view.Customer;
 
+import controller.CustomerController;
 import model.CustomerAccount;
 
 public class MyAccountInfosPanel extends javax.swing.JPanel {
@@ -175,13 +176,11 @@ public class MyAccountInfosPanel extends javax.swing.JPanel {
         save.setBorderPainted(false);
         save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         save.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //if PAS DE PB =>save
-
-                /*
-                
-                 */
-                //else mssg erreur
+                //int id,String ageCategory, String email, String password, String firstName, String lastName, String address, Date birthDate, String telephoneNumber
+                //CustomerController.update(new CustomerAccount(loggedInCustomer.getIdAccount(), loggedInCustomer.getAgeCategory(), passwordField.getText(), emailField.getText(), firstNameField.getText(), lastNameField.getText(), addressField.getText(), birthDateDate.getDate(), telephoneNumber.getText()));
+                CustomerController.update(loggedInCustomer);
             }
         });
         this.add(save);

@@ -17,5 +17,9 @@ public interface FlightSeatDAO {
     public boolean setSeatTaken(int idFlight, int idFlightSeat);
     
     public boolean addIntoFlight(int seatNo, int idFlight, String className, BigDecimal seatPrice);
+    
+    BigDecimal getPrice(int idFlight, int seatNo);
+    
+    
 
 }

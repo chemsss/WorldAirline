@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataAcessObjectImpl;
 
 import DataAcessObject.CouponDAO;
@@ -14,10 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import model.Coupon;
 
-/**
- *
- * @author Chems
- */
 public class CouponDAOImpl implements CouponDAO {
 
     @Override
@@ -32,17 +23,15 @@ public class CouponDAOImpl implements CouponDAO {
             if (myRs.first()) {
 
                 coupon = new Coupon(idCoupon, myRs.getString("couponCode"), myRs.getBigDecimal("discount"));
-                
+
                 return coupon;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return null;
         }
-        return null;        
+        return null;
     }
-    
-
 
     @Override
     public ArrayList<Coupon> findAllCoupons() {
@@ -53,17 +42,16 @@ public class CouponDAOImpl implements CouponDAO {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM coupon;");
 
-            while(myRs.next()) {
+            while (myRs.next()) {
                 coupons.add(new Coupon(myRs.getInt("idcoupon"), myRs.getString("couponCode"), myRs.getBigDecimal("discount")));
             }
             return coupons;
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return coupons;
-        }      
+        }
     }
-    
 
     @Override
     public boolean delete(String code) {
@@ -110,20 +98,19 @@ public class CouponDAOImpl implements CouponDAO {
 
             if (myRs.first()) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
-        }        
+        }
     }
-    
-    
+
+    @Override
     public Coupon findByCode(String code) {
-        
-        Coupon coupon = null; 
+
+        Coupon coupon = null;
 
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
@@ -138,33 +125,26 @@ public class CouponDAOImpl implements CouponDAO {
             return null;
         }
         return null;
-        
+
     }
-    
-    
+
+    @Override
     public boolean add(String code, BigDecimal discount) {
-        
+
         try {
             PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `coupon` (`couponCode`, `discount`) VALUES (?, ?);");
             myPrepStmt.setString(1, code);
             myPrepStmt.setBigDecimal(2, discount);
-            
+
             myPrepStmt.executeUpdate();
-            
+
             return true;
-                
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }
-        
+
     }
 
-    @Override
-    public boolean add(String code, float discount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
 }

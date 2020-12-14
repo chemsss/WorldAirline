@@ -1,4 +1,5 @@
 package DataAcessObject;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import model.*;
 
@@ -21,5 +22,11 @@ public interface TicketDAO {
     public Airport getArrivalAirport(int ticketNo);
 
     public void delete(int ticketNo);
+    
+    BigDecimal getPriceLoggedCustomer(int idFlight, int seatNo);
+    
+    BigDecimal getPriceNotLogged(int idFlight, int seatNo);
+    
+    Ticket findByFlightSeat(int idFlight, int seatNo);
     
 }

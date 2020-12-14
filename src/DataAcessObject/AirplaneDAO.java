@@ -9,5 +9,7 @@ public interface AirplaneDAO {
     boolean create(Airplane airplane);
     
     Airplane[] findAllAirplanes();
+    
+    int getSeatCapacity(int idAirplane);
 
 }

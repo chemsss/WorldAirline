@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import model.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,12 +29,6 @@ public class TicketDAOImpl implements TicketDAO {
 
             while (myRs.next()) {
 
-                /*FlightDAOImpl flightDAOImpl = new FlightDAOImpl();
-                Flight flight = flightDAOImpl.find(myRs.getInt("flight_idFlight"));
-
-                FlightSeatDAO flightSeatDAOImpl = new FlightSeatDAOImpl();
-                ArrayList<FlightSeat> seats = flightSeatDAOImpl.findByIdFlight(myRs.getInt("flight_idFlight"));*/
-
                 tickets.add(new Ticket(myRs.getInt("TicketNo"), new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("flight_idFlight")).get(myRs.getInt("flightSeat_seatNo") - 1), new FlightDAOImpl().find(myRs.getInt("flight_idFlight"))));
 
             }
@@ -44,7 +39,7 @@ public class TicketDAOImpl implements TicketDAO {
         return tickets;
 
     }
-    
+
     @Override
     public ArrayList<Ticket> findByIdPassenger(int passenger_idPassenger) {
 
@@ -55,12 +50,6 @@ public class TicketDAOImpl implements TicketDAO {
 
             while (myRs.next()) {
 
-                /*FlightDAOImpl flightDAOImpl = new FlightDAOImpl();
-                Flight flight = flightDAOImpl.find(myRs.getInt("flight_idFlight"));
-
-                FlightSeatDAO flightSeatDAOImpl = new FlightSeatDAOImpl();
-                ArrayList<FlightSeat> seats = flightSeatDAOImpl.findByIdFlight(myRs.getInt("flight_idFlight"));*/
-
                 tickets.add(new Ticket(myRs.getInt("TicketNo"), new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("flight_idFlight")).get(myRs.getInt("flightSeat_seatNo") - 1), new FlightDAOImpl().find(myRs.getInt("flight_idFlight"))));
 
             }
@@ -71,16 +60,17 @@ public class TicketDAOImpl implements TicketDAO {
         return tickets;
 
     }
-    
+
+    @Override
     public Ticket findByFlightSeat(int idFlight, int seatNo) {
 
         Ticket ticket = null;
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from ticket where flight_idFlight=" + idFlight + " AND flightSeat_seatNo= " +seatNo +";");
+            ResultSet myRs = myStmt.executeQuery("select * from ticket where flight_idFlight=" + idFlight + " AND flightSeat_seatNo= " + seatNo + ";");
 
-            if(myRs.first()) {
-                
+            if (myRs.first()) {
+
                 ticket = new Ticket(myRs.getInt("TicketNo"), new FlightSeatDAOImpl().findByIdFlight(idFlight).get(seatNo - 1), new FlightDAOImpl().find(idFlight));
                 return ticket;
             }
@@ -91,167 +81,134 @@ public class TicketDAOImpl implements TicketDAO {
         return null;
 
     }
-    
-    
+
     @Override
     public boolean add(int bookingNo, Passenger passenger, int flightSeatNo, int idFlight) {
-                
+
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" +flightSeatNo + ";");
-            if(myRs.first()) {
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" + flightSeatNo + ";");
+            if (myRs.first()) {
                 System.out.println(myRs.getInt("ticketNo"));
-                System.out.println("Ticket for the seat n°" +flightSeatNo +" in the flight n°" +idFlight +" already exists.");
+                System.out.println("Ticket for the seat n°" + flightSeatNo + " in the flight n°" + idFlight + " already exists.");
                 return false;
             }
-                        
+
             PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `ticket` (`booking_bookingNo`, `passenger_idPassenger`, `flightSeat_seatNo`, `flight_idFlight`) VALUES (?, ?, ?, ?);");
             myPrepStmt.setInt(1, bookingNo);
             int idPassenger = new PassengerDAOImpl().add(passenger);
-            if(idPassenger == 0){
+            if (idPassenger == 0) {
                 myPrepStmt.setNull(2, Types.INTEGER);
-            }
-            else {
+            } else {
                 myPrepStmt.setInt(2, idPassenger);
             }
             myPrepStmt.setInt(3, flightSeatNo);
             myPrepStmt.setInt(4, idFlight);
 
             myPrepStmt.executeUpdate();
-            
+
             new FlightSeatDAOImpl().setSeatTaken(idFlight, flightSeatNo);
-            
-            
+
             Statement myStmt3 = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs3 = myStmt3.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" +flightSeatNo + ";");
-            if(myRs3.first()) {
+            ResultSet myRs3 = myStmt3.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" + flightSeatNo + ";");
+            if (myRs3.first()) {
                 System.out.println(myRs3.getInt("ticketNo"));
                 inserImg(myRs3.getInt("ticketNo"));
-            }
-            else {
+            } else {
                 System.out.println("Couldn't find the ticket to add the barcode.");
             }
-            
+
             return true;
-                
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("Reached end of add ticket method.");
             return false;
         }
-        
-    }
-    
-    /*
-    public boolean add(int bookingNo, int idPassenger, int flightSeatNo, int idFlight) {
-                
-        try {
-            Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket WHERE flight_idFlight=" + idFlight + " AND flightSeat_seatNo=" +flightSeatNo + ";");
-            if(myRs.first()) {
-                System.out.println("Ticket for the seat n°" +flightSeatNo +" in the flight n°" +idFlight +" already exists.");
-                return false;
-            }
-            PreparedStatement myPrepStmt = DatabaseConnection.getInstance().prepareStatement("INSERT INTO `ticket` (`booking_bookingNo`, `passenger_idPassenger`, `flightSeat_seatNo`, `flight_idFlight`) VALUES (?, ?, ?, ?);");
-            myPrepStmt.setInt(1, bookingNo);
-            myPrepStmt.setInt(2, idPassenger);
-            myPrepStmt.setInt(3, flightSeatNo);
-            myPrepStmt.setInt(4, idFlight);
 
-            myPrepStmt.executeUpdate();
-            
-            return true;
-                
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return false;
-        }
-        
-    }*/
-    
-    public float getPriceLoggedCustomer(int idFlight, int seatNo) {
-        
+    }
+
+    @Override
+    public BigDecimal getPriceLoggedCustomer(int idFlight, int seatNo) {
+
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
             Statement myStmt2 = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket,booking WHERE ticket.flight_idFlight=" +idFlight +" AND ticket.flightSeat_seatNo=" +seatNo  
-                    +" AND ticket.booking_bookingNo=booking.bookingNo;"); 
-            
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM ticket,booking WHERE ticket.flight_idFlight=" + idFlight + " AND ticket.flightSeat_seatNo=" + seatNo
+                    + " AND ticket.booking_bookingNo=booking.bookingNo;");
+
             if (myRs.first()) {
-                ResultSet myRs2 = myStmt2.executeQuery("SELECT * FROM customeraccount WHERE customeraccount.idCustomerAccount="  +myRs.getString("customerAccount_idaccount") +";"); 
-                if(myRs2.first()) {
+                ResultSet myRs2 = myStmt2.executeQuery("SELECT * FROM customeraccount WHERE customeraccount.idCustomerAccount=" + myRs.getString("customerAccount_idaccount") + ";");
+                if (myRs2.first()) {
                     switch (myRs2.getString("ageCategory")) {
                         case "Regular":
                             System.out.println("REGULAR");
                             return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
                         case "Senior":
-                            System.out.println("SENIOR");
-                            return (float) (0.8 * (new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
+                            System.out.println("SENIOR");                            
+                            return new BigDecimal(0.8).multiply(new FlightSeatDAOImpl().getPrice(idFlight, seatNo));
                         case "Child":
                             System.out.println("CHILD");
-                            return (float) (0.9 * (new FlightSeatDAOImpl().getPrice(idFlight, seatNo)));
+                            return new BigDecimal(0.9).multiply(new FlightSeatDAOImpl().getPrice(idFlight, seatNo));
                         default:
                             break;
                     }
-                    
-                }
-                else {
+
+                } else {
                     System.out.println("Couldn't find a customer linked to the booking.");
                     return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
                 }
-                
-                
-                return myRs.getBigDecimal("seatPrice").floatValue();
+
+                return myRs.getBigDecimal("seatPrice");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return 0;
+            return new BigDecimal(0);
         }
-        return 0;
-        
-    }
-    
-    
-    
-    public float getPriceNotLogged(int idFlight, int seatNo) {
-        
-        return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
-        
+        return new BigDecimal(0);
+
     }
 
-    
+    @Override
+    public BigDecimal getPriceNotLogged(int idFlight, int seatNo) {
+
+        return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
+
+    }
+
+    @Override
     public Ticket getTicket(int ticketNo) {
-        
+
         try {
             Statement myStmt = DatabaseConnection.getInstance().createStatement();
-            ResultSet myRs = myStmt.executeQuery("select * from ticket where ticketNo=" +ticketNo +";");
+            ResultSet myRs = myStmt.executeQuery("select * from ticket where ticketNo=" + ticketNo + ";");
 
-            if(myRs.first()) {
-                
+            if (myRs.first()) {
+
                 Ticket ticket = new Ticket(ticketNo, new FlightSeatDAOImpl().findByIdFlight(myRs.getInt("flight_idFlight")).get(myRs.getInt("flightSeat_seatNo") - 1), new FlightDAOImpl().find(myRs.getInt("flight_idFlight")));
-                
+
                 return ticket;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return null;
         }
-        return null;        
-        
+        return null;
+
     }
-    
+
     public void delete(int ticketNo) {
-        
+
         try {
             PreparedStatement myStmt = DatabaseConnection.getInstance().prepareStatement("DELETE FROM ticket WHERE ticketNo=" + ticketNo + ";");
             myStmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-                
+
     }
-    
+
     @Override
     public void inserImg(int ticketNo) {
 

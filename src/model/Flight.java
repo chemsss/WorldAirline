@@ -159,6 +159,6 @@ public class Flight {
                 return seats.get(i);
             }
         }
-        return null;
+        return new FlightSeat();
     }
 }

@@ -20,6 +20,10 @@ public class EmployeeHome extends javax.swing.JFrame {
     private javax.swing.JMenu manageBookings;
     private javax.swing.JMenu manageFlight;
     private javax.swing.JMenuBar menuBar;
+    
+    private javax.swing.JMenu chartStatistics;
+    private javax.swing.JMenuItem flightsPerMonth; 
+    private javax.swing.JMenuItem pieDestinations;
 
     private final int screenWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private final int screenHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
@@ -49,6 +53,10 @@ public class EmployeeHome extends javax.swing.JFrame {
         ManageCoupons = new javax.swing.JMenu();
         AddCoupon = new javax.swing.JMenuItem();
         SearchCoupon = new javax.swing.JMenuItem();
+        
+        chartStatistics = new javax.swing.JMenu();
+        flightsPerMonth = new javax.swing.JMenuItem();
+        pieDestinations = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -132,7 +140,7 @@ public class EmployeeHome extends javax.swing.JFrame {
                 jPanel2 = new EmployeeBookingSearch();
                 initComponents();
                 setSize(screenWidth, screenHeight);
-                                setExtendedState(Frame.MAXIMIZED_BOTH);
+                setExtendedState(Frame.MAXIMIZED_BOTH);
 
             }
         });
@@ -193,6 +201,46 @@ public class EmployeeHome extends javax.swing.JFrame {
         ManageCoupons.add(SearchCoupon);
 
         menuBar.add(ManageCoupons);
+        
+        
+        chartStatistics.setText("Statistics");
+        
+        flightsPerMonth.setText("Number of flights according to month");
+        flightsPerMonth.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getContentPane().removeAll();
+                jPanel2 = new EmployeeChartFlightsPerMonth();
+                initComponents();
+                setSize(screenWidth ,screenHeight);
+                jPanel2.setSize(screenWidth ,screenHeight);
+                jPanel2.setBounds(0 , 0, screenWidth ,screenHeight);
+                                        
+
+            }
+        });
+        chartStatistics.add(flightsPerMonth);
+        
+        
+        pieDestinations.setText("Most chosen destinations");
+        pieDestinations.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getContentPane().removeAll();
+                jPanel2 = new EmployeeChartPieDestination();
+                initComponents();
+                setSize(screenWidth ,screenHeight);
+                jPanel2.setSize(screenWidth ,screenHeight);
+                jPanel2.setBounds(0 , 0, screenWidth ,screenHeight);
+                                        
+
+            }
+        });
+        chartStatistics.add(pieDestinations);
+        
+        
+        menuBar.add(chartStatistics);
+        
 
         setJMenuBar(menuBar);
 

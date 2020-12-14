@@ -12,7 +12,7 @@ public class CouponController {
     }
 
     public static void addCoupon(String code, float discount) {
-        new CouponDAOImpl().add(code, discount);
+        new CouponDAOImpl().add(code, new BigDecimal(discount));
 
         JOptionPane.showMessageDialog(null, "The Coupon has been added");
     }

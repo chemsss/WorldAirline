@@ -17,6 +17,12 @@ public interface BookingDAO {
     public boolean delete(int bookingNo);
    
     public ArrayList<Booking> findAllBookings();
+    
+    boolean add(Booking booking, int idAccount, int idCoupon, ArrayList<Passenger> passengers, ArrayList<Ticket> returnTickets);
+    
+    boolean add(Booking booking, int idAccount, int idCoupon, ArrayList<Passenger> passengers);
+    
+    boolean add(Date bookingDate, int idAccount);
 
 
 }

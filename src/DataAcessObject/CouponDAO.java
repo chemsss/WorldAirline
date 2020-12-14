@@ -18,6 +18,6 @@ public interface CouponDAO {
 
     public Coupon findByCode(String code);
 
-    public boolean add(String code, float discount);
+    public boolean add(String code, BigDecimal discount);
 
 }

@@ -5,17 +5,11 @@
  */
 package controller;
 
-import DataAcessObject.TicketDAO;
 import DataAcessObjectImpl.BookingDAOImpl;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import model.CustomerAccount;
-import model.Ticket;
 import DataAcessObjectImpl.CouponDAOImpl;
 import DataAcessObjectImpl.FlightSeatDAOImpl;
 import DataAcessObjectImpl.TicketDAOImpl;
 import java.math.BigDecimal;
-import javax.swing.JLabel;
 import model.Coupon;
 import model.CustomerAccount;
 import model.Ticket;
@@ -41,13 +35,13 @@ public class BookingController {
 
     }
 
-    public static float getTicketPriceLoggedCustomer(int idFlight, int seatNo) {
+    public static BigDecimal getTicketPriceLoggedCustomer(int idFlight, int seatNo) {
 
         return new TicketDAOImpl().getPriceLoggedCustomer(idFlight, seatNo);
 
     }
 
-    public static float getTicketPriceUnloggedCustomer(int idFlight, int seatNo) {
+    public static BigDecimal getTicketPriceUnloggedCustomer(int idFlight, int seatNo) {
         return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
     }
 
@@ -62,17 +56,17 @@ public class BookingController {
         if(customer==null) {
             float price = 0;
             for(int i = 0 ; i < departTickets.size() ; ++i) {
-                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo());
+                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo()).floatValue();
             }
             return price;
         }
         
         else {
-            float price = TicketController.getTicketPriceLogged(departTickets.get(0).getFlight().getIdFlight(), departTickets.get(0).getSeat().getSeatNo(), customer);
-            price += TicketController.getTicketPriceLogged(returnTickets.get(0).getFlight().getIdFlight(), returnTickets.get(0).getSeat().getSeatNo(), customer);
+            float price = TicketController.getTicketPriceLogged(departTickets.get(0).getFlight().getIdFlight(), departTickets.get(0).getSeat().getSeatNo(), customer).floatValue();
+            price += TicketController.getTicketPriceLogged(returnTickets.get(0).getFlight().getIdFlight(), returnTickets.get(0).getSeat().getSeatNo(), customer).floatValue();
             for(int i = 1 ; i < departTickets.size() ; ++i) {
-                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo());
-                price += TicketController.getTicketPriceNotLogged(returnTickets.get(i).getFlight().getIdFlight(), returnTickets.get(i).getSeat().getSeatNo());
+                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo()).floatValue();
+                price += TicketController.getTicketPriceNotLogged(returnTickets.get(i).getFlight().getIdFlight(), returnTickets.get(i).getSeat().getSeatNo()).floatValue();
             }
             return price;
         }
@@ -97,21 +91,21 @@ public class BookingController {
         if(customer==null) {
             float price = 0;
             for(int i = 0 ; i < departTickets.size() ; ++i) {
-                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo());
+                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo()).floatValue();
             }
             return price;
         }
         
         else {
-            float price = TicketController.getTicketPriceLogged(departTickets.get(0).getFlight().getIdFlight(), departTickets.get(0).getSeat().getSeatNo(), customer);
+            float price = TicketController.getTicketPriceLogged(departTickets.get(0).getFlight().getIdFlight(), departTickets.get(0).getSeat().getSeatNo(), customer).floatValue();
             for(int i = 1 ; i < departTickets.size() ; ++i) {
-                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo());
+                price += TicketController.getTicketPriceNotLogged(departTickets.get(i).getFlight().getIdFlight(), departTickets.get(i).getSeat().getSeatNo()).floatValue();
             }
             return price;
         }
         
     }        
-        public static void addBooking(Date date,int idAccount/*int idcoupon*/)
+        public static void addBooking(Date date,int idAccount)
     { 
         if (new BookingDAOImpl().add((java.sql.Date) date, idAccount)==false)
         {
@@ -134,11 +128,7 @@ public class BookingController {
         JOptionPane.showMessageDialog(null, "The booking has been deleted");
     }
 
-         /*
-    public static Booking getBooking(int bookingNo) {
-        return new BookingDAOImpl().find(bookingNo);
-
-    }
+         
 
     public static void addBooking(Date date, int idAccount, int idCoupon) {
         if (new BookingDAOImpl().add(date, idAccount, idCoupon) == false) {
@@ -147,23 +137,6 @@ public class BookingController {
 
     }
 
-    public static void updateBooking(int bookingNo, Date bookingDate, int idAccount, int idCoupon, int newBookingNo) {
-        if (new BookingDAOImpl().update(bookingNo, bookingDate, idAccount, idCoupon, newBookingNo) == false) {
-            JOptionPane.showMessageDialog(null, "Unable to update booking");
-        }
-    }
-
-    public static void deleteBooking(int idBooking) {
-
-        if (new BookingDAOImpl().delete(idBooking) == false) {
-
-            JOptionPane.showMessageDialog(null, "The booking has not been deleted");
-
-        } else {
-            new BookingDAOImpl().delete(idBooking);
-            JOptionPane.showMessageDialog(null, "The booking has been deleted");
-        }
-    }*/
 
     public static boolean checkBooking(String bookingNo) {
 
