@@ -1,10 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model.TableModel;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import model.FlightSeat;
 
-
+/**
+ *
+ * @author bibes
+ */
 public class SearchFlightSeatsTableModel extends AbstractTableModel {
     
      private final String[] Titles = {"SeatNo", "Classe Name", "Seat Price", "isAvailable"};

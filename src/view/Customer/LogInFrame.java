@@ -3,19 +3,16 @@ package view.Customer;
 import controller.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javax.swing.*;
 import view.MainMenu;
 
 public final class LogInFrame extends JFrame {
 
     //Login Panel
-    private final JButton jButton1, jButton2, jButton3;
-    private final JLabel jLabel1, jLabel2, jLabel3;
-    private final JPanel jPanel1, jPanel2;
-    private final JTextField jTextField2;
+    private final JButton continueAsGuest, login, signUp;
+    private final JLabel airplaneImg, close, title;
+    private final JPanel leftPanel, rightPanel2;
+    private final JTextField email;
     private final JPasswordField password;
 
     //Jpanel SignUp
@@ -27,15 +24,15 @@ public final class LogInFrame extends JFrame {
 
         this.frame = frame;
 
-        jPanel1 = new JPanel();
-        jLabel1 = new JLabel();
-        jLabel3 = new JLabel();
-        jPanel2 = new JPanel();
-        jTextField2 = new JTextField();
-        jButton1 = new JButton();
-        jButton2 = new JButton();
-        jButton3 = new JButton();
-        jLabel2 = new JLabel();
+        leftPanel = new JPanel();
+        airplaneImg = new JLabel();
+        title = new JLabel();
+        rightPanel2 = new JPanel();
+        email = new JTextField();
+        continueAsGuest = new JButton();
+        login = new JButton();
+        signUp = new JButton();
+        close = new JLabel();
         password = new JPasswordField("Password");
 
         initCustomerLogin();
@@ -50,15 +47,15 @@ public final class LogInFrame extends JFrame {
 
     public LogInFrame() {
 
-        jPanel1 = new JPanel();
-        jLabel1 = new JLabel();
-        jLabel3 = new JLabel();
-        jPanel2 = new JPanel();
-        jTextField2 = new JTextField();
-        jButton1 = new JButton();
-        jButton2 = new JButton();
-        jButton3 = new JButton();
-        jLabel2 = new JLabel();
+        leftPanel = new JPanel();
+        airplaneImg = new JLabel();
+        title = new JLabel();
+        rightPanel2 = new JPanel();
+        email = new JTextField();
+        continueAsGuest = new JButton();
+        login = new JButton();
+        signUp = new JButton();
+        close = new JLabel();
         password = new JPasswordField("Password");
 
         initCustomerLogin();
@@ -80,36 +77,36 @@ public final class LogInFrame extends JFrame {
 
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new Color(55, 112, 155));
-        jPanel1.setLayout(null);
+        leftPanel.setBackground(new Color(55, 112, 155));
+        leftPanel.setLayout(null);
 
-        jLabel1.setIcon(new ImageIcon("img\\airplane_127px.png")); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(110, 120, 270, 190);
+        airplaneImg.setIcon(new ImageIcon("img\\airplane_127px.png")); // NOI18N
+        leftPanel.add(airplaneImg);
+        airplaneImg.setBounds(110, 120, 270, 190);
 
-        jLabel3.setBackground(new Color(255, 255, 255));
-        jLabel3.setFont(new Font("Segoe UI Light", 0, 36)); // NOI18N
-        jLabel3.setForeground(new Color(255, 255, 255));
-        jLabel3.setText("WorldAirline");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(80, 400, 240, 48);
+        title.setBackground(new Color(255, 255, 255));
+        title.setFont(new Font("Segoe UI Light", 0, 36)); // NOI18N
+        title.setForeground(new Color(255, 255, 255));
+        title.setText("WorldAirline");
+        leftPanel.add(title);
+        title.setBounds(80, 400, 240, 48);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 380, 530);
+        getContentPane().add(leftPanel);
+        leftPanel.setBounds(0, 0, 380, 530);
 
-        jPanel2.setBackground(new Color(255, 255, 255));
-        jPanel2.setLayout(null);
+        rightPanel2.setBackground(new Color(255, 255, 255));
+        rightPanel2.setLayout(null);
 
-        jLabel2.setBackground(new Color(255, 255, 255));
-        jLabel2.setFont(new Font("Tahoma", 1, 25)); // NOI18N
-        jLabel2.setForeground(new Color(55, 112, 155));
-        jLabel2.setText("X");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        close.setBackground(new Color(255, 255, 255));
+        close.setFont(new Font("Tahoma", 1, 25)); // NOI18N
+        close.setForeground(new Color(55, 112, 155));
+        close.setText("X");
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(410, 0, 30, 40);
+        rightPanel2.add(close);
+        close.setBounds(410, 0, 30, 40);
 
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dispose();
@@ -123,34 +120,34 @@ public final class LogInFrame extends JFrame {
                 password.setText("");
             }
         });
-        jPanel2.add(password);
+        rightPanel2.add(password);
         password.setBounds(70, 220, 270, 60);
 
-        jTextField2.setFont(new Font("Segoe UI Light", 0, 20)); // NOI18N
-        jTextField2.setForeground(new Color(51, 51, 51));
-        jTextField2.setText("Enter email adress...");
-        jTextField2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(0, 0, 0)));
-        jTextField2.addMouseListener(new MouseAdapter() {
+        email.setFont(new Font("Segoe UI Light", 0, 20)); // NOI18N
+        email.setForeground(new Color(51, 51, 51));
+        email.setText("Enter email adress...");
+        email.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(0, 0, 0)));
+        email.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                jTextField2.setText("");
+                email.setText("");
             }
         });
-        jPanel2.add(jTextField2);
-        jTextField2.setBounds(70, 100, 270, 50);
+        rightPanel2.add(email);
+        email.setBounds(70, 100, 270, 50);
 
         if (frame == null) {
-            jButton1.setVisible(false);
+            continueAsGuest.setVisible(false);
         }
-        jButton1.setBackground(new Color(255, 255, 255));
-        jButton1.setFont(new Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Or Continue as guest");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        continueAsGuest.setBackground(new Color(255, 255, 255));
+        continueAsGuest.setFont(new Font("Tahoma", 0, 14)); // NOI18N
+        continueAsGuest.setText("Or Continue as guest");
+        continueAsGuest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton1.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        continueAsGuest.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
+        continueAsGuest.setBorderPainted(false);
+        continueAsGuest.setFocusPainted(false);
+        continueAsGuest.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dispose();
@@ -158,25 +155,25 @@ public final class LogInFrame extends JFrame {
                 new CustomerHome(null);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(280, 490, 150, 30);
+        rightPanel2.add(continueAsGuest);
+        continueAsGuest.setBounds(280, 490, 150, 30);
 
-        jButton2.setBackground(new Color(55, 112, 155));
-        jButton2.setForeground(new Color(255, 255, 255));
-        jButton2.setText("Login");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        login.setBackground(new Color(55, 112, 155));
+        login.setForeground(new Color(255, 255, 255));
+        login.setText("Login");
+        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
-        jButton2.setBorderPainted(false);
+        login.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
+        login.setBorderPainted(false);
 
-        jButton2.addActionListener(new ActionListener() {
+        login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (new CustomerController().CustomerLoginConnection(jTextField2.getText(), FieldsController.getMD5Hash(String.valueOf(password.getPassword()))) == true) {
+                if (new CustomerController().CustomerLoginConnection(email.getText(), FieldsController.getMD5Hash(String.valueOf(password.getPassword()))) == true) {
                     frame.dispose();
                     dispose();
-                    new CustomerHome(new CustomerController().getCustomerAccount(jTextField2.getText(), FieldsController.getMD5Hash(String.valueOf(password.getPassword()))));
+                    new CustomerHome(new CustomerController().getCustomerAccount(email.getText(), FieldsController.getMD5Hash(String.valueOf(password.getPassword()))));
                 } else {
                     JOptionPane.showMessageDialog(null, "Wrong email/password, please retry ", "", JOptionPane.ERROR_MESSAGE);
                 }
@@ -185,25 +182,25 @@ public final class LogInFrame extends JFrame {
 
         });
 
-        jButton2.setFocusPainted(false);
+        login.setFocusPainted(false);
 
-        jPanel2.add(jButton2);
-        jButton2.setBounds(80, 410, 130, 40);
+        rightPanel2.add(login);
+        login.setBounds(80, 410, 130, 40);
 
-        jButton3.setBackground(new Color(55, 112, 155));
-        jButton3.setForeground(new Color(255, 255, 255));
-        jButton3.setText("Sign up");
-        jButton3.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
-        jButton3.setBorderPainted(false);
-        jButton3.setActionCommand("Sign up");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signUp.setBackground(new Color(55, 112, 155));
+        signUp.setForeground(new Color(255, 255, 255));
+        signUp.setText("Sign up");
+        signUp.setBorder(BorderFactory.createLineBorder(new Color(0, 181, 204)));
+        signUp.setBorderPainted(false);
+        signUp.setActionCommand("Sign up");
+        signUp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         LogInFrame loginFrame = this;
-        jButton3.addActionListener(new ActionListener() {
+        signUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                jPanel2.setVisible(false);
+                rightPanel2.setVisible(false);
                 getContentPane().repaint();
 
                 signUpPanel = new SignUpPanel(loginFrame);
@@ -215,23 +212,19 @@ public final class LogInFrame extends JFrame {
 
         }
         );
-        jButton3.setFocusPainted(false);
-        jPanel2.add(jButton3);
-        jButton3.setBounds(230, 410, 130, 40);
+        signUp.setFocusPainted(false);
+        rightPanel2.add(signUp);
+        signUp.setBounds(230, 410, 130, 40);
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(380, 0, 440, 530);
+        getContentPane().add(rightPanel2);
+        rightPanel2.setBounds(380, 0, 440, 530);
 
         getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.white));
 
     }
 
-    public String[] getEntry() {
-        String[] list = new String[2];
-        list[0] = jTextField2.getText();
-        list[1] = String.valueOf(password.getPassword()); //char[] to String
-        return list;
+    
     }
 
     
-}
+

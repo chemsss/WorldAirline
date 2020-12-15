@@ -39,7 +39,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
     private javax.swing.JLabel departureDateTime2;
     private javax.swing.JLabel from2;
     private javax.swing.JLabel to2;
-    private JButton jButton1;
+    private JButton next;
 
     //Passengers Details
     ArrayList<JLabel[]> labels = new ArrayList();
@@ -322,7 +322,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
                 text[k] = new JTextField();
             }
             JDateChooser birthDate = new JDateChooser();
-            jButton1 = new JButton();
+            next = new JButton();
 
             label[0].setFont(new java.awt.Font("Yu Gothic UI Light", 0, 24)); // NOI18N
             label[0].setText("Passenger " + (i + 1));
@@ -452,15 +452,15 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
             if (i == numberOfPassengers - 1) {
 
-                jButton1.setBackground(new java.awt.Color(55, 112, 155));
-                jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-                jButton1.setForeground(new java.awt.Color(255, 255, 255));
-                jButton1.setText("Next");
-                jButton1.setBorderPainted(false);
-                jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-                jButton1.setFocusable(false);
-                jButton1.setBounds(470, y2, 110, 30);
-                jButton1.addActionListener(new ActionListener() {
+                next.setBackground(new java.awt.Color(55, 112, 155));
+                next.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+                next.setForeground(new java.awt.Color(255, 255, 255));
+                next.setText("Next");
+                next.setBorderPainted(false);
+                next.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+                next.setFocusable(false);
+                next.setBounds(470, y2, 110, 30);
+                next.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
@@ -502,7 +502,7 @@ public class PassengersInfosFrame extends javax.swing.JFrame {
 
                 });
 
-                passengersPanel.add(jButton1);
+                passengersPanel.add(next);
 
             } else {
 

@@ -29,7 +29,6 @@ public class MainMenuChoice implements ActionListener {
                 break;
             case "Admin":
                  new EmployeeLogin(frame);
-               //  frame.dispose(); // on ferme la fenetre actuelle
                 break;
         }
 

@@ -9,7 +9,7 @@ import javax.swing.*;
 import model.Flight;
 import controller.FlightController;
 import controller.FlightSeatsController;
-import controller.SearchFlightSeatsTableModel;
+import model.TableModel.SearchFlightSeatsTableModel;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import model.Airplane;

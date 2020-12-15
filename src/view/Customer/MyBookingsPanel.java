@@ -1,11 +1,11 @@
 package view.Customer;
 
 import controller.BookingController;
-import controller.SearchBookingsTableModel;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import model.Booking;
 import model.CustomerAccount;
+import model.TableModel.SearchBookingsTableModel;
 
 public class MyBookingsPanel extends javax.swing.JPanel {
 

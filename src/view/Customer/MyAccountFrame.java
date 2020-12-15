@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import model.CustomerAccount;
-import model.Ticket;
 
 public class MyAccountFrame extends javax.swing.JFrame {
 

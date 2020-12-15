@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import model.TableModel.SearchFlightsTableModel;
 import DataAcessObjectImpl.FlightDAOImpl;
 import java.util.ArrayList;
 import model.*;

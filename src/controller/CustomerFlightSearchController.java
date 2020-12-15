@@ -1,5 +1,6 @@
 package controller;
 
+import model.TableModel.SearchFlightsTableModel;
 import Exceptions.*;
 import java.util.Calendar;
 import java.util.logging.Level;

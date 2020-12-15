@@ -2,7 +2,7 @@ package view.Employee;
 
 import controller.BookingController;
 import controller.FlightController;
-import controller.SearchTicketsTableModel;
+import model.TableModel.SearchTicketsTableModel;
 import controller.TicketController;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -188,7 +188,7 @@ public class EmployeeManageBooking extends javax.swing.JPanel {
                     String stringTicketNumber = tableSeat.getValueAt(tableSeat.getSelectedRow(), 0).toString();
                     int TicketNumber = Integer.parseInt(stringTicketNumber);
 
-                    TicketController.deleteFlight(TicketNumber);
+                    TicketController.deleteTicket(TicketNumber);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Please, select a booking");

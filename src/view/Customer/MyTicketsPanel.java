@@ -1,9 +1,9 @@
 package view.Customer;
 
-import controller.SearchTicketsTableModel;
 import controller.TicketController;
 import javax.swing.JPanel;
 import model.Booking;
+import model.TableModel.SearchTicketsTableModel;
 import model.Ticket;
 
 public class MyTicketsPanel extends javax.swing.JPanel {
@@ -65,6 +65,7 @@ public class MyTicketsPanel extends javax.swing.JPanel {
         previous3.setBorderPainted(false);
         previous3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         previous3.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 myBookingsPanel.setVisible(true);
 
@@ -101,6 +102,7 @@ public class MyTicketsPanel extends javax.swing.JPanel {
         viewTicket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JPanel myPanel=this;
         viewTicket.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                 //If a Ticket is selected

@@ -43,9 +43,9 @@ public class TicketController {
         return new FlightSeatDAOImpl().getPrice(idFlight, seatNo);
     }
 
-      public static void deleteFlight (int idFlight)
+      public static void deleteTicket (int ticketNo)
     {
-        new TicketDAOImpl().delete(idFlight);
+        new TicketDAOImpl().delete(ticketNo);
         JOptionPane.showMessageDialog(null, "The ticket has been deleted");
     }
       

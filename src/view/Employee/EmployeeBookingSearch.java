@@ -1,7 +1,7 @@
 package view.Employee;
 
 import controller.BookingController;
-import controller.SearchBookingsTableModel;
+import model.TableModel.SearchBookingsTableModel;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;

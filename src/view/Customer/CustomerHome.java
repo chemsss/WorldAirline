@@ -3,7 +3,6 @@ package view.Customer;
 import com.toedter.calendar.JDateChooser;
 import java.util.ArrayList;
 import model.*;
-import controller.*;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -14,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Toolkit;
 import java.util.Date;
+import model.TableModel.SearchFlightsTableModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class CustomerHome extends javax.swing.JFrame {
@@ -39,6 +39,7 @@ public class CustomerHome extends javax.swing.JFrame {
     int screenWidth = screenSize.width;
 
     private JTable searchDepartureFlights, searchDepartureFlightsRoundTrip, searchReturnFlightsRoundTrip;
+    
     private CustomerAccount loggedInCustomer;
 
     public CustomerAccount getLoggedInCustomer() {
@@ -107,6 +108,7 @@ public class CustomerHome extends javax.swing.JFrame {
         roundTrip.setContentAreaFilled(false);
         roundTrip.setFocusable(false);
         roundTrip.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent evt) {
                 arrival.setVisible(true);
                 returnDate.setVisible(true);
