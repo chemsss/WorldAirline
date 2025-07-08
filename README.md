@@ -5,6 +5,15 @@ The project is a flight booking desktop application built in Java using Swing fo
 
 ---
 
+## 📚 Table of Contents
+
+- [📦 Environment used](#environment)
+- [🧾 Features](#features)
+- [🗃️ Database](#database)
+
+---
+<a name="environment"></a>  
+  
 ## 📦 Environment used
 
 - **Language & Tools**: Java (JDK 15), NetBeans 12.5
@@ -20,7 +29,8 @@ The project is a flight booking desktop application built in Java using Swing fo
 
 ---
 
-
+<a name="features"></a>  
+  
 ## 🧾 Features
 
 ### 👤 Customer Features
@@ -101,7 +111,7 @@ The project is a flight booking desktop application built in Java using Swing fo
 - Application UI
 - UML Diagrams
 
-> - see the ![docs](docs") folder  
+> - see the ![docs](docs) folder  
 
 
 
@@ -109,7 +119,8 @@ The project is a flight booking desktop application built in Java using Swing fo
 
 
 
-
+<a name="database"></a>  
+  
 ## 🗃️ Database Schema
 
 - airplane, airport, flight, booking, coupon, ticket, flightseat, passenger, customeraccount, employeeaccount
@@ -117,7 +128,7 @@ The project is a flight booking desktop application built in Java using Swing fo
 
 ### ER Diagram
 
-![ER Diagram](https://github.com/user-attachments/assets/fe049d55-5c64-40e3-9dd3-925076aa5259")  
+![ER Diagram](https://github.com/user-attachments/assets/fe049d55-5c64-40e3-9dd3-925076aa5259)  
   
   
   
